@@ -1,4 +1,4 @@
-/* style.css - V4: Header + Sidebar Layout */
+/* style.css - V4: Top Nav + Sidebar */
 
 /* 1. FONTS */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap');
@@ -6,11 +6,12 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 /* 2. SCROLLBAR */
-::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.3); }
 ::-webkit-scrollbar-thumb {
-  background: #4b6cb7;
+  background: linear-gradient(180deg, #4b6cb7 0%, #182848 100%);
   border-radius: 5px;
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
 body {
@@ -36,126 +37,101 @@ body {
   to   { transform: translate(-200px, -100px); }
 }
 
-canvas {
-  position: fixed;
+canvas { position: fixed; inset: 0; z-index: -1; }
+
+/* Landing Page Title */
+h1.landing-title {
+  font-family: 'Cinzel', serif;
+  position: absolute;
   inset: 0;
-  z-index: -1;
+  display: grid;
+  place-items: center;
+  font-size: clamp(3rem, 8vw, 6rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: white;
+  text-shadow: 0 0 20px rgba(100,150,255,0.6);
+  animation: glow 5s ease-in-out infinite alternate;
+  pointer-events: none;
 }
 
-/* --- TOP NAVIGATION HEADER --- */
-.top-nav {
+/* --- TOP NAVIGATION BAR --- */
+.topnav {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 50px; /* Very thin header */
-  background: rgba(5, 8, 20, 0.9); /* Dark and mostly opaque */
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  height: 60px;
+  background: rgba(13, 17, 36, 0.85); /* Slightly darker than sidebar */
+  backdrop-filter: blur(5px);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Spreads Logo - Links - Search */
   padding: 0 2rem;
-  z-index: 1000; /* sits on top of everything */
-  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+  z-index: 200; /* Stays on top of everything */
 }
 
-.nav-logo {
-  font-family: 'Cinzel', serif;
-  font-weight: 700;
-  font-size: 1.2rem;
+.topnav a {
   color: #aaddff;
   text-decoration: none;
-  text-shadow: 0 0 10px rgba(100,150,255,0.5);
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  margin-right: 2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: all 0.2s;
 }
 
-.nav-links {
-  display: flex;
-  gap: 20px;
-}
-
-.nav-links a {
-  color: #b0c7ff;
-  text-decoration: none;
-  font-size: 0.95rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  transition: color 0.3s;
-}
-
-.nav-links a:hover {
+.topnav a:hover, .topnav a.active {
+  background: rgba(255,255,255,0.1);
   color: white;
-  text-shadow: 0 0 8px rgba(255,255,255,0.8);
+  text-shadow: 0 0 10px rgba(100,150,255,0.8);
 }
 
-/* Search Bar Styling */
-.search-container {
-  position: relative;
-}
-
-.search-input {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
-  padding: 5px 15px;
-  color: white;
-  font-family: 'Lato', sans-serif;
-  width: 200px;
-  transition: all 0.3s ease;
-}
-
-.search-input::placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.search-input:focus {
-  outline: none;
-  background: rgba(255, 255, 255, 0.2);
-  width: 250px; /* Expands when you click it */
-  border-color: #aaddff;
-  box-shadow: 0 0 10px rgba(170, 221, 255, 0.3);
-}
-
-/* --- SIDEBAR (Adjusted for Header) --- */
+/* --- LAYOUT --- */
 .layout-container {
   display: flex;
   min-height: 100vh;
-  padding-top: 50px; /* Push everything down by height of header */
+  width: 100%;
+  padding-top: 60px; /* Push content down so topnav doesn't cover it */
 }
 
+/* Sidebar */
 .sidebar {
-  width: 260px;
-  height: calc(100vh - 50px); /* Full height minus header */
+  width: 280px;
+  height: calc(100vh - 60px); /* Full height minus top bar */
   position: fixed;
   left: 0;
-  top: 50px; /* Starts below header */
+  top: 60px; /* Starts below topnav */
   overflow-y: auto;
+  
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(3px);
   border-right: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 2rem;
+  padding: 1.5rem;
   z-index: 100;
 }
 
-.sidebar h2 {
+/* Sidebar Headers (like "2014 Systems") */
+.sidebar h3 {
   font-family: 'Cinzel', serif;
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-  color: #aaddff;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  padding-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #6b8cce; /* Muted blue */
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  padding-left: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
+.sidebar h3:first-child { margin-top: 0; }
 
 .sidebar ul { list-style: none; }
-.sidebar li { margin-bottom: 0.5rem; }
+.sidebar li { margin-bottom: 0.2rem; }
 
 .sidebar a {
   display: block;
   padding: 0.5rem 1rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   border-radius: 5px;
   transition: all 0.2s ease;
@@ -165,22 +141,24 @@ canvas {
 .sidebar a:hover {
   background: rgba(255, 255, 255, 0.1);
   color: #fff;
+  padding-left: 1.3rem; /* Slide effect */
 }
 
-/* --- CONTENT (Adjusted for Header) --- */
+/* Main Content */
 .content {
-  margin-left: 260px;
-  width: calc(100% - 260px);
-  min-height: calc(100vh - 50px);
+  margin-left: 280px;
+  width: calc(100% - 280px);
+  min-height: calc(100vh - 60px);
   padding: 4rem 6rem;
   background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(0px);
 }
 
-/* Typography */
+/* Content Typography */
 .content h1 {
   font-family: 'Cinzel', serif;
   font-size: 3rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   color: #fff;
   border-bottom: 1px solid rgba(255,255,255,0.2);
   padding-bottom: 1rem;
@@ -188,22 +166,27 @@ canvas {
 .content h2 {
   font-family: 'Cinzel', serif;
   font-size: 1.8rem;
-  margin-top: 2.5rem;
+  margin-top: 3rem;
   margin-bottom: 1rem;
   color: #b0c7ff;
 }
 .content p {
-  line-height: 1.7;
-  margin-bottom: 1.2rem;
-  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
   color: #e0e6ff;
   max-width: 900px;
 }
-.content ul { margin-left: 2rem; margin-bottom: 1.5rem; color: #d0d6e0; }
+.content ul, .content ol {
+  margin-left: 2rem;
+  margin-bottom: 1.5rem;
+  color: #d0d6e0;
+}
 
+/* Mobile */
 @media (max-width: 768px) {
-  .top-nav { padding: 0 1rem; }
-  .nav-links { display: none; /* Hide top links on mobile */ }
-  .sidebar { width: 100%; position: relative; height: auto; top: 0; }
+  .topnav { padding: 0 1rem; }
+  .topnav a { font-size: 1rem; margin-right: 1rem; }
+  .sidebar { width: 100%; height: auto; position: relative; top: 0; }
   .content { margin-left: 0; width: 100%; padding: 2rem; }
+  .layout-container { flex-direction: column; }
 }
