@@ -1,12 +1,29 @@
-/* style.css - All your visual design goes here */
+/* style.css - V2: The "Cosmic Glass" Update */
+
+/* 1. IMPORT FONTS (Cinzel for Headers, Lato for Text) */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap');
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+/* 2. CUSTOM SCROLLBAR (Goodbye ugly grey bar) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #4b6cb7 0%, #182848 100%);
+  border-radius: 5px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
 body {
-  min-height: 100vh; /* Changed to min-height so scrolling works on long pages */
+  min-height: 100vh;
   background: radial-gradient(ellipse at bottom, #0b1026 0%, #02030f 100%);
-  font-family: Georgia, serif;
-  color: white;
-  overflow-x: hidden; /* Prevents horizontal scrollbar */
+  font-family: 'Lato', sans-serif; /* Clean text font */
+  color: #e0e6ff;
+  overflow-x: hidden;
 }
 
 /* Galaxy Background Animation */
@@ -14,10 +31,10 @@ body {
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(circle at 30% 40%, rgba(120,80,255,0.25), transparent 40%),
-    radial-gradient(circle at 70% 60%, rgba(255,120,200,0.2), transparent 45%);
+    radial-gradient(circle at 30% 40%, rgba(120,80,255,0.15), transparent 40%),
+    radial-gradient(circle at 70% 60%, rgba(255,120,200,0.1), transparent 45%);
   animation: drift 60s linear infinite;
-  z-index: -2; /* Puts it behind everything */
+  z-index: -2;
 }
 
 @keyframes drift {
@@ -25,53 +42,64 @@ body {
   to   { transform: translate(-200px, -100px); }
 }
 
-/* Star Canvas */
 canvas {
   position: fixed;
   inset: 0;
-  z-index: -1; /* Puts it behind text but in front of galaxy */
+  z-index: -1;
 }
 
 /* Landing Page Title Style */
 h1.landing-title {
+  font-family: 'Cinzel', serif; /* Fantasy font */
   position: absolute;
   inset: 0;
   display: grid;
   place-items: center;
   font-size: clamp(3rem, 8vw, 6rem);
-  letter-spacing: 0.15em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: white;
   text-shadow:
-    0 0 15px rgba(150,150,255,0.8),
-    0 0 30px rgba(100,100,255,0.5);
-  animation: glow 4s ease-in-out infinite alternate;
-  pointer-events: none; /* Lets you click things behind it if needed */
+    0 0 20px rgba(100,150,255,0.6),
+    0 0 50px rgba(100,150,255,0.3);
+  animation: glow 5s ease-in-out infinite alternate;
+  pointer-events: none;
 }
-/* --- NEW ADDITIONS FOR CONTENT PAGES --- */
 
-/* Main Layout: Sidebar on left, Content on right */
+/* --- LAYOUT DESIGN --- */
+
 .layout-container {
   display: flex;
   min-height: 100vh;
   max-width: 1400px;
-  margin: 0 auto; /* Centers the whole thing on big screens */
+  margin: 0 auto;
+  gap: 2rem; /* Space between sidebar and content */
+  padding: 2rem;
 }
 
-/* Sidebar Navigation */
+/* Sidebar - The Glass Panel */
 .sidebar {
-  width: 250px;
-  flex-shrink: 0; /* Prevents sidebar from shrinking */
-  background: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  width: 280px;
+  flex-shrink: 0;
+  background: rgba(13, 17, 36, 0.65); /* Darker glass */
+  backdrop-filter: blur(12px); /* Stronger blur */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
   padding: 2rem;
-  backdrop-filter: blur(5px); /* Blurs the stars behind the menu */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  height: fit-content; /* Only as tall as needed */
+  position: sticky;
+  top: 2rem; /* Sticks to top when scrolling */
 }
 
 .sidebar h2 {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
   color: #aaddff;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 0.5rem;
+  text-align: center;
 }
 
 .sidebar ul {
@@ -79,70 +107,119 @@ h1.landing-title {
 }
 
 .sidebar li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
 }
 
 .sidebar a {
+  display: block;
+  padding: 0.5rem 1rem;
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
-  transition: color 0.2s;
-  display: block;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-size: 1rem;
 }
 
 .sidebar a:hover {
-  color: white;
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transform: translateX(5px); /* Little nudge to the right */
+  box-shadow: 0 0 10px rgba(150, 200, 255, 0.2);
 }
 
-/* Main Content Area */
+/* Main Content - The Reading Slate */
 .content {
   flex-grow: 1;
-  padding: 3rem 4rem;
-  background: rgba(11, 16, 38, 0.65); /* Dark blue transparency */
+  background: rgba(13, 17, 36, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+  padding: 4rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* Typography for your text (Makes Obsidian text look good) */
+/* Typography Improvements */
 .content h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: #e0e6ff;
-  border-bottom: 1px solid rgba(255,255,255,0.2);
-  padding-bottom: 0.5rem;
+  font-family: 'Cinzel', serif;
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, #fff, #aaddff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 1rem;
 }
 
 .content h2 {
+  font-family: 'Cinzel', serif;
   font-size: 1.8rem;
-  margin-top: 2rem;
+  margin-top: 2.5rem;
   margin-bottom: 1rem;
-  color: #c0cfff;
+  color: #b0c7ff;
+}
+
+.content h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem;
+  margin-top: 2rem;
+  color: #fff;
 }
 
 .content p {
-  line-height: 1.6;
-  margin-bottom: 1rem;
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
   font-size: 1.1rem;
+  color: #d0d6e0;
 }
 
 .content ul, .content ol {
   margin-left: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-/* Mobile Responsiveness (Stacks sidebar on top for phones) */
+.content li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+/* Table Styles (For when you add item lists) */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  background: rgba(0,0,0,0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th {
+  background: rgba(255,255,255,0.1);
+  padding: 1rem;
+  text-align: left;
+  font-family: 'Cinzel', serif;
+  color: #aaddff;
+}
+
+td {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+tr:hover td {
+  background: rgba(255,255,255,0.05);
+}
+
 @media (max-width: 768px) {
   .layout-container {
     flex-direction: column;
+    padding: 1rem;
   }
   .sidebar {
     width: 100%;
-    border-right: none;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+    top: 0;
   }
   .content {
     padding: 2rem;
   }
-}
-@keyframes glow {
-  from { opacity: 0.85; }
-  to   { opacity: 1; }
 }
