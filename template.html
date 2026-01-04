@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Page Title Here</title>
+    <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- LINK TO CSS: Note the "../" This assumes the file is in a subfolder like /2014/ -->
+    <!-- Link to CSS (Adjust ../ if you are in a deeper folder) -->
     <link rel="stylesheet" href="../style.css"> 
 </head>
 
@@ -14,31 +14,50 @@
   <div class="galaxy"></div>
   <canvas id="stars"></canvas>
 
-  <!-- Main Layout -->
+  <!-- TOP NAVIGATION HEADER -->
+  <header class="top-nav">
+      <!-- Logo -->
+      <a href="../index.html" class="nav-logo">
+          The Starry Shore
+      </a>
+
+      <!-- Top Links -->
+      <nav class="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="../2014-server/shopping.html">2014 5e</a>
+          <a href="#">2024 5.5e</a>
+      </nav>
+
+      <!-- Search Bar -->
+      <div class="search-container">
+          <input type="text" class="search-input" placeholder="Search...">
+      </div>
+  </header>
+
+  <!-- MAIN LAYOUT -->
   <div class="layout-container">
       
       <!-- SIDEBAR NAV -->
       <aside class="sidebar">
           <h2>Navigation</h2>
           <ul>
-              <li><a href="../index.html">Home</a></li>
-              <!-- Add your links here later -->
               <li><a href="shopping.html">Shopping Guide</a></li>
               <li><a href="crafting.html">Crafting</a></li>
+              <li><a href="items.html">Items</a></li>
+              <!-- Add more links here -->
           </ul>
       </aside>
 
       <!-- CONTENT AREA -->
       <main class="content">
-          <h1>Page Title</h1>
+          <h1>Page Title Here</h1>
           
-          <!-- PASTE YOUR OBSIDIAN CONTENT HERE -->
-          <p>This is where your text will go.</p>
+          <p><em>(Paste your content here...)</em></p>
           
       </main>
   </div>
 
-  <!-- SCRIPT LINK: Note the "../" -->
+  <!-- Link to JS -->
   <script src="../script.js"></script>
 </body>
 </html>
