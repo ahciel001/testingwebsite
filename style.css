@@ -1,0 +1,53 @@
+/* style.css - All your visual design goes here */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  min-height: 100vh; /* Changed to min-height so scrolling works on long pages */
+  background: radial-gradient(ellipse at bottom, #0b1026 0%, #02030f 100%);
+  font-family: Georgia, serif;
+  color: white;
+  overflow-x: hidden; /* Prevents horizontal scrollbar */
+}
+
+/* Galaxy Background Animation */
+.galaxy {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 40%, rgba(120,80,255,0.25), transparent 40%),
+    radial-gradient(circle at 70% 60%, rgba(255,120,200,0.2), transparent 45%);
+  animation: drift 60s linear infinite;
+  z-index: -2; /* Puts it behind everything */
+}
+
+@keyframes drift {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(-200px, -100px); }
+}
+
+/* Star Canvas */
+canvas {
+  position: fixed;
+  inset: 0;
+  z-index: -1; /* Puts it behind text but in front of galaxy */
+}
+
+/* Landing Page Title Style */
+h1.landing-title {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: clamp(3rem, 8vw, 6rem);
+  letter-spacing: 0.15em;
+  text-shadow:
+    0 0 15px rgba(150,150,255,0.8),
+    0 0 30px rgba(100,100,255,0.5);
+  animation: glow 4s ease-in-out infinite alternate;
+  pointer-events: none; /* Lets you click things behind it if needed */
+}
+
+@keyframes glow {
+  from { opacity: 0.85; }
+  to   { opacity: 1; }
+}
