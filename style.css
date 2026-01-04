@@ -67,7 +67,6 @@ h1.landing-title {
   align-items: center;
   padding: 0 2rem;
   z-index: 100;
-  backdrop-filter: blur(5px);
 }
 
 .navbar a {
