@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Link to CSS (Adjust ../ if you are in a deeper folder) -->
+    <link rel="stylesheet" href="../style.css"> 
+</head>
+
+<body>
+  <!-- Background Elements -->
+  <div class="galaxy"></div>
+  <canvas id="stars"></canvas>
+
+  <!-- TOP NAVIGATION HEADER -->
+  <header class="top-nav">
+      <!-- Logo -->
+      <a href="../index.html" class="nav-logo">
+          The Starry Shore
+      </a>
+
+      <!-- Top Links -->
+      <nav class="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="../2014-server/shopping.html">2014 5e</a>
+          <a href="#">2024 5.5e</a>
+      </nav>
+
+      <!-- Search Bar -->
+      <div class="search-container">
+          <input type="text" class="search-input" placeholder="Search...">
+      </div>
+  </header>
+
+  <!-- MAIN LAYOUT -->
+  <div class="layout-container">
+      
+      <!-- SIDEBAR NAV -->
+      <aside class="sidebar">
+          <h2>Navigation</h2>
+          <ul><li><strong>- 2014 5e Server</strong><ul><li><strong>- 2014 Server Systems</strong><ul><li><a href="- 2014 Server Systems/1. Shopping Guide.html">1. Shopping Guide</a></li><li><a href="- 2014 Server Systems/2. Crafting.html">2. Crafting</a></li><li><a href="- 2014 Server Systems/3. Item Patch Notes.html">3. Item Patch Notes</a></li><li><a href="- 2014 Server Systems/4. DownTime Points Guide (DTP).html">4. DownTime Points Guide (DTP)</a></li><li><a href="- 2014 Server Systems/5. Prestige Rules.html">5. Prestige Rules</a></li></ul></li><li><a href="1. About the Server.html">1. About the Server</a></li><li><a href="2. Character Creation Steps.html">2. Character Creation Steps</a></li><li><a href="3. How to Play.html">3. How to Play</a></li><li><a href="4. Loot and Items.html">4. Loot and Items</a></li><li><a href="5. Misc Rules.html">5. Misc Rules</a></li><li><a href="6. DM Guide.html">6. DM Guide</a></li><li><a href="7. DM Tools.html">7. DM Tools</a></li><li><strong>Events</strong><ul><li><a href="Events/3. Halloween feature.html">3. Halloween feature</a></li></ul></li></ul></li><li><strong>- 2024 5.5e Server</strong><ul><li><strong>- 2024 Server Systems</strong><ul><li><a href="../- 2024 5.5e Server/- 2024 Server Systems/2. Crafting.html">2. Crafting</a></li></ul></li><li><a href="../- 2024 5.5e Server/1. About the Server.html">1. About the Server</a></li><li><a href="../- 2024 5.5e Server/2. Character Creation Steps.html">2. Character Creation Steps</a></li><li><a href="../- 2024 5.5e Server/3. Creation Log Maker.html">3. Creation Log Maker</a></li><li><strong>Events</strong><ul><li><a href="../- 2024 5.5e Server/Events/3. Halloween feature.html">3. Halloween feature</a></li></ul></li></ul></li><li><a href="../index.html">index</a></li></ul>
+      </aside>
+
+      <!-- CONTENT AREA -->
+      <main class="content">
+          <h1>How to Play</h1>
+<h2>Live Sessions</h2>
+<ol>
+<li>
+<p>DMs post their upcoming sessions in <span style="display:inline-block;
+              background-color:#4b4d53;
+              color:#ffffff;
+              border-radius:6px;
+              padding:4px 10px;
+              font-family:'gg sans','Segoe UI',sans-serif;
+              font-size:0.9em;
+              font-weight:500;
+              user-select:none;">
+  # looking-to-host
+</span>. If you don't see a live session there that fits your schedule, you can ask if DMs are interested in hosting in the <span style="display:inline-block;
+              background-color:#4b4d53;
+              color:#ffffff;
+              border-radius:6px;
+              padding:4px 10px;
+              font-family:'gg sans','Segoe UI',sans-serif;
+              font-size:0.9em;
+              font-weight:500;
+              user-select:none;">#looking-for-game</span> channel. When you post in LFG, you can say something about your character(s), what kind of game you’re looking for and what times you can play.  </p>
+</li>
+<li>
+<p>Follow the directions in the LTH post carefully. Each DM may require different information to join. Send the DM a private message to ask questions or with the information requested in their post.   </p>
+</li>
+<li>
+<p>Enjoy the session!  </p>
+</li>
+<li>
+<p>After the session, the DM will post a <span style="display:inline-block;
+              background-color:#4b4d53;
+              color:#ffffff;
+              border-radius:6px;
+              padding:4px 10px;
+              font-family:'gg sans','Segoe UI',sans-serif;
+              font-size:0.9em;
+              font-weight:500;
+              user-select:none;">#session-log</span>. You will need to update your character’s tracking sheet with your hours, items, and gold gained or lost in the session.<br />
+   If you have a disagreement with a DM, we encourage reaching out to them outside of the game to work things out. If there are still difficulties, or if this is not possible, please contact a staff member to help resolve the issue.
+<img src="/assets/img/tracking.png" alt="website tutorial" style="display:block; width:100%; height:auto;"></p>
+</li>
+</ol>
+<div style="
+  height: 10px;
+  background:
+    linear-gradient(to right,
+      #60a5fa 0%,
+      #1e3a8a 20%,
+      #60a5fa 40%,
+      #1e3a8a 60%,
+      #60a5fa 80%,
+      #1e3a8a 100%
+    ) top,
+    linear-gradient(to right,
+      #60a5fa 0%,
+      #1e3a8a 20%,
+      #60a5fa 40%,
+      #1e3a8a 60%,
+      #60a5fa 80%,
+      #1e3a8a 100%
+    ) bottom;
+  background-repeat: no-repeat;
+  background-size: 100% 4px, 100% 4px;
+  background-position: top center, bottom center;
+  border: none;
+  border-radius: 1px;">
+</div>
+
+<h2>Text Roleplay</h2>
+<p>Characters begin in the <span style="display:inline-block;
+              background-color:#4b4d53;
+              color:#ffffff;
+              border-radius:6px;
+              padding:4px 10px;
+              font-family:'gg sans','Segoe UI',sans-serif;
+              font-size:0.9em;
+              font-weight:500;
+              user-select:none;">#main street</span>. You can enter the main street in any fashion that fits your character. You can enter any 'scene' currently in progress and interact with other player characters.
+From there, they may enter a DM’s world in live sessions or remain in the main street. The Starry Shore is now that character’s home and a character that has the spell ‘Banishment’ cast on it will return to the main street. Each character may temporarily be in as many trp DM worlds as they want at once.</p>
+<p>Every character in the Starry Shore has a mailbox in the <span style="display:inline-block;
+              background-color:#4b4d53;
+              color:#ffffff;
+              border-radius:6px;
+              padding:4px 10px;
+              font-family:'gg sans','Segoe UI',sans-serif;
+              font-size:0.9em;
+              font-weight:500;
+              user-select:none;">#mail-boxes</span> channel. Characters may put excess belongings into their cubby. Characters cannot peer into or mess with any other character’s cubby. However, a character may leave an item for another character in that character’s cubby. Any items shared between characters via their cubbies must be logged in <span style="display:inline-block;
+              background-color:#4b4d53;
+              color:#ffffff;
+              border-radius:6px;
+              padding:4px 10px;
+              font-family:'gg sans','Segoe UI',sans-serif;
+              font-size:0.9em;
+              font-weight:500;
+              user-select:none;">#character-trade-log</span> after the item has been left. If leaving an item in another character’s cubby, ping that Character.</p>
+<div style="border-left: 4px solid #e67e22; background: #fff3e0; padding: 1em; border-radius: 6px; color: #000;">
+  <strong style="background:#4b4d53; color:#32CD32; padding:2px 6px; border-radius:4px;">@Starling (New Player)</strong>
+  are restricted from joining both live TRP sessions and TRP worlds until they have lost the
+  Starling role <strong>(reaching level 5).</strong>
+</div>
+
+<p>After that, characters can enter any other world. Check out the <span style="display:inline-block;
+              background-color:#4b4d53;
+              color:#ffffff;
+              border-radius:6px;
+              padding:4px 10px;
+              font-family:'gg sans','Segoe UI',sans-serif;
+              font-size:0.9em;
+              font-weight:500;
+              user-select:none;">#trp-world-directory</span> to see a brief intro to each world written by the DM! Read pinned messages in the world's announcements channel for important information, including which room to enter the world through.</p>
+<div style="
+  height: 10px;
+  background:
+    linear-gradient(to right,
+      #60a5fa 0%,
+      #1e3a8a 20%,
+      #60a5fa 40%,
+      #1e3a8a 60%,
+      #60a5fa 80%,
+      #1e3a8a 100%
+    ) top,
+    linear-gradient(to right,
+      #60a5fa 0%,
+      #1e3a8a 20%,
+      #60a5fa 40%,
+      #1e3a8a 60%,
+      #60a5fa 80%,
+      #1e3a8a 100%
+    ) bottom;
+  background-repeat: no-repeat;
+  background-size: 100% 4px, 100% 4px;
+  background-position: top center, bottom center;
+  border: none;
+  border-radius: 1px;">
+</div>
+
+<h3>TRP Rules</h3>
+<p>Live TRP sessions grant rewards (hours and gold) at the same rate as standard live sessions.</p>
+<h4>TRP/PBP DM Rules (in worlds)</h4>
+<p><strong>5 players per TRP DM, 3 hrs per week x 1.5 DM bonus = 90 hrs/month max = equivalent of hosting a 4hr live session every other day (15 sessions)</strong></p>
+<p><strong>DM Reward Guidelines</strong>
+- Each TRP/PBP DM can reward up to 5 players (one character each) in their world up to 3h per week, logging it in the DM rewards section to receive the DMing 1.5x bonus. (must participate for the rough equivalent of 3 hours, DM discretion, example below)
+- TRP sessions must always be logged as solo sessions, running the APL command with 1 entry will halve the gold; for DMs they need to check the solo box in their tracking sheet, and the logs need to be posted in <span style="display:inline-block;
+              background-color:#4b4d53;
+              color:#ffffff;
+              border-radius:6px;
+              padding:4px 10px;
+              font-family:'gg sans','Segoe UI',sans-serif;
+              font-size:0.9em;
+              font-weight:500;
+              user-select:none;">#⁠trp-session-log
+</span> channel using the template pinned there :D
+- 90h/month max for PBP DMing. This is equivalent to hosting a 4-hour live session every other day (15 sessions/month)
+- The content amount required is still the same.
+- More players or characters may still join if you allow, but they don't receive rewards.</p>
+<p>for example: <a href="https://discord.com/channels/1067904868284633148/1156448065385934860/1167358118968168458" target="_blank"
+style="background-color:rgba(88,101,242,0.15); color:#7289DA; border-radius:6px; padding:0.15em 0.5em; text-decoration:none; font-weight:600;"
+onmouseover="this.style.backgroundColor='rgba(88,101,242,0.3)'"
+onmouseout="this.style.backgroundColor='rgba(88,101,242,0.15)'">
+💬 starting point
+</a> to <a href="https://discord.com/channels/1067904868284633148/1156448065385934860/1174285886893076492" target="_blank"
+style="background-color:rgba(88,101,242,0.15); color:#7289DA; border-radius:6px; padding:0.15em 0.5em; text-decoration:none; font-weight:600;"
+onmouseover="this.style.backgroundColor='rgba(88,101,242,0.3)'"
+onmouseout="this.style.backgroundColor='rgba(88,101,242,0.15)'">
+💬 end
+</a> is approximately 12 back and forth, approximately 2h total, which if we consider each reply from both parties is 5 min that's an hour worth of trp for each.
+DM discretion on how they evaluate the rewards, this is just an example and if you need help with that, you can open a ticket.</p>
+<p>The 3-hour weekly reward is a <strong>maximum limit</strong>, not an automatic grant. DMs should award hours based on the actual amount of roleplay a player contributes during that week. If a player roleplays for more than 3 hours, they still only receive the maximum of 3 hours.</p>
+<h4>TRP Player Rules</h4>
+<p><strong>4 TRP worlds per player, 3h/week from each = 48 hrs/month max = equivalent of playing twelve 4hr live sessions per month</strong>
+- Each player is allowed to participate in up to 4 different TRP worlds.
+- They can get up to 3 hours per week from each world
+- A player can earn a maximum of 48 hours per month from TRP. This is equivalent to participating in twelve 4-hour live sessions per month
+- <strong>The TRP rewards logged should only be logged in your sheet after it gets approved with a ✅ by staff</strong></p>
+<div style="
+  height: 10px;
+  background:
+    linear-gradient(to right,
+      #60a5fa 0%,
+      #1e3a8a 20%,
+      #60a5fa 40%,
+      #1e3a8a 60%,
+      #60a5fa 80%,
+      #1e3a8a 100%
+    ) top,
+    linear-gradient(to right,
+      #60a5fa 0%,
+      #1e3a8a 20%,
+      #60a5fa 40%,
+      #1e3a8a 60%,
+      #60a5fa 80%,
+      #1e3a8a 100%
+    ) bottom;
+  background-repeat: no-repeat;
+  background-size: 100% 4px, 100% 4px;
+  background-position: top center, bottom center;
+  border: none;
+  border-radius: 1px;">
+</div>
+
+<h2>Feedback</h2>
+<p>Players and DMs are welcome to provide anonymous feedback using the Member Feedback Form. This feedback may be complimentary, constructive criticism or complaints. Please note we take complaints seriously. Members may request their feedback by asking a staff member.</p>
+<div style="
+  height: 10px;
+  background:
+    linear-gradient(to right,
+      #60a5fa 0%,
+      #1e3a8a 20%,
+      #60a5fa 40%,
+      #1e3a8a 60%,
+      #60a5fa 80%,
+      #1e3a8a 100%
+    ) top,
+    linear-gradient(to right,
+      #60a5fa 0%,
+      #1e3a8a 20%,
+      #60a5fa 40%,
+      #1e3a8a 60%,
+      #60a5fa 80%,
+      #1e3a8a 100%
+    ) bottom;
+  background-repeat: no-repeat;
+  background-size: 100% 4px, 100% 4px;
+  background-position: top center, bottom center;
+  border: none;
+  border-radius: 1px;">
+</div>
+
+<h2>Homebrew in the Starry Shore</h2>
+<p>Homebrew content is not allowed for official Starry Shore use. DMs may grant their players homebrew within their worlds. DM discretion applies, as always, to allowing homebrew from other DMs’ worlds into their sessions. To be used in a world other than that of the DM that granted it, the item must be posted in the homebrew-item-log by the DM granting the item. Other DMs have the freedom to allow or disallow homebrew at their own discretion, on a case-by-case basis. This decision is always made at the discretion of DMs, and pressuring DMs in either direction may constitute harassment.</p>
+<div style="border-left: 4px solid #e67e22; background: #fff3e0; padding: 1em; border-radius: 6px; color: #000;">
+DMs are restricted from giving homebrew to Starlings, to make it an easy and less confusing experience for new players!
+</div>
+<p><br></p>
+<div style="
+  height: 10px;
+  background:
+    linear-gradient(to right,
+      #60a5fa 0%,
+      #1e3a8a 20%,
+      #60a5fa 40%,
+      #1e3a8a 60%,
+      #60a5fa 80%,
+      #1e3a8a 100%
+    ) top,
+    linear-gradient(to right,
+      #60a5fa 0%,
+      #1e3a8a 20%,
+      #60a5fa 40%,
+      #1e3a8a 60%,
+      #60a5fa 80%,
+      #1e3a8a 100%
+    ) bottom;
+  background-repeat: no-repeat;
+  background-size: 100% 4px, 100% 4px;
+  background-position: top center, bottom center;
+  border: none;
+  border-radius: 1px;">
+</div>
+
+<h2>Character Progression Rules</h2>
+<h3>Character Leveling</h3>
+<p>Character levels are gained by playing in live or trp sessions. To advance a level, a character must be played in a number of hours equal to 2.5 times the current level. Hours needed to level are automatically calculated in the character tracking sheet supplied in the player folder.
+For example, a level 3 character needs to be played for 7.5 hours before advancing to level 4. A level 4 character needs to be played for 10 hours before advancing to level 5, etc.</p>
+<p>Update your character tracking sheet following every live session you play. In addition, a current copy of the character sheet must always be kept in the player folder. Log any levels gained in <code>#character-leveling-log</code> using the pinned template.</p>
+<p>There is no level cap on this server. Characters continue to level past level 20 using the hours-played formula above. Options for these characters are as follows:
+*   Multiclassing: a character may continue to take levels in additional classes following multiclassing rules
+*   Level 20 Retirement (see Character Retirement)
+*   Prestige</p>
+<div style="
+  height: 10px;
+  background:
+    linear-gradient(to right,
+      #60a5fa 0%,
+      #1e3a8a 20%,
+      #60a5fa 40%,
+      #1e3a8a 60%,
+      #60a5fa 80%,
+      #1e3a8a 100%
+    ) top,
+    linear-gradient(to right,
+      #60a5fa 0%,
+      #1e3a8a 20%,
+      #60a5fa 40%,
+      #1e3a8a 60%,
+      #60a5fa 80%,
+      #1e3a8a 100%
+    ) bottom;
+  background-repeat: no-repeat;
+  background-size: 100% 4px, 100% 4px;
+  background-position: top center, bottom center;
+  border: none;
+  border-radius: 1px;">
+</div>
+<h3>Subclass Change</h3>
+<p>You have two options to retrain and switch subclasses.</p>
+<ol>
+<li><strong>Option 1 - DTP:</strong> A player may use 100 DTP and spend 500 gp per character level to switch to a different subclass. As per Tasha's, if a player switches back to a previous subclass they may forgo the gold costs and the DTP cost is halved.</li>
+<li><strong>Option 2 - Session:</strong> A player may ask a DM to host a session for training to the new subclass. 500 gp per character level must be paid for this change and the session can give no loot rewards. Hours are given as usual and must level the character to a level in which they receive an ASI or Feat. Because they are training within a session no DTP will be required.</li>
+</ol>
+<p>Each option must be documented using the template in <code>#character-leveling-log</code>, noting the subclass change made and which DM and Session provided the change.</p>
+<div style="
+  height: 10px;
+  background:
+    linear-gradient(to right,
+      #60a5fa 0%,
+      #1e3a8a 20%,
+      #60a5fa 40%,
+      #1e3a8a 60%,
+      #60a5fa 80%,
+      #1e3a8a 100%
+    ) top,
+    linear-gradient(to right,
+      #60a5fa 0%,
+      #1e3a8a 20%,
+      #60a5fa 40%,
+      #1e3a8a 60%,
+      #60a5fa 80%,
+      #1e3a8a 100%
+    ) bottom;
+  background-repeat: no-repeat;
+  background-size: 100% 4px, 100% 4px;
+  background-position: top center, bottom center;
+  border: none;
+  border-radius: 1px;">
+</div>
+<h3>Character Respec</h3>
+<p>Players can make changes to the class, subclass, ability scores, background, race, feats, etc. up to 2 times per 6-month period (the first from January 1st to June 30th, the second from July 1st to December 31st) on the server. A character’s personal history and personality are not regulated by the mechanics of D&amp;D and therefore do not require an official respec to develop and evolve overtime.</p>
+<p>Submit the log into the <code>#character-respec-log</code> channel for approval. A reminder, you can play the respecced version of a character before it gets approved by staff.</p>
+<p><strong>You can change any of the following things using the respec option:</strong>
+*   Character name
+*   Character race and sub-race
+*   Character class and subclass, including multiclass options
+*   Feats
+*   Ability Scores
+*   Spells
+*   Starting equipment packages
+*   Background (personality, ideals, bonds, and flaws in addition to features, skill proficiencies, tool proficiencies, background equipment, and background gold)
+*   Chosen Proficiencies (skills, tools, and languages)
+*   Prestige purchases
+*   Artifact properties</p>
+<p><strong>The following items cannot be changed through a character respec:</strong>
+*   Level/hours
+*   Amount of gold (except for background gold)
+*   Equipment (except for starting equipment packages)
+*   Magic Items and Consumables that have been received in sessions
+*   Boons
+*   Downtime points</p>
+<p>Piety to a Deity is not automatically transferred if you change the character name and has to be logged in <code>#piety-log</code> with a link to the respec-log</p>
+<div style="
+  height: 10px;
+  background:
+    linear-gradient(to right,
+      #60a5fa 0%,
+      #1e3a8a 20%,
+      #60a5fa 40%,
+      #1e3a8a 60%,
+      #60a5fa 80%,
+      #1e3a8a 100%
+    ) top,
+    linear-gradient(to right,
+      #60a5fa 0%,
+      #1e3a8a 20%,
+      #60a5fa 40%,
+      #1e3a8a 60%,
+      #60a5fa 80%,
+      #1e3a8a 100%
+    ) bottom;
+  background-repeat: no-repeat;
+  background-size: 100% 4px, 100% 4px;
+  background-position: top center, bottom center;
+  border: none;
+  border-radius: 1px;">
+</div>
+<h3>Character Prestige Options</h3>
+<p>A character of level 20+ can prestige their character, giving up levels and hours in exchange for Prestige Points to be used at the Prestige Shop.</p>
+<p>For more info, check out <a href="https://the-starry-shore.github.io/-%202014%205e%20Server/-%202014%20Server%20Systems/5.%20Prestige%20Rules/" target="_blank"
+  style="display:inline-block;
+         background:linear-gradient(135deg, #E0F7FA, #B3E5FC, #81D4FA);
+         color:#0D47A1;
+         font-weight:700;
+         font-size:0.95em;
+         padding:0.45em 1em;
+         border-radius:6px;
+         text-decoration:none;
+         box-shadow:0 1px 3px rgba(0,0,0,0.15);
+         transition:transform 0.15s ease, box-shadow 0.15s ease, background 0.3s ease;"
+  onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.25)'; this.style.background='linear-gradient(135deg, #B3E5FC, #E0F7FA, #B3E5FC)';"
+  onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 1px 3px rgba(0,0,0,0.15)'; this.style.background='linear-gradient(135deg, #E0F7FA, #B3E5FC, #81D4FA)';">
+  💎 2014 Prestige Rules
+</a></p>
+<div style="
+  height: 10px;
+  background:
+    linear-gradient(to right,
+      #60a5fa 0%,
+      #1e3a8a 20%,
+      #60a5fa 40%,
+      #1e3a8a 60%,
+      #60a5fa 80%,
+      #1e3a8a 100%
+    ) top,
+    linear-gradient(to right,
+      #60a5fa 0%,
+      #1e3a8a 20%,
+      #60a5fa 40%,
+      #1e3a8a 60%,
+      #60a5fa 80%,
+      #1e3a8a 100%
+    ) bottom;
+  background-repeat: no-repeat;
+  background-size: 100% 4px, 100% 4px;
+  background-position: top center, bottom center;
+  border: none;
+  border-radius: 1px;">
+</div>
+<h2>Character Death (and other persistent effects)</h2>
+<p>If your character dies in a permadeath session, the DM will log it in the <code>#death--log</code>. They may specify that the character death is world-specific, but unless otherwise stated, your character is universally dead. In worlds where your character is dead, you may not play that character.</p>
+<p>Aside from death, there are other persistent effects that may happen to your character. Limb loss, item loss, curses, ruidium corruption, and divine favor are some (but not all) of the things that might happen to a character and may be logged by a DM in <code>#persistent-effects-log</code>.</p>
+<div style="
+  height: 10px;
+  background:
+    linear-gradient(to right,
+      #60a5fa 0%,
+      #1e3a8a 20%,
+      #60a5fa 40%,
+      #1e3a8a 60%,
+      #60a5fa 80%,
+      #1e3a8a 100%
+    ) top,
+    linear-gradient(to right,
+      #60a5fa 0%,
+      #1e3a8a 20%,
+      #60a5fa 40%,
+      #1e3a8a 60%,
+      #60a5fa 80%,
+      #1e3a8a 100%
+    ) bottom;
+  background-repeat: no-repeat;
+  background-size: 100% 4px, 100% 4px;
+  background-position: top center, bottom center;
+  border: none;
+  border-radius: 1px;">
+</div>
+<h2>What is Proxying?</h2>
+<p>Proxying has 2 mechanics:</p>
+<ol>
+<li><strong>Hour Allocation:</strong> You can allocate session hours to a different character by indicating the desired character's name and level at the session's end.</li>
+<li><strong>Level Adjustment:</strong> Temporarily adjust your character's level for a session. It's recommended to use a duplicate character sheet labeled with the proxy level for clarity.</li>
+</ol>
+<h4>Methods of Proxying</h4>
+<ul>
+<li><strong>The Fast Method:</strong> Directly level up your character and update your sheet with Avrae. This method carries the risk of forgetting to revert changes post-session.</li>
+<li><strong>The Safe Method:</strong> Create a new character sheet with the proxy level and import it to Avrae, minimizing the risk of accidental non-reversion.</li>
+</ul>
+<h4>Magic Items and Proxying</h4>
+<p>Acquiring magic items while proxying depends on the Dungeon Master (DM). Always confirm with your DM about any specific rules for proxying. Remember to remove any proxy-specific items after the session, as they do not carry over.</p>
+<h4>Party Gold and Proxy Levels</h4>
+<p>Party Gold earnings are based on the actual level of the character receiving the session hours, not the proxy level.</p>
+<h4>Proxying Down</h4>
+<p>With DM approval, you can proxy down to participate in lower-level sessions. Ensure you remove any high-tier items that become ineligible.</p>
+<div style="
+  height: 10px;
+  background:
+    linear-gradient(to right,
+      #60a5fa 0%,
+      #1e3a8a 20%,
+      #60a5fa 40%,
+      #1e3a8a 60%,
+      #60a5fa 80%,
+      #1e3a8a 100%
+    ) top,
+    linear-gradient(to right,
+      #60a5fa 0%,
+      #1e3a8a 20%,
+      #60a5fa 40%,
+      #1e3a8a 60%,
+      #60a5fa 80%,
+      #1e3a8a 100%
+    ) bottom;
+  background-repeat: no-repeat;
+  background-size: 100% 4px, 100% 4px;
+  background-position: top center, bottom center;
+  border: none;
+  border-radius: 1px;">
+</div>
+      </main>
+  </div>
+
+  <!-- Link to JS -->
+  <script src="../script.js"></script>
+</body>
+</html>
