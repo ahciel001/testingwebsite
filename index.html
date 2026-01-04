@@ -2,22 +2,422 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>The Starry Shore</title>
+    <title>The Starry Shore — D&D 5E & 5.5E Community</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- This line pulls in your design -->
+    <!-- GLOBAL STYLE (The stars and navbar) -->
     <link rel="stylesheet" href="style.css"> 
+
+    <!-- PAGE SPECIFIC STYLES (Edit your animations/boxes here) -->
+    <style>
+        /* Center the content for the landing page */
+        .landing-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        /* --- 1. GLOWING TITLE --- */
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Trebuchet MS', sans-serif;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+        }
+        
+        .hero-logo {
+            height: clamp(60px, 10vw, 120px);
+            margin-right: 20px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #38bdf8, #22d3ee, #06b6d4, #38bdf8, #3b82f6);
+            background-size: 400% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 8s linear infinite;
+        }
+
+        @keyframes shine {
+            0% { background-position: 0% center; }
+            100% { background-position: 400% center; }
+        }
+
+        /* --- 2. WELCOME BOX (Dark Glass Theme) --- */
+        .welcome-box {
+            background: rgba(0, 20, 40, 0.7); /* Dark Blue Glass */
+            border-left: 4px solid #00bcd4;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+            margin-bottom: 3rem;
+            text-align: left;
+            color: #e0f7fa;
+        }
+
+        .welcome-header {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 1rem;
+            color: #fff;
+            text-align: center;
+        }
+
+        /* --- 3. DISCORD BUTTONS --- */
+        .button-row {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+
+        .discord-btn {
+            background-color: #5865F2;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .discord-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(88, 101, 242, 0.4);
+            background-color: #4752c4;
+        }
+
+        /* --- 4. FEATURE LIST & CARD LAYOUT --- */
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-list {
+            flex: 1;
+            min-width: 280px;
+        }
+        .feature-list ul {
+            list-style: none;
+            line-height: 2;
+        }
+        .feature-list li::before {
+            content: "✦";
+            color: #00bcd4;
+            margin-right: 10px;
+        }
+        .feature-list strong {
+            color: #4dd0e1;
+        }
+
+        /* --- 5. HELLFIRE CARD ANIMATION --- */
+        .vox-wrapper {
+            flex: 0 0 auto;
+            width: 100%;
+            max-width: 260px;
+            margin: 0 auto;
+        }
+
+        .vox-card {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #000;
+            border-bottom: 3px solid #550000;
+            animation: hellfirePulse 1.5s infinite alternate ease-in-out;
+        }
+
+        .vox-img {
+            width: 100%;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+        }
+
+        .vox-card:hover .vox-img { transform: scale(1.25); }
+
+        .vox-footer {
+            position: absolute;
+            bottom: 0; left: 0; width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,1) 15%, rgba(0,0,0,0) 100%);
+            padding: 50px 10px 10px;
+            text-align: center;
+            font-size: 0.8em; font-style: italic; color: #aaa;
+            pointer-events: none;
+        }
+
+        @keyframes hellfirePulse {
+            0% { box-shadow: 0 0 15px rgba(0,0,0,0.9), 0 0 10px rgba(180,0,0,0.5); border-color: #550000; }
+            100% { box-shadow: 0 0 30px rgba(0,0,0,1), 0 0 30px rgba(255,30,30,0.9); border-color: #ff0000; }
+        }
+
+        /* --- 6. VIDEO WRAPPER --- */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            margin: 3rem 0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+        }
+
+        /* --- 7. OWL20 SECTION --- */
+        .owl-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 3rem auto;
+            text-align: left;
+        }
+
+        .owl-quote {
+            flex: 1 1 400px;
+            background: rgba(255, 244, 230, 0.95); /* Light paper color */
+            color: #3B2F1E;
+            padding: 1.5rem;
+            border-left: 5px solid #E17A2D;
+            border-radius: 8px;
+        }
+        
+        .owl-btn {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            background: linear-gradient(135deg, #E17A2D, #D95D27);
+            color: #FFF8E7;
+            font-weight: 700;
+            padding: 0.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+        .owl-btn:hover { transform: translateY(-2px); }
+
+        .owl-img-wrapper {
+            flex: 0 0 auto;
+            max-width: 260px;
+            text-align: center;
+        }
+
+        /* --- 8. NAVIGATION GRID (The buttons at bottom) --- */
+        .nav-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .nav-column {
+            flex: 1 1 300px;
+            background-color: rgba(46, 46, 46, 0.8);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .nav-column h3 {
+            background-color: #3a3a3a;
+            color: #dbe2ff;
+            padding: 0.5rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .nav-link {
+            display: block;
+            background-color: rgba(255,255,255,0.1);
+            color: #e0e0e0;
+            border-radius: 6px;
+            padding: 0.8rem;
+            margin-top: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background 0.2s, padding-left 0.2s;
+        }
+
+        .nav-link:hover {
+            background-color: #64ffda;
+            color: #000;
+            padding-left: 15px;
+        }
+        
+        .tutorial-img {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.2);
+            margin-top: 1rem;
+        }
+    </style>
+    
+    <!-- SEO META TAGS -->
+    <meta name="description" content="Join The Starry Shore, a vibrant 18+ D&D 5E & 5.5E online community.">
+    <meta name="keywords" content="D&D 5E, D&D 5.5E, dnd, Online RPG, Discord DnD">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="The Starry Shore — D&D Community">
+    <meta property="og:image" content="https://the-starry-shore.github.io/assets/img/hallo2025.png">
+    <link rel="icon" type="image/png" href="assets/img/logo3.png">
 </head>
 
 <body>
-  <!-- Background Elements -->
+  <!-- BACKGROUND ANIMATION -->
   <div class="galaxy"></div>
   <canvas id="stars"></canvas>
 
-  <!-- Content -->
-  <h1 class="landing-title">The Starry Shore</h1>
+  <!-- TOP NAVBAR -->
+  <nav class="navbar">
+      <a href="index.html" style="color: #64ffda;">Home</a>
+      <a href="2014-server/about.html">2014 5e Server</a>
+      <a href="2024-server/about.html">2024 5.5e Server</a>
+  </nav>
 
-  <!-- This line pulls in the star animation logic -->
+  <!-- MAIN LANDING CONTENT -->
+  <div class="layout-container">
+      <div class="landing-container">
+          
+          <!-- HERO HEADER -->
+          <h1 class="hero-title">
+              <img src="assets/img/logo2.png" alt="Logo" class="hero-logo">
+              <span class="gradient-text">The Starry Shore</span>
+          </h1>
+
+          <h2>D&D 5th Edition Westmarches Servers (2014 & 2024)</h2>
+          <br>
+
+          <!-- WELCOME BOX -->
+          <div class="welcome-box">
+              <strong class="welcome-header">Welcome to The Starry Shore</strong>
+
+              <div class="button-row">
+                  <a href="https://discord.gg/thestarryshore" target="_blank" class="discord-btn">
+                     Join 2014/5e Server
+                  </a>
+                  <a href="https://discord.gg/3RgtCcaH6F" target="_blank" class="discord-btn">
+                     Join 2024/5.5e Server
+                  </a>
+              </div>
+
+              <p>
+                Join The Starry Shore — a vibrant 18+ Dungeons & Dragons 5E and 5.5E community! 
+                <strong>New players Super Friendly</strong>. Explore the multiverse as creative and talented DMs guide you through one-shots, campaigns, and living worlds.
+              </p>
+              <br>
+
+              <!-- FEATURE GRID -->
+              <div class="feature-grid">
+                  
+                  <!-- LIST -->
+                  <div class="feature-list">
+                      <ul>
+                        <li><strong>Super easy</strong> character creation & start at lvl 3</li>
+                        <li><strong>Beginner</strong> & veteran friendly (5e & Avrae)</li>
+                        <li><strong>LGBT+</strong> Friendly Space</li>
+                        <li>Special <strong>Gods</strong> with blessings</li>
+                        <li><strong>Beyond campaigns</strong> character management</li>
+                        <li><strong>24/7</strong> Available games for all timezones</li>
+                        <li><strong>Hours</strong> based character leveling</li>
+                        <li><strong>DM Rewards</strong> = 1.5x progression</li>
+                      </ul>
+                  </div>
+
+                  <!-- HELLFIRE CARD -->
+                  <div class="vox-wrapper">
+                      <div class="vox-card">
+                          <img src="assets/img/oto.png" alt="Vox Character Art" class="vox-img">
+                          <div class="vox-footer">
+                              <span style="color: #ff4444; font-weight: bold;">Vox</span>, played by @katmando
+                          </div>
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+
+          <!-- YOUTUBE VIDEO -->
+          <div class="video-container">
+              <iframe src="https://www.youtube.com/embed/934iR9XpXF0" title="YouTube video player" allowfullscreen></iframe>
+          </div>
+
+          <!-- OWL20 EXTENSION -->
+          <h2>Owl20 Extension</h2>
+          <div class="owl-section">
+              <div class="owl-quote">
+                  <strong>Seamlessly Connect D&D Beyond to Owlbear</strong>
+                  <br><br>
+                  Owl20 connects D&D Beyond + Beyond20 with Owlbear Rodeo VTT. Dice rolls appear instantly!
+                  <br><br>
+                  <a href="https://owl20.uberdragon.org/" target="_blank" class="owl-btn">🦉 Visit Owl20</a>
+              </div>
+              <div class="owl-img-wrapper">
+                  <img src="assets/img/owl20bob.png" alt="Bob the Owl" style="width:100%; border-radius:10px;">
+                  <span style="font-size:0.9em; color:#aaa;"><strong>Bob</strong>, played by <span style="color:#E17A2D;">Uberdragon</span></span>
+              </div>
+          </div>
+
+          <!-- WEBSITE TUTORIAL -->
+          <h2>How to use the website?</h2>
+          <img src="assets/img/webt.png" alt="Website Tutorial" class="tutorial-img">
+          <br><br>
+
+          <!-- NAVIGATION PORTAL -->
+          <h2>Navigation Chart (2014/5e Server)</h2>
+          <div class="nav-grid">
+              
+              <!-- Left Column -->
+              <div class="nav-column">
+                  <h3>Server Rules</h3>
+                  <a href="2014-server/about.html" class="nav-link">About the Server</a>
+                  <a href="2014-server/creation.html" class="nav-link">Character Creation Steps</a>
+                  <a href="2014-server/how-to-play.html" class="nav-link">How to Play</a>
+                  <a href="2014-server/loot.html" class="nav-link">Loot and Items</a>
+                  <a href="2014-server/rules.html" class="nav-link">Misc Rules</a>
+                  <a href="2014-server/dm-guide.html" class="nav-link">DM Guide</a>
+              </div>
+
+              <!-- Right Column -->
+              <div class="nav-column">
+                  <h3>Server Systems</h3>
+                  <a href="2014-server/shopping.html" class="nav-link">Shopping Guide</a>
+                  <a href="2014-server/crafting.html" class="nav-link">Crafting</a>
+                  <a href="https://the-starry-shore.github.io/2014_item_shop/" target="_blank" class="nav-link">🛒 2014 Item Shop</a>
+                  <a href="2014-server/dtp.html" class="nav-link">DownTime Points (DTP)</a>
+                  <a href="2014-server/prestige.html" class="nav-link">Prestige Rules</a>
+                  <a href="2014-server/events.html" class="nav-link">Events</a>
+              </div>
+
+          </div>
+
+      </div>
+  </div>
+
+  <!-- JAVASCRIPT FOR STARS -->
   <script src="script.js"></script>
 </body>
 </html>
