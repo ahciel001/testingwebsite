@@ -5,12 +5,11 @@
     <title>The Starry Shore — D&D 5E & 5.5E Community</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- GLOBAL STYLE (The stars and navbar) -->
+    <!-- GLOBAL STYLE -->
     <link rel="stylesheet" href="style.css"> 
 
-    <!-- PAGE SPECIFIC STYLES (Edit your animations/boxes here) -->
+    <!-- PAGE SPECIFIC STYLES -->
     <style>
-        /* Center the content for the landing page */
         .landing-container {
             max-width: 1100px;
             margin: 0 auto;
@@ -18,7 +17,7 @@
             text-align: center;
         }
 
-        /* --- 1. GLOWING TITLE --- */
+        /* GLOWING TITLE */
         .hero-title {
             font-size: clamp(2.5rem, 6vw, 5rem);
             display: flex;
@@ -49,9 +48,9 @@
             100% { background-position: 400% center; }
         }
 
-        /* --- 2. WELCOME BOX (Dark Glass Theme) --- */
+        /* WELCOME BOX */
         .welcome-box {
-            background: rgba(0, 20, 40, 0.7); /* Dark Blue Glass */
+            background: rgba(0, 20, 40, 0.7);
             border-left: 4px solid #00bcd4;
             padding: 2rem;
             border-radius: 12px;
@@ -70,7 +69,6 @@
             text-align: center;
         }
 
-        /* --- 3. DISCORD BUTTONS --- */
         .button-row {
             display: flex;
             justify-content: center;
@@ -99,7 +97,7 @@
             background-color: #4752c4;
         }
 
-        /* --- 4. FEATURE LIST & CARD LAYOUT --- */
+        /* FEATURE GRID */
         .feature-grid {
             display: flex;
             flex-wrap: wrap;
@@ -115,7 +113,10 @@
         }
         .feature-list ul {
             list-style: none;
-            line-height: 2;
+            line-height: 1.8;
+        }
+        .feature-list li {
+            margin-bottom: 0.5rem;
         }
         .feature-list li::before {
             content: "✦";
@@ -126,7 +127,7 @@
             color: #4dd0e1;
         }
 
-        /* --- 5. HELLFIRE CARD ANIMATION --- */
+        /* HELLFIRE CARD ANIMATION */
         .vox-wrapper {
             flex: 0 0 auto;
             width: 100%;
@@ -166,24 +167,20 @@
             100% { box-shadow: 0 0 30px rgba(0,0,0,1), 0 0 30px rgba(255,30,30,0.9); border-color: #ff0000; }
         }
 
-        /* --- 6. VIDEO WRAPPER --- */
+        /* VIDEO WRAPPER */
         .video-container {
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%;
             height: 0;
             margin: 3rem 0;
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid rgba(255,255,255,0.1);
         }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-        .video-container iframe {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-        }
-
-        /* --- 7. OWL20 SECTION --- */
+        /* OWL20 SECTION */
         .owl-section {
             display: flex;
             align-items: center;
@@ -196,11 +193,12 @@
 
         .owl-quote {
             flex: 1 1 400px;
-            background: rgba(255, 244, 230, 0.95); /* Light paper color */
+            background: rgba(255, 244, 230, 0.95);
             color: #3B2F1E;
             padding: 1.5rem;
             border-left: 5px solid #E17A2D;
             border-radius: 8px;
+            line-height: 1.6;
         }
         
         .owl-btn {
@@ -225,7 +223,7 @@
             text-align: center;
         }
 
-        /* --- 8. NAVIGATION GRID (The buttons at bottom) --- */
+        /* NAVIGATION GRID */
         .nav-grid {
             display: flex;
             flex-wrap: wrap;
@@ -277,7 +275,7 @@
         }
     </style>
     
-    <!-- SEO META TAGS -->
+    <!-- SEO & META -->
     <meta name="description" content="Join The Starry Shore, a vibrant 18+ D&D 5E & 5.5E online community.">
     <meta name="keywords" content="D&D 5E, D&D 5.5E, dnd, Online RPG, Discord DnD">
     <meta property="og:type" content="website">
@@ -287,22 +285,18 @@
 </head>
 
 <body>
-  <!-- BACKGROUND ANIMATION -->
   <div class="galaxy"></div>
   <canvas id="stars"></canvas>
 
-  <!-- TOP NAVBAR -->
   <nav class="navbar">
       <a href="index.html" style="color: #64ffda;">Home</a>
       <a href="2014-server/about.html">2014 5e Server</a>
       <a href="2024-server/about.html">2024 5.5e Server</a>
   </nav>
 
-  <!-- MAIN LANDING CONTENT -->
   <div class="layout-container">
       <div class="landing-container">
           
-          <!-- HERO HEADER -->
           <h1 class="hero-title">
               <img src="assets/img/logo2.png" alt="Logo" class="hero-logo">
               <span class="gradient-text">The Starry Shore</span>
@@ -311,88 +305,96 @@
           <h2>D&D 5th Edition Westmarches Servers (2014 & 2024)</h2>
           <br>
 
-          <!-- WELCOME BOX -->
           <div class="welcome-box">
               <strong class="welcome-header">Welcome to The Starry Shore</strong>
 
               <div class="button-row">
                   <a href="https://discord.gg/thestarryshore" target="_blank" class="discord-btn">
-                     Join 2014/5e Server
+                     Join The Starry Shore 2014/5e
                   </a>
                   <a href="https://discord.gg/3RgtCcaH6F" target="_blank" class="discord-btn">
-                     Join 2024/5.5e Server
+                     Join The Starry Shore 2024/5.5e
                   </a>
               </div>
 
+              <!-- FULL ORIGINAL TEXT RESTORED -->
               <p>
-                Join The Starry Shore — a vibrant 18+ Dungeons & Dragons 5E and 5.5E community! 
-                <strong>New players Super Friendly</strong>. Explore the multiverse as creative and talented DMs guide you through one-shots, campaigns, and living worlds.
+                  Join The Starry Shore — a vibrant 18+ Dungeons & Dragons 5E and 5.5E community! 
+                  <strong>New players Super Friendly</strong>. 
+                  Explore the multiverse as creative and talented DMs guide you through one-shots, campaigns, and living worlds of their own imagining.
+                  All official magic items are available.
+                  <br><br>
+                  Participate in <strong>live voice</strong> and <strong>text role-play</strong>, and experience the thrill of adventure anytime, anywhere. 
+                  With an active and friendly player base, it's time to let your imagination soar at The Starry Shore! 
+                  Join our community of players and start your journey today!
               </p>
               <br>
 
-              <!-- FEATURE GRID -->
               <div class="feature-grid">
-                  
-                  <!-- LIST -->
                   <div class="feature-list">
+                      <!-- FULL ORIGINAL LIST RESTORED -->
                       <ul>
-                        <li><strong>Super easy</strong> character creation & start at lvl 3</li>
-                        <li><strong>Beginner</strong> & veteran friendly (5e & Avrae)</li>
+                        <li><strong>Super easy</strong> character creation & starting at lvl 3</li>
+                        <li><strong>Beginner</strong> and veteran players & DMs friendly, for both D&D 5e and Avrae</li>
                         <li><strong>LGBT+</strong> Friendly Space</li>
-                        <li>Special <strong>Gods</strong> with blessings</li>
-                        <li><strong>Beyond campaigns</strong> character management</li>
+                        <li>Special <strong>Gods</strong> with blessings for worshiping them</li>
+                        <li><strong>Beyond campaigns</strong> you can join for making a character with all the choices</li>
                         <li><strong>24/7</strong> Available games for all timezones</li>
                         <li><strong>Hours</strong> based character leveling</li>
-                        <li><strong>DM Rewards</strong> = 1.5x progression</li>
+                        <li><strong>DM Rewards</strong> gets you 1.5 times character progression</li>
                       </ul>
                   </div>
 
-                  <!-- HELLFIRE CARD -->
                   <div class="vox-wrapper">
                       <div class="vox-card">
                           <img src="assets/img/oto.png" alt="Vox Character Art" class="vox-img">
                           <div class="vox-footer">
-                              <span style="color: #ff4444; font-weight: bold;">Vox</span>, played by @katmando
+                              <span style="color: #ff4444; font-weight: bold; text-shadow: 0 0 8px rgba(255,0,0,0.6);">Vox</span>, played by @katmando
                           </div>
                       </div>
                   </div>
 
               </div>
+
+              <!-- Added bottom text from original md -->
+              <p style="margin-top: 1.5rem;">
+                Join The Starry Shore today and experience limitless storytelling across two timelines — <strong>2014 (5e)</strong> and <strong>2024 (5.5e)</strong>.
+              </p>
           </div>
 
-          <!-- YOUTUBE VIDEO -->
           <div class="video-container">
               <iframe src="https://www.youtube.com/embed/934iR9XpXF0" title="YouTube video player" allowfullscreen></iframe>
           </div>
 
-          <!-- OWL20 EXTENSION -->
           <h2>Owl20 Extension</h2>
           <div class="owl-section">
               <div class="owl-quote">
                   <strong>Seamlessly Connect D&D Beyond to Owlbear</strong>
                   <br><br>
-                  Owl20 connects D&D Beyond + Beyond20 with Owlbear Rodeo VTT. Dice rolls appear instantly!
+                  <strong>Owl20</strong> connects D&D Beyond + the Beyond20 extension with Owlbear Rodeo VTT, 
+                  allowing dice rolls from your D&D Beyond character sheet to instantly appear in Owlbear Rodeo.
+                  <br><br>
+                  Made by <strong>DM Sparks</strong> & <strong>DM UberDragon</strong> from the Starry Shores D&D Community!
                   <br><br>
                   <a href="https://owl20.uberdragon.org/" target="_blank" class="owl-btn">🦉 Visit Owl20</a>
               </div>
               <div class="owl-img-wrapper">
-                  <img src="assets/img/owl20bob.png" alt="Bob the Owl" style="width:100%; border-radius:10px;">
-                  <span style="font-size:0.9em; color:#aaa;"><strong>Bob</strong>, played by <span style="color:#E17A2D;">Uberdragon</span></span>
+                  <img src="assets/img/owl20bob.png" alt="Bob the Owl" style="width:100%; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.25);">
+                  <span style="font-size:0.9em; color:#aaa; display:block; margin-top:5px;">
+                      <strong>Bob</strong>, played by <span style="color:#E17A2D;">Uberdragon</span>
+                  </span>
               </div>
           </div>
 
-          <!-- WEBSITE TUTORIAL -->
           <h2>How to use the website?</h2>
           <img src="assets/img/webt.png" alt="Website Tutorial" class="tutorial-img">
           <br><br>
 
-          <!-- NAVIGATION PORTAL -->
           <h2>Navigation Chart (2014/5e Server)</h2>
           <div class="nav-grid">
               
-              <!-- Left Column -->
               <div class="nav-column">
-                  <h3>Server Rules</h3>
+                  <h3>2014 5e Server Rules</h3>
                   <a href="2014-server/about.html" class="nav-link">About the Server</a>
                   <a href="2014-server/creation.html" class="nav-link">Character Creation Steps</a>
                   <a href="2014-server/how-to-play.html" class="nav-link">How to Play</a>
@@ -401,13 +403,12 @@
                   <a href="2014-server/dm-guide.html" class="nav-link">DM Guide</a>
               </div>
 
-              <!-- Right Column -->
               <div class="nav-column">
-                  <h3>Server Systems</h3>
+                  <h3>2014 Server Systems</h3>
                   <a href="2014-server/shopping.html" class="nav-link">Shopping Guide</a>
                   <a href="2014-server/crafting.html" class="nav-link">Crafting</a>
                   <a href="https://the-starry-shore.github.io/2014_item_shop/" target="_blank" class="nav-link">🛒 2014 Item Shop</a>
-                  <a href="2014-server/dtp.html" class="nav-link">DownTime Points (DTP)</a>
+                  <a href="2014-server/dtp.html" class="nav-link">DownTime Points (DTP) Guide</a>
                   <a href="2014-server/prestige.html" class="nav-link">Prestige Rules</a>
                   <a href="2014-server/events.html" class="nav-link">Events</a>
               </div>
@@ -417,7 +418,6 @@
       </div>
   </div>
 
-  <!-- JAVASCRIPT FOR STARS -->
   <script src="script.js"></script>
 </body>
 </html>
