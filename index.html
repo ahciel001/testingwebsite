@@ -1,104 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>The Starry Shore</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    height: 100vh;
-    overflow: hidden;
-    background: radial-gradient(ellipse at bottom, #0b1026 0%, #02030f 100%);
-    font-family: Georgia, serif;
-    color: white;
-  }
-
-  .galaxy {
-    position: fixed;
-    inset: 0;
-    background:
-      radial-gradient(circle at 30% 40%, rgba(120,80,255,0.25), transparent 40%),
-      radial-gradient(circle at 70% 60%, rgba(255,120,200,0.2), transparent 45%);
-    animation: drift 60s linear infinite;
-  }
-
-  @keyframes drift {
-    from { transform: translate(0, 0); }
-    to   { transform: translate(-200px, -100px); }
-  }
-
-  canvas {
-    position: fixed;
-    inset: 0;
-  }
-
-  h1 {
-    position: absolute;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    font-size: clamp(3rem, 8vw, 6rem);
-    letter-spacing: 0.15em;
-    text-shadow:
-      0 0 15px rgba(150,150,255,0.8),
-      0 0 30px rgba(100,100,255,0.5);
-    animation: glow 4s ease-in-out infinite alternate;
-  }
-
-  @keyframes glow {
-    from { opacity: 0.85; }
-    to   { opacity: 1; }
-  }
-</style>
+    <meta charset="UTF-8">
+    <title>The Starry Shore</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- This line pulls in your design -->
+    <link rel="stylesheet" href="style.css"> 
 </head>
 
 <body>
+  <!-- Background Elements -->
   <div class="galaxy"></div>
   <canvas id="stars"></canvas>
-  <h1>The Starry Shore</h1>
 
-<script>
-  const canvas = document.getElementById("stars");
-  const ctx = canvas.getContext("2d");
-  let stars = [];
-  const STAR_COUNT = 200;
+  <!-- Content -->
+  <h1 class="landing-title">The Starry Shore</h1>
 
-  function resize() {
-    canvas.width = innerWidth;
-    canvas.height = innerHeight;
-  }
-  window.addEventListener("resize", resize);
-  resize();
-
-  for (let i = 0; i < STAR_COUNT; i++) {
-    stars.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: Math.random() * 1.5,
-      s: Math.random() * 0.3 + 0.1
-    });
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "white";
-
-    for (let star of stars) {
-      star.y += star.s;
-      if (star.y > canvas.height) star.y = 0;
-
-      ctx.beginPath();
-      ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
-      ctx.fill();
-    }
-
-    requestAnimationFrame(draw);
-  }
-
-  draw();
-</script>
+  <!-- This line pulls in the star animation logic -->
+  <script src="script.js"></script>
 </body>
 </html>
