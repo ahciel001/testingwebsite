@@ -1,57 +1,209 @@
-<body>
-  <!-- Background Elements -->
-  <div class="galaxy"></div>
-  <canvas id="stars"></canvas>
+/* style.css - V4: Header + Sidebar Layout */
 
-  <!-- NEW HEADER BAR -->
-  <header class="top-nav">
-      <!-- Logo -->
-      <a href="../index.html" class="nav-logo">
-          The Starry Shore
-      </a>
+/* 1. FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap');
 
-      <!-- Navigation Links -->
-      <nav class="nav-links">
-          <a href="../index.html">Home</a>
-          <a href="shopping.html">2014 5e</a>
-          <a href="#">2024 5.5e</a>
-      </nav>
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-      <!-- Search Bar -->
-      <div class="search-container">
-          <input type="text" class="search-input" placeholder="Search...">
-      </div>
-  </header>
+/* 2. SCROLLBAR */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.3); }
+::-webkit-scrollbar-thumb {
+  background: #4b6cb7;
+  border-radius: 5px;
+}
 
-  <!-- Main Layout -->
-  <div class="layout-container">
-      
-      <!-- SIDEBAR NAV -->
-      <aside class="sidebar">
-          <h2>2014 Systems</h2>
-          <ul>
-              <!-- Note: I removed the "Back to Home" link because it is now in the header -->
-              <li><a href="shopping.html" style="color:white;">Shopping Guide</a></li>
-              <li><a href="crafting.html">Crafting</a></li>
-              <li><a href="items.html">Item Patch Notes</a></li>
-              <li><a href="downtime.html">Downtime</a></li>
-              <li><a href="prestige.html">Prestige Rules</a></li>
-          </ul>
-      </aside>
+body {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at bottom, #0b1026 0%, #02030f 100%);
+  font-family: 'Lato', sans-serif;
+  color: #e0e6ff;
+  overflow-x: hidden;
+}
 
-      <!-- CONTENT AREA -->
-      <main class="content">
-          <h1>Shopping Guide</h1>
-          
-          <p>Welcome to the shopping guide. Here you can find all the rules for purchasing equipment.</p>
-          
-          <h2>Buying Items</h2>
-          <p>This text area is semi-transparent so you can see the stars behind it.</p>
-          
-          <h2>Selling Items</h2>
-          <p>Items can be sold for half their listed price.</p>
-      </main>
-  </div>
+/* Galaxy Background */
+.galaxy {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 40%, rgba(120,80,255,0.15), transparent 40%),
+    radial-gradient(circle at 70% 60%, rgba(255,120,200,0.1), transparent 45%);
+  animation: drift 60s linear infinite;
+  z-index: -2;
+}
+@keyframes drift {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(-200px, -100px); }
+}
 
-  <script src="../script.js"></script>
-</body>
+canvas {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+/* --- TOP NAVIGATION HEADER --- */
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px; /* Very thin header */
+  background: rgba(5, 8, 20, 0.9); /* Dark and mostly opaque */
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Spreads Logo - Links - Search */
+  padding: 0 2rem;
+  z-index: 1000; /* sits on top of everything */
+  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+}
+
+.nav-logo {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #aaddff;
+  text-decoration: none;
+  text-shadow: 0 0 10px rgba(100,150,255,0.5);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: #b0c7ff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: white;
+  text-shadow: 0 0 8px rgba(255,255,255,0.8);
+}
+
+/* Search Bar Styling */
+.search-container {
+  position: relative;
+}
+
+.search-input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 5px 15px;
+  color: white;
+  font-family: 'Lato', sans-serif;
+  width: 200px;
+  transition: all 0.3s ease;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.search-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+  width: 250px; /* Expands when you click it */
+  border-color: #aaddff;
+  box-shadow: 0 0 10px rgba(170, 221, 255, 0.3);
+}
+
+/* --- SIDEBAR (Adjusted for Header) --- */
+.layout-container {
+  display: flex;
+  min-height: 100vh;
+  padding-top: 50px; /* Push everything down by height of header */
+}
+
+.sidebar {
+  width: 260px;
+  height: calc(100vh - 50px); /* Full height minus header */
+  position: fixed;
+  left: 0;
+  top: 50px; /* Starts below header */
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(3px);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  z-index: 100;
+}
+
+.sidebar h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: #aaddff;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 0.5rem;
+}
+
+.sidebar ul { list-style: none; }
+.sidebar li { margin-bottom: 0.5rem; }
+
+.sidebar a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  border-radius: 5px;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.sidebar a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* --- CONTENT (Adjusted for Header) --- */
+.content {
+  margin-left: 260px;
+  width: calc(100% - 260px);
+  min-height: calc(100vh - 50px);
+  padding: 4rem 6rem;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* Typography */
+.content h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  padding-bottom: 1rem;
+}
+.content h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.8rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: #b0c7ff;
+}
+.content p {
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+  font-size: 1.1rem;
+  color: #e0e6ff;
+  max-width: 900px;
+}
+.content ul { margin-left: 2rem; margin-bottom: 1.5rem; color: #d0d6e0; }
+
+@media (max-width: 768px) {
+  .top-nav { padding: 0 1rem; }
+  .nav-links { display: none; /* Hide top links on mobile */ }
+  .sidebar { width: 100%; position: relative; height: auto; top: 0; }
+  .content { margin-left: 0; width: 100%; padding: 2rem; }
+}
