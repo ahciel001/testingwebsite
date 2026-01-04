@@ -1,46 +1,40 @@
-const canvas = document.getElementById("stars");
-const ctx = canvas.getContext("2d");
-let stars = [];
+/* script.js */
 
-// Reduce stars on mobile/slow devices, keep 200 on desktop
-const STAR_COUNT = window.innerWidth < 768 ? 80 : 200; 
+document.addEventListener('DOMContentLoaded', () => {
+    const searchBtn = document.querySelector('.search-btn');
+    const searchInput = document.querySelector('.search-input');
+    const searchSelect = document.querySelector('.search-select');
 
-function resize() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-window.addEventListener("resize", resize);
-resize();
+    // Simple Search Redirection Logic
+    if(searchBtn) {
+        searchBtn.addEventListener('click', performSearch);
+    }
+    
+    if(searchInput) {
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') performSearch();
+        });
+    }
 
-for (let i = 0; i < STAR_COUNT; i++) {
-  stars.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    r: Math.random() * 1.5,
-    s: Math.random() * 0.3 + 0.1
-  });
-}
+    function performSearch() {
+        const query = searchInput.value.trim();
+        const scope = searchSelect.value;
+        
+        if(!query) return;
 
-function draw() {
-  // OPTIMIZATION: clearRect is heavy on 4k screens.
-  // Using fillRect with a slight opacity trails creates a cool effect 
-  // AND is often faster than clearing transparent pixels.
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  
-  ctx.fillStyle = "white";
-  ctx.beginPath(); // Batch drawing improves performance significantly
-  
-  for (let star of stars) {
-    star.y += star.s;
-    if (star.y > canvas.height) star.y = 0;
+        alert(`Search Functionality: \nLooking for "${query}" in the ${scope} section.\n(Note: Connect this to a static search index like Pagefind for real results!)`);
+        
+        // Example implementation if you had Google Site Search:
+        // window.location.href = `https://www.google.com/search?q=site:yourwebsite.com+${query}+${scope}`;
+    }
 
-    // Move to next star without starting a new "draw" command every time
-    ctx.moveTo(star.x, star.y);
-    ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
-  }
-  
-  ctx.fill(); // Draw all stars in one single paint operation
-  requestAnimationFrame(draw);
-}
-
-draw();
+    // Highlight active link in sidebar
+    const currentPath = window.location.pathname;
+    const sidebarLinks = document.querySelectorAll('.sidebar a');
+    
+    sidebarLinks.forEach(link => {
+        if(link.getAttribute('href') === currentPath) {
+            link.classList.add('active');
+        }
+    });
+});
