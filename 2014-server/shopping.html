@@ -1,18 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Shopping Guide - 2014 Server</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- This goes UP one folder (../) to find the css file -->
-    <link rel="stylesheet" href="../style.css"> 
-</head>
-
 <body>
   <!-- Background Elements -->
   <div class="galaxy"></div>
   <canvas id="stars"></canvas>
+
+  <!-- NEW HEADER BAR -->
+  <header class="top-nav">
+      <!-- Logo -->
+      <a href="../index.html" class="nav-logo">
+          The Starry Shore
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="shopping.html">2014 5e</a>
+          <a href="#">2024 5.5e</a>
+      </nav>
+
+      <!-- Search Bar -->
+      <div class="search-container">
+          <input type="text" class="search-input" placeholder="Search...">
+      </div>
+  </header>
 
   <!-- Main Layout -->
   <div class="layout-container">
@@ -21,12 +30,12 @@
       <aside class="sidebar">
           <h2>2014 Systems</h2>
           <ul>
-              <li><a href="../index.html">← Back to Home</a></li>
-              <!-- Links to other pages in this folder -->
-              <li><a href="shopping.html" style="color:white; font-weight:bold;">Shopping Guide</a></li>
+              <!-- Note: I removed the "Back to Home" link because it is now in the header -->
+              <li><a href="shopping.html" style="color:white;">Shopping Guide</a></li>
               <li><a href="crafting.html">Crafting</a></li>
               <li><a href="items.html">Item Patch Notes</a></li>
               <li><a href="downtime.html">Downtime</a></li>
+              <li><a href="prestige.html">Prestige Rules</a></li>
           </ul>
       </aside>
 
@@ -34,18 +43,15 @@
       <main class="content">
           <h1>Shopping Guide</h1>
           
-          <p><em>(This is where we will paste your Obsidian text later)</em></p>
+          <p>Welcome to the shopping guide. Here you can find all the rules for purchasing equipment.</p>
           
           <h2>Buying Items</h2>
-          <p>Welcome to the shopping guide. Here you can find all the rules for purchasing equipment.</p>
+          <p>This text area is semi-transparent so you can see the stars behind it.</p>
           
           <h2>Selling Items</h2>
           <p>Items can be sold for half their listed price.</p>
-          
       </main>
   </div>
 
-  <!-- This goes UP one folder (../) to find the script file -->
   <script src="../script.js"></script>
 </body>
-</html>
