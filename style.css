@@ -1,198 +1,57 @@
-/* style.css - V3: Transparent Wiki Layout */
+<body>
+  <!-- Background Elements -->
+  <div class="galaxy"></div>
+  <canvas id="stars"></canvas>
 
-/* 1. FONTS */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap');
+  <!-- NEW HEADER BAR -->
+  <header class="top-nav">
+      <!-- Logo -->
+      <a href="../index.html" class="nav-logo">
+          The Starry Shore
+      </a>
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+      <!-- Navigation Links -->
+      <nav class="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="shopping.html">2014 5e</a>
+          <a href="#">2024 5.5e</a>
+      </nav>
 
-/* 2. SCROLLBAR */
-::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.3); }
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #4b6cb7 0%, #182848 100%);
-  border-radius: 5px;
-  border: 1px solid rgba(255,255,255,0.1);
-}
+      <!-- Search Bar -->
+      <div class="search-container">
+          <input type="text" class="search-input" placeholder="Search...">
+      </div>
+  </header>
 
-body {
-  min-height: 100vh;
-  background: radial-gradient(ellipse at bottom, #0b1026 0%, #02030f 100%);
-  font-family: 'Lato', sans-serif;
-  color: #e0e6ff;
-  overflow-x: hidden;
-}
+  <!-- Main Layout -->
+  <div class="layout-container">
+      
+      <!-- SIDEBAR NAV -->
+      <aside class="sidebar">
+          <h2>2014 Systems</h2>
+          <ul>
+              <!-- Note: I removed the "Back to Home" link because it is now in the header -->
+              <li><a href="shopping.html" style="color:white;">Shopping Guide</a></li>
+              <li><a href="crafting.html">Crafting</a></li>
+              <li><a href="items.html">Item Patch Notes</a></li>
+              <li><a href="downtime.html">Downtime</a></li>
+              <li><a href="prestige.html">Prestige Rules</a></li>
+          </ul>
+      </aside>
 
-/* Galaxy Background */
-.galaxy {
-  position: fixed;
-  inset: 0;
-  background:
-    radial-gradient(circle at 30% 40%, rgba(120,80,255,0.15), transparent 40%),
-    radial-gradient(circle at 70% 60%, rgba(255,120,200,0.1), transparent 45%);
-  animation: drift 60s linear infinite;
-  z-index: -2;
-}
-@keyframes drift {
-  from { transform: translate(0, 0); }
-  to   { transform: translate(-200px, -100px); }
-}
+      <!-- CONTENT AREA -->
+      <main class="content">
+          <h1>Shopping Guide</h1>
+          
+          <p>Welcome to the shopping guide. Here you can find all the rules for purchasing equipment.</p>
+          
+          <h2>Buying Items</h2>
+          <p>This text area is semi-transparent so you can see the stars behind it.</p>
+          
+          <h2>Selling Items</h2>
+          <p>Items can be sold for half their listed price.</p>
+      </main>
+  </div>
 
-canvas {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-}
-
-/* Landing Page Title */
-h1.landing-title {
-  font-family: 'Cinzel', serif;
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  font-size: clamp(3rem, 8vw, 6rem);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: white;
-  text-shadow: 0 0 20px rgba(100,150,255,0.6);
-  animation: glow 5s ease-in-out infinite alternate;
-  pointer-events: none;
-}
-
-/* --- NEW LAYOUT: Full Screen Wiki --- */
-
-.layout-container {
-  display: flex;
-  min-height: 100vh;
-  width: 100%; /* Uses full width */
-}
-
-/* Sidebar: Fixed to the left edge */
-.sidebar {
-  width: 260px;
-  height: 100vh;
-  position: fixed; /* Sticks to the screen */
-  left: 0;
-  top: 0;
-  overflow-y: auto; /* Scrollable if menu is long */
-  
-  /* Transparency & Blur Tweaks */
-  background: rgba(0, 0, 0, 0.3); /* Only 30% opacity */
-  backdrop-filter: blur(3px);     /* Light blur */
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-  
-  padding: 2rem;
-  z-index: 100;
-}
-
-.sidebar h2 {
-  font-family: 'Cinzel', serif;
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  color: #aaddff;
-  text-align: center;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  padding-bottom: 1rem;
-}
-
-.sidebar ul { list-style: none; }
-.sidebar li { margin-bottom: 0.5rem; }
-
-.sidebar a {
-  display: block;
-  padding: 0.7rem 1rem;
-  color: rgba(255, 255, 255, 0.6);
-  text-decoration: none;
-  border-radius: 5px;
-  transition: all 0.2s ease;
-}
-
-.sidebar a:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  text-shadow: 0 0 5px rgba(255,255,255,0.5);
-}
-
-/* Main Content: Fills the rest of the screen */
-.content {
-  margin-left: 260px; /* Pushes content to right of sidebar */
-  width: calc(100% - 260px);
-  min-height: 100vh;
-  padding: 4rem 6rem; /* Big padding for readability */
-  
-  /* Transparency & Blur Tweaks */
-  background: rgba(0, 0, 0, 0.2); /* Very transparent (20%) */
-  backdrop-filter: blur(0px);     /* No blur on main area so stars are clear */
-}
-
-/* Content Typography */
-.content h1 {
-  font-family: 'Cinzel', serif;
-  font-size: 3.5rem;
-  margin-bottom: 2rem;
-  color: #fff;
-  text-shadow: 0 0 10px rgba(0,0,0,0.5);
-  border-bottom: 1px solid rgba(255,255,255,0.2);
-  padding-bottom: 1rem;
-}
-
-.content h2 {
-  font-family: 'Cinzel', serif;
-  font-size: 2rem;
-  margin-top: 3rem;
-  margin-bottom: 1rem;
-  color: #b0c7ff;
-}
-
-.content p {
-  line-height: 1.8;
-  margin-bottom: 1.5rem;
-  font-size: 1.1rem;
-  color: #e0e6ff;
-  max-width: 900px; /* Prevents lines from getting too long to read */
-}
-
-.content ul, .content ol {
-  margin-left: 2rem;
-  margin-bottom: 1.5rem;
-  color: #d0d6e0;
-}
-
-.content li { margin-bottom: 0.5rem; }
-
-/* Table Styles */
-table {
-  width: 100%;
-  max-width: 1000px;
-  border-collapse: collapse;
-  margin: 2rem 0;
-  background: rgba(0,0,0,0.3);
-  border-radius: 8px;
-}
-th {
-  background: rgba(255,255,255,0.1);
-  padding: 1rem;
-  text-align: left;
-  font-family: 'Cinzel', serif;
-  color: #aaddff;
-}
-td {
-  padding: 1rem;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-    border-right: none;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-  }
-  .content {
-    margin-left: 0;
-    width: 100%;
-    padding: 2rem;
-  }
-}
+  <script src="../script.js"></script>
+</body>
