@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (isMouseDown && growingStar) {
             if (isMobile) { growingStar.x = mouse.x; growingStar.y = mouse.y; } // Explicit update for touch
-            if (growingStar.size < 30) growingStar.size += 0.5;
+            if (growingStar.size < 10) growingStar.size += 0.5;
             ctx.save();
             ctx.shadowBlur = 20 + growingStar.size;
             ctx.shadowColor = '#38bdf8';
