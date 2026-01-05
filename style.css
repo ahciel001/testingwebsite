@@ -186,17 +186,23 @@ header {
     text-shadow: 0 0 10px rgba(34, 211, 238, 0.6);
 }
 
+/* ORBITING STAR ANIMATION LOGIC */
+/* 1. Define 3D Space */
 .star-hover-effect, 
-.dropdown-item {
+.dropdown-item,
+.sidebar-nav-link {  /* <--- ADDED SIDEBAR HERE */
     position: relative;
     transform-style: preserve-3d;
+    perspective: 1000px;
 }
 
-/* Star Pseudo Elements */
+/* 2. Create the Stars (Hidden by default) */
 .star-hover-effect::before,
 .star-hover-effect::after,
 .dropdown-item::before,
-.dropdown-item::after {
+.dropdown-item::after,
+.sidebar-nav-link::before, /* <--- ADDED SIDEBAR HERE */
+.sidebar-nav-link::after { /* <--- ADDED SIDEBAR HERE */
     content: '✦';
     position: absolute;
     top: 50%;
@@ -217,16 +223,19 @@ header {
     transition: opacity 0.1s ease-out, transform 0.1s ease-out;
 }
 
-/* Desktop Hover Animation */
+/* 3. Trigger Animation on Hover (Desktop Only) */
 @media (min-width: 901px) {
     .star-hover-effect:hover::before,
-    .dropdown-item:hover::before {
+    .dropdown-item:hover::before,
+    .sidebar-nav-link:hover::before { /* <--- ADDED SIDEBAR HERE */
         opacity: 1;
         animation: smoothOrbit1 3s infinite linear;
         transition: opacity 0.3s ease-in;
     }
+
     .star-hover-effect:hover::after,
-    .dropdown-item:hover::after {
+    .dropdown-item:hover::after,
+    .sidebar-nav-link:hover::after { /* <--- ADDED SIDEBAR HERE */
         opacity: 1;
         animation: smoothOrbit1 3s infinite linear;
         animation-delay: -1.5s;
@@ -286,7 +295,7 @@ header {
     text-decoration: none;
     transition: all 0.2s ease;
     font-size: 0.95rem;
-    z-index: 5;
+    z-index: 50; /* Higher than stars */
 }
 .dropdown-item:not([style*="pointer-events: none"]):hover {
     color: var(--starry-cyan);
@@ -337,6 +346,7 @@ header {
 .sidebar::-webkit-scrollbar-thumb { background-color: rgba(56, 189, 248, 0.3); border-radius: 10px; }
 
 .sidebar-nav-item { margin-bottom: 0; }
+
 .sidebar-nav-link {
     display: block;
     padding: 0.4rem 1rem;
@@ -347,6 +357,10 @@ header {
     border-left: 2px solid transparent;
     font-size: 0.9rem;
     line-height: 1.3;
+    
+    /* FIX: Added relative positioning and Z-index for stars */
+    position: relative;
+    z-index: 50; 
 }
 .sidebar-nav-link:hover {
     background: linear-gradient(90deg, rgba(34, 211, 238, 0.05), transparent);
@@ -459,7 +473,8 @@ header {
     
     /* Disable stars on mobile */
     .star-hover-effect:hover::before, .star-hover-effect:hover::after,
-    .dropdown-item:hover::before, .dropdown-item:hover::after { display: none; }
+    .dropdown-item:hover::before, .dropdown-item:hover::after,
+    .sidebar-nav-link:hover::before, .sidebar-nav-link:hover::after { display: none; }
     
     /* MOBILE SIDEBAR LOGIC */
     .page-wrapper { flex-direction: column; position: relative; }
