@@ -1,14 +1,8 @@
 /* background-canvas.js */
 
-// Run this only after the page has fully loaded
 document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('star-canvas');
-    
-    // Safety check: if canvas doesn't exist in HTML, stop here
-    if (!canvas) {
-        console.error("Star canvas element not found!");
-        return;
-    }
+    if (!canvas) return;
 
     const ctx = canvas.getContext('2d');
     let width, height;
@@ -16,19 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let mouse = { x: -1000, y: -1000 };
     let isMouseDown = false;
     let growingStar = null;
+    
+    // Detect mobile for performance optimization
+    const isMobile = window.innerWidth < 768;
 
-    // Shades of Blue Palette (No gold/purple, just Blues & White)
-    const bluePalette = [
-        '#ffffff', // White
-        '#e0f2fe', // Very light blue
-        '#bae6fd', // Light blue
-        '#7dd3fc', // Sky blue
-        '#38bdf8', // Cyan
-        '#0ea5e9', // Blue
-        '#0284c7'  // Deep Blue
-    ];
-
-    // Available shapes
+    const bluePalette = ['#ffffff', '#e0f2fe', '#bae6fd', '#7dd3fc', '#38bdf8', '#0ea5e9', '#0284c7'];
     const shapes = ['circle', 'sparkle', 'star5', 'star6'];
 
     function resize() {
@@ -38,61 +24,35 @@ document.addEventListener('DOMContentLoaded', () => {
         canvas.height = height;
     }
 
-    // --- Shape Drawing Logic ---
     function drawShape(ctx, shape, x, y, size, color) {
         ctx.beginPath();
         ctx.fillStyle = color;
-
+        // ... (Keep existing shape logic from previous code) ...
         if (shape === 'circle') {
             ctx.arc(x, y, size, 0, Math.PI * 2);
-        } 
-        else if (shape === 'sparkle') {
-            // 4-point Diamond/Sparkle
+        } else if (shape === 'sparkle') {
             ctx.moveTo(x, y - size);
             ctx.quadraticCurveTo(x, y, x + size, y);
             ctx.quadraticCurveTo(x, y, x, y + size);
             ctx.quadraticCurveTo(x, y, x - size, y);
             ctx.quadraticCurveTo(x, y, x, y - size);
-        } 
-        else if (shape === 'star5') {
-            // 5-Point Star
-            let spikes = 5;
-            let outerRadius = size;
-            let innerRadius = size / 2;
-            let rot = Math.PI / 2 * 3;
-            let cx = x;
-            let cy = y;
-            let step = Math.PI / spikes;
-
-            ctx.moveTo(cx, cy - outerRadius);
-            for (let i = 0; i < spikes; i++) {
-                ctx.lineTo(cx + Math.cos(rot) * outerRadius, cy + Math.sin(rot) * outerRadius);
-                rot += step;
-                ctx.lineTo(cx + Math.cos(rot) * innerRadius, cy + Math.sin(rot) * innerRadius);
-                rot += step;
+        } else if (shape === 'star5') {
+            let spikes = 5; let outer = size; let inner = size/2; let rot=Math.PI/2*3; let step=Math.PI/spikes;
+            ctx.moveTo(x, y-outer);
+            for(let i=0; i<spikes; i++){
+                ctx.lineTo(x+Math.cos(rot)*outer, y+Math.sin(rot)*outer); rot+=step;
+                ctx.lineTo(x+Math.cos(rot)*inner, y+Math.sin(rot)*inner); rot+=step;
             }
-            ctx.lineTo(cx, cy - outerRadius);
-        }
-        else if (shape === 'star6') {
-            // 6-Point Star
-            let spikes = 6;
-            let outerRadius = size;
-            let innerRadius = size / 2.5;
-            let rot = Math.PI / 2 * 3;
-            let cx = x;
-            let cy = y;
-            let step = Math.PI / spikes;
-
-            ctx.moveTo(cx, cy - outerRadius);
-            for (let i = 0; i < spikes; i++) {
-                ctx.lineTo(cx + Math.cos(rot) * outerRadius, cy + Math.sin(rot) * outerRadius);
-                rot += step;
-                ctx.lineTo(cx + Math.cos(rot) * innerRadius, cy + Math.sin(rot) * innerRadius);
-                rot += step;
+            ctx.lineTo(x, y-outer);
+        } else if (shape === 'star6') {
+            let spikes = 6; let outer = size; let inner = size/2.5; let rot=Math.PI/2*3; let step=Math.PI/spikes;
+            ctx.moveTo(x, y-outer);
+            for(let i=0; i<spikes; i++){
+                ctx.lineTo(x+Math.cos(rot)*outer, y+Math.sin(rot)*outer); rot+=step;
+                ctx.lineTo(x+Math.cos(rot)*inner, y+Math.sin(rot)*inner); rot+=step;
             }
-            ctx.lineTo(cx, cy - outerRadius);
+            ctx.lineTo(x, y-outer);
         }
-        
         ctx.closePath();
         ctx.fill();
     }
@@ -104,10 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
             this.size = size || Math.random() * 2;
             this.isSpawned = isSpawned;
             this.shape = shape; 
-            
             this.vx = (Math.random() - 0.5) * 0.5;
             this.vy = (Math.random() - 0.5) * 0.5;
-            
             this.color = bluePalette[Math.floor(Math.random() * bluePalette.length)];
             this.opacity = Math.random() * 0.5 + 0.3;
             this.pulse = Math.random() * 0.02;
@@ -116,15 +74,10 @@ document.addEventListener('DOMContentLoaded', () => {
         draw() {
             ctx.save();
             ctx.globalAlpha = this.opacity;
-            
-            // Glow effect for larger stars
             if (this.isSpawned || this.size > 2.5) {
-                ctx.shadowBlur = 15;
+                ctx.shadowBlur = 10;
                 ctx.shadowColor = this.color;
-            } else {
-                ctx.shadowBlur = 0;
             }
-
             drawShape(ctx, this.shape, this.x, this.y, this.size, this.color);
             ctx.restore();
         }
@@ -133,27 +86,22 @@ document.addEventListener('DOMContentLoaded', () => {
             this.x += this.vx;
             this.y += this.vy;
 
-            // Gravity Logic
+            // Gravity (Reduced range for mobile to prevent accidental pulls)
             let dx = mouse.x - this.x;
             let dy = mouse.y - this.y;
             let distance = Math.sqrt(dx * dx + dy * dy);
-            let maxDistance = 120; // Range of gravity
+            let maxDistance = isMobile ? 80 : 120; 
 
             if (distance < maxDistance) {
-                let forceDirectionX = dx / distance;
-                let forceDirectionY = dy / distance;
                 let force = (maxDistance - distance) / maxDistance;
-                let drift = force * 0.8; 
-                
-                this.x += forceDirectionX * drift;
-                this.y += forceDirectionY * drift;
+                let drift = force * 0.8;
+                this.x += (dx / distance) * drift;
+                this.y += (dy / distance) * drift;
             }
 
-            // Twinkle
             this.opacity += this.pulse;
             if (this.opacity > 0.8 || this.opacity < 0.2) this.pulse = -this.pulse;
 
-            // Wrap around screen
             if (this.x < 0) this.x = width;
             if (this.x > width) this.x = 0;
             if (this.y < 0) this.y = height;
@@ -164,83 +112,66 @@ document.addEventListener('DOMContentLoaded', () => {
     function init() {
         resize();
         stars = [];
-        // Spawn background stars
-        for (let i = 0; i < 350; i++) {
+        // Performance: Fewer stars on mobile
+        let count = isMobile ? 80 : 350;
+        for (let i = 0; i < count; i++) {
             let type = Math.random() > 0.9 ? 'sparkle' : 'circle';
             stars.push(new Star(null, null, null, false, type));
         }
     }
 
-    // --- Interaction ---
-    window.addEventListener('resize', resize);
-    
-    window.addEventListener('mousemove', (e) => {
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
-    });
-
-    window.addEventListener('mousedown', (e) => {
-        isMouseDown = true;
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
+    // --- Interaction (Mouse & Touch) ---
+    function setInput(x, y, down) {
+        mouse.x = x;
+        mouse.y = y;
+        isMouseDown = down;
         
-        // Random shape for new star
-        let randomShape = shapes[Math.floor(Math.random() * shapes.length)];
-        
-        growingStar = {
-            x: mouse.x,
-            y: mouse.y,
-            size: 1,
-            color: '#ffffff',
-            shape: randomShape
-        };
-    });
-
-    window.addEventListener('mouseup', () => {
-        isMouseDown = false;
-        if (growingStar) {
-            let s = new Star(
-                growingStar.x, 
-                growingStar.y, 
-                growingStar.size, 
-                true, 
-                growingStar.shape
-            );
-            // Give spawned stars random velocity
-            s.vx = (Math.random() - 0.5) * 1.5; 
+        if (down) {
+            let randomShape = shapes[Math.floor(Math.random() * shapes.length)];
+            growingStar = { x: mouse.x, y: mouse.y, size: 1, color: '#ffffff', shape: randomShape };
+        } else if (growingStar) {
+            let s = new Star(growingStar.x, growingStar.y, growingStar.size, true, growingStar.shape);
+            s.vx = (Math.random() - 0.5) * 1.5;
             s.vy = (Math.random() - 0.5) * 1.5;
-            s.color = bluePalette[Math.floor(Math.random() * bluePalette.length)]; 
-            
+            s.color = bluePalette[Math.floor(Math.random() * bluePalette.length)];
             stars.push(s);
             growingStar = null;
         }
-    });
+    }
+
+    // Mouse Events
+    window.addEventListener('resize', resize);
+    window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+    window.addEventListener('mousedown', (e) => setInput(e.clientX, e.clientY, true));
+    window.addEventListener('mouseup', () => setInput(mouse.x, mouse.y, false));
+
+    // Touch Events
+    window.addEventListener('touchstart', (e) => {
+        // e.preventDefault(); // Optional: Uncomment to block scroll while touching canvas
+        setInput(e.touches[0].clientX, e.touches[0].clientY, true);
+    }, {passive: false});
+
+    window.addEventListener('touchmove', (e) => {
+        mouse.x = e.touches[0].clientX;
+        mouse.y = e.touches[0].clientY;
+        if(growingStar) { growingStar.x = mouse.x; growingStar.y = mouse.y; }
+    }, {passive: false});
+
+    window.addEventListener('touchend', () => setInput(mouse.x, mouse.y, false));
 
     function animate() {
         ctx.clearRect(0, 0, width, height);
+        stars.forEach(star => { star.update(); star.draw(); });
 
-        stars.forEach(star => {
-            star.update();
-            star.draw();
-        });
-
-        // Draw growing star
         if (isMouseDown && growingStar) {
-            growingStar.x = mouse.x;
-            growingStar.y = mouse.y;
-            
-            // Allow it to grow larger (up to 30px)
-            if (growingStar.size < 10) {
-                growingStar.size += 0.5;
-            }
-
+            if (isMobile) { growingStar.x = mouse.x; growingStar.y = mouse.y; } // Explicit update for touch
+            if (growingStar.size < 30) growingStar.size += 0.5;
             ctx.save();
             ctx.shadowBlur = 20 + growingStar.size;
-            ctx.shadowColor = '#38bdf8'; 
+            ctx.shadowColor = '#38bdf8';
             drawShape(ctx, growingStar.shape, growingStar.x, growingStar.y, growingStar.size, growingStar.color);
             ctx.restore();
         }
-
         requestAnimationFrame(animate);
     }
 
