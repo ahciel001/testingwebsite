@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
             growingStar.y = mouse.y;
             
             // Allow it to grow larger (up to 30px)
-            if (growingStar.size < 30) {
+            if (growingStar.size < 10) {
                 growingStar.size += 0.5;
             }
 
