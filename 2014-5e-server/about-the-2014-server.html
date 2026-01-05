@@ -3,13 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CHANGE TITLE HERE -->
     <title>Page Title - 2014 5e Server</title>
-    <!-- Pointing up one level to style.css -->
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <!-- Canvas for Stars -->
     <canvas id="star-canvas"></canvas>
 
     <header>
@@ -32,12 +29,10 @@
                     <a href="../index.html" class="nav-link star-hover-effect">Home</a>
                 </div>
                 
-                <!-- 2014 Menu (Active) -->
                 <div class="nav-item">
                     <a href="about-the-server.html" class="nav-link star-hover-effect" style="color: var(--starry-cyan); text-shadow: 0 0 10px rgba(34, 211, 238, 0.6);">2014 5e Server</a>
                     <div class="dropdown">
                         <div class="dropdown-column">
-                            <!-- Paths relative to current folder -->
                             <a href="about-the-server.html" class="dropdown-item">About the Server</a>
                             <a href="character-creation-steps.html" class="dropdown-item">Character Creation</a>
                             <a href="how-to-play.html" class="dropdown-item">How to Play</a>
@@ -61,7 +56,6 @@
                     </div>
                 </div>
 
-                <!-- 2024 Menu (Inactive - Pointing to other folder) -->
                 <div class="nav-item">
                     <a href="../2024-5.5e-server/about-the-server.html" class="nav-link star-hover-effect">2024 5.5e Server</a>
                     <div class="dropdown">
@@ -96,7 +90,9 @@
     </header>
 
     <div class="page-wrapper">
-        <!-- 2014 SPECIFIC SIDEBAR -->
+        <!-- ADDED TOGGLE BUTTON HERE -->
+        <div class="mobile-sidebar-toggle">☰ Page Menu</div>
+
         <aside class="sidebar">
             <div class="sidebar-nav-item"><a href="about-the-server.html" class="sidebar-nav-link">About the Server</a></div>
             <div class="sidebar-nav-item"><a href="character-creation-steps.html" class="sidebar-nav-link">Character Creation</a></div>
@@ -119,13 +115,11 @@
         </aside>
 
         <main class="content-with-sidebar">
-            <!-- YOUR CONTENT GOES HERE -->
             <h1>Page Title</h1>
             <p>Your content here...</p>
         </main>
     </div>
 
-    <!-- Scripts -->
     <script src="../search.js"></script>
     <script src="../background-canvas.js"></script>
     <script src="../mobile-menu.js"></script>

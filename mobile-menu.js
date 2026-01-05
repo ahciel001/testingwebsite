@@ -1,51 +1,93 @@
 /* mobile-menu.js */
 
 document.addEventListener('DOMContentLoaded', () => {
+    // --- 1. Main Navigation (Hamburger) Logic ---
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.header-content-wrapper');
     const navItems = document.querySelectorAll('.nav-item');
 
-    // Toggle Main Menu (Burger)
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+    }
 
-    // Handle Mobile Accordion Logic
+    // --- 2. Mobile Dropdown Accordion Logic ---
     if (window.innerWidth <= 900) {
         navItems.forEach(item => {
             const link = item.querySelector('.nav-link');
             const dropdown = item.querySelector('.dropdown');
 
-            // Only apply logic if the item actually has a dropdown
             if (dropdown) {
                 link.addEventListener('click', (e) => {
-                    e.preventDefault(); // Stop the link from loading the page
-                    e.stopPropagation(); // Stop bubbling
+                    e.preventDefault();
+                    e.stopPropagation();
                     
                     const isOpen = dropdown.classList.contains('open');
 
-                    // Close all other dropdowns first (Accordion style)
+                    // Close all other dropdowns
                     document.querySelectorAll('.dropdown').forEach(d => {
                         d.classList.remove('open');
                     });
 
-                    // If it wasn't open, open it now
+                    // Toggle current
                     if (!isOpen) {
                         dropdown.classList.add('open');
+                        item.classList.add('active-dropdown'); // Optional: for styling active parent
+                    } else {
+                        item.classList.remove('active-dropdown');
                     }
                 });
             }
         });
     }
 
-    // Close menu when clicking an actual page link (Dropdown Items)
+    // Close main menu when clicking a link
     const pageLinks = document.querySelectorAll('.dropdown-item, .nav-link:not(:has(+ .dropdown))');
     pageLinks.forEach(link => {
         link.addEventListener('click', () => {
-            // Close the whole mobile menu
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
         });
     });
+
+    // --- 3. Page Sidebar (Table of Contents) Toggle Logic ---
+    const sidebarToggle = document.querySelector('.mobile-sidebar-toggle');
+    const sidebar = document.querySelector('.sidebar');
+    
+    // Only run if elements exist (pages with sidebar)
+    if (sidebarToggle && sidebar) {
+        sidebarToggle.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent closing immediately
+            sidebar.classList.toggle('active');
+            
+            // Update button text
+            if (sidebar.classList.contains('active')) {
+                sidebarToggle.innerHTML = '✕ Close Menu';
+            } else {
+                sidebarToggle.innerHTML = '☰ Page Menu';
+            }
+        });
+
+        // Close sidebar when clicking main content
+        document.addEventListener('click', (e) => {
+            if (sidebar.classList.contains('active') && 
+                !sidebar.contains(e.target) && 
+                e.target !== sidebarToggle) {
+                
+                sidebar.classList.remove('active');
+                sidebarToggle.innerHTML = '☰ Page Menu';
+            }
+        });
+
+        // Close sidebar when clicking a link inside it
+        const sidebarLinks = sidebar.querySelectorAll('.sidebar-nav-link');
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+                sidebarToggle.innerHTML = '☰ Page Menu';
+            });
+        });
+    }
 });
