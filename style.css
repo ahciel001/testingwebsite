@@ -93,22 +93,21 @@ header {
 @media (min-width: 901px) {
     .header-content-wrapper {
         flex-grow: 1;
-        justify-content: flex-end; /* Pushes Search to the far right */
+        justify-content: flex-end; 
     }
 
     .header-center {
-        /* Centering Logic without Transform to preserve 3D context */
+        /* Absolute Centering */
         position: absolute;
         left: 0;
         right: 0;
         margin: auto;
-        width: max-content; /* Fit content so margins auto-center it */
+        width: max-content;
         
         display: flex;
         gap: 2rem;
         align-items: center;
         
-        /* Ensure 3D context for children */
         transform-style: preserve-3d;
         perspective: 1000px;
     }
@@ -141,17 +140,22 @@ header {
 .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
 .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-/* --- 3D Star Effect --- */
-.star-hover-effect {
+/* --- 3D Star Effect Logic --- */
+
+/* Apply to both the custom class AND the dropdown items */
+.star-hover-effect, 
+.dropdown-item {
     position: relative;
     transform-style: preserve-3d;
     perspective: 1000px;
     z-index: 10;
 }
 
-/* Define the stars */
+/* Define the stars for both types of elements */
 .star-hover-effect::before,
-.star-hover-effect::after {
+.star-hover-effect::after,
+.dropdown-item::before,
+.dropdown-item::after {
     content: '✦';
     position: absolute;
     top: 50%;
@@ -161,34 +165,32 @@ header {
     margin-top: -10px;
     margin-left: -10px;
     font-size: 14px;
-    color: var(--starry-cyan); 
+    color: var(--starry-gold); 
     display: flex;
     align-items: center;
     justify-content: center;
     
-    /* Default state: visible but transparent to avoid display:none glitching transitions */
+    /* Default: Hidden */
     opacity: 0;
     transform: scale(0); 
-    pointer-events: none;
+    pointer-events: none; /* Click through stars */
     text-shadow: 0 0 10px var(--starry-blue);
     
-    /* Quick exit transition */
     transition: opacity 0.1s ease-out, transform 0.1s ease-out;
 }
 
-/* Hover State */
-/* Only apply hover animation on non-mobile screens or based on media query */
+/* Hover State - Only on Desktop */
 @media (min-width: 901px) {
-    .star-hover-effect:hover::before {
+    .star-hover-effect:hover::before,
+    .dropdown-item:hover::before {
         opacity: 1;
-        /* Force display block ensures they exist */
         display: flex; 
         animation: smoothOrbit1 3s infinite linear;
-        /* Slower entry transition */
         transition: opacity 0.3s ease-in;
     }
 
-    .star-hover-effect:hover::after {
+    .star-hover-effect:hover::after,
+    .dropdown-item:hover::after {
         opacity: 1;
         display: flex;
         animation: smoothOrbit1 3s infinite linear;
@@ -198,25 +200,21 @@ header {
 }
 
 @keyframes smoothOrbit1 {
-    /* 
-       Use translateZ for depth.
-       Note: We avoid z-index: -1 here if possible to prevent it hiding behind the body background 
-       if the stacking context is weird. Instead, we rely on 3D depth. 
-       However, explicit z-index is safer for "behind text" effect.
-    */
     0% {
         transform: rotateZ(45deg) rotateY(0deg) translateZ(30px) rotateY(0deg) rotateZ(-45deg) scale(1.5);
+        /* Keep Z-Index positive so it stays above the dropdown background highlight */
         z-index: 20; 
         text-shadow: 0 0 15px var(--starry-cyan);
     }
     25% {
         transform: rotateZ(45deg) rotateY(90deg) translateZ(30px) rotateY(-90deg) rotateZ(-45deg) scale(1);
-        z-index: -1; /* Go behind text */
+        z-index: 20; 
         text-shadow: none;
     }
     50% {
         transform: rotateZ(45deg) rotateY(180deg) translateZ(30px) rotateY(-180deg) rotateZ(-45deg) scale(0.6);
-        z-index: -1; 
+        /* Dip behind slightly visually via opacity, but keep index high to avoid clipping */
+        z-index: 15; 
         opacity: 0.6;
     }
     75% {
@@ -238,10 +236,8 @@ header {
     display: block;
     font-weight: 600;
     transition: color 0.3s;
-    /* Ensure link text is above the orbiting stars when they go behind */
     position: relative; 
     z-index: 2; 
-    /* Important: Text must not have a background color or it covers the "behind" star */
     background: transparent;
 }
 
@@ -298,8 +294,11 @@ header {
     text-decoration: none;
     transition: all 0.2s ease;
     font-size: 0.95rem;
+    /* Ensure text is above stars */
+    z-index: 5;
 }
 
+/* Dropdown Item Hover Background */
 .dropdown-item:not([style*="pointer-events: none"]):hover {
     color: var(--starry-cyan);
     background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.08), transparent);
@@ -383,7 +382,7 @@ main {
         flex-direction: column;
         width: 100%;
         gap: 0;
-        margin: 0; /* Reset desktop auto margin */
+        margin: 0;
     }
 
     .nav-item {
@@ -459,9 +458,13 @@ main {
     .logo-text { font-size: 1.1rem; }
     .logo-text img { height: 30px !important; }
 
-    /* Disable hover stars on mobile explicitly */
+    /* Disable hover stars on mobile */
     .star-hover-effect:hover::before,
-    .star-hover-effect:hover::after { display: none; }
+    .star-hover-effect:hover::after,
+    .dropdown-item:hover::before,
+    .dropdown-item:hover::after { 
+        display: none; 
+    }
     
     main { padding: 1.5rem; margin-top: 80px; }
     
