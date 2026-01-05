@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Canvas for Stars -->
     <canvas id="star-canvas"></canvas>
 
     <header>
@@ -16,99 +17,101 @@
                 The Starry Shore
             </a>
         </div>
-        
-        <!-- Mobile Menu Toggle Button -->
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
 
-        <div class="header-center" id="navMenu">
-            <div class="nav-item">
-                <a href="index.html" class="nav-link star-hover-effect">Home</a>
-            </div>
-            
-            <div class="nav-item">
-                <a href="2014-5e-server/about-the-server.html" class="nav-link star-hover-effect">2014 5e Server</a>
-                <div class="dropdown">
-                    <div class="dropdown-column">
-                        <a href="2014-5e-server/about-the-server.html" class="dropdown-item star-hover-effect">About the Server</a>
-                        <a href="2014-5e-server/character-creation-steps.html" class="dropdown-item star-hover-effect">Character Creation</a>
-                        <a href="2014-5e-server/how-to-play.html" class="dropdown-item star-hover-effect">How to Play</a>
-                        <a href="2014-5e-server/loot-and-items.html" class="dropdown-item star-hover-effect">Loot and Items</a>
-                        <a href="2014-5e-server/misc-rules.html" class="dropdown-item star-hover-effect">Misc Rules</a>
-                        <a href="2014-5e-server/dm-guide.html" class="dropdown-item star-hover-effect">DM Guide</a>
-                        <a href="2014-5e-server/dm-tools.html" class="dropdown-item star-hover-effect">DM Tools</a>
-                    </div>
-                    <div class="dropdown-column">
-                        <div class="dropdown-item" style="color: var(--starry-gold); font-weight: bold; padding-top: 1rem; border-top: 1px solid var(--starry-border); margin-top: 0.5rem; pointer-events: none;">Server Systems</div>
-                        <a href="2014-5e-server/2014-server-systems/shopping-guide.html" class="dropdown-item star-hover-effect">Shopping Guide</a>
-                        <a href="2014-5e-server/2014-server-systems/crafting.html" class="dropdown-item star-hover-effect">Crafting</a>
-                        <a href="2014-5e-server/2014-server-systems/item-patch-notes.html" class="dropdown-item star-hover-effect">Item Patch Notes</a>
-                        <a href="2014-5e-server/2014-server-systems/downtime-points-guide.html" class="dropdown-item star-hover-effect">Downtime Points</a>
-                        <a href="2014-5e-server/2014-server-systems/prestige-rules.html" class="dropdown-item star-hover-effect">Prestige Rules</a>
-                    </div>
-                    <div class="dropdown-column">
-                        <div class="dropdown-item" style="color: var(--starry-gold); font-weight: bold; padding-top: 1rem; border-top: 1px solid var(--starry-border); margin-top: 0.5rem; pointer-events: none;">Events</div>
-                        <a href="2014-5e-server/events/website-launch-celebration.html" class="dropdown-item star-hover-effect">Website Launch</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="nav-item">
-                <a href="2024-5.5e-server/about-the-server.html" class="nav-link star-hover-effect">2024 5.5e Server</a>
-                <div class="dropdown">
-                    <div class="dropdown-column">
-                        <a href="2024-5.5e-server/about-the-server.html" class="dropdown-item star-hover-effect">About the Server</a>
-                        <a href="2024-5.5e-server/character-creation-steps.html" class="dropdown-item star-hover-effect">Character Creation</a>
-                        <a href="2024-5.5e-server/creation-log-maker.html" class="dropdown-item star-hover-effect">Creation Log Maker</a>
-                    </div>
-                    <div class="dropdown-column">
-                        <div class="dropdown-item" style="color: var(--starry-gold); font-weight: bold; padding-top: 1rem; border-top: 1px solid var(--starry-border); margin-top: 0.5rem; pointer-events: none;">Server Systems</div>
-                        <a href="2024-5.5e-server/2024-server-systems/crafting.html" class="dropdown-item star-hover-effect">Crafting</a>
-                    </div>
-                    <div class="dropdown-column">
-                        <div class="dropdown-item" style="color: var(--starry-gold); font-weight: bold; padding-top: 1rem; border-top: 1px solid var(--starry-border); margin-top: 0.5rem; pointer-events: none;">Events</div>
-                        <a href="2024-5.5e-server/events/website-launch-celebration.html" class="dropdown-item star-hover-effect">Website Launch</a>
-                    </div>
-                </div>
-            </div>
+        <!-- Hamburger Icon -->
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
         </div>
 
-        <div class="header-right">
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="Search..." id="searchInput">
-                <select class="search-filter" id="searchFilter">
-                    <option value="all">All</option>
-                    <option value="2014">2014</option>
-                    <option value="2024">2024</option>
-                </select>
+        <!-- Wrapper for Nav and Search (Toggled on Mobile) -->
+        <div class="header-content-wrapper">
+            <div class="header-center">
+                <div class="nav-item">
+                    <a href="index.html" class="nav-link star-hover-effect">Home</a>
+                </div>
+                
+                <!-- 2014 5e Server Menu -->
+                <div class="nav-item">
+                    <a href="2014-5e-server/about-the-server.html" class="nav-link star-hover-effect">2014 5e Server</a>
+                    <div class="dropdown">
+                        <div class="dropdown-column">
+                            <a href="2014-5e-server/about-the-server.html" class="dropdown-item">About the Server</a>
+                            <a href="2014-5e-server/character-creation-steps.html" class="dropdown-item">Character Creation</a>
+                            <a href="2014-5e-server/how-to-play.html" class="dropdown-item">How to Play</a>
+                            <a href="2014-5e-server/loot-and-items.html" class="dropdown-item">Loot and Items</a>
+                            <a href="2014-5e-server/misc-rules.html" class="dropdown-item">Misc Rules</a>
+                            <a href="2014-5e-server/dm-guide.html" class="dropdown-item">DM Guide</a>
+                            <a href="2014-5e-server/dm-tools.html" class="dropdown-item">DM Tools</a>
+                        </div>
+                        <div class="dropdown-column">
+                            <div class="dropdown-item" style="color: var(--starry-gold); font-weight: bold; padding-top: 1rem; border-top: 1px solid var(--starry-border); margin-top: 0.5rem; pointer-events: none;">Server Systems</div>
+                            <a href="2014-5e-server/2014-server-systems/shopping-guide.html" class="dropdown-item">Shopping Guide</a>
+                            <a href="2014-5e-server/2014-server-systems/crafting.html" class="dropdown-item">Crafting</a>
+                            <a href="2014-5e-server/2014-server-systems/item-patch-notes.html" class="dropdown-item">Item Patch Notes</a>
+                            <a href="2014-5e-server/2014-server-systems/downtime-points-guide.html" class="dropdown-item">Downtime Points</a>
+                            <a href="2014-5e-server/2014-server-systems/prestige-rules.html" class="dropdown-item">Prestige Rules</a>
+                        </div>
+                        <div class="dropdown-column">
+                            <div class="dropdown-item" style="color: var(--starry-gold); font-weight: bold; padding-top: 1rem; border-top: 1px solid var(--starry-border); margin-top: 0.5rem; pointer-events: none;">Events</div>
+                            <a href="2014-5e-server/events/website-launch-celebration.html" class="dropdown-item">Website Launch</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2024 5.5e Server Menu -->
+                <div class="nav-item">
+                    <a href="2024-5.5e-server/about-the-server.html" class="nav-link star-hover-effect">2024 5.5e Server</a>
+                    <div class="dropdown">
+                        <div class="dropdown-column">
+                            <a href="2024-5.5e-server/about-the-server.html" class="dropdown-item">About the Server</a>
+                            <a href="2024-5.5e-server/character-creation-steps.html" class="dropdown-item">Character Creation</a>
+                            <a href="2024-5.5e-server/creation-log-maker.html" class="dropdown-item">Creation Log Maker</a>
+                        </div>
+                        <div class="dropdown-column">
+                            <div class="dropdown-item" style="color: var(--starry-gold); font-weight: bold; padding-top: 1rem; border-top: 1px solid var(--starry-border); margin-top: 0.5rem; pointer-events: none;">Server Systems</div>
+                            <a href="2024-5.5e-server/2024-server-systems/crafting.html" class="dropdown-item">Crafting</a>
+                        </div>
+                        <div class="dropdown-column">
+                            <div class="dropdown-item" style="color: var(--starry-gold); font-weight: bold; padding-top: 1rem; border-top: 1px solid var(--starry-border); margin-top: 0.5rem; pointer-events: none;">Events</div>
+                            <a href="2024-5.5e-server/events/website-launch-celebration.html" class="dropdown-item">Website Launch</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="header-right">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search..." id="searchInput">
+                    <select class="search-filter" id="searchFilter">
+                        <option value="all">All</option>
+                        <option value="2014">2014</option>
+                        <option value="2024">2024</option>
+                    </select>
+                </div>
             </div>
         </div>
     </header>
 
     <main>
         <div class="content no-sidebar" style="text-align: center;">
-            <!-- Added main-title-container class for mobile targeting -->
-            <div class="main-title-container" style="display: flex; justify-content: center; margin-bottom: 2rem;">
+            <div style="display: flex; justify-content: center; margin-bottom: 2rem;">
+                <!-- Updated inline styles for mobile responsiveness -->
                 <h1 style="
-                  font-size: 4em; 
+                  font-size: clamp(2rem, 5vw, 4em); /* Responsive font size */
                   display: flex; 
                   align-items: center;
                   justify-content: center;
+                  flex-wrap: wrap; /* Allow wrapping on small screens */
                   font-family: 'Trebuchet MS', sans-serif;
                   font-weight: 900;
                   text-shadow: 0 0 30px rgba(56, 189, 248, 0.4);
                   position: relative;
                 " class="star-hover-effect">
-                  <img src="/assets/img/logo2.png" style="height:110px; margin-right:15px; filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.5));" alt="Logo">
+                  <img src="/assets/img/logo2.png" style="height:110px; margin-right:15px; filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.5)); max-height: 80px;" alt="Logo">
                   <strong style="
-                    background: linear-gradient(
-                      90deg,
-                      #3b82f6,
-                      #38bdf8,
-                      #22d3ee,
-                      #06b6d4,
-                      #38bdf8,
-                      #3b82f6
-                    );
+                    background: linear-gradient(90deg, #3b82f6, #38bdf8, #22d3ee, #06b6d4, #38bdf8, #3b82f6);
                     background-size: 400% auto;
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
@@ -120,7 +123,7 @@
                 </h1>
             </div>
 
-            <p style="font-size: 1.2rem; color: var(--starry-text-dim);">Welcome to your D&D server documentation site.</p>
+            <p style="font-size: 1.2rem; color: var(--starry-text-dim);">Welcome to your D&D server documentation site. Navigate through the sections above to find the information you need.</p>
             
             <h2>Quick Links</h2>
             <ul style="list-style: none; margin: 0; padding: 0;">
@@ -134,21 +137,9 @@
         </div>
     </main>
 
+    <!-- Script References -->
     <script src="search.js"></script>
     <script src="background-canvas.js"></script>
-    <script>
-        function toggleMobileMenu() {
-            const menu = document.getElementById('navMenu');
-            menu.classList.toggle('active');
-            
-            // Toggle Button Text
-            const btn = document.querySelector('.mobile-menu-btn');
-            if(menu.classList.contains('active')) {
-                btn.innerHTML = '✕';
-            } else {
-                btn.innerHTML = '☰';
-            }
-        }
-    </script>
+    <script src="mobile-menu.js"></script>
 </body>
 </html>
