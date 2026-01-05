@@ -7,12 +7,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Background Canvas for Interactive Galaxy -->
+    <!-- IMPORTANT: This canvas must be here for the background stars to work! -->
     <canvas id="star-canvas"></canvas>
 
     <header>
         <div class="header-left">
-            <!-- Navbar Logo -->
             <a href="index.html" class="logo-text star-hover-effect">
                 <img src="/assets/img/logo2.png" style="height:40px; width:auto;" alt="Logo">
                 The Starry Shore
@@ -95,8 +94,6 @@
 
     <main>
         <div class="content no-sidebar" style="text-align: center;">
-            
-            <!-- Main Title Section -->
             <div style="display: flex; justify-content: center; margin-bottom: 2rem;">
                 <h1 style="
                   font-size: 4em; 
@@ -144,6 +141,7 @@
         </div>
     </main>
 
+    <!-- Script References -->
     <script src="search.js"></script>
     <script src="background-canvas.js"></script>
 </body>
