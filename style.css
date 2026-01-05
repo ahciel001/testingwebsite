@@ -51,27 +51,24 @@ header {
     left: 0;
     right: 0;
     height: 80px;
-    
-    /* TRANSPARENT HEADER SETTINGS */
     background: transparent; 
-    /* Very subtle gradient at top just for text readability, fades out immediately */
+    /* Subtle gradient for text readability */
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, transparent 100%);
-    
     border-bottom: none; 
-    box-shadow: none;
-    backdrop-filter: none;
-    
     z-index: 1000;
     padding: 0 2rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /* This ensures logo is far left */
+    justify-content: space-between; 
 }
 
 .header-left {
     display: flex;
     align-items: center;
     z-index: 1002;
+    /* Prevent logo text from wrapping awkwardly */
+    min-width: max-content; 
 }
 
 .logo-text {
@@ -86,22 +83,43 @@ header {
     animation: shine 8s linear infinite;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
+    white-space: nowrap; /* Forces text to stay on one line */
 }
 
-/* Wrapper for Nav and Search */
+/* 
+   Wrapper for Nav and Search 
+   On Desktop: We use this to separate controls
+   On Mobile: This becomes the slide-out drawer
+*/
 .header-content-wrapper {
     display: flex;
     align-items: center;
-    width: 100%;
-    justify-content: space-between;
-    margin-left: 2rem;
 }
 
-.header-center {
-    display: flex;
-    gap: 1.5rem;
-    align-items: center;
+/* DESKTOP LAYOUT (Min-Width 901px) */
+@media (min-width: 901px) {
+    .header-content-wrapper {
+        flex-grow: 1;
+        justify-content: flex-end; /* Pushes Search to the far right */
+    }
+
+    .header-center {
+        /* ABSOLUTE CENTERING */
+        /* This pulls the nav out of the flex flow and centers it to the screen */
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        
+        display: flex;
+        gap: 2rem; /* Increased gap for better spacing */
+        align-items: center;
+    }
+
+    .header-right {
+        /* Ensures search stays on the right inside the wrapper */
+        margin-left: auto;
+    }
 }
 
 /* --- Hamburger Menu Icon --- */
@@ -110,7 +128,6 @@ header {
     cursor: pointer;
     z-index: 1002;
     padding: 10px;
-    /* Add a small backing so the burger is visible if a bright star passes under */
     border-radius: 4px; 
 }
 
@@ -124,7 +141,6 @@ header {
     box-shadow: 0 0 5px var(--starry-blue);
 }
 
-/* Hamburger Active State */
 .hamburger.active .bar:nth-child(2) { opacity: 0; }
 .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
 .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
@@ -148,7 +164,7 @@ header {
     margin-top: -10px;
     margin-left: -10px;
     font-size: 14px;
-    color: var(--starry-cyan); 
+    color: var(--starry-gold); 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -190,7 +206,7 @@ header {
     position: absolute;
     top: 100%;
     left: 50%;
-    background: rgba(2, 2, 10, 0.85); /* Keep dropdown background dark for readability */
+    background: rgba(2, 2, 10, 0.85);
     backdrop-filter: blur(15px);
     border: 1px solid var(--starry-border);
     border-top: 2px solid var(--starry-cyan);
@@ -294,11 +310,10 @@ main {
     /* The Navigation Drawer */
     .header-content-wrapper {
         position: fixed;
-        left: -100%; /* Hidden by default */
+        left: -100%;
         top: 0;
         width: 100%;
         height: 100vh;
-        /* Keep the slide-out menu background DARK/Solid so we can read links */
         background: #02020a; 
         flex-direction: column;
         justify-content: flex-start;
@@ -311,10 +326,13 @@ main {
     }
 
     .header-content-wrapper.active {
-        left: 0; /* Slide in */
+        left: 0; 
     }
 
+    /* Reset positioning for mobile so it stacks */
     .header-center {
+        position: static;
+        transform: none;
         flex-direction: column;
         width: 100%;
         gap: 0;
