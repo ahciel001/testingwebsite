@@ -50,16 +50,22 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    height: 80px; /* Fixed height for calculations */
-    background: transparent;
+    height: 80px;
+    
+    /* TRANSPARENT HEADER SETTINGS */
+    background: transparent; 
+    /* Very subtle gradient at top just for text readability, fades out immediately */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, transparent 100%);
+    
     border-bottom: none; 
+    box-shadow: none;
+    backdrop-filter: none;
+    
     z-index: 1000;
     padding: 0 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: linear-gradient(to bottom, rgba(2, 2, 10, 0.95) 0%, rgba(2, 2, 10, 0.8) 100%);
-    backdrop-filter: blur(5px);
 }
 
 .header-left {
@@ -104,6 +110,8 @@ header {
     cursor: pointer;
     z-index: 1002;
     padding: 10px;
+    /* Add a small backing so the burger is visible if a bright star passes under */
+    border-radius: 4px; 
 }
 
 .bar {
@@ -182,7 +190,7 @@ header {
     position: absolute;
     top: 100%;
     left: 50%;
-    background: rgba(2, 2, 10, 0.95);
+    background: rgba(2, 2, 10, 0.85); /* Keep dropdown background dark for readability */
     backdrop-filter: blur(15px);
     border: 1px solid var(--starry-border);
     border-top: 2px solid var(--starry-cyan);
@@ -200,7 +208,6 @@ header {
     z-index: 1100;
 }
 
-/* Hover only works on desktop */
 @media (min-width: 901px) {
     .nav-item:hover .dropdown {
         opacity: 1;
@@ -291,15 +298,16 @@ main {
         top: 0;
         width: 100%;
         height: 100vh;
-        background: #02020a; /* Solid background */
+        /* Keep the slide-out menu background DARK/Solid so we can read links */
+        background: #02020a; 
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        padding-top: 90px; /* Push down below header/logo */
+        padding-top: 90px;
         margin-left: 0;
         transition: 0.3s ease-in-out;
-        z-index: 1001; /* Below logo/burger */
-        overflow-y: auto; /* Scrollable */
+        z-index: 1001;
+        overflow-y: auto;
     }
 
     .header-content-wrapper.active {
@@ -318,7 +326,6 @@ main {
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    /* Main Nav Links on Mobile */
     .nav-link {
         padding: 1.5rem;
         font-size: 1.2rem;
@@ -327,7 +334,6 @@ main {
         align-items: center;
     }
 
-    /* Add an arrow to indicate dropdown on mobile */
     .nav-item:has(.dropdown) .nav-link::after {
         content: '▼';
         font-size: 0.7em;
@@ -335,17 +341,15 @@ main {
         transition: transform 0.3s;
     }
 
-    /* Rotate arrow when open */
     .nav-item:has(.dropdown.open) .nav-link::after {
         transform: rotate(180deg);
         color: var(--starry-cyan);
     }
 
-    /* Mobile Dropdown Logic */
     .dropdown {
-        position: static; /* Stack naturally */
+        position: static;
         width: 100%;
-        display: block; /* Always 'display:block' but height is animated */
+        display: block;
         visibility: visible;
         opacity: 1;
         transform: none;
@@ -354,15 +358,13 @@ main {
         border: none;
         border-radius: 0;
         margin: 0;
-        
-        /* Animation Props */
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.4s ease-in-out;
     }
 
     .dropdown.open {
-        max-height: 1500px; /* Big enough to fit content */
+        max-height: 1500px;
         border-top: 1px solid var(--starry-border);
         border-bottom: 1px solid var(--starry-border);
     }
@@ -379,7 +381,6 @@ main {
         font-size: 1rem;
     }
 
-    /* Search Bar Mobile */
     .header-right {
         margin: 2rem 0;
         width: 90%;
@@ -389,11 +390,9 @@ main {
     }
     .search-input { width: 100%; }
 
-    /* Logo Fixes */
     .logo-text { font-size: 1.1rem; }
     .logo-text img { height: 30px !important; }
 
-    /* Disable hover effects on mobile */
     .star-hover-effect:hover::before,
     .star-hover-effect:hover::after { display: none; }
     
