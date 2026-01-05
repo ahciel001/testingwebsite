@@ -52,14 +52,12 @@ header {
     right: 0;
     height: 80px;
     background: transparent; 
-    /* Subtle gradient for text readability */
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, transparent 100%);
     border-bottom: none; 
     z-index: 1000;
     padding: 0 2rem;
     display: flex;
     align-items: center;
-    /* This ensures logo is far left */
     justify-content: space-between; 
 }
 
@@ -67,7 +65,6 @@ header {
     display: flex;
     align-items: center;
     z-index: 1002;
-    /* Prevent logo text from wrapping awkwardly */
     min-width: max-content; 
 }
 
@@ -84,14 +81,9 @@ header {
     display: flex;
     align-items: center;
     gap: 15px;
-    white-space: nowrap; /* Forces text to stay on one line */
+    white-space: nowrap;
 }
 
-/* 
-   Wrapper for Nav and Search 
-   On Desktop: We use this to separate controls
-   On Mobile: This becomes the slide-out drawer
-*/
 .header-content-wrapper {
     display: flex;
     align-items: center;
@@ -105,19 +97,23 @@ header {
     }
 
     .header-center {
-        /* ABSOLUTE CENTERING */
-        /* This pulls the nav out of the flex flow and centers it to the screen */
+        /* Centering Logic without Transform to preserve 3D context */
         position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: max-content; /* Fit content so margins auto-center it */
         
         display: flex;
-        gap: 2rem; /* Increased gap for better spacing */
+        gap: 2rem;
         align-items: center;
+        
+        /* Ensure 3D context for children */
+        transform-style: preserve-3d;
+        perspective: 1000px;
     }
 
     .header-right {
-        /* Ensures search stays on the right inside the wrapper */
         margin-left: auto;
     }
 }
@@ -153,6 +149,7 @@ header {
     z-index: 10;
 }
 
+/* Define the stars */
 .star-hover-effect::before,
 .star-hover-effect::after {
     content: '✦';
@@ -164,26 +161,73 @@ header {
     margin-top: -10px;
     margin-left: -10px;
     font-size: 14px;
-    color: var(--starry-gold); 
+    color: var(--starry-cyan); 
     display: flex;
     align-items: center;
     justify-content: center;
+    
+    /* Default state: visible but transparent to avoid display:none glitching transitions */
     opacity: 0;
     transform: scale(0); 
     pointer-events: none;
     text-shadow: 0 0 10px var(--starry-blue);
+    
+    /* Quick exit transition */
     transition: opacity 0.1s ease-out, transform 0.1s ease-out;
 }
 
-.star-hover-effect:hover::before { opacity: 1; animation: smoothOrbit1 3s infinite linear; transition: opacity 0.3s ease-in; }
-.star-hover-effect:hover::after { opacity: 1; animation: smoothOrbit1 3s infinite linear; animation-delay: -1.5s; transition: opacity 0.3s ease-in; }
+/* Hover State */
+/* Only apply hover animation on non-mobile screens or based on media query */
+@media (min-width: 901px) {
+    .star-hover-effect:hover::before {
+        opacity: 1;
+        /* Force display block ensures they exist */
+        display: flex; 
+        animation: smoothOrbit1 3s infinite linear;
+        /* Slower entry transition */
+        transition: opacity 0.3s ease-in;
+    }
+
+    .star-hover-effect:hover::after {
+        opacity: 1;
+        display: flex;
+        animation: smoothOrbit1 3s infinite linear;
+        animation-delay: -1.5s; 
+        transition: opacity 0.3s ease-in;
+    }
+}
 
 @keyframes smoothOrbit1 {
-    0% { transform: rotateZ(45deg) rotateY(0deg) translateZ(40px) rotateY(0deg) rotateZ(-45deg) scale(1.5); z-index: 10; text-shadow: 0 0 15px var(--starry-cyan); }
-    25% { transform: rotateZ(45deg) rotateY(90deg) translateZ(40px) rotateY(-90deg) rotateZ(-45deg) scale(1); z-index: -1; text-shadow: none; }
-    50% { transform: rotateZ(45deg) rotateY(180deg) translateZ(40px) rotateY(-180deg) rotateZ(-45deg) scale(0.5); z-index: -1; opacity: 0.7; }
-    75% { transform: rotateZ(45deg) rotateY(270deg) translateZ(40px) rotateY(-270deg) rotateZ(-45deg) scale(1); z-index: 10; }
-    100% { transform: rotateZ(45deg) rotateY(360deg) translateZ(40px) rotateY(-360deg) rotateZ(-45deg) scale(1.5); z-index: 10; text-shadow: 0 0 15px var(--starry-cyan); }
+    /* 
+       Use translateZ for depth.
+       Note: We avoid z-index: -1 here if possible to prevent it hiding behind the body background 
+       if the stacking context is weird. Instead, we rely on 3D depth. 
+       However, explicit z-index is safer for "behind text" effect.
+    */
+    0% {
+        transform: rotateZ(45deg) rotateY(0deg) translateZ(30px) rotateY(0deg) rotateZ(-45deg) scale(1.5);
+        z-index: 20; 
+        text-shadow: 0 0 15px var(--starry-cyan);
+    }
+    25% {
+        transform: rotateZ(45deg) rotateY(90deg) translateZ(30px) rotateY(-90deg) rotateZ(-45deg) scale(1);
+        z-index: -1; /* Go behind text */
+        text-shadow: none;
+    }
+    50% {
+        transform: rotateZ(45deg) rotateY(180deg) translateZ(30px) rotateY(-180deg) rotateZ(-45deg) scale(0.6);
+        z-index: -1; 
+        opacity: 0.6;
+    }
+    75% {
+        transform: rotateZ(45deg) rotateY(270deg) translateZ(30px) rotateY(-270deg) rotateZ(-45deg) scale(1);
+        z-index: 20;
+    }
+    100% {
+        transform: rotateZ(45deg) rotateY(360deg) translateZ(30px) rotateY(-360deg) rotateZ(-45deg) scale(1.5);
+        z-index: 20;
+        text-shadow: 0 0 15px var(--starry-cyan);
+    }
 }
 
 .nav-link {
@@ -194,6 +238,11 @@ header {
     display: block;
     font-weight: 600;
     transition: color 0.3s;
+    /* Ensure link text is above the orbiting stars when they go behind */
+    position: relative; 
+    z-index: 2; 
+    /* Important: Text must not have a background color or it covers the "behind" star */
+    background: transparent;
 }
 
 .nav-link:hover {
@@ -206,7 +255,7 @@ header {
     position: absolute;
     top: 100%;
     left: 50%;
-    background: rgba(2, 2, 10, 0.85);
+    background: rgba(2, 2, 10, 0.95);
     backdrop-filter: blur(15px);
     border: 1px solid var(--starry-border);
     border-top: 2px solid var(--starry-cyan);
@@ -307,7 +356,6 @@ main {
     
     .hamburger { display: block; }
 
-    /* The Navigation Drawer */
     .header-content-wrapper {
         position: fixed;
         left: -100%;
@@ -329,13 +377,13 @@ main {
         left: 0; 
     }
 
-    /* Reset positioning for mobile so it stacks */
     .header-center {
         position: static;
         transform: none;
         flex-direction: column;
         width: 100%;
         gap: 0;
+        margin: 0; /* Reset desktop auto margin */
     }
 
     .nav-item {
@@ -411,6 +459,7 @@ main {
     .logo-text { font-size: 1.1rem; }
     .logo-text img { height: 30px !important; }
 
+    /* Disable hover stars on mobile explicitly */
     .star-hover-effect:hover::before,
     .star-hover-effect:hover::after { display: none; }
     
