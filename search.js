@@ -1,4 +1,4 @@
-// Search functionality for The Starry Shore
+/* search.js */
 
 // Page index for search
 const pageIndex = {
@@ -49,7 +49,6 @@ const pageIndex = {
     ]
 };
 
-// Search results container (will be created dynamically)
 let searchResultsContainer = null;
 
 function initSearch() {
@@ -88,7 +87,6 @@ function initSearch() {
     searchInput.addEventListener('input', performSearch);
     searchFilter.addEventListener('change', performSearch);
     
-    // Close search results when clicking outside
     document.addEventListener('click', (e) => {
         if (!searchContainer.contains(e.target)) {
             searchResultsContainer.style.display = 'none';
@@ -135,8 +133,8 @@ function displaySearchResults(results) {
     
     const resultsHTML = results.slice(0, 10).map(page => {
         return `
-            <a href="${page.url}" style="display: block; padding: 0.75rem 1rem; color: var(--starry-text); text-decoration: none; border-bottom: 1px solid rgba(212, 175, 55, 0.1); transition: all 0.2s ease;">
-                <div style="font-weight: bold; color: var(--starry-accent); margin-bottom: 0.25rem;">${page.title}</div>
+            <a href="${page.url}" style="display: block; padding: 0.75rem 1rem; color: var(--starry-text); text-decoration: none; border-bottom: 1px solid rgba(56, 189, 248, 0.2); transition: all 0.2s ease;">
+                <div style="font-weight: bold; color: var(--starry-cyan); margin-bottom: 0.25rem;">${page.title}</div>
                 <div style="font-size: 0.85rem; color: var(--starry-text-dim);">${page.content}</div>
             </a>
         `;
@@ -144,11 +142,10 @@ function displaySearchResults(results) {
     
     searchResultsContainer.innerHTML = resultsHTML;
     
-    // Add hover effects
     const links = searchResultsContainer.querySelectorAll('a');
     links.forEach(link => {
         link.addEventListener('mouseenter', function() {
-            this.style.background = 'var(--starry-hover)';
+            this.style.background = 'rgba(34, 211, 238, 0.15)';
             this.style.paddingLeft = '1.25rem';
         });
         link.addEventListener('mouseleave', function() {
@@ -160,261 +157,8 @@ function displaySearchResults(results) {
     searchResultsContainer.style.display = 'block';
 }
 
-// Initialize search when DOM is loaded
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initSearch);
 } else {
     initSearch();
 }
-/* background-canvas.js */
-const canvas = document.getElementById('star-canvas');
-const ctx = canvas.getContext('2d');
-
-let width, height;
-let stars = [];
-let mouse = { x: -1000, y: -1000 };
-let isMouseDown = false;
-let growingStar = null;
-
-// Shades of Blue Palette (No gold/purple)
-const bluePalette = [
-    '#ffffff', // White
-    '#e0f2fe', // Very light blue
-    '#bae6fd', // Light blue
-    '#7dd3fc', // Sky blue
-    '#38bdf8', // Cyan
-    '#0ea5e9', // Blue
-    '#0284c7'  // Deep Blue
-];
-
-// Available shapes for the stars
-const shapes = ['circle', 'sparkle', 'star5', 'star6'];
-
-function resize() {
-    width = window.innerWidth;
-    height = window.innerHeight;
-    canvas.width = width;
-    canvas.height = height;
-}
-
-// Helper to draw complex shapes
-function drawShape(ctx, shape, x, y, size, color) {
-    ctx.beginPath();
-    ctx.fillStyle = color;
-
-    if (shape === 'circle') {
-        ctx.arc(x, y, size, 0, Math.PI * 2);
-    } 
-    else if (shape === 'sparkle') {
-        // 4-point Diamond/Sparkle
-        ctx.moveTo(x, y - size);
-        ctx.quadraticCurveTo(x, y, x + size, y);
-        ctx.quadraticCurveTo(x, y, x, y + size);
-        ctx.quadraticCurveTo(x, y, x - size, y);
-        ctx.quadraticCurveTo(x, y, x, y - size);
-    } 
-    else if (shape === 'star5') {
-        // 5-Point Star
-        let spikes = 5;
-        let outerRadius = size;
-        let innerRadius = size / 2;
-        let rot = Math.PI / 2 * 3;
-        let step = Math.PI / spikes;
-        
-        ctx.moveTo(x, y - outerRadius);
-        for (let i = 0; i < spikes; i++) {
-            let cx = x + Math.cos(rot) * outerRadius;
-            let cy = y + Math.sin(rot) * outerRadius;
-            ctx.lineTo(cx, cy);
-            rot += step;
-
-            cx = x + Math.cos(rot) * innerRadius;
-            cy = y + Math.sin(rot) * innerRadius;
-            ctx.lineTo(cx, cy);
-            rot += step;
-        }
-        ctx.lineTo(x, y - outerRadius);
-    }
-    else if (shape === 'star6') {
-        // 6-Point Star (Hexagram style)
-        let spikes = 6;
-        let outerRadius = size;
-        let innerRadius = size / 2.5;
-        let rot = Math.PI / 2 * 3;
-        let step = Math.PI / spikes;
-
-        ctx.moveTo(x, y - outerRadius);
-        for (let i = 0; i < spikes; i++) {
-            let cx = x + Math.cos(rot) * outerRadius;
-            let cy = y + Math.sin(rot) * outerRadius;
-            ctx.lineTo(cx, cy);
-            rot += step;
-
-            cx = x + Math.cos(rot) * innerRadius;
-            cy = y + Math.sin(rot) * innerRadius;
-            ctx.lineTo(cx, cy);
-            rot += step;
-        }
-        ctx.lineTo(x, y - outerRadius);
-    }
-    
-    ctx.closePath();
-    ctx.fill();
-}
-
-class Star {
-    constructor(x, y, size, isSpawned = false, shape = 'circle') {
-        this.x = x || Math.random() * width;
-        this.y = y || Math.random() * height;
-        this.size = size || Math.random() * 2;
-        this.isSpawned = isSpawned;
-        
-        // Background stars are mostly circles, spawned ones vary
-        this.shape = shape; 
-        
-        this.vx = (Math.random() - 0.5) * 0.5;
-        this.vy = (Math.random() - 0.5) * 0.5;
-        
-        this.color = bluePalette[Math.floor(Math.random() * bluePalette.length)];
-        this.opacity = Math.random() * 0.5 + 0.3;
-        this.pulse = Math.random() * 0.02;
-    }
-
-    draw() {
-        ctx.save();
-        ctx.globalAlpha = this.opacity;
-        
-        // Glow effect
-        if (this.isSpawned || this.size > 2.5) {
-            ctx.shadowBlur = 15;
-            ctx.shadowColor = this.color;
-        } else {
-            ctx.shadowBlur = 0;
-        }
-
-        drawShape(ctx, this.shape, this.x, this.y, this.size, this.color);
-        
-        ctx.restore();
-    }
-
-    update() {
-        this.x += this.vx;
-        this.y += this.vy;
-
-        // Gravity Logic (Reduced distance and force)
-        let dx = mouse.x - this.x;
-        let dy = mouse.y - this.y;
-        let distance = Math.sqrt(dx * dx + dy * dy);
-        let maxDistance = 120; 
-
-        if (distance < maxDistance) {
-            let forceDirectionX = dx / distance;
-            let forceDirectionY = dy / distance;
-            let force = (maxDistance - distance) / maxDistance;
-            let drift = force * 0.8; 
-            
-            this.x += forceDirectionX * drift;
-            this.y += forceDirectionY * drift;
-        }
-
-        // Twinkle
-        this.opacity += this.pulse;
-        if (this.opacity > 0.8 || this.opacity < 0.2) this.pulse = -this.pulse;
-
-        // Wrap around
-        if (this.x < 0) this.x = width;
-        if (this.x > width) this.x = 0;
-        if (this.y < 0) this.y = height;
-        if (this.y > height) this.y = 0;
-    }
-}
-
-function init() {
-    resize();
-    stars = [];
-    // Spawn background stars (mostly circles)
-    for (let i = 0; i < 350; i++) {
-        // 90% chance of circle, 10% chance of tiny sparkle
-        let type = Math.random() > 0.9 ? 'sparkle' : 'circle';
-        stars.push(new Star(null, null, null, false, type));
-    }
-}
-
-// --- Interaction Logic ---
-
-window.addEventListener('resize', resize);
-
-window.addEventListener('mousemove', (e) => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-});
-
-window.addEventListener('mousedown', (e) => {
-    isMouseDown = true;
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-    
-    // Pick a random shape for this new star
-    let randomShape = shapes[Math.floor(Math.random() * shapes.length)];
-    
-    growingStar = {
-        x: mouse.x,
-        y: mouse.y,
-        size: 0.5,
-        color: '#ffffff', // Start white hot
-        shape: randomShape
-    };
-});
-
-window.addEventListener('mouseup', () => {
-    isMouseDown = false;
-    if (growingStar) {
-        let s = new Star(
-            growingStar.x, 
-            growingStar.y, 
-            growingStar.size, 
-            true, 
-            growingStar.shape
-        );
-        
-        // Give spawned stars random velocity
-        s.vx = (Math.random() - 0.5) * 1.5; 
-        s.vy = (Math.random() - 0.5) * 1.5;
-        
-        // Pick a blue shade
-        s.color = bluePalette[Math.floor(Math.random() * bluePalette.length)]; 
-        
-        stars.push(s);
-        growingStar = null;
-    }
-});
-
-function animate() {
-    ctx.clearRect(0, 0, width, height);
-
-    stars.forEach(star => {
-        star.update();
-        star.draw();
-    });
-
-    // Draw the growing star under cursor
-    if (isMouseDown && growingStar) {
-        growingStar.x = mouse.x;
-        growingStar.y = mouse.y;
-        
-        if (growingStar.size < 10) {
-            growingStar.size += 0.4;
-        }
-
-        ctx.save();
-        ctx.shadowBlur = 20 + growingStar.size;
-        ctx.shadowColor = '#38bdf8'; // Cyan glow while charging
-        drawShape(ctx, growingStar.shape, growingStar.x, growingStar.y, growingStar.size, growingStar.color);
-        ctx.restore();
-    }
-
-    requestAnimationFrame(animate);
-}
-
-init();
-animate();
