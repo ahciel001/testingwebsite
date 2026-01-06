@@ -6,112 +6,18 @@
     <title>Page Title - 2014 5e Server</title>
     <link rel="stylesheet" href="../style.css">
 </head>
-<body>
+<!-- IMPORTANT: data-sidebar tells the loader which sidebar to grab -->
+<body data-sidebar="2014">
     <canvas id="star-canvas"></canvas>
 
-    <header>
-        <div class="header-left">
-            <a href="../index.html" class="logo-text star-hover-effect">
-                <img src="../assets/img/logo.jpg" style="height:40px; width:auto; border-radius: 5px;" alt="Logo">
-                The Starry Shore
-            </a>
-        </div>
-
-        <div class="hamburger">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-
-        <div class="header-content-wrapper">
-            <div class="header-center">
-                <div class="nav-item">
-                    <a href="../index.html" class="nav-link star-hover-effect">Home</a>
-                </div>
-                
-                <div class="nav-item">
-                    <a href="about-the-2014-server.html" class="nav-link star-hover-effect" style="color: var(--starry-cyan); text-shadow: 0 0 10px rgba(34, 211, 238, 0.6);">2014 5e Server</a>
-                    <div class="dropdown">
-                        <div class="dropdown-column">
-                            <a href="about-the-2014-server.html" class="dropdown-item">About the Server</a>
-                            <a href="character-creation-steps.html" class="dropdown-item">Character Creation</a>
-                            <a href="how-to-play.html" class="dropdown-item">How to Play</a>
-                            <a href="loot-and-items.html" class="dropdown-item">Loot and Items</a>
-                            <a href="misc-rules.html" class="dropdown-item">Misc Rules</a>
-                            <a href="dm-guide.html" class="dropdown-item">DM Guide</a>
-                            <a href="dm-tools.html" class="dropdown-item">DM Tools</a>
-                        </div>
-                        <div class="dropdown-column">
-                            <div class="dropdown-item" style="color: var(--starry-gold); font-weight: bold; padding-top: 1rem; border-top: 1px solid var(--starry-border); margin-top: 0.5rem; pointer-events: none;">Server Systems</div>
-                            <a href="2014-server-systems/shopping-guide.html" class="dropdown-item">Shopping Guide</a>
-                            <a href="2014-server-systems/crafting.html" class="dropdown-item">Crafting</a>
-                            <a href="2014-server-systems/item-patch-notes.html" class="dropdown-item">Item Patch Notes</a>
-                            <a href="2014-server-systems/downtime-points-guide.html" class="dropdown-item">Downtime Points</a>
-                            <a href="2014-server-systems/prestige-rules.html" class="dropdown-item">Prestige Rules</a>
-                        </div>
-                        <div class="dropdown-column">
-                            <div class="dropdown-item" style="color: var(--starry-gold); font-weight: bold; padding-top: 1rem; border-top: 1px solid var(--starry-border); margin-top: 0.5rem; pointer-events: none;">Events</div>
-                            <a href="events/website-launch-celebration.html" class="dropdown-item">Website Launch</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="nav-item">
-                    <a href="../2024-5.5e-server/about-the-2024-server.html" class="nav-link star-hover-effect">2024 5.5e Server</a>
-                    <div class="dropdown">
-                        <div class="dropdown-column">
-                            <a href="../2024-5.5e-server/about-the-2024-server.html" class="dropdown-item">About the Server</a>
-                            <a href="../2024-5.5e-server/character-creation-steps.html" class="dropdown-item">Character Creation</a>
-                            <a href="../2024-5.5e-server/creation-log-maker.html" class="dropdown-item">Creation Log Maker</a>
-                        </div>
-                        <div class="dropdown-column">
-                            <div class="dropdown-item" style="color: var(--starry-gold); font-weight: bold; padding-top: 1rem; border-top: 1px solid var(--starry-border); margin-top: 0.5rem; pointer-events: none;">Server Systems</div>
-                            <a href="../2024-5.5e-server/2024-server-systems/crafting.html" class="dropdown-item">Crafting</a>
-                        </div>
-                        <div class="dropdown-column">
-                            <div class="dropdown-item" style="color: var(--starry-gold); font-weight: bold; padding-top: 1rem; border-top: 1px solid var(--starry-border); margin-top: 0.5rem; pointer-events: none;">Events</div>
-                            <a href="../2024-5.5e-server/events/website-launch-celebration.html" class="dropdown-item">Website Launch</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="header-right">
-                <div class="search-container">
-                    <input type="text" class="search-input" placeholder="Search..." id="searchInput">
-                    <select class="search-filter" id="searchFilter">
-                        <option value="all">All</option>
-                        <option value="2014">2014</option>
-                        <option value="2024">2024</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    </header>
+    <!-- EMPTY HEADER CONTAINER -->
+    <header id="main-header"></header>
 
     <div class="page-wrapper">
-        <!-- ADDED TOGGLE BUTTON HERE -->
         <div class="mobile-sidebar-toggle">☰ Page Menu</div>
 
-        <aside class="sidebar">
-            <div class="sidebar-nav-item"><a href="about-the-2014-server.html" class="sidebar-nav-link">About the Server</a></div>
-            <div class="sidebar-nav-item"><a href="character-creation-steps.html" class="sidebar-nav-link">Character Creation</a></div>
-            <div class="sidebar-nav-item"><a href="how-to-play.html" class="sidebar-nav-link">How to Play</a></div>
-            <div class="sidebar-nav-item"><a href="loot-and-items.html" class="sidebar-nav-link">Loot and Items</a></div>
-            <div class="sidebar-nav-item"><a href="misc-rules.html" class="sidebar-nav-link">Misc Rules</a></div>
-            <div class="sidebar-nav-item"><a href="dm-guide.html" class="sidebar-nav-link">DM Guide</a></div>
-            <div class="sidebar-nav-item"><a href="dm-tools.html" class="sidebar-nav-link">DM Tools</a></div>
-
-            <div class="sidebar-section-title">Server Systems</div>
-            
-            <div class="sidebar-nav-item"><a href="2014-server-systems/shopping-guide.html" class="sidebar-nav-link">Shopping Guide</a></div>
-            <div class="sidebar-nav-item"><a href="2014-server-systems/crafting.html" class="sidebar-nav-link">Crafting</a></div>
-            <div class="sidebar-nav-item"><a href="2014-server-systems/item-patch-notes.html" class="sidebar-nav-link">Item Patch Notes</a></div>
-            <div class="sidebar-nav-item"><a href="2014-server-systems/downtime-points-guide.html" class="sidebar-nav-link">Downtime Points</a></div>
-            <div class="sidebar-nav-item"><a href="2014-server-systems/prestige-rules.html" class="sidebar-nav-link">Prestige Rules</a></div>
-            
-            <div class="sidebar-section-title">Events</div>
-            <div class="sidebar-nav-item"><a href="events/website-launch-celebration.html" class="sidebar-nav-link">Website Launch</a></div>
+        <aside class="sidebar" id="sidebar-container">
+            <!-- Sidebar content will be injected here -->
         </aside>
 
         <main class="content-with-sidebar">
@@ -120,8 +26,12 @@
         </main>
     </div>
 
+    <!-- SCRIPTS -->
+    <script src="../loader.js"></script> <!-- Load this first -->
     <script src="../search.js"></script>
     <script src="../background-canvas.js"></script>
+    
+    <!-- NOTE: You might need to edit mobile-menu.js to wait for 'componentLoaded' event -->
     <script src="../mobile-menu.js"></script>
 </body>
 </html>
