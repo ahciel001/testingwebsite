@@ -437,16 +437,16 @@
 
 <!-- blocks break -->
 
-<!-- YOUTUBE VIDEO SECTION (UPDATED) -->
+<!-- YOUTUBE VIDEO SECTION (UPDATED WITH BUTTON) -->
 
 <style>
     .video-glass-container {
         /* Main container stays wide (1200px) */
         max-width: 1200px; 
         margin: 2rem auto;
-        padding: 2.5rem 1.5rem; /* More padding top/bottom */
+        padding: 2.5rem 1.5rem; 
         border-radius: 16px;
-        text-align: center; /* Centers the content */
+        text-align: center; 
         
         /* Transparent Glass Theme */
         background: linear-gradient(
@@ -460,12 +460,21 @@
         position: relative;
     }
 
-    /* The New Title */
+    /* Wrapper to align Title and Button */
+    .video-header-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap; /* Stacks on very small mobile screens */
+        margin-bottom: 1.5rem;
+    }
+
     .video-section-title {
         font-size: clamp(1.5rem, 3vw, 2.2rem);
         font-weight: 800;
-        margin-bottom: 1.5rem;
-        display: inline-block;
+        /* Removed margin-bottom here, handled by wrapper */
+        margin: 0;
         
         /* Gradient Text Effect */
         background: linear-gradient(to right, #fff, #22d3ee);
@@ -474,20 +483,39 @@
         filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.3));
     }
 
-    /* 16:9 Responsive Wrapper (Now Smaller & Centered) */
+    /* Small YouTube Button */
+    .yt-mini-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(255, 0, 0, 0.1); /* Subtle Red Tint */
+        border: 1px solid rgba(255, 0, 0, 0.3);
+        color: #ffcccc; /* Light red text */
+        font-family: sans-serif;
+        font-size: 0.85rem;
+        font-weight: 700;
+        padding: 6px 14px;
+        border-radius: 20px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .yt-mini-btn:hover {
+        background: #ff0000; /* Bright Red on hover */
+        color: white;
+        box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+        border-color: #ff0000;
+        transform: translateY(-2px);
+    }
+
+    /* 16:9 Responsive Wrapper (Smaller & Centered) */
     .video-responsive-wrapper {
         position: relative;
         width: 100%;
-        max-width: 850px; /* Restricts video size inside the big box */
-        margin: 0 auto;   /* Centers the video horizontally */
+        max-width: 850px; 
+        margin: 0 auto;   
         
-        height: 0;
-        padding-bottom: 48%; /* Adjusted aspect ratio slightly for the max-width */
-        
-        /* If you want exact 16:9 based on max-width, use calc or keep padding-bottom high.
-           Actually, standard method: padding-bottom is based on width.
-           56.25% of 850px is the height. */
-        padding-bottom: min(56.25%, 478px); /* Ensures ratio holds until max-width */
+        padding-bottom: min(56.25%, 478px); 
         height: 0;
         
         border-radius: 12px;
@@ -497,11 +525,10 @@
         border: 1px solid rgba(255, 255, 255, 0.1);
     }
     
-    /* Responsive fix for aspect ratio on the centered box */
     .video-responsive-wrapper::before {
         content: "";
         display: block;
-        padding-top: 56.25%; /* 16:9 ratio */
+        padding-top: 56.25%; 
     }
 
     .video-responsive-wrapper iframe {
@@ -516,8 +543,17 @@
 
 <div class="video-glass-container">
     
-    <!-- Title Added Here -->
-    <h2 class="video-section-title">The Starry Shore Intro Video</h2>
+    <!-- Title & Button Wrapper -->
+    <div class="video-header-wrapper">
+        <h2 class="video-section-title ">The Starry Shore Intro Video</h2>
+        
+        <!-- YOUTUBE BUTTON ADDED HERE -->
+        <a href="https://youtu.be/934iR9XpXF0" target="_blank" class="yt-mini-btn star-hover-effect">
+            <!-- Simple SVG Play Icon -->
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            Watch on YouTube
+        </a>
+    </div>
 
     <div class="video-responsive-wrapper">
         <iframe 
@@ -729,7 +765,7 @@
             gap: 2rem;
         }
         .bob-card {
-            order: -1; 
+            /* Removed 'order: -1' so it naturally falls below text */
             max-width: 100%;
         }
         .peek-owl { width: 60px; }
@@ -768,7 +804,7 @@
 
         <!-- Bob Image -->
         <div class="bob-card">
-            <img src="assets/img/owl20bob.png" alt="Bob the Dwarf" class="bob-img">
+            <img src="assets/img/owl20bob.png" alt="Bob" class="bob-img">
             <div class="bob-caption">
                 <strong style="color: #E17A2D;">Bob</strong>, played by Uberdragon
             </div>
