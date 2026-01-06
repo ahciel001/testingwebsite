@@ -1,50 +1,74 @@
-// loader.js
-async function loadComponent(elementId, filePath) {
+/* loader.js - Optimized */
+
+// 1. Start fetching the Header IMMEDIATELY. 
+// We don't wait for the DOM. We start the network request right now.
+const headerPromise = fetch('../components/header.html')
+    .then(response => {
+        if (!response.ok) throw new Error('Failed to load header');
+        return response.text();
+    })
+    .catch(error => console.error(error));
+
+// Helper: Generic loader for other components
+async function loadComponent(elementId, htmlContent) {
     const element = document.getElementById(elementId);
     if (!element) return;
-
-    try {
-        const response = await fetch(filePath);
-        if (!response.ok) throw new Error(`Failed to load ${filePath}`);
-        const html = await response.text();
-        element.innerHTML = html;
-        
-        // Dispatch an event to let other scripts know content is loaded
-        // This is important for mobile-menu.js to know the buttons exist now
-        document.dispatchEvent(new Event('componentLoaded'));
-    } catch (error) {
-        console.error(error);
-    }
+    element.innerHTML = htmlContent;
 }
 
-// Function to highlight the active server in the Top Nav
+// Helper: Highlight active link
 function setActiveServer(serverId) {
-    // Wait slightly to ensure header is loaded
-    setTimeout(() => {
-        const link = document.getElementById(serverId);
-        if (link) {
-            link.style.color = "var(--starry-cyan)";
-            link.style.textShadow = "0 0 10px rgba(34, 211, 238, 0.6)";
-        }
-    }, 100); 
+    // We don't need setTimeout anymore because we await the render
+    const link = document.getElementById(serverId);
+    if (link) {
+        link.style.color = "var(--starry-cyan)";
+        link.style.textShadow = "0 0 10px rgba(34, 211, 238, 0.6)";
+    }
 }
 
-// Initialize
-document.addEventListener('DOMContentLoaded', () => {
-    // Determine which sidebar to load based on a data-attribute on the body
-    const sidebarType = document.body.getAttribute('data-sidebar');
+// 2. When the DOM is ready, we just plug in the data that is likely already arrived.
+document.addEventListener('DOMContentLoaded', async () => {
     
-    // Load Header
-    loadComponent('main-header', '../components/header.html').then(() => {
-        // After header loads, set the active color
-        if(sidebarType === '2014') setActiveServer('nav-2014');
-        if(sidebarType === '2024') setActiveServer('nav-2024');
-    });
-
-    // Load Sidebar
-    if (sidebarType === '2014') {
-        loadComponent('sidebar-container', '../components/sidebar-2014.html');
-    } else if (sidebarType === '2024') {
-        loadComponent('sidebar-container', '../components/sidebar-2024.html');
+    // --- HANDLE HEADER ---
+    try {
+        const headerHtml = await headerPromise; // Wait for the fetch we started earlier
+        if (headerHtml) {
+            const headerContainer = document.getElementById('main-header');
+            if (headerContainer) {
+                headerContainer.innerHTML = headerHtml;
+                
+                // Set Active Color
+                const sidebarType = document.body.getAttribute('data-sidebar');
+                if(sidebarType === '2014') setActiveServer('nav-2014');
+                if(sidebarType === '2024') setActiveServer('nav-2024');
+            }
+        }
+    } catch (e) {
+        console.error("Header injection failed", e);
     }
+
+    // --- HANDLE SIDEBAR ---
+    // We have to wait for DOM to read 'data-sidebar', so we fetch this now.
+    const sidebarType = document.body.getAttribute('data-sidebar');
+    const sidebarContainer = document.getElementById('sidebar-container');
+    
+    if (sidebarType && sidebarContainer) {
+        let sidebarPath = '';
+        if (sidebarType === '2014') sidebarPath = '../components/sidebar-2014.html';
+        if (sidebarType === '2024') sidebarPath = '../components/sidebar-2024.html';
+
+        if (sidebarPath) {
+            try {
+                const response = await fetch(sidebarPath);
+                const html = await response.text();
+                sidebarContainer.innerHTML = html;
+            } catch (e) {
+                console.error("Sidebar loading failed", e);
+            }
+        }
+    }
+
+    // --- NOTIFY OTHER SCRIPTS ---
+    // Tell mobile-menu.js that everything is ready
+    document.dispatchEvent(new Event('componentLoaded'));
 });
