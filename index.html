@@ -437,16 +437,16 @@
 
 <!-- blocks break -->
 
-<!-- YOUTUBE VIDEO SECTION (UPDATED WIDTH) -->
+<!-- YOUTUBE VIDEO SECTION (UPDATED) -->
 
 <style>
     .video-glass-container {
-        /* CHANGED: Matches the top container's width exactly */
+        /* Main container stays wide (1200px) */
         max-width: 1200px; 
-        
         margin: 2rem auto;
-        padding: 1.5rem;
+        padding: 2.5rem 1.5rem; /* More padding top/bottom */
         border-radius: 16px;
+        text-align: center; /* Centers the content */
         
         /* Transparent Glass Theme */
         background: linear-gradient(
@@ -460,17 +460,48 @@
         position: relative;
     }
 
-    /* 16:9 Responsive Wrapper */
+    /* The New Title */
+    .video-section-title {
+        font-size: clamp(1.5rem, 3vw, 2.2rem);
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        display: inline-block;
+        
+        /* Gradient Text Effect */
+        background: linear-gradient(to right, #fff, #22d3ee);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.3));
+    }
+
+    /* 16:9 Responsive Wrapper (Now Smaller & Centered) */
     .video-responsive-wrapper {
         position: relative;
         width: 100%;
+        max-width: 850px; /* Restricts video size inside the big box */
+        margin: 0 auto;   /* Centers the video horizontally */
+        
         height: 0;
-        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-        border-radius: 10px;
+        padding-bottom: 48%; /* Adjusted aspect ratio slightly for the max-width */
+        
+        /* If you want exact 16:9 based on max-width, use calc or keep padding-bottom high.
+           Actually, standard method: padding-bottom is based on width.
+           56.25% of 850px is the height. */
+        padding-bottom: min(56.25%, 478px); /* Ensures ratio holds until max-width */
+        height: 0;
+        
+        border-radius: 12px;
         overflow: hidden;
         background: black; 
-        box-shadow: 0 0 20px rgba(34, 211, 238, 0.1);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Responsive fix for aspect ratio on the centered box */
+    .video-responsive-wrapper::before {
+        content: "";
+        display: block;
+        padding-top: 56.25%; /* 16:9 ratio */
     }
 
     .video-responsive-wrapper iframe {
@@ -484,6 +515,10 @@
 </style>
 
 <div class="video-glass-container">
+    
+    <!-- Title Added Here -->
+    <h2 class="video-section-title">The Starry Shore Intro Video</h2>
+
     <div class="video-responsive-wrapper">
         <iframe 
             src="https://www.youtube.com/embed/934iR9XpXF0" 
@@ -496,7 +531,251 @@
 
 <!-- blocks break -->
 
+<!-- OWL20 EXTENSION SECTION -->
 
+<style>
+    /* --- 1. OWL20 CONTAINER --- */
+    .owl-glass-container {
+        max-width: 1200px; 
+        margin: 4rem auto 2rem auto;
+        padding: 2.5rem;
+        border-radius: 16px;
+        position: relative;
+        
+        /* CHANGED: Hidden overflow keeps owls inside the border */
+        overflow: hidden; 
+        
+        /* Dark Glass Background */
+        background: linear-gradient(
+            135deg, 
+            rgba(60, 30, 10, 0.3) 0%, 
+            rgba(2, 2, 10, 0.6) 60%
+        );
+        backdrop-filter: blur(8px);
+        
+        /* Amber/Orange Glowing Borders */
+        border: 1px solid rgba(225, 122, 45, 0.2);
+        border-top: 1px solid rgba(225, 122, 45, 0.5);
+        box-shadow: 
+            0 20px 50px rgba(0, 0, 0, 0.7),
+            inset 0 0 30px rgba(225, 122, 45, 0.05);
+
+        color: var(--starry-text);
+        text-align: left;
+        transform-style: preserve-3d;
+    }
+
+    /* --- 2. PEEKING ANIMATIONS (INSIDE BORDER) --- */
+    
+    .peek-owl {
+        position: absolute;
+        width: 85px;
+        height: auto;
+        z-index: 1; /* Behind text content so it doesn't block clicks */
+        filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5));
+        pointer-events: none;
+    }
+
+    /* 1. TOP RIGHT (Peeks down) */
+    .owl-pos-1 {
+        top: 0;
+        right: 0;
+        /* Start position: Moved up out of view */
+        transform: translateY(-100%); 
+        animation: slideInTop 15s infinite ease-in-out;
+    }
+
+    /* 2. BOTTOM RIGHT (Peeks up - UPRIGHT) */
+    .owl-pos-2 {
+        bottom: 0;
+        right: 30%; /* Offset slightly so it doesn't cover the Bob image on mobile */
+        /* Start position: Moved down out of view */
+        transform: translateY(100%); 
+        animation: slideInBottom 15s infinite ease-in-out;
+        animation-delay: 5s;
+    }
+
+    /* 3. TOP LEFT (Peeks down) */
+    .owl-pos-3 {
+        top: 0;
+        left: 0;
+        /* Start position: Moved up out of view */
+        transform: translateY(-100%); 
+        animation: slideInTop 15s infinite ease-in-out;
+        animation-delay: 10s;
+    }
+
+    /* --- ANIMATION KEYFRAMES --- */
+    
+    @keyframes slideInTop {
+        0%, 90% { transform: translateY(-120%) rotate(0deg); } /* Hidden */
+        5% { transform: translateY(0%) rotate(-5deg); }      /* Peek In */
+        15% { transform: translateY(0%) rotate(5deg); }       /* Wiggle */
+        25% { transform: translateY(0%) rotate(-5deg); }      /* Wiggle */
+        30% { transform: translateY(-120%) rotate(0deg); }      /* Leave */
+    }
+
+    @keyframes slideInBottom {
+        0%, 90% { transform: translateY(120%) rotate(0deg); }   /* Hidden */
+        5% { transform: translateY(20%) rotate(5deg); }         /* Peek In */
+        15% { transform: translateY(20%) rotate(-5deg); }       /* Wiggle */
+        25% { transform: translateY(20%) rotate(5deg); }        /* Wiggle */
+        30% { transform: translateY(120%) rotate(0deg); }       /* Leave */
+    }
+
+    /* --- 3. LAYOUT & CONTENT --- */
+    .owl-flex-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 3rem;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 5; /* Keeps content above the owls */
+    }
+
+    .owl-text-content {
+        flex: 1 1 500px;
+    }
+
+    .owl-quote {
+        border-left: 4px solid #E17A2D;
+        background: rgba(225, 122, 45, 0.08);
+        padding: 1.5rem;
+        border-radius: 0 8px 8px 0;
+        margin: 0;
+    }
+
+    .owl-title {
+        color: #E17A2D;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        display: block;
+        text-shadow: 0 0 10px rgba(225, 122, 45, 0.3);
+    }
+
+    .owl-desc {
+        color: #cbd5e1;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+        font-size: 1.05rem;
+    }
+
+    /* --- 4. BUTTON --- */
+    .owl-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        text-align: center;
+        background: linear-gradient(135deg, #E17A2D, #D95D27);
+        border: 1px solid rgba(255,255,255,0.1);
+        color: #FFF8E7;
+        font-weight: 700;
+        font-size: 1rem;
+        padding: 14px 24px;
+        border-radius: 8px;
+        text-decoration: none;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        transition: all 0.3s ease;
+        overflow: visible; 
+    }
+
+    .owl-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0 20px rgba(225, 122, 45, 0.5);
+        filter: brightness(1.1);
+    }
+
+    /* --- 5. BOB IMAGE --- */
+    .bob-card {
+        flex: 1 1 300px;
+        max-width: 340px;
+        margin: 0 auto;
+        text-align: center;
+        position: relative;
+    }
+
+    .bob-img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        border: 2px solid rgba(225, 122, 45, 0.3);
+        transition: transform 0.3s ease;
+    }
+    
+    .owl-glass-container:hover .bob-img {
+        transform: scale(1.02);
+        border-color: rgba(225, 122, 45, 0.8);
+    }
+
+    .bob-caption {
+        margin-top: 10px;
+        font-size: 0.9em;
+        color: var(--starry-text-dim);
+    }
+
+    /* MOBILE ADJUSTMENT */
+    @media (max-width: 850px) {
+        .owl-glass-container { 
+            padding: 1.5rem; 
+            margin-top: 3rem; 
+        }
+        .owl-flex-wrapper {
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .bob-card {
+            order: -1; 
+            max-width: 100%;
+        }
+        .peek-owl { width: 60px; }
+        
+        /* Adjust owl positions for mobile layout */
+        .owl-pos-2 { right: 10px; } 
+    }
+</style>
+
+<div class="owl-glass-container">
+    
+    <!-- THE PEEKING OWLS (Inside Border) -->
+    <img src="assets/img/owl20.png" alt="" class="peek-owl owl-pos-1">
+    <img src="assets/img/owl20.png" alt="" class="peek-owl owl-pos-2">
+    <img src="assets/img/owl20.png" alt="" class="peek-owl owl-pos-3">
+
+    <div class="owl-flex-wrapper">
+        
+        <!-- Text Section -->
+        <div class="owl-text-content">
+            <h2 style="margin-bottom: 1rem; color: #fff; font-weight: 800; font-size: 2rem;">Owl20 Extension</h2>
+            <div class="owl-quote">
+                <span class="owl-title">Seamlessly Connect D&D Beyond to Owlbear</span>
+                <p class="owl-desc">
+                    <strong>Owl20</strong> connects D&D Beyond + the Beyond20 extension with Owlbear Rodeo VTT,  
+                    allowing dice rolls from your D&D Beyond character sheet to instantly appear in Owlbear Rodeo.
+                    <br><br>
+                    Made by <strong style="color: #E17A2D;">DM Sparks</strong> & <strong style="color: #E17A2D;">DM UberDragon</strong> from the Starry Shores D&D Community!
+                </p>
+                
+                <a href="https://owl20.uberdragon.org/" target="_blank" class="owl-btn star-hover-effect">
+                    <span>🦉 Visit Owl20 Website</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Bob Image -->
+        <div class="bob-card">
+            <img src="assets/img/owl20bob.png" alt="Bob the Dwarf" class="bob-img">
+            <div class="bob-caption">
+                <strong style="color: #E17A2D;">Bob</strong>, played by Uberdragon
+            </div>
+        </div>
+
+    </div>
+</div>
 
 <!-- blocks break -->
 
