@@ -117,18 +117,401 @@
                 </h1>
             </div>
 
-            <p style="font-size: 1.2rem; color: var(--starry-text-dim);">Welcome to your D&D server documentation site. Navigate through the sections above to find the information you need.</p>
-            
-            <h2>Quick Links</h2>
-            <ul style="list-style: none; margin: 0; padding: 0;">
-                <li style="margin: 1.5rem 0;">
-                    <a href="2014-5e-server/about-the-2014-server.html" class="star-hover-effect" style="font-size: 1.5rem; display: inline-block; padding: 10px 20px;">2014 5e Server</a>
-                </li>
-                <li style="margin: 1.5rem 0;">
-                    <a href="2024-5.5e-server/about-the-2024-server.html" class="star-hover-effect" style="font-size: 1.5rem; display: inline-block; padding: 10px 20px;">2024 5.5e Server</a>
-                </li>
+<!-- blocks break -->
+
+<!-- PASTE THIS INSIDE <main> -->
+
+<style>
+    /* --- 1. THE COSMIC CONTAINER --- */
+    .welcome-container {
+        padding: 2rem;
+        margin: 1rem auto;
+        border-radius: 16px;
+        position: relative;
+        overflow: visible; 
+        
+        /* The Holographic Background */
+        background: linear-gradient(
+            135deg, 
+            rgba(20, 30, 60, 0.1) 0%, 
+            rgba(2, 2, 10, 0.2) 60%
+        );
+        backdrop-filter: blur(2px);
+        
+        /* Glowing Borders */
+        border: 1px solid rgba(34, 211, 238, 0.1);
+        border-top: 1px solid rgba(34, 211, 238, 0.5);
+        border-left: 1px solid rgba(34, 211, 238, 0.2);
+        
+        /* Deep Shadow */
+        box-shadow: 
+            0 20px 50px rgba(0, 0, 0, 0.7),
+            inset 0 0 30px rgba(34, 211, 238, 0.05);
+
+        text-align: left;
+        color: var(--starry-text);
+        max-width: 1200px; /* Made slightly wider to fit image better */
+        
+        transform-style: preserve-3d;
+        perspective: 1000px;
+    }
+
+    /* Magical Glow at the top edge */
+    .welcome-container::after {
+        content: '';
+        position: absolute;
+        top: 0; left: 10%; right: 10%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--starry-cyan), transparent);
+        box-shadow: 0 0 15px var(--starry-cyan);
+        opacity: 0.7;
+    }
+
+    /* --- 2. TYPOGRAPHY --- */
+    .welcome-title {
+        font-size: clamp(2.2rem, 5vw, 3.5rem);
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+        line-height: 1;
+        display: inline-block;
+        background: linear-gradient(to right, #fff, #a5f3fc, #22d3ee);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 0 10px rgba(34, 211, 238, 0.3));
+        transform-style: preserve-3d;
+    }
+
+    .subtitle-accent {
+        display: block;
+        font-size: 1.8rem;
+        color: var(--starry-gold);
+        margin-bottom: 0.5rem;
+        font-weight: 300;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        opacity: 0.9;
+    }
+
+    .welcome-text {
+        color: #cbd5e1;
+        font-size: 1.05rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        max-width: 850px;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+
+    /* --- 3. GLASSY DISCORD BUTTONS --- */
+    .discord-btn-wrapper {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        margin-bottom: 1.5rem;
+        transform-style: preserve-3d;
+    }
+
+    .discord-join-button {
+        background: linear-gradient(135deg, #5865F2, #4752C4);
+        color: white;
+        font-family: 'Trebuchet MS', sans-serif;
+        font-weight: 700;
+        font-size: 0.95rem;
+        padding: 12px 24px;
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 8px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        transform-style: preserve-3d;
+    }
+
+    .discord-join-button::before {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: 0.5s;
+    }
+
+    .discord-join-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0 20px rgba(88, 101, 242, 0.6);
+        border-color: rgba(255,255,255,0.3);
+    }
+
+    .discord-join-button:hover::before { left: 100%; }
+
+    /* --- 4. FEATURE LIST (COMPACT) --- */
+    .feature-list {
+        list-style: none;
+        padding-left: 0;
+    }
+    
+    .feature-list li {
+        /* Reduced margin and padding for tighter look */
+        margin-bottom: 2px; 
+        padding: 5px 5px 5px 35px;
+        
+        position: relative;
+        color: var(--starry-text);
+        font-size: 1rem;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+        border: 1px solid transparent;
+        line-height: 1.4;
+    }
+    
+    .feature-list li:hover {
+        background: rgba(34, 211, 238, 0.05);
+        border-color: rgba(34, 211, 238, 0.1);
+        transform: translateX(5px);
+        color: white;
+    }
+
+    .feature-list li::before {
+        content: '✦';
+        position: absolute;
+        left: 10px;
+        top: 7px; /* Adjusted for tighter padding */
+        color: var(--starry-gold);
+        font-size: 1.1em;
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .feature-list li:hover::before {
+        transform: rotate(180deg) scale(1.2);
+        text-shadow: 0 0 8px var(--starry-gold);
+    }
+
+    .feature-list strong {
+        color: var(--starry-cyan);
+        font-weight: 600;
+    }
+
+    /* --- 5. VOX CARD --- */
+    @keyframes hellfirePulse {
+        0% { box-shadow: 0 0 20px rgba(80, 0, 0, 0.6), 0 0 10px rgba(0,0,0,0.8); border-color: #550000; }
+        100% { box-shadow: 0 0 40px rgba(220, 20, 20, 0.5), 0 0 20px rgba(255, 50, 50, 0.3); border-color: #ff3333; }
+    }
+
+    .vox-card {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        background: #050505;
+        border-bottom: 3px solid #770000; 
+        animation: hellfirePulse 2s infinite alternate ease-in-out;
+        transition: transform 0.3s;
+        transform: translateZ(0); 
+        width: 100%;
+    }
+
+    .vox-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.6s ease;
+        filter: contrast(1.1) brightness(0.9);
+    }
+
+    .vox-card:hover .vox-img {
+        transform: scale(1.15);
+        filter: contrast(1.2) brightness(1.1);
+    }
+
+    .vox-footer {
+        position: absolute;
+        bottom: 0; left: 0; width: 100%;
+        background: linear-gradient(to top, rgba(0,0,0,0.9) 30%, transparent 100%);
+        padding: 40px 10px 12px 10px;
+        text-align: center;
+        color: rgba(255,255,255,0.7);
+        font-size: 0.8em;
+        font-style: italic;
+        pointer-events: none;
+    }
+
+    /* --- 6. DIVIDER & MOBILE --- */
+    .cosmic-divider {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.4), transparent);
+        margin: 2rem 0 1.5rem 0;
+    }
+
+    /* MOBILE OPTIMIZATIONS */
+    @media (max-width: 850px) {
+        .welcome-container {
+            padding: 1.5rem; /* Smaller padding on mobile */
+            margin: 1rem auto;
+        }
+        .discord-btn-wrapper {
+            justify-content: flex-start; /* Align buttons left on mobile */
+        }
+        .feature-list li {
+            font-size: 0.95rem; /* Slightly smaller text */
+        }
+        /* Make image center on mobile */
+        .vox-card-container {
+            margin: 20px auto !important; 
+        }
+    }
+</style>
+
+<!-- MAIN CONTENT BLOCK -->
+<div class="welcome-container">
+    
+    <!-- Title Section -->
+    <div>
+        <span class="subtitle-accent">D&D 5th Edition Westmarches Servers (2014 & 2024)</span>
+    </div>
+
+    <!-- Buttons -->
+    <div class="discord-btn-wrapper">
+        <a href="https://discord.gg/thestarryshore" target="_blank" style="text-decoration: none;">
+            <button class="discord-join-button star-hover-effect">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.419-2.1569 2.419zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.419-2.1568 2.419z"/></svg>
+                Join 2014 (5e)
+            </button>
+        </a>
+        <a href="https://discord.gg/3RgtCcaH6F" target="_blank" style="text-decoration: none;">
+            <button class="discord-join-button star-hover-effect">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.419-2.1569 2.419zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.419-2.1568 2.419z"/></svg>
+                Join 2024 (5.5e)
+            </button>
+        </a>
+    </div>
+
+    <!-- Intro Text -->
+    <div class="welcome-text">
+        Join a vibrant <strong>18+ Dungeons & Dragons</strong> 5e and 5.5e community! 
+        <span style="color: var(--starry-gold);">New players Super Friendly.</span> 
+        Explore the multiverse as creative and talented DMs guide you through one-shots, campaigns, and living worlds of their own imagining. All official magic items are available. 
+        <br><br>
+        Participate in <strong>live voice</strong> and <strong>text role-play</strong>, and experience the thrill of adventure anytime, anywhere. With an active and friendly player base, it's time to let your imagination soar at The Starry Shore! Join our community of players and start your journey today! 
+    </div>
+
+    <!-- Layout: List & Image -->
+    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 40px;">
+        
+        <!-- Feature List (Fills available space) -->
+        <div style="flex: 2; min-width: 280px;">
+            <ul class="feature-list">
+                <li><strong>Super easy</strong> character creation & starting at lvl 3</li>
+                <li><strong>Beginner</strong> and veteran friendly (5e and Avrae)</li>
+                <li><strong>LGBT+</strong> Friendly Space</li>
+                <li>Special <strong>Gods</strong> with blessings for worshiping them</li>
+                <li><strong>Living World</strong>: Make a character with all official choices</li>
+                <li><strong>24/7</strong> Available games for all timezones</li>
+                <li><strong>Hours</strong> based character leveling</li>
+                <li><strong>DM Rewards</strong>: 1.5x character progression</li>
             </ul>
         </div>
+
+        <!-- Vox Card (Bigger and fills right space) -->
+        <div class="vox-card-container" style="flex: 1; display: flex; justify-content: center; min-width: 280px;">
+            <!-- Increased max width to 340px to fill space better -->
+            <div class="vox-card" style="max-width: 340px;">
+                <img src="assets/img/oto.png" alt="Vox Character Art" class="vox-img">
+                <div class="vox-footer">
+                    <span style="color: #ff5555; font-weight: bold; text-shadow: 0 0 8px rgba(255,0,0,0.6);">Vox</span>, played by @katmando
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Divider Line -->
+    <div class="cosmic-divider"></div>
+
+    <p style="color: var(--starry-text-dim); font-size: 0.95rem;">
+        Join The Starry Shore today and experience limitless storytelling across two timelines <strong style="color: var(--starry-cyan)">2014 (5e)</strong> and <strong style="color: var(--starry-cyan)">2024 (5.5e)</strong>.
+    </p>
+
+</div>
+
+<!-- blocks break -->
+
+<!-- YOUTUBE VIDEO SECTION (UPDATED WIDTH) -->
+
+<style>
+    .video-glass-container {
+        /* CHANGED: Matches the top container's width exactly */
+        max-width: 1200px; 
+        
+        margin: 2rem auto;
+        padding: 1.5rem;
+        border-radius: 16px;
+        
+        /* Transparent Glass Theme */
+        background: linear-gradient(
+            135deg, 
+            rgba(20, 30, 60, 0.3) 0%, 
+            rgba(2, 2, 10, 0.5) 60%
+        );
+        backdrop-filter: blur(4px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+        position: relative;
+    }
+
+    /* 16:9 Responsive Wrapper */
+    .video-responsive-wrapper {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+        border-radius: 10px;
+        overflow: hidden;
+        background: black; 
+        box-shadow: 0 0 20px rgba(34, 211, 238, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .video-responsive-wrapper iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+</style>
+
+<div class="video-glass-container">
+    <div class="video-responsive-wrapper">
+        <iframe 
+            src="https://www.youtube.com/embed/934iR9XpXF0" 
+            title="The Starry Shore Trailer" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
+    </div>
+</div>
+
+<!-- blocks break -->
+
+
+
+<!-- blocks break -->
+
+
+
+<!-- blocks break -->
+
+
+
+<!-- blocks break -->
+
+
+
+<!-- blocks break -->
+ 
     </main>
 
     <script src="search.js"></script>
