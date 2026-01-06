@@ -1,24 +1,24 @@
 /* mobile-menu.js */
 
-// Helper function to initialize Header logic (Hamburger & Dropdowns)
+// 1. Helper function to initialize Header logic (Hamburger & Dropdowns)
 function initHeaderLogic() {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.header-content-wrapper');
     const navItems = document.querySelectorAll('.nav-item');
 
-    // 1. Main Navigation (Hamburger)
-    // We check if hamburger exists AND if we haven't already added the listener
+    // Check if hamburger exists AND if we haven't already added the listener
+    // This prevents double-attaching if the script runs twice
     if (hamburger && navMenu && !hamburger.dataset.initialized) {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
         
-        // Mark as initialized so we don't add the listener again
+        // Mark as initialized
         hamburger.dataset.initialized = "true";
     }
 
-    // 2. Mobile Dropdown Accordion Logic
+    // Mobile Dropdown Accordion Logic
     if (window.innerWidth <= 900) {
         navItems.forEach(item => {
             // Check if this specific item is already initialized
@@ -29,6 +29,7 @@ function initHeaderLogic() {
 
             if (dropdown && link) {
                 link.addEventListener('click', (e) => {
+                    // Only prevent default if it triggers a dropdown
                     e.preventDefault();
                     e.stopPropagation();
                     
@@ -57,10 +58,9 @@ function initHeaderLogic() {
         });
     }
 
-    // Close main menu when clicking a link inside the nav
+    // Close main menu when clicking a regular link inside the nav
     const pageLinks = document.querySelectorAll('.dropdown-item, .nav-link:not(:has(+ .dropdown))');
     pageLinks.forEach(link => {
-        // Prevent adding multiple listeners to the same link
         if(link.dataset.clickListenerAdded) return;
         
         link.addEventListener('click', () => {
@@ -72,7 +72,7 @@ function initHeaderLogic() {
     });
 }
 
-// Helper function to initialize Sidebar Link logic
+// 2. Helper function to initialize Sidebar Link logic
 function initSidebarLinks() {
     const sidebar = document.querySelector('.sidebar');
     const sidebarToggle = document.querySelector('.mobile-sidebar-toggle');
@@ -94,9 +94,12 @@ function initSidebarLinks() {
 }
 
 
-// --- LISTENER 1: Run immediately for Static Elements ---
-// The Sidebar Toggle Button exists in the HTML immediately, so we don't wait for the loader.
+// --- LISTENER 1: Run immediately (For Index.html / Static Content) ---
 document.addEventListener('DOMContentLoaded', () => {
+    // Attempt to run header logic immediately for pages where header is hardcoded
+    initHeaderLogic();
+    
+    // Sidebar Toggle Logic (Usually static on page)
     const sidebarToggle = document.querySelector('.mobile-sidebar-toggle');
     const sidebar = document.querySelector('.sidebar');
 
@@ -126,8 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// --- LISTENER 2: Run when Dynamic Content is injected ---
-// This listens for the event dispatched by loader.js
+// --- LISTENER 2: Run when Dynamic Content is injected (For Sub-pages) ---
 document.addEventListener('componentLoaded', () => {
     initHeaderLogic();
     initSidebarLinks();
