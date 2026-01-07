@@ -91,7 +91,7 @@
 
     <main>
         <div class="content no-sidebar" style="text-align: center;">
-            <div style="display: flex; justify-content: center; margin-bottom: 2rem;">
+            <div style="display: flex; justify-content: center; margin-bottom: 1rem;">
                 <h1 style="
                   font-size: clamp(2rem, 5vw, 4em);
                   display: flex; 
@@ -123,7 +123,7 @@
     /* --- 1. THE COSMIC CONTAINER --- */
     .welcome-container {
         padding: 2rem;
-        margin: 1rem auto;
+        margin: 0.5rem auto;
         border-radius: 16px;
         position: relative;
         overflow: visible; 
@@ -194,7 +194,7 @@
         color: #cbd5e1;
         font-size: 1.05rem;
         line-height: 1.6;
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
         max-width: 850px;
         text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     }
@@ -361,13 +361,13 @@
         width: 100%;
         height: auto;
         display: block;
-        transition: transform 0.6s ease;
-        filter: contrast(1.1) brightness(0.9);
+        transition: transform 0.3s ease;
+        filter: contrast(1.1) brightness(1.0);
     }
 
     .vox-card-wrapper:hover .vox-img {
-        transform: scale(1.15);
-        filter: contrast(1.2) brightness(1.1);
+        transform: scale(1.3);
+        filter: contrast(1.2) brightness(1.3);
     }
 
     .vox-footer {
@@ -501,7 +501,7 @@
         /* Main container stays wide (1200px) */
         max-width: 1200px; 
         margin: 2rem auto;
-        padding: 2.5rem 1.5rem; 
+        padding: 1rem 1.5rem; 
         border-radius: 16px;
         text-align: center; 
         
@@ -524,7 +524,7 @@
         justify-content: center;
         gap: 15px;
         flex-wrap: wrap; /* Stacks on very small mobile screens */
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
     }
 
     .video-section-title {
@@ -630,7 +630,7 @@
     /* --- 1. OWL20 CONTAINER --- */
     .owl-glass-container {
         max-width: 1200px; 
-        margin: 4rem auto 2rem auto;
+        margin: 2rem auto 2rem auto;
         padding: 2.5rem;
         border-radius: 16px;
         position: relative;
@@ -751,7 +751,7 @@
     .owl-desc {
         color: #cbd5e1;
         line-height: 1.7;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
         font-size: 1.05rem;
     }
 
@@ -869,6 +869,235 @@
 
     </div>
 </div>
+
+<!-- blocks break -->
+
+<!-- WEBSITE TUTORIAL SECTION WITH LIGHTBOX -->
+
+<style>
+    /* --- 1. ON-PAGE CONTAINER --- */
+    .tutorial-glass-container {
+        max-width: 1200px;
+        margin: 2rem auto 4rem auto;
+        padding: 1rem 1rem;
+        border-radius: 16px;
+        text-align: center;
+        
+        /* Transparent Glass Theme */
+        background: linear-gradient(
+            135deg, 
+            rgba(20, 30, 60, 0.3) 0%, 
+            rgba(2, 2, 10, 0.5) 60%
+        );
+        backdrop-filter: blur(4px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+    }
+
+    .tutorial-title {
+        font-size: clamp(1.5rem, 3vw, 2.2rem);
+        font-weight: 800;
+        margin-bottom: 2rem;
+        display: inline-block;
+        background: linear-gradient(to right, #fff, #22d3ee);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.3));
+    }
+
+    /* Thumbnail Wrapper */
+    .tutorial-img-wrapper {
+        max-width: 1000px;
+        margin: 0 auto;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        cursor: pointer; /* Shows it's clickable */
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    /* "Click to Enlarge" overlay hint */
+    .tutorial-img-wrapper::after {
+        content: '🔍 Click to Zoom';
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0,0,0,0.7);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 30px;
+        border: 1px solid var(--starry-cyan);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        font-weight: bold;
+    }
+
+    .tutorial-glass-container:hover .tutorial-img-wrapper::after {
+        opacity: 1;
+    }
+
+    .tutorial-glass-container:hover .tutorial-img-wrapper {
+        transform: translateY(-5px);
+        border-color: rgba(34, 211, 238, 0.5);
+        box-shadow: 0 0 30px rgba(34, 211, 238, 0.15);
+    }
+
+    .tutorial-img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    /* --- 2. FULL SCREEN MODAL (LIGHTBOX) --- */
+    .lightbox-modal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(2, 2, 10, 0.95); /* Very dark bg */
+        backdrop-filter: blur(10px);
+        overflow: auto; /* Allows scrolling when zoomed */
+        animation: fadeIn 0.3s;
+    }
+
+    /* Modal Image Container */
+    .lightbox-content-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100%; /* Ensures vertical centering */
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .lightbox-img {
+        display: block;
+        max-width: 95%;
+        max-height: 90vh;
+        border-radius: 8px;
+        box-shadow: 0 0 50px rgba(34, 211, 238, 0.2);
+        cursor: zoom-in;
+        transition: transform 0.3s ease;
+    }
+
+    /* State: Zoomed In */
+    .lightbox-img.zoomed {
+        max-width: none;
+        max-height: none;
+        width: auto;
+        cursor: zoom-out;
+    }
+
+    /* Close Button */
+    .lightbox-close {
+        position: fixed;
+        top: 20px;
+        right: 30px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+        cursor: pointer;
+        z-index: 10000;
+        background: rgba(0,0,0,0.5);
+        width: 50px;
+        height: 50px;
+        line-height: 45px;
+        text-align: center;
+        border-radius: 50%;
+        border: 2px solid transparent;
+    }
+
+    .lightbox-close:hover,
+    .lightbox-close:focus {
+        color: var(--starry-cyan);
+        border-color: var(--starry-cyan);
+        background: rgba(0,0,0,0.8);
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
+    /* Mobile Hint Text inside Modal */
+    .lightbox-hint {
+        position: fixed;
+        bottom: 20px;
+        left: 0; 
+        width: 100%;
+        text-align: center;
+        color: rgba(255,255,255,0.6);
+        pointer-events: none;
+        font-size: 0.9em;
+    }
+</style>
+
+<!-- ON PAGE CONTENT -->
+<div class="tutorial-glass-container">
+    <h2 class="tutorial-title star-hover-effect">How to use the website?</h2>
+    
+    <div class="tutorial-img-wrapper" onclick="openLightbox()">
+        <img src="assets/img/webt.png" alt="Website Tutorial" class="tutorial-img">
+    </div>
+</div>
+
+<!-- HIDDEN MODAL -->
+<div id="myLightbox" class="lightbox-modal" onclick="closeLightbox(event)">
+    <span class="lightbox-close" onclick="closeLightbox(event)">×</span>
+    
+    <div class="lightbox-content-wrapper">
+        <img class="lightbox-img" id="lightboxImg" src="assets/img/webt.png" onclick="toggleZoom(event)">
+    </div>
+    
+    <div class="lightbox-hint">Tap image to Zoom • Tap background to Close</div>
+</div>
+
+<!-- JAVASCRIPT FOR MODAL -->
+<script>
+    function openLightbox() {
+        document.getElementById("myLightbox").style.display = "block";
+        document.body.style.overflow = "hidden"; // Prevent background scrolling
+    }
+
+    function closeLightbox(event) {
+        // Close only if clicking overlay or X button, not the image itself
+        if (event.target.id === 'myLightbox' || event.target.classList.contains('lightbox-close') || event.target.classList.contains('lightbox-content-wrapper')) {
+            const modal = document.getElementById("myLightbox");
+            const img = document.getElementById("lightboxImg");
+            
+            modal.style.display = "none";
+            document.body.style.overflow = "auto"; // Re-enable scroll
+            
+            // Reset zoom when closing
+            img.classList.remove("zoomed");
+        }
+    }
+
+    function toggleZoom(event) {
+        event.stopPropagation(); // Don't trigger closeLightbox
+        const img = document.getElementById("lightboxImg");
+        img.classList.toggle("zoomed");
+    }
+    
+    // Allow ESC key to close
+    document.addEventListener('keydown', function(event) {
+        if (event.key === "Escape") {
+            const modal = document.getElementById("myLightbox");
+            if(modal.style.display === "block") {
+                modal.style.display = "none";
+                document.body.style.overflow = "auto";
+                document.getElementById("lightboxImg").classList.remove("zoomed");
+            }
+        }
+    });
+</script>
 
 <!-- blocks break -->
 
