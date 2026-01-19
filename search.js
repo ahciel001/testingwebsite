@@ -1,6 +1,9 @@
-/* search.js */
+/* search.js - With Auto-Scroll (Text Fragments) */
 
-// 1. MASTER LIST (URLs relative to the website root)
+// 1. DETERMINE ROOT PATH
+const searchBasePath = window.rootPath || './';
+
+// 2. MASTER LIST
 const pageIndex = {
     'all': [
         { title: 'Home', url: 'index.html', category: 'General' },
@@ -29,7 +32,6 @@ const pageIndex = {
     ]
 };
 
-// Helper: Filter lists for specific dropdown selection
 pageIndex['2014'] = pageIndex['all'].filter(p => p.category === '2014');
 pageIndex['2024'] = pageIndex['all'].filter(p => p.category === '2024');
 
@@ -37,31 +39,42 @@ let searchResultsContainer = null;
 let isIndexing = false;
 let hasIndexed = false;
 
-// 2. INITIALIZATION
+// 3. INITIALIZATION
 function initSearch() {
     const searchInput = document.getElementById('searchInput');
     const searchFilter = document.getElementById('searchFilter');
     
     if (!searchInput || !searchFilter) return;
 
-    // Build the results dropdown
+    const newInput = searchInput.cloneNode(true);
+    searchInput.parentNode.replaceChild(newInput, searchInput);
+    
+    const newFilter = searchFilter.cloneNode(true);
+    searchFilter.parentNode.replaceChild(newFilter, searchFilter);
+
     createResultsContainer();
     
-    // Event Listeners
-    searchInput.addEventListener('input', handleInput);
-    searchInput.addEventListener('focus', handleInput); // Show previous results on click
-    searchFilter.addEventListener('change', performSearch);
+    const activeInput = document.getElementById('searchInput');
+    const activeFilter = document.getElementById('searchFilter');
+
+    activeInput.addEventListener('input', handleInput);
+    activeInput.addEventListener('focus', handleInput); 
+    activeFilter.addEventListener('change', performSearch);
     
-    // Close when clicking outside
     document.addEventListener('click', (e) => {
-        if (!document.querySelector('.search-container').contains(e.target)) {
+        if (searchResultsContainer && !document.querySelector('.search-container').contains(e.target)) {
             searchResultsContainer.style.display = 'none';
         }
     });
+    
+    console.log("Search Initialized.");
 }
 
-// 3. CREATE UI
+// 4. CREATE UI
 function createResultsContainer() {
+    const existing = document.getElementById('searchResults');
+    if (existing) existing.remove();
+
     searchResultsContainer = document.createElement('div');
     searchResultsContainer.id = 'searchResults';
     searchResultsContainer.style.cssText = `
@@ -90,83 +103,72 @@ function createResultsContainer() {
     }
 }
 
-// 4. HANDLE INPUT & TRIGGER INDEXING
+// 5. HANDLE INPUT
 function handleInput(e) {
     const query = e.target.value.toLowerCase().trim();
 
-    // Start fetching content relative to where we are
     if (!hasIndexed && !isIndexing) {
         indexPageContent();
     }
 
     if (query.length < 2) {
-        searchResultsContainer.style.display = 'none';
+        if(searchResultsContainer) searchResultsContainer.style.display = 'none';
         return;
     }
     
     performSearch();
 }
 
-// 5. INDEXING LOGIC (The "Search Inside Content" Magic)
+// 6. INDEXING LOGIC (Clean Code)
 async function indexPageContent() {
     isIndexing = true;
-    
-    // Determine depth to fix relative paths (Are we in root or a subfolder?)
-    // If the Logo link is "../index.html", we are in a subfolder.
-    const logoLink = document.querySelector('.logo-text');
-    const isSubfolder = logoLink && logoLink.getAttribute('href').startsWith('../');
-    const prefix = isSubfolder ? '../' : '';
-
-    console.log("Starting Search Indexing...");
+    console.log(`Starting Indexing...`);
 
     const uniquePages = pageIndex['all'];
     
     const fetchPromises = uniquePages.map(async (page) => {
-        // Skip if already has content
         if (page.searchContent) return;
 
         try {
-            // Fetch the HTML file
-            const response = await fetch(prefix + page.url);
-            if (!response.ok) throw new Error('Failed to load');
+            const response = await fetch(searchBasePath + page.url);
+            if (!response.ok) throw new Error(`Status ${response.status}`);
             
             const htmlText = await response.text();
-            
-            // Parse HTML string into a DOM object
             const parser = new DOMParser();
             const doc = parser.parseFromString(htmlText, 'text/html');
             
-            // Extract text ONLY from <main> or .content-with-sidebar to avoid header/footer noise
-            const mainContent = doc.querySelector('main') || doc.querySelector('.content-with-sidebar') || doc.body;
-            
-            // Clean up text (remove multiple spaces/newlines)
-            page.searchContent = mainContent.innerText.replace(/\s+/g, ' ').toLowerCase();
+            let contentNode = doc.querySelector('main') || doc.querySelector('.content-with-sidebar') || doc.body;
+
+            // Remove Script/Style/Nav junk
+            const junk = contentNode.querySelectorAll('script, style, noscript, template, header, nav, footer, .sidebar, .mobile-sidebar-toggle');
+            junk.forEach(el => el.remove());
+
+            page.searchContent = contentNode.textContent.replace(/\s+/g, ' ').toLowerCase();
             
         } catch (err) {
-            console.warn(`Could not index ${page.url}`, err);
-            page.searchContent = ""; // Empty string on fail
+            console.warn(`Could not index ${page.url}:`, err);
+            page.searchContent = "";
         }
     });
 
     await Promise.all(fetchPromises);
     hasIndexed = true;
     isIndexing = false;
-    console.log("Indexing Complete.");
-    
-    // Re-run search now that data is loaded
     performSearch(); 
 }
 
-// 6. PERFORM SEARCH
+// 7. PERFORM SEARCH
 function performSearch() {
     const searchInput = document.getElementById('searchInput');
     const searchFilter = document.getElementById('searchFilter');
+    
+    if(!searchInput) return;
+
     const query = searchInput.value.toLowerCase().trim();
-    const filter = searchFilter.value;
+    const filter = searchFilter ? searchFilter.value : 'all';
     
     if (query.length < 2) return;
 
-    // Show "Loading..." if still indexing
     if (isIndexing) {
         searchResultsContainer.style.display = 'block';
         searchResultsContainer.innerHTML = `<div style="padding:1rem; text-align:center; color:#94a3b8;">Scanning stars (Indexing)...</div>`;
@@ -175,11 +177,8 @@ function performSearch() {
     
     const pages = pageIndex[filter] || pageIndex['all'];
     
-    // Search Algorithm
     const results = pages.filter(page => {
-        // 1. Check Title
         if (page.title.toLowerCase().includes(query)) return true;
-        // 2. Check Content (if loaded)
         if (page.searchContent && page.searchContent.includes(query)) return true;
         return false;
     });
@@ -187,42 +186,46 @@ function performSearch() {
     displaySearchResults(results, query);
 }
 
-// 7. DISPLAY RESULTS WITH SNIPPETS
+// 8. DISPLAY RESULTS (UPDATED WITH TEXT FRAGMENTS)
 function displaySearchResults(results, query) {
     if (results.length === 0) {
         searchResultsContainer.innerHTML = `
             <div style="padding: 1rem; color: var(--starry-text-dim); text-align: center;">
-                No results found in this sector.
+                No results found.
             </div>
         `;
         searchResultsContainer.style.display = 'block';
         return;
     }
-    
-    // Determine path prefix for links
-    const logoLink = document.querySelector('.logo-text');
-    const isSubfolder = logoLink && logoLink.getAttribute('href').startsWith('../');
-    const prefix = isSubfolder ? '../' : '';
 
     const resultsHTML = results.slice(0, 8).map(page => {
-        // Generate Snippet
         let snippet = "Page matches title.";
-        
+        let fragment = ""; // This is the magic part
+
         if (page.searchContent && page.searchContent.includes(query)) {
             const index = page.searchContent.indexOf(query);
+            
+            // Get a snippet of ~60 chars
             const start = Math.max(0, index - 30);
             const end = Math.min(page.searchContent.length, index + query.length + 30);
             
+            // Extract the text for visual snippet
             let text = page.searchContent.substring(start, end);
-            // Highlight match
+
+            // --- GENERATE SCROLL LINK ---
+            // We use the same snippet text for the scroll anchor
+            // "encodeURIComponent" makes sure spaces and special chars work in the URL
+            fragment = `#:~:text=${encodeURIComponent(text.trim())}`;
+            // -----------------------------
+
+            // Visual Highlight for Dropdown
             const regex = new RegExp(`(${query})`, 'gi');
             text = text.replace(regex, '<span style="color: var(--starry-gold); font-weight:bold;">$1</span>');
-            
             snippet = "..." + text + "...";
         }
 
         return `
-            <a href="${prefix + page.url}" style="display: block; padding: 0.8rem 1rem; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.2s;">
+            <a href="${searchBasePath + page.url}${fragment}" style="display: block; padding: 0.8rem 1rem; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.2s;">
                 <div style="font-weight: bold; color: var(--starry-cyan); font-size: 0.95rem; margin-bottom: 4px;">
                     ${page.title}
                 </div>
@@ -236,21 +239,15 @@ function displaySearchResults(results, query) {
     searchResultsContainer.innerHTML = resultsHTML;
     searchResultsContainer.style.display = 'block';
     
-    // Add hover effects via JS (easier than CSS for dynamic elements sometimes)
     const links = searchResultsContainer.querySelectorAll('a');
     links.forEach(link => {
-        link.addEventListener('mouseenter', () => {
-            link.style.background = 'rgba(34, 211, 238, 0.1)';
-        });
-        link.addEventListener('mouseleave', () => {
-            link.style.background = 'transparent';
-        });
+        link.addEventListener('mouseenter', () => { link.style.background = 'rgba(34, 211, 238, 0.1)'; });
+        link.addEventListener('mouseleave', () => { link.style.background = 'transparent'; });
     });
 }
 
-// Run Init
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSearch);
-} else {
+document.addEventListener('componentLoaded', initSearch);
+
+if (document.readyState === 'complete') {
     initSearch();
 }

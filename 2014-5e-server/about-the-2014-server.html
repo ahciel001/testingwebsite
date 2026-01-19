@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Title - 2014 5e Server</title>
     <link rel="stylesheet" href="../style.css">
+    <script>window.rootPath = "../";</script> 
     <script src="../loader.js"></script> <!-- Load this first -->
 </head>
 <!-- IMPORTANT: data-sidebar tells the loader which sidebar to grab -->
@@ -21,10 +22,933 @@
             <!-- Sidebar content will be injected here -->
         </aside>
 
+        <!-- ▼▼▼ PASTE YOUR CONTENT INSIDE THIS TAG ▼▼▼ -->
         <main class="content-with-sidebar">
-            <h1>Page Title</h1>
-            <p>Your content here...</p>
+            <h1>D&D 5th Edition Westmarch Server (2014/5e)</h1>
+            
+            <!-- ========================================== -->
+            <!-- START OF JADE CARD SECTION -->
+            <!-- ========================================== -->
+
+            <!-- External Fonts for this specific card -->
+            <style>
+              @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;600&display=swap');
+
+              /* --- DISCORD BUTTON STYLE --- */
+              .discord-join-button {
+                /* Original Blue Gradient */
+                background: linear-gradient(45deg, var(--starry-deep-blue), var(--starry-blue));
+                color: #fff;
+                border: 1px solid var(--starry-cyan);
+                padding: 12px 28px;
+                border-radius: 30px; 
+                font-family: 'Trebuchet MS', sans-serif;
+                font-size: 1.1rem;
+                font-weight: bold;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+                text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+              }
+
+              .discord-join-button:hover {
+                /* REMOVED: background color change */
+                /* REMOVED: text color change */
+                
+                /* ADDED: Just a slight brightness boost so you know it's clickable */
+                filter: brightness(1.2); 
+                
+                box-shadow: 0 0 25px var(--starry-blue);
+                transform: translateY(-2px);
+              }
+
+              /* --- JADE CARD CONTAINER --- */
+              .jade-card {
+                /* UPDATED: Much more transparent (0.3 and 0.1 opacity) */
+                background: linear-gradient(135deg, rgba(2, 2, 10, 0.3), rgba(30, 58, 138, 0.1));
+                
+                /* Keep a slight blur so text is readable, but stars show through */
+                backdrop-filter: blur(2px); 
+                -webkit-backdrop-filter: blur(4px);
+
+                border: 1px solid rgba(251, 191, 36, 0.3);
+                border-radius: 16px;
+                padding: 40px;
+                margin: 40px auto;
+                width: 100%;
+                max-width: 1100px;
+                
+                /* Lighter shadow */
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+                
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: center;
+                gap: 40px;
+                font-family: 'Inter', sans-serif;
+                position: relative;
+                overflow: hidden;
+              }
+
+              /* --- LEFT SIDE: TEXT --- */
+              .jade-text-side {
+                flex: 1;
+                min-width: 300px;
+                z-index: 2;
+              }
+
+              .jade-header {
+                font-family: 'Cinzel', serif;
+                font-size: 2.2em;
+                background: linear-gradient(to right, var(--starry-cyan), #60a5fa, #ffffff);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+                margin-bottom: 0.5em;
+                display: block;
+                font-weight: 900;
+                filter: drop-shadow(0 0 5px rgba(34, 211, 238, 0.5));
+                line-height: 1.2;
+              }
+
+              .jade-body {
+                color: #e0e7ff;
+                line-height: 1.8;
+                font-size: 1.05em;
+                /* Important for readability on transparent bg */
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 1); 
+              }
+
+              /* --- RIGHT SIDE: IMAGE WRAPPER --- */
+              .jade-img-wrapper {
+                flex: 0 0 auto;
+                position: relative;
+                width: 280px;
+                margin: 0 auto;
+              }
+
+              .jade-img {
+                width: 100%;
+                height: auto;
+                border-radius: 12px;
+                border: 2px solid var(--starry-gold);
+                box-shadow: 0 0 20px rgba(251, 191, 36, 0.2);
+                display: block;
+                position: relative;
+                z-index: 2;
+              }
+
+              /* --- MUSICAL NOTES ANIMATION --- */
+              .music-note {
+                position: absolute;
+                color: var(--starry-gold);
+                opacity: 0;
+                z-index: 3;
+                pointer-events: none;
+                text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+                font-weight: bold;
+                user-select: none;
+              }
+
+              /* --- POSITIONS FOR SURROUND SOUND EFFECT --- */
+              .note-1 { left: 45%; bottom: -20px; font-size: 24px; animation: floatUp 3s linear infinite; }
+              .note-2 { right: -10px; bottom: 0px; font-size: 20px; animation: floatRightUp 3.5s linear infinite; animation-delay: 0.5s; }
+              .note-3 { left: -10px; bottom: 10px; font-size: 28px; animation: floatLeftUp 4s linear infinite; animation-delay: 1.2s; }
+              .note-4 { right: -20px; top: 50%; font-size: 18px; animation: floatRightUp 3s linear infinite; animation-delay: 2s; }
+              .note-5 { left: -20px; top: 40%; font-size: 22px; animation: floatLeftUp 3.2s linear infinite; animation-delay: 0.8s; }
+              .note-6 { right: 0; top: 0; font-size: 16px; animation: floatUp 4s linear infinite; animation-delay: 1.5s; }
+              .note-7 { left: 50%; top: -20px; font-size: 20px; animation: floatUp 3.5s linear infinite; animation-delay: 2.2s; }
+              .note-8 { left: -15px; top: 10%; font-size: 24px; animation: floatLeftUp 3.8s linear infinite; animation-delay: 1.8s; }
+
+              /* --- ANIMATION KEYFRAMES --- */
+              @keyframes floatUp {
+                0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+                30% { opacity: 1; }
+                100% { transform: translateY(-100px) rotate(15deg); opacity: 0; }
+              }
+              @keyframes floatRightUp {
+                0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+                30% { opacity: 1; }
+                100% { transform: translate(40px, -80px) rotate(20deg); opacity: 0; }
+              }
+              @keyframes floatLeftUp {
+                0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+                30% { opacity: 1; }
+                100% { transform: translate(-40px, -80px) rotate(-20deg); opacity: 0; }
+              }
+
+              /* --- FOOTER --- */
+              .jade-footer {
+                margin-top: 15px;
+                text-align: center;
+                font-size: 0.85em;
+                font-style: italic;
+                color: var(--starry-text-dim);
+              }
+
+              /* --- MOBILE RESPONSIVE --- */
+              @media (max-width: 900px) {
+                .jade-card {
+                  flex-direction: column-reverse;
+                  text-align: center;
+                  padding: 25px;
+                  margin-top: 20px;
+                }
+                .jade-text-side {
+                  width: 100%;
+                  min-width: auto;
+                }
+                .jade-header {
+                  font-size: 1.8em;
+                }
+                .jade-img-wrapper {
+                  width: 100%;
+                  max-width: 250px;
+                }
+              }
+            </style>
+
+            <!-- JOIN BUTTON SECTION -->
+            <div style="display: flex; justify-content: center; margin: 2rem 0;">
+              <a href="https://discord.gg/thestarryshore" target="_blank" style="text-decoration: none;">
+                <button class="discord-join-button">Join The Starry Shore 2014/5e</button>
+              </a>
+            </div>
+
+            <!-- JADE CARD COMPONENT -->
+            <div class="jade-card">
+
+              <!-- LEFT SIDE: Text -->
+              <div class="jade-text-side">
+                <strong class="jade-header">Welcome to The Starry Shore</strong>
+                <div class="jade-body">
+                  <i>Discover an endless number of worlds to explore at The Starry Shore! A place of respite adrift in the Astral Sea, the Starry Shore's magical barriers keep the typical dangers at bay, providing a sanctuary for any and all travelers who seek it. 
+                  <br><br>
+                  Adventure through new and exciting worlds via mysterious portals, or kick back with some friends and enjoy the Shore's amenities. We welcome travelers of all shapes and sizes and from all walks of life, so come let your imagination soar at The Starry Shore!</i>
+                </div>
+              </div>
+
+              <!-- RIGHT SIDE: Image + Surround Sound Music Notes -->
+              <div class="jade-img-wrapper">
+                <!-- Notes coming from all sides -->
+                <div class="music-note note-1">♪</div>
+                <div class="music-note note-2">♫</div>
+                <div class="music-note note-3">♩</div>
+                <div class="music-note note-4">𝅘𝅥𝅯</div>
+                <div class="music-note note-5">♬</div>
+                <div class="music-note note-6">♪</div>
+                <div class="music-note note-7">♫</div>
+                <div class="music-note note-8">♩</div>
+
+                <!-- IMPORTANT: Make sure this image path is correct -->
+                <img src="/assets/img/jade.jpg" alt="Jade playing violin" class="jade-img">
+
+                <div class="jade-footer">
+                  <span style="color: var(--starry-gold); font-weight:bold;">Jade</span>, played by @myth_ren
+                </div>
+              </div>
+
+            </div>
+            <!-- ========================================== -->
+            <!-- END OF JADE CARD SECTION -->
+            <!-- ========================================== -->
+
+
+
+<!-- blocks break -->
+<!-- HOW THINGS WORK SECTION -->
+
+<style>
+    /* Reusing the Glass Theme */
+    .info-glass-container {
+        max-width: 1200px;
+        margin: 1rem auto;
+        padding: 2.5rem;
+        border-radius: 16px;
+        position: relative;
+        text-align: left;
+        
+        /* The Holographic Background */
+        background: linear-gradient(
+            135deg, 
+            rgba(20, 30, 60, 0.2) 0%, 
+            rgba(2, 2, 10, 0.4) 60%
+        );
+        backdrop-filter: blur(4px);
+        
+        /* Glowing Borders */
+        border: 1px solid rgba(34, 211, 238, 0.15);
+        border-top: 1px solid rgba(34, 211, 238, 0.4);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+        
+        color: var(--starry-text);
+    }
+
+    /* Section Header - REDUCED SIZE */
+    .info-title {
+        font-size: clamp(1.4rem, 2.5vw, 1.5rem); /* Smaller font size */
+        font-weight: 800;
+        margin-bottom: 1rem;
+        display: inline-block;
+        
+        /* Gradient Text */
+        background: linear-gradient(to right, #fff, #22d3ee);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 0 10px rgba(34, 211, 238, 0.25));
+    }
+
+    /* Body Text */
+    .info-text {
+        color: #cbd5e1;
+        font-size: 1.1rem;
+        line-height: 1.7;
+        max-width: 1000px;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    }
+
+    .info-text p {
+        margin-bottom: 1rem;
+    }
+    
+    .info-text p:last-child {
+        margin-bottom: 0;
+    }
+
+    .info-text strong {
+        color: var(--starry-gold);
+        font-weight: 600;
+    }
+
+    /* Discord Channel Pill Style - UPDATED FOR INLINE TEXT */
+    .discord-channel-pill {
+        display: inline-flex;
+        align-items: center;
+        vertical-align: middle; /* Aligns perfectly with text */
+        gap: 5px;
+        background-color: rgba(88, 101, 242, 0.15);
+        color: #8ea0e6;
+        border-radius: 6px;
+        padding: 2px 8px; /* Slightly smaller padding for inline flow */
+        text-decoration: none;
+        font-weight: 600;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.95rem;
+        transition: all 0.2s ease;
+        border: 1px solid transparent;
+        margin: 0 2px; /* Small gap around button */
+    }
+
+    .discord-channel-pill:hover {
+        background-color: rgba(88, 101, 242, 0.4);
+        color: #fff;
+        transform: translateY(-1px);
+        box-shadow: 0 0 10px rgba(88, 101, 242, 0.3);
+        border-color: rgba(88, 101, 242, 0.5);
+    }
+    
+    .discord-channel-pill svg {
+        opacity: 0.8;
+    }
+</style>
+
+<div class="info-glass-container">
+    <h2 class="info-title star-hover-effect">How Things Work here?</h2>
+    
+    <div class="info-text">
+        <p>
+            Player Characters (PCs) live in <strong>The Starry Shore</strong>, an interplanar hub with the main street leading to many portals. Dungeon Masters create those portals leading to whatever worlds they dream up. 
+        </p>
+        
+        <p>
+            PCs can visit those worlds via <strong>live sessions</strong> and/or <strong>text role play (TRP)</strong>. PCs earn levels and gold via hours played in live or text sessions, and can level up beyond 20 by multiclassing, with no cap. Magic items are plentiful and most are easy to get.
+        </p>
+
+        <!-- Merged as a standard paragraph -->
+        <p>
+            And if you'd like to see how active the server is, check out the
+            
+            <a href="https://discord.com/channels/1067904868284633148/1067984357165371472" target="_blank" class="discord-channel-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                session-log
+            </a>
+            
+            channel or the statistics in the
+            
+            <a href="https://discord.com/channels/1067904868284633148/1067982501055828038" target="_blank" class="discord-channel-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                announcements
+            </a>
+            
+            channel.
+        </p>
+    </div>
+</div>
+
+
+<!-- blocks break -->
+<!-- WHAT KIND OF D&D SECTION -->
+
+<div class="info-glass-container">
+    <h2 class="info-title star-hover-effect">What kind of D&D we play here?</h2>
+    
+    <div class="info-text">
+        <p>
+            Most of the games offered here are exciting <strong>one-shots</strong>, perfect for those who love spontaneous adventures. There are a few DMs that host <strong>campaigns</strong>; typically, they like to play a few sessions with new players to see if there’s a good fit. If they like your gaming style, they might invite you to join a campaign. This server mainly focuses on these one-shot games, which make up the majority of our activities, allowing you to play on your own schedule.
+        </p>
+        
+        <p>
+            We’re proud to say that our community only includes the <strong>coolest players</strong>. That said, we embrace diversity in play styles. Whether you’re someone who revels in <strong>rich storytelling</strong> and immersive roleplay, or a <strong>strategist</strong> who enjoys <strong>optimizing characters</strong> to their fullest potential, you’ll find a welcoming space here. Everyone is invited to bring their unique approach to the game.
+        </p>
+    </div>
+</div>
+
+
+<!-- blocks break -->
+<!-- MODES OF PLAY SECTION -->
+
+<style>
+    /* Custom List Styling for this section */
+    .mode-list {
+        list-style: none; /* Remove default numbering */
+        counter-reset: mode-counter;
+        padding: 0;
+        margin: 0;
+    }
+
+    .mode-item {
+        position: relative;
+        padding-left: 2rem; /* Space for the number */
+        margin-bottom: 1.5rem;
+    }
+
+    /* The Cyan Numbers (1. 2.) */
+    .mode-item::before {
+        counter-increment: mode-counter;
+        content: counter(mode-counter) ".";
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: var(--starry-cyan);
+        font-weight: 800;
+        font-size: 1.2rem;
+        text-shadow: 0 0 10px rgba(34, 211, 238, 0.4);
+    }
+
+    /* Sub-list for TRP types */
+    .trp-sublist {
+        list-style: none;
+        padding-left: 0;
+        margin-top: 0.8rem;
+        margin-left: 0.5rem;
+        border-left: 1px solid rgba(255, 255, 255, 0.1); /* Subtle guide line */
+    }
+
+    .trp-sublist li {
+        position: relative;
+        padding-left: 1.8rem;
+        margin-bottom: 0.8rem;
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.85);
+    }
+
+    /* The Gold Star Bullets (✦) */
+    .trp-sublist li::before {
+        content: '✦';
+        position: absolute;
+        left: 10px;
+        top: 3px;
+        color: var(--starry-gold);
+        font-size: 0.9em;
+    }
+</style>
+
+<div class="info-glass-container">
+    <h2 class="info-title star-hover-effect">Modes of Play:</h2>
+    
+    <div class="info-text">
+        <ol class="mode-list">
+            
+            <!-- Item 1 -->
+            <li class="mode-item">
+                <strong>Live Voice Sessions:</strong> You gain "hours played", gold, and items as rewards from playing. (We use "hours played" in place of experience for leveling up.) This is the <strong style="color: var(--starry-cyan);">main</strong> method of play.
+                <br>
+                These kind of sessions can be anything, from lighthearted and funny to dark and serious.
+            </li>
+
+            <!-- Item 2 -->
+            <li class="mode-item">
+                <strong>Text Roleplay:</strong> (or TRP). There are 3 types of it:
+                
+                <ul class="trp-sublist">
+                    <li>
+                        <strong>Live TRP sessions:</strong> Same as live sessions, you play for a certain amount of hours but only TRP, no VC needed! Rewards are the same hours and gold wise.
+                    </li>
+                    <li>
+                        <strong>PBP/TRP in DMs worlds:</strong> This is for casual TRP. You can role play whenever you're free and the DM does the same, and you get some rewards out of it.
+                    </li>
+                    <li>
+                        <strong>TRP for fun:</strong> This is the TRP that happens inside the Starry Shore (crossroad category, VIP buildings) and it's just for fun, no rewards out of it.
+                    </li>
+                </ul>
+            </li>
+
+        </ol>
+    </div>
+</div>
+
+
+<!-- blocks break -->
+<!-- STARTING GUIDE CALLOUT -->
+<style>
+    .start-callout {
+        max-width: 1200px;
+        margin: 2rem auto;
+        
+        /* Dark Glassy Cyan Gradient instead of solid light teal */
+        background: linear-gradient(
+            90deg, 
+            rgba(34, 211, 238, 0.1) 0%, 
+            rgba(2, 2, 10, 0.3) 100%
+        );
+        
+        /* The Accent Border (Cyan to match theme) */
+        border-left: 4px solid var(--starry-cyan);
+        
+        padding: 1.5rem 2rem;
+        border-radius: 4px 12px 12px 4px;
+        backdrop-filter: blur(5px);
+        color: var(--starry-text);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        text-align: left;
+    }
+
+    .age-warning {
+        color: var(--starry-gold); /* Gold for importance */
+        font-size: 1.3em;
+        display: block;
+        margin: 0.5rem 0;
+        text-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
+    }
+</style>
+
+<div class="start-callout">
+    <div style="font-size: 1.1rem; color: #fff;">
+        Sounds great! How do I start?
+    </div>
+    
+    <strong class="age-warning">
+        <em>You must be 18 years of age or older to play on the server.</em>
+    </strong>
+
+    <div style="margin-top: 0.5rem; color: #cbd5e1;">
+        Then follow the steps in 
+        
+        <!-- Reusing the pill style from previous blocks -->
+        <a href="https://discord.com/channels/1067904868284633148/1067980479501975703" target="_blank" class="discord-channel-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+            getting-started
+        </a>
+        
+        channel to make a character.
+    </div>
+</div>
+
+
+<!-- blocks break -->
+<!-- MEMBER RESPONSIBILITIES SECTION -->
+<style>
+    /* Custom List Styling for Responsibilities */
+    .resp-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .resp-item {
+        position: relative;
+        padding-left: 1.8rem;
+        margin-bottom: 0.8rem;
+        font-size: 1.05rem;
+        color: #cbd5e1;
+        line-height: 1.6;
+        transition: color 0.2s ease;
+    }
+
+    /* Star Bullet Point */
+    .resp-item::before {
+        content: '✦';
+        position: absolute;
+        left: 0;
+        top: 2px;
+        color: var(--starry-cyan); 
+        font-size: 1.1em;
+        text-shadow: 0 0 5px rgba(34, 211, 238, 0.3);
+    }
+
+    /* Highlight specific keywords */
+    .resp-item strong {
+        color: var(--starry-gold);
+        font-weight: 600;
+    }
+    
+    /* Slight hover effect for readability */
+    .resp-item:hover {
+        color: #fff;
+    }
+    .resp-item:hover::before {
+        text-shadow: 0 0 10px var(--starry-cyan);
+        transform: scale(1.2);
+        transition: transform 0.2s ease;
+    }
+</style>
+
+<div class="info-glass-container">
+    <h2 class="info-title star-hover-effect">Member Responsibilities</h2>
+    
+    <ul class="resp-list">
+        <!-- Item 1 -->
+        <li class="resp-item">
+            Have common sense, and follow the Server Code of Conduct.
+        </li>
+        
+        <!-- Item 2 (Age Warning - Highlighted in Red/Pink for visibility) -->
+        <li class="resp-item">
+            <strong style="color: #ff7777;">You must be 18 years of age or older</strong> to play on the server (This is both for social and legal reasons. Sorry, no exceptions.).
+        </li>
+
+        <!-- Item 3 -->
+        <li class="resp-item">
+            <strong>PVP requires consent</strong> from both parties including the DM. Consent needs to be communicated, not just implied.
+        </li>
+
+        <!-- Item 4 -->
+        <li class="resp-item">
+            <strong>Sexual themes are not allowed</strong> until consent from the whole party is given.
+        </li>
+
+        <!-- Item 5 -->
+        <li class="resp-item">
+            Adult themes and language may appear. Our DM worlds range from lighthearted and funny to dark and serious.
+        </li>
+
+        <!-- Item 6 (Link) -->
+        <li class="resp-item">
+            You need an approved character in order to play (see the 
+            
+            <a href="https://discord.com/channels/1067904868284633148/1067980479501975703" target="_blank" class="discord-channel-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                getting-started
+            </a>
+            
+            channel).
+        </li>
+
+        <!-- Item 7 -->
+        <li class="resp-item">
+            Players must track their characters (level, gold, items, etc) and keep this information updated in the player folder provided, as well as the relevant log channels.
+        </li>
+
+        <!-- Item 8 -->
+        <li class="resp-item">
+            In a rules dispute between a DM and Player, the <strong>DM’s word goes</strong> until the session is over and the staff can mediate.
+        </li>
+    </ul>
+</div>
+
+
+<!-- blocks break -->
+<!-- VOID CHAOS CARD SECTION -->
+
+<style>
+  /* --- THE CHAOS CONTAINER --- */
+  .void-chaos-card {
+    position: relative;
+    /* UPDATED: Much more transparent to match other cards */
+    background: linear-gradient(135deg, rgba(2, 6, 23, 0.3), rgba(46, 16, 101, 0.15));
+    
+    /* UPDATED: Stronger blur to ensure text readability on transparent bg */
+    backdrop-filter: blur(5px); 
+    -webkit-backdrop-filter: blur(5px);
+    
+    border: 1px solid rgba(124, 58, 237, 0.4); 
+    border-radius: 16px;       
+    margin: 40px auto;
+    
+    /* UPDATED: Width matches the other sections now */
+    max-width: 1200px;
+    
+    min-height: 320px; 
+    box-shadow: 0 0 40px rgba(124, 58, 237, 0.15); 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    overflow: hidden;
+    color: #e2e8f0;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* --- BACKGROUND MAGIC LAYERS --- */
+  .magic-layer-1 {
+    position: absolute;
+    top: -50%; left: -50%; right: -50%; bottom: -50%;
+    width: 200%; height: 200%;
+    /* UPDATED: Colors are now much more transparent */
+    background: conic-gradient(
+        from 0deg, 
+        transparent 0%, 
+        rgba(46, 16, 101, 0.2) 25%, 
+        transparent 50%, 
+        rgba(76, 29, 149, 0.2) 75%, 
+        transparent 100%
+    );
+    animation: magicSpin 18s linear infinite; 
+    z-index: 0;
+    filter: blur(50px);
+    pointer-events: none;
+  }
+
+  .magic-layer-2 {
+    position: absolute;
+    top: -50%; left: -50%; right: -50%; bottom: -50%;
+    width: 200%; height: 200%;
+    background: conic-gradient(from 180deg, transparent 0%, rgba(139, 92, 246, 0.1) 20%, transparent 40%, rgba(167, 139, 250, 0.15) 60%, transparent 100%);
+    mix-blend-mode: screen; 
+    animation: magicCounterSpin 12s linear infinite;
+    z-index: 1;
+    filter: blur(30px);
+    pointer-events: none;
+  }
+
+  @keyframes magicSpin { to { transform: rotate(360deg); } }
+  @keyframes magicCounterSpin { to { transform: rotate(-360deg); } }
+
+  /* --- LEFT SIDE: TEXT --- */
+  .text-section {
+    flex: 1; 
+    min-width: 300px;
+    padding: 50px; /* Increased padding slightly since box is wider */
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* --- RIGHT SIDE: VISUALS --- */
+  .visual-section {
+    flex: 0 0 350px; /* Gave the image a bit more space */
+    position: relative;
+    display: flex;
+    align-items: flex-end; 
+    justify-content: center;
+    z-index: 5;
+    padding-top: 20px; 
+  }
+
+  /* --- ENERGY MOTES --- */
+  .energy-mote {
+    position: absolute;
+    bottom: 0;
+    border-radius: 50%;
+    opacity: 0;
+    z-index: 6; 
+    pointer-events: none;
+    animation: floatUp ease-in infinite;
+    mix-blend-mode: screen; 
+  }
+
+  /* Mote Variations */
+  .mote-1 { width: 4px; height: 4px; left: 20%; background: #e879f9; box-shadow: 0 0 10px #e879f9; animation-duration: 4s; animation-delay: 0s; }
+  .mote-2 { width: 6px; height: 6px; left: 80%; background: #a78bfa; box-shadow: 0 0 12px #a78bfa; animation-duration: 5s; animation-delay: 1.5s; }
+  .mote-3 { width: 3px; height: 3px; left: 40%; background: #ffffff; box-shadow: 0 0 8px #ffffff; animation-duration: 3s; animation-delay: 2.5s; }
+  .mote-4 { width: 5px; height: 5px; left: 65%; background: #c084fc; box-shadow: 0 0 10px #c084fc; animation-duration: 4.5s; animation-delay: 0.5s; }
+  .mote-5 { width: 4px; height: 4px; left: 10%; background: #8b5cf6; box-shadow: 0 0 10px #8b5cf6; animation-duration: 6s; animation-delay: 3s; }
+  .mote-6 { width: 3px; height: 3px; left: 90%; background: #ddd6fe; box-shadow: 0 0 8px #ddd6fe; animation-duration: 3.5s; animation-delay: 1s; }
+  .mote-7 { width: 5px; height: 5px; left: 30%; background: #f0abfc; box-shadow: 0 0 10px #f0abfc; animation-duration: 4.2s; animation-delay: 0.8s; }
+  .mote-8 { width: 3px; height: 3px; left: 55%; background: #ffffff; box-shadow: 0 0 8px #ffffff; animation-duration: 3.8s; animation-delay: 2.2s; }
+  .mote-9 { width: 4px; height: 4px; left: 75%; background: #8b5cf6; box-shadow: 0 0 10px #8b5cf6; animation-duration: 5.5s; animation-delay: 1.2s; }
+
+  @keyframes floatUp {
+    0% { transform: translateY(20px) scale(0.5); opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 0.8; }
+    100% { transform: translateY(-280px) scale(1.5); opacity: 0; }
+  }
+
+  /* --- CHARACTER ANIMATION --- */
+  .char-img-full {
+    width: 100%;
+    max-width: 320px; 
+    height: auto;
+    display: block;
+    margin-bottom: 0px; 
+    filter: drop-shadow(0 0 20px rgba(0,0,0,0.9));
+    z-index: 5; 
+    animation: deepBreathe 5s ease-in-out infinite;
+    transform-origin: bottom center;
+  }
+
+  @keyframes deepBreathe {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); } 
+    100% { transform: scale(1); }
+  }
+
+  /* --- CALLOUT BOX --- */
+  .callout-box {
+    background: rgba(10, 10, 15, 0.3); /* Lowered opacity */
+    border-left: 4px solid #a78bfa; 
+    padding: 24px;
+    border-radius: 8px;
+    backdrop-filter: blur(4px); 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  }
+
+  .callout-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    font-size: 1.25em;
+    color: #a78bfa;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(167, 139, 250, 0.4);
+  }
+  
+  .icon-circle {
+    background: linear-gradient(135deg, #6d28d9, #4c1d95);
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+    box-shadow: 0 0 15px #7c3aed;
+  }
+
+  .callout-body {
+    line-height: 1.6;
+    color: #e2e8f0;
+    font-size: 1em;
+  }
+
+  .name-tag {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.85);
+    border: 1px solid #8b5cf6;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    color: #ddd6fe;
+    font-weight: 600;
+    z-index: 10;
+    white-space: nowrap;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+  }
+
+  @media (max-width: 768px) {
+    .void-chaos-card { flex-direction: column; }
+    .visual-section { 
+      order: -1; width: 100%; height: 300px; flex: none;
+      border-bottom: 1px solid rgba(124, 58, 237, 0.3);
+    }
+    .char-img-full { max-width: 240px; }
+    .text-section { padding: 30px 20px; }
+    .name-tag { right: 50%; transform: translateX(50%); bottom: 10px; }
+  }
+</style>
+
+<div class="void-chaos-card">
+  
+  <!-- Background Layers -->
+  <div class="magic-layer-1"></div>
+  <div class="magic-layer-2"></div>
+
+  <!-- Left: Text -->
+  <div class="text-section">
+    <div class="callout-box">
+      <div class="callout-header">
+        <span class="icon-circle">?</span>
+        Unsure of something?
+      </div>
+      <div class="callout-body">
+        <strong>Ask away!</strong> Our community is welcoming, knowledgeable, and happy to help.
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: Character -->
+  <div class="visual-section">
+    
+    <!-- Energy Motes (9 Total) -->
+    <div class="energy-mote mote-1"></div>
+    <div class="energy-mote mote-2"></div>
+    <div class="energy-mote mote-3"></div>
+    <div class="energy-mote mote-4"></div>
+    <div class="energy-mote mote-5"></div>
+    <div class="energy-mote mote-6"></div>
+    <div class="energy-mote mote-7"></div>
+    <div class="energy-mote mote-8"></div>
+    <div class="energy-mote mote-9"></div>
+
+    <!-- Corrected Path with forward slashes -->
+    <img src="/assets/img/players/seauwanobg.png" alt="Seau'Wa" class="char-img-full">
+    
+    <div class="name-tag">
+      Seau'Wa, played by Wild
+    </div>
+  </div>
+
+</div>
+
+
+<!-- blocks break -->
+<!-- OPEN DOOR POLICY SECTION -->
+
+<div class="info-glass-container">
+    <h2 class="info-title star-hover-effect">Open Door Policy</h2>
+    
+    <div class="info-text">
+        <p>
+            The staff team’s goal is to promote a safe and fun environment for all server members. You are invited to contact any staff through voice or private messages with questions or concerns as you see fit. 
+        </p>
+        
+        <p>
+            You can submit your thoughts any time through the 
+            
+            <a href="https://discord.com/channels/1067904868284633148/1067983780121423912" target="_blank" class="discord-channel-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                create-a-ticket
+            </a>
+            
+            ⁠channel, where the staff team will have access to it for review and response.
+        </p>
+    </div>
+</div>
+
+
+<!-- blocks break -->
+
+
+
+<!-- blocks break -->
+
+
+
+<!-- blocks break -->
+
+            <!-- YOU CAN ADD MORE BLOCKS HERE LATER -->
+
         </main>
+        <!-- ▲▲▲ END CONTENT ▲▲▲ -->
     </div>
 
     <!-- SCRIPTS -->

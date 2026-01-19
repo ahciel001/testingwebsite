@@ -1,24 +1,37 @@
-/* loader.js - Optimized */
+/* loader.js - Path Fixer Version */
 
-// 1. Start fetching the Header IMMEDIATELY. 
-// We don't wait for the DOM. We start the network request right now.
-const headerPromise = fetch('../components/header.html')
+// 1. DETERMINE ROOT PATH
+// If the HTML file defined window.rootPath, use it. Otherwise default to "./"
+const basePath = window.rootPath || './';
+
+// 2. HELPER: FIX PATHS IN INJECTED HTML
+// This function adds "../../" to links so they work from deep folders
+function fixRelativePaths(html) {
+    if (!html) return '';
+    // If we are already at root, we don't need to change anything
+    if (basePath === './') return html;
+
+    // Search for href="..." or src="..."
+    return html.replace(/(href|src)=["']([^"']+)["']/g, (match, attr, path) => {
+        // Ignore links that are external (http), anchors (#), email (mailto), or absolute (/)
+        if (path.startsWith('http') || path.startsWith('#') || path.startsWith('mailto') || path.startsWith('/')) {
+            return match;
+        }
+        // Otherwise, prepend the basePath (e.g., href="../../index.html")
+        return `${attr}="${basePath}${path}"`;
+    });
+}
+
+// 3. Start fetching the Header IMMEDIATELY
+const headerPromise = fetch(basePath + 'components/header.html')
     .then(response => {
         if (!response.ok) throw new Error('Failed to load header');
         return response.text();
     })
     .catch(error => console.error(error));
 
-// Helper: Generic loader for other components
-async function loadComponent(elementId, htmlContent) {
-    const element = document.getElementById(elementId);
-    if (!element) return;
-    element.innerHTML = htmlContent;
-}
-
 // Helper: Highlight active link
 function setActiveServer(serverId) {
-    // We don't need setTimeout anymore because we await the render
     const link = document.getElementById(serverId);
     if (link) {
         link.style.color = "var(--starry-cyan)";
@@ -26,16 +39,17 @@ function setActiveServer(serverId) {
     }
 }
 
-// 2. When the DOM is ready, we just plug in the data that is likely already arrived.
+// 4. Main Logic when DOM is ready
 document.addEventListener('DOMContentLoaded', async () => {
     
     // --- HANDLE HEADER ---
     try {
-        const headerHtml = await headerPromise; // Wait for the fetch we started earlier
-        if (headerHtml) {
+        const rawHeaderHtml = await headerPromise; 
+        if (rawHeaderHtml) {
             const headerContainer = document.getElementById('main-header');
             if (headerContainer) {
-                headerContainer.innerHTML = headerHtml;
+                // FIX PATHS BEFORE INJECTING
+                headerContainer.innerHTML = fixRelativePaths(rawHeaderHtml);
                 
                 // Set Active Color
                 const sidebarType = document.body.getAttribute('data-sidebar');
@@ -48,20 +62,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // --- HANDLE SIDEBAR ---
-    // We have to wait for DOM to read 'data-sidebar', so we fetch this now.
     const sidebarType = document.body.getAttribute('data-sidebar');
     const sidebarContainer = document.getElementById('sidebar-container');
     
     if (sidebarType && sidebarContainer) {
         let sidebarPath = '';
-        if (sidebarType === '2014') sidebarPath = '../components/sidebar-2014.html';
-        if (sidebarType === '2024') sidebarPath = '../components/sidebar-2024.html';
+        
+        // Use basePath to find the component file
+        if (sidebarType === '2014') sidebarPath = basePath + 'components/sidebar-2014.html';
+        if (sidebarType === '2024') sidebarPath = basePath + 'components/sidebar-2024.html';
 
         if (sidebarPath) {
             try {
                 const response = await fetch(sidebarPath);
-                const html = await response.text();
-                sidebarContainer.innerHTML = html;
+                const rawSidebarHtml = await response.text();
+                // FIX PATHS BEFORE INJECTING
+                sidebarContainer.innerHTML = fixRelativePaths(rawSidebarHtml);
             } catch (e) {
                 console.error("Sidebar loading failed", e);
             }
@@ -69,6 +85,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // --- NOTIFY OTHER SCRIPTS ---
-    // Tell mobile-menu.js that everything is ready
     document.dispatchEvent(new Event('componentLoaded'));
 });

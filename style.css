@@ -328,7 +328,7 @@ header {
 }
 
 .sidebar {
-    width: 260px;
+    width: 220px;
     background: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(5px);
     border-right: 1px solid rgba(255, 255, 255, 0.05);
@@ -388,7 +388,7 @@ header {
 }
 
 .content-with-sidebar {
-    margin-left: 260px;
+    margin-left: 220px;
     padding: 3rem 4rem;
     width: 100%;
     max-width: 1200px;
