@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Title - 2014 5e Server</title>
+    <title>how-to-play</title>
     <link rel="stylesheet" href="../style.css">
     <script>window.rootPath = "../";</script> 
     <script src="../loader.js"></script> <!-- Load this first -->
@@ -25,11 +25,848 @@
         <!-- ▼▼▼ PASTE YOUR CONTENT INSIDE THIS TAG ▼▼▼ -->
         <main class="content-with-sidebar">
 <!-- blocks break -->
+<!-- LIVE SESSIONS SECTION -->
 
+<style>
+    /* --- 1. GLASS CONTAINER (Reusable) --- */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* --- 2. CUSTOM NUMBERED LIST --- */
+    .live-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        counter-reset: live-counter;
+    }
+
+    .live-list li {
+        position: relative;
+        padding-left: 3rem; /* Space for the big number */
+        margin-bottom: 2rem;
+        line-height: 1.7;
+        font-size: 1.1rem;
+    }
+
+    /* The Number Styling */
+    .live-list li::before {
+        counter-increment: live-counter;
+        content: counter(live-counter);
+        position: absolute;
+        left: 0;
+        top: -5px;
+        width: 35px;
+        height: 35px;
+        background: linear-gradient(135deg, var(--starry-blue), var(--starry-cyan));
+        color: #000;
+        font-weight: 900;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 35px;
+        box-shadow: 0 0 15px rgba(34, 211, 238, 0.5);
+    }
+
+    /* --- 3. DISCORD PILL STYLE --- */
+    .discord-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        background-color: rgba(88, 101, 242, 0.25); 
+        color: #cdd3ff;
+        border: 1px solid rgba(88, 101, 242, 0.5);
+        border-radius: 6px; 
+        padding: 2px 8px;
+        text-decoration: none; 
+        font-weight: 600;
+        font-size: 0.9em;
+        vertical-align: middle;
+        white-space: nowrap;
+        transition: all 0.2s ease;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .discord-pill:hover {
+        background-color: #5865F2;
+        color: white; 
+        box-shadow: 0 0 15px rgba(88, 101, 242, 0.6);
+        transform: translateY(-2px);
+    }
+
+    /* --- 4. TRACKING IMAGE STYLE --- */
+    .tracking-img-container {
+        margin-top: 1.5rem;
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    }
+
+    .tracking-img {
+        display: block;
+        width: 100%;
+        height: auto;
+        transition: transform 0.3s ease;
+    }
+
+    .tracking-img:hover {
+        transform: scale(1.02);
+    }
+</style>
+
+<div class="glass-box">
+    <h2 style="color: var(--starry-cyan); margin-bottom: 2rem; font-size: 2rem; font-weight: 800; border-bottom: 1px solid rgba(34, 211, 238, 0.3); padding-bottom: 10px;">
+        Live Sessions
+    </h2>
+
+    <ol class="live-list">
+        
+        <!-- STEP 1 -->
+        <li>
+            DMs post their upcoming sessions in 
+            
+            <span class="discord-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                looking-to-host
+            </span>. 
+            
+            If you don't see a live session there that fits your schedule, you can ask if DMs are interested in hosting in the 
+            
+            <span class="discord-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                looking-for-game
+            </span> 
+            
+            channel. When you post in LFG, you can say something about your character(s), what kind of game you’re looking for and what times you can play.
+        </li>
+
+        <!-- STEP 2 -->
+        <li>
+            Follow the directions in the LTH post carefully. Each DM may require different information to join. Send the DM a private message to ask questions or with the information requested in their post.
+        </li>
+
+        <!-- STEP 3 -->
+        <li>
+            <strong style="color: var(--starry-gold);">Enjoy the session!</strong>
+        </li>
+
+        <!-- STEP 4 -->
+        <li>
+            After the session, the DM will post a 
+            
+            <span class="discord-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                session-log
+            </span>. 
+            
+            You will need to update your character’s tracking sheet with your hours, items, and gold gained or lost in the session.
+            <br><br>
+            <em style="color: var(--starry-text-dim); font-size: 0.95rem;">
+                If you have a disagreement with a DM, we encourage reaching out to them outside of the game to work things out. If there are still difficulties, or if this is not possible, please contact a staff member to help resolve the issue.
+            </em>
+
+            <!-- IMAGE SECTION -->
+            <div class="tracking-img-container">
+                <!-- Corrected path with forward slashes -->
+                <img src="../assets/img/tracking.png" alt="Session Tracking Sheet Example" class="tracking-img">
+            </div>
+        </li>
+    </ol>
+</div>
 
 
 <!-- blocks break -->
+<!-- TEXT ROLEPLAY SECTION -->
 
+<style>
+    /* Orange Alert Box for Starling Restriction */
+    .alert-orange {
+        background: linear-gradient(90deg, rgba(230, 126, 34, 0.15), rgba(2, 2, 10, 0.4));
+        backdrop-filter: blur(4px);
+        border-left: 4px solid #e67e22;
+        padding: 1rem 1.5rem;
+        border-radius: 4px;
+        margin: 1.5rem 0;
+        color: #ffccbc; /* Light orange text */
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    /* specific style for the @Role mention */
+    .role-mention {
+        display: inline-block;
+        background: rgba(58, 60, 66, 0.8);
+        color: #32CD32; /* Lime Green as requested */
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-weight: bold;
+        font-size: 0.9em;
+        border: 1px solid rgba(255,255,255,0.1);
+        transition: all 0.2s ease;
+    }
+    
+    .role-mention:hover {
+        background: rgba(58, 60, 66, 1);
+        text-shadow: 0 0 5px #32CD32;
+    }
+</style>
+
+<div class="glass-box">
+    <h2 style="color: var(--starry-cyan); margin-bottom: 1.5rem; font-size: 2rem; font-weight: 800; border-bottom: 1px solid rgba(34, 211, 238, 0.3); padding-bottom: 10px;">
+        Text Roleplay
+    </h2>
+
+    <div style="font-size: 1.1rem; line-height: 1.7; color: #e2e8f0;">
+        <p style="margin-bottom: 1.5rem;">
+            Characters begin in the 
+            
+            <span class="discord-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                main-street
+            </span>. 
+            
+            You can enter the main street in any fashion that fits your character. You can enter any 'scene' currently in progress and interact with other player characters. From there, they may enter a DM’s world in live sessions or remain in the main street. 
+            <br><br>
+            The Starry Shore is now that character’s home and a character that has the spell ‘Banishment’ cast on it will return to the main street. Each character may temporarily be in as many trp DM worlds as they want at once.
+        </p>
+
+        <p style="margin-bottom: 1.5rem;">
+            Every character in the Starry Shore has a mailbox in the 
+            
+            <span class="discord-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                mail-boxes
+            </span> 
+            
+            channel. Characters may put excess belongings into their cubby. Characters cannot peer into or mess with any other character’s cubby. However, a character may leave an item for another character in that character’s cubby. 
+            <br><br>
+            Any items shared between characters via their cubbies must be logged in 
+            
+            <span class="discord-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                character-trade-log
+            </span> 
+            
+            after the item has been left. If leaving an item in another character’s cubby, ping that Character.
+        </p>
+
+        <!-- ORANGE ALERT BOX -->
+        <div class="alert-orange">
+            <span class="role-mention">@Starling (New Player)</span>
+            are restricted from joining both live TRP sessions and TRP worlds until they have lost the Starling role 
+            <strong style="color: #fff; border-bottom: 1px solid #fff;">(reaching level 5)</strong>.
+        </div>
+
+        <p>
+            After that, characters can enter any other world. Check out the 
+            
+            <span class="discord-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                trp-world-directory
+            </span> 
+            
+            to see a brief intro to each world written by the DM! Read pinned messages in the world's announcements channel for important information, including which room to enter the world.
+        </p>
+    </div>
+</div>
+
+
+<!-- blocks break -->
+<!-- TRP RULES SECTION -->
+
+<style>
+    /* Styling for the Calculation/Formula Boxes */
+    .calc-box {
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        border-left: 4px solid;
+        font-family: 'Consolas', 'Monaco', monospace; /* Monospace for "math" feel */
+        font-size: 0.95rem;
+        color: #e0e0e0;
+    }
+
+    .calc-gold { border-color: var(--starry-gold); background: linear-gradient(90deg, rgba(251, 191, 36, 0.1), transparent); }
+    .calc-blue { border-color: var(--starry-blue); background: linear-gradient(90deg, rgba(59, 130, 246, 0.1), transparent); }
+
+    /* Sub-headers */
+    .rule-header {
+        color: #fff;
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        padding-bottom: 5px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /* Bullet lists */
+    .rule-list { list-style: none; padding: 0; margin-bottom: 1.5rem; }
+    .rule-list li { 
+        position: relative; 
+        padding-left: 1.5rem; 
+        margin-bottom: 0.8rem; 
+        color: #cbd5e1; 
+        line-height: 1.6;
+    }
+    
+    /* DM Bullets (Gold) */
+    .dm-list li::before { content: '✦'; position: absolute; left: 0; color: var(--starry-gold); }
+    
+    /* Player Bullets (Cyan) */
+    .player-list li::before { content: '✦'; position: absolute; left: 0; color: var(--starry-cyan); }
+
+</style>
+
+<div class="glass-box">
+    <h2 style="color: var(--starry-cyan); margin-bottom: 1rem; font-size: 2rem; font-weight: 800; border-bottom: 1px solid rgba(34, 211, 238, 0.3); padding-bottom: 10px;">
+        TRP Rules
+    </h2>
+    
+    <p style="color: #e2e8f0; font-size: 1.1rem; margin-bottom: 1.5rem;">
+        Live TRP sessions grant rewards (hours and gold) at the same rate as standard live sessions.
+    </p>
+
+    <!-- ========================== -->
+    <!-- DM RULES SECTION -->
+    <!-- ========================== -->
+    <div class="rule-header" style="color: var(--starry-gold);">
+    TRP/PBP DM Rules (in worlds)
+    </div>
+
+    <!-- Math Calculation Box -->
+    <div class="calc-box calc-gold">
+        5 players per TRP DM<br>
+        3 hrs per week x 1.5 DM bonus<br>
+        = <strong>90 hrs/month max</strong><br>
+        <span style="opacity: 0.7; font-size: 0.9em;">(equivalent of hosting a 4hr live session every other day / 15 sessions)</span>
+    </div>
+
+    <strong style="color: #fff; display: block; margin-bottom: 0.5rem;">DM Reward Guidelines</strong>
+    <ul class="rule-list dm-list">
+        <li>
+            Each TRP/PBP DM can reward up to 5 players (one character each) in their world up to 3h per week, logging it in the DM rewards section to receive the DMing 1.5x bonus. (must participate for the rough equivalent of 3 hours, DM discretion, example below)
+        </li>
+        <li>
+            TRP sessions must always be logged as solo sessions, running the APL command with 1 entry will halve the gold; for DMs they need to check the solo box in their tracking sheet, and the logs need to be posted in the
+            
+            <span class="discord-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                trp-session-log
+            </span>
+            
+            channel using the template pinned there :D
+        </li>
+        <li>
+            90h/month max for PBP DMing. This is equivalent to hosting a 4-hour live session every other day (15 sessions/month).
+        </li>
+        <li>
+            The content amount required is still the same.
+        </li>
+        <li>
+            More players or characters may still join if you allow, but they don't receive rewards.
+        </li>
+    </ul>
+
+    <!-- Example Block -->
+    <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 6px; margin-bottom: 1.5rem; font-size: 0.95rem; color: #d1d5db;">
+        <strong style="color: var(--starry-cyan);">Example:</strong> 
+        
+        <a href="https://discord.com/channels/1067904868284633148/1156448065385934860/1167358118968168458" target="_blank" class="discord-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+            starting point
+        </a> 
+        
+        to 
+        
+        <a href="https://discord.com/channels/1067904868284633148/1156448065385934860/1174285886893076492" target="_blank" class="discord-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+            end
+        </a> 
+        
+        is approximately 12 back and forth, approximately 2h total, which if we consider each reply from both parties is 5 min that's an hour worth of trp for each.
+        <br><br>
+        <em>DM discretion on how they evaluate the rewards, this is just an example and if you need help with that, you can open a ticket.</em>
+    </div>
+
+    <p style="color: #e2e8f0; margin-bottom: 2rem;">
+        The 3-hour weekly reward is a <strong>maximum limit</strong>, not an automatic grant. DMs should award hours based on the actual amount of roleplay a player contributes during that week. If a player roleplays for more than 3 hours, they still only receive the maximum of 3 hours.
+    </p>
+
+    <!-- ========================== -->
+    <!-- PLAYER RULES SECTION -->
+    <!-- ========================== -->
+    <div class="rule-header" style="color: var(--starry-blue);">
+    TRP Player Rules
+    </div>
+
+    <!-- Math Calculation Box -->
+    <div class="calc-box calc-blue">
+        4 TRP worlds per player<br>
+        3h/week from each<br>
+        = <strong>48 hrs/month max</strong><br>
+        <span style="opacity: 0.7; font-size: 0.9em;">(equivalent of playing twelve 4hr live sessions per month)</span>
+    </div>
+
+    <ul class="rule-list player-list">
+        <li>
+            Each player is allowed to participate in up to 4 different TRP worlds.
+        </li>
+        <li>
+            They can get up to 3 hours per week from each world.
+        </li>
+        <li>
+            A player can earn a maximum of 48 hours per month from TRP. This is equivalent to participating in twelve 4-hour live sessions per month.
+        </li>
+        <li>
+            <strong>The TRP rewards logged should only be logged in your sheet after it gets approved with a ✅ by staff.</strong>
+        </li>
+    </ul>
+</div>
+
+
+<!-- blocks break -->
+<!-- FEEDBACK & HOMEBREW SECTION -->
+
+<style>
+    /* Reuse previous styles */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* Orange Alert Box (Reused) */
+    .alert-orange {
+        background: linear-gradient(90deg, rgba(230, 126, 34, 0.15), rgba(2, 2, 10, 0.4));
+        backdrop-filter: blur(4px);
+        border-left: 4px solid #e67e22;
+        padding: 1rem 1.5rem;
+        border-radius: 4px;
+        margin: 1.5rem 0;
+        color: #ffccbc;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* Feedback Form Link Highlight */
+    .highlight-link {
+        color: var(--starry-cyan);
+        font-weight: bold;
+        text-decoration: underline;
+        text-decoration-style: dotted;
+        cursor: pointer;
+    }
+</style>
+
+<!-- 1. FEEDBACK CARD -->
+<div class="glass-box">
+    <h2 style="color: var(--starry-cyan); margin-bottom: 1rem; font-size: 2rem; font-weight: 800; display: flex; align-items: center; gap: 10px;">
+        📝 Feedback
+    </h2>
+    
+    <div style="font-size: 1.1rem; line-height: 1.7; color: #cbd5e1; font-family: 'Segoe UI', sans-serif;">
+        <p>
+            Players and DMs are welcome to provide anonymous feedback using the <span class="highlight-link">Member Feedback Form</span>. 
+            This feedback may be complimentary, constructive criticism or complaints.
+        </p>
+        <p style="margin-top: 10px;">
+            Please note we take complaints seriously. Members may request their feedback by asking a staff member.
+        </p>
+    </div>
+</div>
+
+<!-- 2. HOMEBREW CARD -->
+<div class="glass-box">
+    <h2 style="color: #a78bfa; margin-bottom: 1.5rem; font-size: 2rem; font-weight: 800; border-bottom: 1px solid rgba(167, 139, 250, 0.3); padding-bottom: 10px;">
+        🧪 Homebrew in the Starry Shore
+    </h2>
+
+    <div style="font-size: 1.1rem; line-height: 1.7; color: #e2e8f0; font-family: 'Segoe UI', sans-serif;">
+        <p style="margin-bottom: 1rem;">
+            Homebrew content is <strong>not allowed</strong> for official Starry Shore use. DMs may grant their players homebrew within their worlds. DM discretion applies, as always, to allowing homebrew from other DMs’ worlds into their sessions.
+        </p>
+        
+        <p style="margin-bottom: 1rem;">
+            To be used in a world other than that of the DM that granted it, the item must be posted in the 
+            
+            <span class="discord-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                homebrew-item-log
+            </span> 
+            
+            by the DM granting the item.
+        </p>
+
+        <p>
+            Other DMs have the freedom to allow or disallow homebrew at their own discretion, on a case-by-case basis. This decision is always made at the discretion of DMs, and pressuring DMs in either direction may constitute harassment.
+        </p>
+
+        <!-- ORANGE ALERT: STARLING RESTRICTION -->
+        <div class="alert-orange">
+            <strong>Note:</strong> DMs are restricted from giving homebrew to <strong style="color: white;">Starlings</strong>, to make it an easy and less confusing experience for new players!
+        </div>
+    </div>
+</div>
+
+
+<!-- blocks break -->
+<!-- CHARACTER PROGRESSION SECTION -->
+
+<style>
+    /* Reuse Glass Box */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* Reuse Discord Pill */
+    .discord-pill {
+        display: inline-flex; align-items: center; gap: 5px;
+        background-color: rgba(88, 101, 242, 0.25); 
+        color: #cdd3ff; border: 1px solid rgba(88, 101, 242, 0.5);
+        border-radius: 6px; padding: 2px 8px;
+        text-decoration: none; font-weight: 600; font-size: 0.9em;
+        vertical-align: middle; white-space: nowrap; transition: all 0.2s ease;
+        font-family: 'Inter', sans-serif;
+    }
+    .discord-pill:hover {
+        background-color: #5865F2; color: white; 
+        box-shadow: 0 0 15px rgba(88, 101, 242, 0.6); transform: translateY(-2px);
+    }
+
+    /* Subheaders */
+    .prog-header {
+        font-size: 1.4rem;
+        color: #fff;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        padding-bottom: 5px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        font-weight: 700;
+    }
+
+    /* Lists for Respec */
+    .check-list, .cross-list { list-style: none; padding: 0; margin-bottom: 1.5rem; }
+    .check-list li, .cross-list li { 
+        position: relative; padding-left: 1.5rem; margin-bottom: 0.5rem; line-height: 1.5; color: #cbd5e1;
+    }
+    
+    .check-list li::before {
+        content: '✅'; position: absolute; left: 0; font-size: 0.9em;
+    }
+    .cross-list li::before {
+        content: '❌'; position: absolute; left: 0; font-size: 0.9em;
+    }
+
+    /* Prestige Gem Button */
+    .prestige-btn {
+        display: inline-flex; align-items: center; gap: 8px;
+        background: linear-gradient(135deg, #0f172a, #1e3a8a);
+        border: 1px solid var(--starry-cyan);
+        color: var(--starry-cyan);
+        font-weight: 700; font-size: 1rem;
+        padding: 12px 24px; border-radius: 8px;
+        text-decoration: none;
+        box-shadow: 0 4px 15px rgba(34, 211, 238, 0.2);
+        transition: all 0.3s ease;
+        margin-top: 1rem;
+    }
+    .prestige-btn:hover {
+        background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+        color: white;
+        box-shadow: 0 0 20px rgba(34, 211, 238, 0.6);
+        transform: translateY(-2px);
+        text-shadow: 0 0 5px white;
+    }
+
+    /* Divider */
+    .divider {
+        border: 0; height: 1px; 
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); 
+        margin: 2rem 0;
+    }
+</style>
+
+<div class="glass-box">
+    <!-- MAIN TITLE -->
+    <h2 style="color: var(--starry-gold); margin-bottom: 1.5rem; font-size: 2rem; font-weight: 800; border-bottom: 1px solid rgba(251, 191, 36, 0.3); padding-bottom: 10px; display: block;">
+        Character Progression Rules
+    </h2>
+
+    <!-- 1. CHARACTER LEVELING -->
+    <h3 class="prog-header" style="color: var(--starry-cyan); margin-top: 0;">📊 Character Leveling</h3>
+    <div style="font-size: 1.1rem; line-height: 1.7;">
+        <p>
+            Character levels are gained by playing in live or trp sessions. To advance a level, a character must be played in a number of hours equal to <strong>2.5 times the current level</strong>. Hours needed to level are automatically calculated in the character tracking sheet supplied in the player folder.
+        </p>
+        <p style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 6px; font-size: 0.95rem; border-left: 3px solid var(--starry-cyan);">
+            <em>For example:</em> A level 3 character needs to be played for 7.5 hours before advancing to level 4. A level 4 character needs to be played for 10 hours before advancing to level 5, etc.
+        </p>
+        <p>
+            Update your character tracking sheet following every live session you play. In addition, a current copy of the character sheet must always be kept in the player folder. Log any levels gained in 
+            
+            <span class="discord-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                character-leveling-log
+            </span>
+            
+            using the pinned template.
+        </p>
+        <p>
+            There is <strong>no level cap</strong> on this server. Characters continue to level past level 20 using the hours-played formula above. Options for these characters are as follows:
+        </p>
+        <ul style="list-style: disc; padding-left: 20px; color: #cbd5e1;">
+            <li>Multiclassing: a character may continue to take levels in additional classes following multiclassing rules</li>
+            <li>Level 20 Retirement (see Character Retirement)</li>
+            <li>Prestige</li>
+        </ul>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 2. SUBCLASS CHANGE -->
+    <h3 class="prog-header" style="color: #a78bfa;">🔄 Subclass Change</h3>
+    <p>You have two options to retrain and switch subclasses.</p>
+    
+    <div style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 1.5rem;">
+        <!-- Option 1 -->
+        <div style="background: rgba(103, 58, 183, 0.1); border: 1px solid rgba(103, 58, 183, 0.3); padding: 15px; border-radius: 8px;">
+            <strong style="color: #d1c4e9; font-size: 1.1em;">Option 1 - DTP</strong><br>
+            A player may use <strong>100 DTP</strong> and spend <strong>500 gp per character level</strong> to switch to a different subclass. As per Tasha's, if a player switches back to a previous subclass they may forgo the gold costs and the DTP cost is halved.
+        </div>
+
+        <!-- Option 2 -->
+        <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); padding: 15px; border-radius: 8px;">
+            <strong style="color: #93c5fd; font-size: 1.1em;">Option 2 - Session</strong><br>
+            A player may ask a DM to host a session for training to the new subclass. <strong>500 gp per character level</strong> must be paid for this change and the session can give no loot rewards. Hours are given as usual and must level the character to a level in which they receive an ASI or Feat. Because they are training within a session no DTP will be required.
+        </div>
+    </div>
+    
+    <p>
+        Each option must be documented using the template in 
+        <span class="discord-pill">character-leveling-log</span>, 
+        noting the subclass change made and which DM and Session provided the change.
+    </p>
+
+    <hr class="divider">
+
+    <!-- 3. CHARACTER RESPEC -->
+    <h3 class="prog-header" style="color: #fca5a5;">🛠️ Character Respec</h3>
+    <p>
+        Players can make changes to the class, subclass, ability scores, background, race, feats, etc. up to <strong>2 times per 6-month period</strong> (the first from Jan 1st to June 30th, the second from July 1st to Dec 31st) on the server. A character’s personal history and personality are not regulated by the mechanics of D&D and therefore do not require an official respec to develop and evolve overtime.
+    </p>
+    <p>
+        Submit the log into the 
+        <span class="discord-pill">character-respec-log</span> 
+        channel for approval. A reminder, you can play the respecced version of a character before it gets approved by staff.
+    </p>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 1.5rem;">
+        <!-- ALLOWED CHANGES -->
+        <div style="flex: 1; min-width: 300px;">
+            <strong style="color: #4ade80; display: block; margin-bottom: 10px; border-bottom: 1px solid rgba(74, 222, 128, 0.3); padding-bottom: 5px;">
+                You CAN change:
+            </strong>
+            <ul class="check-list">
+                <li>Character name</li>
+                <li>Character race and sub-race</li>
+                <li>Character class and subclass, including multiclass options</li>
+                <li>Feats</li>
+                <li>Ability Scores</li>
+                <li>Spells</li>
+                <li>Starting equipment packages</li>
+                <li>Background (personality, ideals, bonds, and flaws in addition to features, skill proficiencies, tool proficiencies, background equipment, and background gold)</li>
+                <li>Chosen Proficiencies (skills, tools, and languages)</li>
+                <li>Prestige purchases</li>
+                <li>Artifact properties</li>
+            </ul>
+        </div>
+
+        <!-- BANNED CHANGES -->
+        <div style="flex: 1; min-width: 300px;">
+            <strong style="color: #f87171; display: block; margin-bottom: 10px; border-bottom: 1px solid rgba(248, 113, 113, 0.3); padding-bottom: 5px;">
+                You CANNOT change:
+            </strong>
+            <ul class="cross-list">
+                <li>Level / hours</li>
+                <li>Amount of gold (except for background gold)</li>
+                <li>Equipment (except for starting equipment packages)</li>
+                <li>Magic Items and Consumables that have been received in sessions</li>
+                <li>Boons</li>
+                <li>Downtime points</li>
+            </ul>
+            
+            <div style="background: rgba(251, 191, 36, 0.1); border: 1px solid var(--starry-gold); padding: 10px; border-radius: 6px; margin-top: 10px; font-size: 0.9em; color: #e2e8f0;">
+                <strong style="color: var(--starry-gold);">Note:</strong> Piety to a Deity is not automatically transferred if you change the character name and has to be logged in 
+                <span class="discord-pill">piety-log</span> 
+                with a link to the respec-log.
+            </div>
+        </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 4. PRESTIGE -->
+    <h3 class="prog-header" style="color: var(--starry-gold);">💎 Character Prestige Options</h3>
+    <p>
+        A character of level 20+ can prestige their character, giving up levels and hours in exchange for <strong>Prestige Points</strong> to be used at the Prestige Shop.
+    </p>
+    
+    <div style="margin-top: 1rem;">
+        For more info, check out:
+        <br>
+        <a href="2014-5e-server/2014-server-systems/prestige-rules.html" target="_blank" class="prestige-btn">
+            💎 2014 Prestige Rules
+        </a>
+    </div>
+</div>
+
+
+<!-- blocks break -->
+<!-- DEATH & PROXY SECTION -->
+
+<style>
+    /* Reuse Glass Box */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* Reuse Discord Pill */
+    .discord-pill {
+        display: inline-flex; align-items: center; gap: 5px;
+        background-color: rgba(88, 101, 242, 0.25); 
+        color: #cdd3ff; border: 1px solid rgba(88, 101, 242, 0.5);
+        border-radius: 6px; padding: 2px 8px;
+        text-decoration: none; font-weight: 600; font-size: 0.9em;
+        vertical-align: middle; white-space: nowrap; transition: all 0.2s ease;
+        font-family: 'Inter', sans-serif;
+    }
+    .discord-pill:hover {
+        background-color: #5865F2; color: white; 
+        box-shadow: 0 0 15px rgba(88, 101, 242, 0.6); transform: translateY(-2px);
+    }
+
+    /* Sub-headers */
+    .sub-header {
+        font-size: 1.2rem;
+        color: #fff;
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding-bottom: 5px;
+        display: inline-block;
+    }
+
+    /* Lists */
+    .proxy-list { list-style: none; padding: 0; margin-bottom: 1rem; }
+    .proxy-list li { margin-bottom: 10px; padding-left: 1.2rem; position: relative; color: #cbd5e1; }
+    .proxy-list li::before { content: '🔹'; position: absolute; left: 0; font-size: 0.8em; }
+    .proxy-list strong { color: var(--starry-cyan); }
+
+</style>
+
+<!-- 1. CHARACTER DEATH BOX -->
+<div class="glass-box" style="border-left: 5px solid #ef4444;">
+    <h2 style="color: #ef4444; margin-bottom: 1rem; font-size: 2rem; font-weight: 800; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #ef4444; padding-bottom: 10px;">
+        Character Death
+        <span style="font-size: 0.6em; color: #cbd5e1; font-weight: 400;">(and other persistent effects)</span>
+    </h2>
+    
+    <div style="font-size: 1.1rem; line-height: 1.7;">
+        <p style="margin-bottom: 1rem;">
+            If your character dies in a permadeath session, the DM will log it in the 
+            <span class="discord-pill">death--log</span>. 
+            They may specify that the character death is world-specific, but unless otherwise stated, your character is universally dead. In worlds where your character is dead, you may not play that character.
+        </p>
+        
+        <p>
+            Aside from death, there are other persistent effects that may happen to your character. Limb loss, item loss, curses, ruidium corruption, and divine favor are some (but not all) of the things that might happen to a character and may be logged by a DM in 
+            <span class="discord-pill">persistent-effects-log</span>.
+        </p>
+    </div>
+</div>
+
+<!-- 2. PROXYING BOX -->
+<div class="glass-box" style="border-left: 5px solid var(--starry-blue);">
+    <h2 style="color: var(--starry-blue); margin-bottom: 1.5rem; font-size: 2rem; font-weight: 800; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid rgba(34, 211, 238, 0.3); padding-bottom: 10px;">
+        What is Proxying?
+    </h2>
+
+    <div style="font-size: 1.1rem; line-height: 1.7;">
+        <p>Proxying has 2 mechanics:</p>
+        <ol style="margin-left: 20px; margin-bottom: 1.5rem; color: #e2e8f0;">
+            <li style="margin-bottom: 10px;">
+                <strong>Hour Allocation:</strong> You can allocate session hours to a different character by indicating the desired character's name and level at the session's end.
+            </li>
+            <li>
+                <strong>Level Adjustment:</strong> Temporarily adjust your character's level for a session. It's recommended to use a duplicate character sheet labeled with the proxy level for clarity.
+            </li>
+        </ol>
+
+        <h3 class="sub-header">Methods of Proxying</h3>
+        <ul class="proxy-list">
+            <li>
+                <strong>The Fast Method:</strong> Directly level up your character and update your sheet with Avrae. This method carries the risk of forgetting to revert changes post-session.
+            </li>
+            <li>
+                <strong>The Safe Method:</strong> Create a new character sheet with the proxy level and import it to Avrae, minimizing the risk of accidental non-reversion.
+            </li>
+        </ul>
+
+        <h3 class="sub-header">Magic Items and Proxying</h3>
+        <p style="margin-bottom: 1rem; color: #cbd5e1;">
+            Acquiring magic items while proxying depends on the Dungeon Master (DM). Always confirm with your DM about any specific rules for proxying. Remember to remove any proxy-specific items after the session, as they do not carry over.
+        </p>
+
+        <h3 class="sub-header">Party Gold and Proxy Levels</h3>
+        <p style="margin-bottom: 1rem; color: #cbd5e1;">
+            Party Gold earnings are based on the actual level of the character receiving the session hours, not the proxy level.
+        </p>
+
+        <h3 class="sub-header">Proxying Down</h3>
+        <p style="color: #cbd5e1;">
+            With DM approval, you can proxy down to participate in lower-level sessions. Ensure you remove any high-tier items that become ineligible.
+        </p>
+    </div>
+</div>
 
 
 <!-- blocks break -->
