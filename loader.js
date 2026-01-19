@@ -2,7 +2,7 @@
 
 // 1. DETERMINE ROOT PATH
 // If the HTML file defined window.rootPath, use it. Otherwise default to "./"
-const basePath = window.rootPath || './';
+const basePath = window.rootPath || '';
 
 // 2. HELPER: FIX PATHS IN INJECTED HTML
 // This function adds "../../" to links so they work from deep folders

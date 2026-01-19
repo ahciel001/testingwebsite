@@ -1,7 +1,7 @@
 /* search.js - With Auto-Scroll (Text Fragments) */
 
 // 1. DETERMINE ROOT PATH
-const searchBasePath = window.rootPath || './';
+const searchBasePath = window.rootPath || '';
 
 // 2. MASTER LIST
 const pageIndex = {
