@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
+  <url>
+    <loc>https://thestarryshore.com/</loc>
+    <priority>1.00</priority>
+  </url>
+
+  <!-- 2014 Server Pages -->
+  <url><loc>https://thestarryshore.com/2014-5e-server/about-the-2014-server.html</loc></url>
+  <url><loc>https://thestarryshore.com/2014-5e-server/character-creation-steps.html</loc></url>
+  <url><loc>https://thestarryshore.com/2014-5e-server/dm-guide.html</loc></url>
+  <url><loc>https://thestarryshore.com/2014-5e-server/dm-tools.html</loc></url>
+  <url><loc>https://thestarryshore.com/2014-5e-server/how-to-play.html</loc></url>
+  <url><loc>https://thestarryshore.com/2014-5e-server/loot-and-items.html</loc></url>
+  <url><loc>https://thestarryshore.com/2014-5e-server/misc-rules.html</loc></url>
+
+  <!-- 2014 Server Systems -->
+  <url><loc>https://thestarryshore.com/2014-5e-server/2014-server-systems/crafting.html</loc></url>
+  <url><loc>https://thestarryshore.com/2014-5e-server/2014-server-systems/downtime-points-guide.html</loc></url>
+  <url><loc>https://thestarryshore.com/2014-5e-server/2014-server-systems/item-patch-notes.html</loc></url>
+  <url><loc>https://thestarryshore.com/2014-5e-server/2014-server-systems/prestige-rules.html</loc></url>
+  <url><loc>https://thestarryshore.com/2014-5e-server/2014-server-systems/shopping-guide.html</loc></url>
+
+  <!-- 2014 Events -->
+  <url><loc>https://thestarryshore.com/2014-5e-server/Events/server-3rd-anniversary.html</loc></url>
+  <url><loc>https://thestarryshore.com/2014-5e-server/Events/trinkets-list.html</loc></url>
+
+  <!-- 2024 Server Pages -->
+  <url><loc>https://thestarryshore.com/2024-5.5e-server/about-the-2024-server.html</loc></url>
+  <url><loc>https://thestarryshore.com/2024-5.5e-server/character-creation-steps.html</loc></url>
+  <url><loc>https://thestarryshore.com/2024-5.5e-server/creation-log-maker.html</loc></url>
+
+  <!-- 2024 Server Systems -->
+  <url><loc>https://thestarryshore.com/2024-5.5e-server/2024-server-systems/crafting.html</loc></url>
+
+  <!-- 2024 Events -->
+  <url><loc>https://thestarryshore.com/2024-5.5e-server/Events/soon.html</loc></url>
+</urlset>
