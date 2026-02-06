@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>character-creation-steps</title>
+    <link rel="stylesheet" href="../style.css">
+    <script>window.rootPath = "../";</script> 
+    <script src="../loader.js"></script> <!-- Load this first -->
+</head>
+<!-- IMPORTANT: data-sidebar tells the loader which sidebar to grab -->
+<body data-sidebar="2024">
+    <canvas id="star-canvas"></canvas>
+
+    <!-- EMPTY HEADER CONTAINER -->
+    <header id="main-header"></header>
+
+    <div class="page-wrapper">
+        <div class="mobile-sidebar-toggle">☰ Page Menu</div>
+
+        <aside class="sidebar" id="sidebar-container">
+            <!-- Sidebar content will be injected here -->
+        </aside>
+
+        <!-- ▼▼▼ PASTE YOUR CONTENT INSIDE THIS TAG ▼▼▼ -->
+        <main class="content-with-sidebar">
+<!-- blocks break -->
+<!-- CHARACTER CREATION STEPS SECTION -->
+
+<style>
+    /* --- STEP CARD CONTAINER --- */
+    .step-card {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.15);
+        border-left: 4px solid var(--starry-cyan);
+        border-radius: 12px;
+        padding: 1.5rem 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        position: relative;
+    }
+
+    /* Step Number Badge */
+    .step-badge {
+        display: inline-block;
+        background: var(--starry-cyan); /* Fallback: #22d3ee */
+        background: #22d3ee;
+        color: #000;
+        font-weight: 800;
+        padding: 4px 12px;
+        border-radius: 20px;
+        margin-bottom: 1rem;
+        font-family: 'Trebuchet MS', sans-serif;
+        box-shadow: 0 0 15px rgba(34, 211, 238, 0.6);
+    }
+
+    /* --- FIXED DISCORD CHANNEL PILLS --- */
+    .discord-channel-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        background-color: rgba(88, 101, 242, 0.25); 
+        color: #cdd3ff; 
+        border: 1px solid rgba(88, 101, 242, 0.5);
+        border-radius: 4px; 
+        padding: 1px 8px;
+        text-decoration: none; 
+        font-weight: 500;
+        font-size: 0.9em;
+        vertical-align: middle;
+        white-space: nowrap; 
+        transition: all 0.2s ease;
+    }
+
+    .discord-channel-pill:hover {
+        background-color: #5865F2; 
+        color: white; 
+        box-shadow: 0 0 10px rgba(88, 101, 242, 0.6);
+        transform: translateY(-1px);
+    }
+
+    .discord-channel-pill svg {
+        opacity: 0.9;
+        flex-shrink: 0;
+    }
+
+    /* --- OTHER PILLS --- */
+    .yt-pill {
+        display: inline-flex; align-items: center; gap: 6px;
+        background-color: rgba(255, 0, 0, 0.15);
+        color: #ff9999;
+        border: 1px solid rgba(255, 0, 0, 0.3);
+        border-radius: 6px; padding: 4px 12px;
+        text-decoration: none; font-weight: 600;
+        transition: all 0.2s ease;
+    }
+    .yt-pill:hover {
+        background-color: rgba(255, 0, 0, 0.4);
+        color: white; box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+    }
+
+    .purple-pill {
+        display: inline-flex; align-items: center; gap: 6px;
+        background-color: rgba(103, 58, 183, 0.2);
+        color: #d1c4e9;
+        border: 1px solid rgba(103, 58, 183, 0.4);
+        border-radius: 6px; padding: 4px 12px;
+        text-decoration: none; font-weight: 600;
+        transition: all 0.2s ease;
+    }
+    .purple-pill:hover {
+        background-color: rgba(103, 58, 183, 0.5);
+        color: white; box-shadow: 0 0 15px rgba(103, 58, 183, 0.4);
+    }
+
+    .blue-pill {
+        display: inline-flex; align-items: center; gap: 6px;
+        background-color: rgba(59, 130, 246, 0.2);
+        color: #93c5fd;
+        border: 1px solid rgba(59, 130, 246, 0.4);
+        border-radius: 6px; padding: 2px 8px;
+        text-decoration: none; font-weight: 600;
+        font-size: 0.9em;
+        white-space: nowrap;
+        transition: all 0.2s ease;
+    }
+    .blue-pill:hover {
+        background-color: rgba(59, 130, 246, 0.5);
+        color: white; box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+    }
+
+    /* --- STYLED DROPDOWNS --- */
+    .starry-details {
+        margin-top: 1rem;
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        border-radius: 8px;
+        background: rgba(2, 2, 10, 0.4);
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+    .starry-summary {
+        cursor: pointer;
+        padding: 12px 20px;
+        background: linear-gradient(90deg, rgba(30, 58, 138, 0.4), transparent);
+        color: var(--starry-cyan); /* Fallback: #22d3ee */
+        color: #22d3ee;
+        font-weight: bold;
+        list-style: none;
+        display: flex; align-items: center; gap: 10px;
+        transition: background 0.3s;
+    }
+    .starry-summary:hover {
+        background: linear-gradient(90deg, rgba(30, 58, 138, 0.6), transparent);
+        color: white;
+    }
+    .starry-summary::after {
+        content: '▼'; font-size: 0.8em; margin-left: auto; transition: transform 0.3s;
+    }
+    .starry-details[open] .starry-summary::after {
+        transform: rotate(180deg);
+    }
+    .details-content {
+        padding: 15px;
+        background: rgba(0, 0, 0, 0.2);
+        border-top: 1px solid rgba(59, 130, 246, 0.2);
+    }
+
+    /* --- LIST STYLING --- */
+    .step-list { list-style: none; padding: 0; }
+    .step-list li {
+        position: relative; padding-left: 20px; margin-bottom: 10px; color: #cbd5e1;
+    }
+    .step-list li::before {
+        content: '✦'; position: absolute; left: 0; top: 4px; color: var(--starry-gold); /* Fallback: #fcd34d */
+        color: #fcd34d;
+    }
+    .step-list strong { color: white; }
+</style>
+
+<div id="character-creation-steps"></div>
+
+<!-- STEP 1 -->
+<div class="step-card">
+    <div class="step-badge">Step 1</div>
+    <div style="color: #e2e8f0; font-size: 1.1rem; line-height: 1.7;">
+        Make sure to watch our intro 
+        <a href="https://youtu.be/934iR9XpXF0" target="_blank" class="yt-pill">▶ The Starry Shore Intro</a>
+        
+        <details class="starry-details">
+            <summary class="starry-summary">🎥 Click here to watch the video</summary>
+            <div class="details-content">
+                <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+                    <iframe src="https://www.youtube.com/embed/934iR9XpXF0" title="YouTube video player" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 6px; box-shadow: 0 0 20px rgba(0,0,0,0.5);" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </details>
+        <br>
+        Then fill in this form to make a folder for you, which will appear in the Google Drive of the email that you provide. You only need to fill out this form once. A Google account is required to share your player folder with you. 
+        <a href="https://forms.gle/h1waGpwpz1dChXVw8" target="_blank" class="purple-pill">📝 Fill Out the Google Form</a>
+
+        <details class="starry-details">
+            <summary class="starry-summary">📝 Click here to open the form without leaving this page</summary>
+            <div class="details-content">
+                <div style="position: relative; width: 100%; height: 0; padding-bottom: 80%;">
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeSByI3Trf-HmXNmAn8r0OlhC7Wxg5yjfvpk6IkAV8oWjIsUQ/viewform?embedded=true" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 6px; background: white;" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                </div>
+            </div>
+        </details>
+    </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step-card">
+    <div class="step-badge">Step 2</div>
+    <div style="color: #e2e8f0; font-size: 1.1rem; line-height: 1.7;">
+        (Make sure that you did step one :D) Create a level 3 character. Use the default <strong>27 point buy</strong>, (not stat rolls) and fixed hp (not rolled).
+        <br><br>
+        If you're using D&D Beyond for your character, you can use the built-in point buy calculator, or you can use this calculator for your core stats if you’re using a different platform for your character sheet:
+        
+        <a href="https://chicken-dinner.com/5e/5e-point-buy.html#select&NA&8&8&8&8&8&8&0&0&27&15&8&19&15&12&9&7&5&4&3&2&1&0&1&2&4&6&9&4&4&4&4&4&4" target="_blank" rel="noopener noreferrer" class="purple-pill">🎲 Point Buy Calculator</a>
+
+        <details class="starry-details">
+            <summary class="starry-summary">⚙️ Click here to open the 5e Point Buy Calculator without leaving this page</summary>
+            <div class="details-content" style="background: white; border-radius: 0 0 6px 6px;">
+                <div style="margin-top: 10px; width: 100%; overflow: hidden; display: flex; justify-content: center;">
+                    <div style="transform: scale(0.9); transform-origin: top center; width: 100%; min-height: 650px;">
+                        <iframe src="https://chicken-dinner.com/5e/5e-point-buy.html#select&NA&8&8&8&8&8&8&0&0&27&15&8&19&15&12&9&7&5&4&3&2&1&0&1&2&4&6&9&4&4&4&4&4&4" title="5e Point Buy Calculator" style="width: 100%; height: 700px; border: 0;" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </details>
+    </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step-card">
+    <div class="step-badge">Step 3</div>
+    <div style="color: #e2e8f0; font-size: 1.1rem; line-height: 1.7;">
+        For your sheet, you have 3 options:
+        <ul class="step-list" style="margin-top: 1rem;">
+            <li>
+                <strong>D&D Beyond:</strong> Which is the easiest if you're a beginner. If you choose this, please go to your folder in the Google Drive and put a link to your sheet in the red part in your tracking sheet.
+                <br>
+                <em style="color: var(--starry-text-dim); font-size: 0.9em;">
+                    *P.S. there's a thread for some tips on how to use it in 
+                    <a href="https://discord.com/channels/1350684304019165347/1350688299160829962/1365438699948740638" target="_blank" class="discord-channel-pill">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                        getting-started
+                    </a>
+                    channel
+                </em>
+            </li>
+            <li>
+                <strong>Dicecloud:</strong> Same as Beyond, please go to your folder in the google drive and put a link to your sheet in the red part in your tracking sheet.
+            </li>
+            <li>
+                <strong>G-sheet:</strong> In your Google Drive folder, there is a blank Gsheet that you can copy and rename it to your character's name. (you don't need to use this if you're using Beyond or Dicecloud)
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step-card">
+    <div class="step-badge">Step 4</div>
+    <div style="color: #e2e8f0; font-size: 1.1rem; line-height: 1.7;">
+        Post your character in the 
+        <a href="https://discord.com/channels/1350684304019165347/1350688374884929556" target="_blank" class="discord-channel-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+            creation-log
+        </a>
+        channel, using the pinned post for a template. Use this exact template: 
+        
+        <a href="https://discord.com/channels/1350684304019165347/1350688374884929556/1365446198848258090" target="_blank" class="discord-channel-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+            Creation Log Template
+        </a>
+
+        <ul class="step-list" style="margin-top: 1rem;">
+            <li>
+                A creation log cheat sheet is available in your folder to help you. For instructions on locating your folder, see the section titled 
+                <a href="#how-to-find-your-folder" class="blue-pill">📁 “How to Find Your Folder”</a>
+            </li>
+            <li>
+                And if you need help, feel free to open a ticket with the counselors to help you with the log 
+                <a href="https://discord.com/channels/1350684304019165347/1350688370061479966" target="_blank" class="discord-channel-pill">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                    create-a-ticket
+                </a>
+            </li>
+        </ul>
+        <div style="margin-top: 10px; font-size: 0.95em; color: rgba(255, 255, 255, 0.7);">
+            <em>*P.S. For races with multiple versions from different sourcebooks, you must list the source you are choosing.</em>
+        </div>
+    </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="step-card">
+    <div class="step-badge">Step 5</div>
+    <div style="color: #e2e8f0; font-size: 1.1rem; line-height: 1.7;">
+        Once your character is ✅ <strong>Staff Approved</strong>, you receive the Player role, you are ready to play!
+        <br><br>
+        <em style="color: rgba(255, 255, 255, 0.7); font-size: 0.95em;">
+            *P.S. Players can take either max gold from what their starting class gives them or starting equipment.
+        </em>
+    </div>
+</div>
+
+
+<!-- blocks break -->
+<!-- HOW TO FIND FOLDER SECTION -->
+<div class="step-card" id="how-to-find-your-folder">
+    
+    <h2 style="color: var(--starry-cyan); margin-bottom: 1.5rem; font-family: 'Trebuchet MS', sans-serif; display: flex; align-items: center; gap: 10px;">
+        📁 How to Find Your Folder
+    </h2>
+
+    <!-- Image Container -->
+    <div style="margin-bottom: 1.5rem; text-align: center;">
+        <!-- NOTE: Ensure folder.png is in the correct directory relative to this file -->
+        <img src="../assets/img/folder.png" alt="Google Drive 'Shared with me' example" 
+             style="max-width: 100%; width: 500px; height: auto; border-radius: 8px; border: 1px solid rgba(56, 189, 248, 0.3); box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+    </div>
+
+    <!-- Troubleshooting Text -->
+    <div style="color: #e2e8f0; font-size: 1.1rem; line-height: 1.7;">
+        If you still can't find your folder, make sure to check that:
+        
+        <ul class="step-list" style="margin-top: 1rem;">
+            <li>
+                you completed step one in the 
+                <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" class="blue-pill">
+                    character-creation-steps
+                </a>.
+            </li>
+            <li>
+                you're logged in with the same Google account you used in the form during step one.
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+
+<!-- blocks break -->
+<!-- CREATION TIPS (ELIZABETH) SECTION -->
+
+<style>
+  /* --- CONTAINER: The Holy Reliquary --- */
+  .holy-card {
+    position: relative;
+    /* UPDATED: Glassy transparent background */
+    background: linear-gradient(135deg, rgba(26, 18, 11, 0.4) 0%, rgba(2, 2, 10, 0.5) 100%); 
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 40px auto;
+    /* UPDATED: Full width match */
+    max-width: 1200px;
+    
+    /* Outer Golden Border */
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    border-top: 2px solid #fcd34d;
+    
+    /* Radiant Outer Glow */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 450px;
+    font-family: 'Cinzel', 'Georgia', serif; 
+  }
+
+  /* --- LEFT SIDE: TEXT CONTENT --- */
+  .holy-text-side {
+    position: relative;
+    flex: 2 1 400px; /* Takes more space than the image */
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #e2e8f0;
+    z-index: 2;
+    border-right: 1px solid rgba(252, 211, 77, 0.2);
+  }
+
+  /* --- ANIMATED BACKGROUND EFFECTS --- */
+
+  .light-mote {
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    opacity: 0;
+    z-index: 1;
+    box-shadow: 0 0 8px #fcd34d;
+    animation: floatUpMote ease-in infinite;
+  }
+  .light-mote:nth-child(1) { left: 10%; width: 3px; height: 3px; animation-duration: 4s; animation-delay: 0s; }
+  .light-mote:nth-child(2) { left: 30%; width: 4px; height: 4px; animation-duration: 6s; animation-delay: 1.5s; background: #fbbf24; }
+  .light-mote:nth-child(3) { left: 70%; width: 2px; height: 2px; animation-duration: 5s; animation-delay: 2.5s; }
+  .light-mote:nth-child(4) { left: 90%; width: 3px; height: 3px; animation-duration: 7s; animation-delay: 0.5s; background: #fcd34d; }
+
+  @keyframes floatUpMote {
+    0% { transform: translateY(50px); opacity: 0; }
+    20% { opacity: 0.8; }
+    100% { transform: translateY(-300px); opacity: 0; }
+  }
+
+  /* --- RIGHT SIDE: IMAGE --- */
+  .holy-image-side {
+    position: relative;
+    flex: 1 1 300px;
+    background: #000;
+    overflow: hidden;
+  }
+
+  .char-img-holy {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%; 
+    display: block;
+    opacity: 0.9;
+  }
+
+  /* --- THE GOLDEN FLARE --- */
+  .holy-flare {
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.4) 45%, 
+      rgba(251, 191, 36, 0.2) 50%, 
+      transparent 70%
+    );
+    transform: skewX(-25deg);
+    animation: flarePass 6s infinite ease-in-out;
+    z-index: 5;
+    pointer-events: none;
+    mix-blend-mode: screen; 
+  }
+
+  @keyframes flarePass {
+    0%, 40% { left: -100%; opacity: 0; }
+    50% { opacity: 1; }
+    100% { left: 200%; opacity: 0; }
+  }
+
+  /* --- TYPOGRAPHY --- */
+  .decree-list {
+    position: relative;
+    z-index: 2;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .decree-list > li {
+    margin-bottom: 12px;
+    padding-left: 28px;
+    position: relative;
+  }
+  .decree-list > li::before {
+    content: "❖";
+    position: absolute;
+    left: 0;
+    color: #fcd34d; 
+    font-size: 0.9em;
+    top: 2px;
+    text-shadow: 0 0 8px rgba(251, 191, 36, 0.5);
+  }
+  .decree-list ul {
+    list-style: none;
+    padding-left: 10px;
+    margin-top: 8px;
+    color: #cbd5e1;
+    font-size: 0.95em;
+  }
+  .decree-list ul li { margin-bottom: 6px; padding-left: 15px; position: relative; }
+  .decree-list ul li::before { content: "-"; position: absolute; left: 0; color: #fbbf24; font-weight: bold; }
+
+  .banner-note {
+    position: relative;
+    z-index: 2;
+    margin-top: 25px;
+    background: rgba(251, 191, 36, 0.1); 
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    padding: 15px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    color: #fcd34d;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-style: italic;
+  }
+
+  /* --- FOOTER TAG --- */
+  .banner-tag {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fcd34d;
+    font-size: 0.75em;
+    padding: 6px 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid rgba(252, 211, 77, 0.5);
+    border-radius: 4px;
+    font-family: sans-serif;
+  }
+
+  /* --- MOBILE FIXES --- */
+  @media (max-width: 850px) {
+    .holy-card { flex-direction: column; }
+    
+    .holy-image-side { 
+      width: 100%; 
+      height: 350px; 
+      order: 2; /* Puts image after text */
+      border-top: 1px solid rgba(252, 211, 77, 0.3);
+    }
+    
+    .holy-text-side { 
+      border-right: none; 
+      padding: 30px 20px;
+      order: 1; /* Puts text first */
+    }
+  }
+</style>
+
+<div class="holy-card">
+  
+  <!-- LEFT: Text Section (Top on Mobile) -->
+  <div class="holy-text-side">
+    <div class="sunbeam-bg"></div>
+    <div class="light-mote"></div>
+    <div class="light-mote"></div>
+    <div class="light-mote"></div>
+    <div class="light-mote"></div>
+
+    <h3 style="margin-top: 0; color: #fcd34d; border-bottom: 1px solid rgba(251, 191, 36, 0.2); padding-bottom: 0.5em; text-transform: uppercase; font-size: 1.3em; margin-bottom: 1.5rem; letter-spacing: 2px;">
+        Creation Tips
+    </h3>
+
+    <ul class="decree-list">
+      <li>Use one of two base equipment options:
+        <ul>
+          <li>Starting equipment granted by class and background</li>
+          <li>Max values for the starting gold rolls of your 1st class</li>
+        </ul>
+      </li>
+      <li>Average hp, not rolled. Take the maximum HP for first level and the average HP for all levels after</li>
+      <li>Multiclassing is allowed</li>
+      <li>Background customization is allowed</li>
+      <li>You can use any content listed in Allowed Materials</li>
+    </ul>
+
+    <div class="banner-note">
+      <div><strong>Note:</strong> All new characters begin with a special Sending Stone, as specified below under the Magic Items section of the rules.</div>
+    </div>
+  </div>
+
+  <!-- RIGHT: Image Section (Bottom on Mobile) -->
+  <div class="holy-image-side">
+    <div class="holy-flare"></div>
+    
+    <!-- Fixed Path -->
+    <img src="/assets/img/players/elizabeth.png" alt="Elizabeth Character Art" class="char-img-holy">
+    
+    <div class="banner-tag">Elizabeth, played by @emperorkitkat</div>
+  </div>
+
+</div>
+
+
+<!-- blocks break -->
+
+
+
+<!-- blocks break -->
+
+
+
+<!-- blocks break -->
+ 
+
+
+<!-- blocks break -->
+<!-- CHARACTER SLOTS SECTION -->
+
+<style>
+    /* Reuse Glass Box */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* List Styling */
+    .slots-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .slots-list li {
+        position: relative;
+        padding-left: 1.8rem;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #cbd5e1;
+    }
+
+    .slots-list li::before {
+        content: '✦';
+        position: absolute;
+        left: 0;
+        color: var(--starry-cyan);
+        font-weight: bold;
+    }
+
+    /* Highlight for Numbers */
+    .slot-highlight {
+        color: var(--starry-cyan);
+        font-weight: 800;
+    }
+
+    .supporter-gold {
+        color: var(--starry-gold);
+        font-weight: 800;
+    }
+</style>
+
+<div class="glass-box" style="border-left: 5px solid var(--starry-cyan); max-width: 1200px; margin: 2rem auto;">
+    <h3 style="color: var(--starry-cyan); margin-top: 0; margin-bottom: 1.5rem; font-size: 1.8rem; font-weight: 800; border-bottom: 1px solid rgba(34, 211, 238, 0.3); padding-bottom: 10px;">
+        Character Slots
+    </h3>
+
+    <ul class="slots-list">
+        <li>
+            Each Player starts with <span class="slot-highlight">3 character slots</span>.
+        </li>
+        <li>
+            For every character that reaches <strong>Tier 3 (level 11)</strong>, you gain <span class="slot-highlight">+1 additional slot</span>, up to a maximum of 3 level up slots.
+        </li>
+        <li>
+            Full DMs receive <span class="slot-highlight">one additional character slot</span>.
+        </li>
+        <li>
+            Server Supporters also gain extra slots: 
+            <span class="supporter-gold">Steward: +1</span>, 
+            <span class="supporter-gold">Heir: +2</span>, 
+            <span class="supporter-gold">Noble: +4</span>.
+        </li>
+    </ul>
+</div>
+
+
+<!-- blocks break -->
+
+
+
+<!-- blocks break -->
+
+            <!-- YOU CAN ADD MORE BLOCKS HERE LATER -->
+
+        </main>
+        <!-- ▲▲▲ END CONTENT ▲▲▲ -->
+    </div>
+
+    <!-- SCRIPTS -->
+
+    <script src="../search.js"></script>
+    <script src="../background-canvas.js"></script>
+    
+    <!-- NOTE: You might need to edit mobile-menu.js to wait for 'componentLoaded' event -->
+    <script src="../mobile-menu.js"></script>
+</body>
+</html>

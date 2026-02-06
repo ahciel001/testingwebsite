@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Title - 2014 5e Server</title>
+    <title>crafting</title>
     <link rel="stylesheet" href="../../style.css">
     <script>window.rootPath = "../../";</script>
     <script src="../../loader.js"></script> <!-- Load this first -->
@@ -24,6 +24,512 @@
 
         <!-- ▼▼▼ PASTE YOUR CONTENT INSIDE THIS TAG ▼▼▼ -->
         <main class="content-with-sidebar">
+<!-- blocks break -->
+<!-- CRAFTING RULES: DCs & COSTS -->
+
+<style>
+    /* --- GLASS CONTAINER --- */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* --- TABLE STYLES --- */
+    .table-wrapper {
+        overflow-x: auto;
+        margin-bottom: 1.5rem;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .starry-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 1rem;
+    }
+
+    .starry-table th {
+        background: rgba(34, 211, 238, 0.15);
+        color: var(--starry-cyan); /* Fallback or #22d3ee */
+        color: #22d3ee;
+        font-weight: 800;
+        text-align: left; /* Default Left */
+        padding: 12px 15px;
+        border-bottom: 2px solid rgba(34, 211, 238, 0.3);
+    }
+
+    /* Center Helper for DTP Table headers */
+    .starry-table.center-head th { 
+        text-align: center; 
+    }
+    
+    .starry-table.center-body td { 
+        text-align: center; 
+    }
+
+    .starry-table td {
+        padding: 12px 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        color: #cbd5e1;
+    }
+
+    .starry-table tr:hover {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .starry-table tr:last-child td {
+        border-bottom: none;
+    }
+
+    /* --- LIST STYLES --- */
+    .craft-list { list-style: none; padding: 0; margin-bottom: 1rem; }
+    .craft-list li { 
+        margin-bottom: 0.8rem; 
+        position: relative; 
+        padding-left: 1.5rem; 
+        line-height: 1.6;
+        color: #e2e8f0;
+    }
+</style>
+
+<!-- 1. CRAFTING DCs -->
+<div class="glass-box" style="border-left: 5px solid var(--starry-blue, #3b82f6);">
+    <h3 style="color: var(--starry-blue, #3b82f6); margin-top: 0; margin-bottom: 1rem; font-size: 1.5rem; font-weight: 800; border-bottom: 1px solid rgba(59, 130, 246, 0.3); padding-bottom: 10px;">
+        Crafting DCs
+    </h3>
+    
+    <p style="margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.7;">
+        The difficulty class (DC) of a crafting check depends on the tier of the item being crafted. The higher the tier, the harder it is to craft. The DCs for each tier are:
+    </p>
+
+    <div class="table-wrapper">
+        <table class="starry-table">
+            <thead>
+                <tr>
+                    <th style="width: 50%;">Tier</th>
+                    <th>DC</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tier 0 and Tier 1</td>
+                    <td>11</td>
+                </tr>
+                <tr>
+                    <td>Tier 2</td>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <td>Tier 3</td>
+                    <td>19</td>
+                </tr>
+                <tr>
+                    <td>Tier 4</td>
+                    <td>23</td>
+                </tr>
+                <tr>
+                    <td>Tier 5</td>
+                    <td>27</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- 2. COSTS SECTION (Gold & DTP) -->
+<div class="glass-box" style="border-left: 5px solid var(--starry-gold, #fcd34d);">
+    <h3 style="color: var(--starry-gold, #fcd34d); margin-top: 0; margin-bottom: 1rem; font-size: 1.5rem; font-weight: 800; border-bottom: 1px solid rgba(251, 191, 36, 0.3); padding-bottom: 10px;">
+        Crafting Costs
+    </h3>
+
+    <p style="margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.7;">
+        The cost of crafting an item consists of two components: gold and downtime points (DTP). Gold is the amount of money required to buy the materials and tools needed for crafting. Downtime points represent the amount of time required to complete the crafting process.
+    </p>
+
+    <h4 style="color: #fde047; margin-bottom: 10px; font-size: 1.2rem;">DTP Costs</h4>
+    <div class="table-wrapper">
+        <!-- Added center-head class here to center the titles -->
+        <table class="starry-table center-head center-body">
+            <thead>
+                <tr>
+                    <th>Tier</th>
+                    <th>Consumable</th>
+                    <th>Permanent</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>T0</td>
+                    <td>1 DTP</td>
+                    <td>2 DTP</td>
+                </tr>
+                <tr>
+                    <td>T1</td>
+                    <td>3 DTP</td>
+                    <td>10 DTP</td>
+                </tr>
+                <tr>
+                    <td>T2</td>
+                    <td>10 DTP</td>
+                    <td>15 DTP</td>
+                </tr>
+                <tr>
+                    <td>T3</td>
+                    <td>50 DTP</td>
+                    <td>80 DTP</td>
+                </tr>
+                <tr>
+                    <td>T4</td>
+                    <td>100 DTP</td>
+                    <td>150 DTP</td>
+                </tr>
+                <tr>
+                    <td>T5</td>
+                    <td>200 DTP</td>
+                    <td>250 DTP</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h4 style="color: #fde047; margin-bottom: 10px; font-size: 1.2rem; margin-top: 2rem;">Gold Costs</h4>
+    <ul class="craft-list">
+        <li style="padding-left: 1.5rem;">
+            <span style="position:absolute; left:0;">🔸</span>
+            Half of the gold cost of the original item.
+        </li>
+    </ul>
+</div>
+<!-- blocks break -->
+<!-- CRAFTING RESTRICTIONS SECTION -->
+
+<style>
+    /* --- REUSING GLASS THEME --- */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* --- LIST STYLES --- */
+    .craft-list { list-style: none; padding: 0; margin-bottom: 1rem; }
+    
+    /* Numbered list styling */
+    .craft-ol { counter-reset: craft-counter; list-style: none; padding: 0; }
+    .craft-ol > li {
+        position: relative;
+        padding-left: 2rem;
+        margin-bottom: 1rem;
+        color: #cbd5e1;
+        line-height: 1.6;
+    }
+    .craft-ol > li::before {
+        counter-increment: craft-counter;
+        content: counter(craft-counter) ".";
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        color: var(--starry-gold, #fcd34d);
+        color: #fcd34d;
+    }
+
+    /* Nested Buffs List */
+    .buff-list {
+        margin-top: 5px;
+        padding-left: 10px;
+        border-left: 2px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .buff-list li {
+        margin-bottom: 0.5rem;
+        position: relative;
+        padding-left: 1.5rem;
+        color: #cbd5e1;
+    }
+    
+    .buff-list li::before { 
+        content: '🔹'; 
+        position: absolute; 
+        left: 0; 
+        font-size: 0.8em; 
+    }
+</style>
+
+<!-- 3. RESTRICTIONS SECTION -->
+<div class="glass-box" style="border-left: 5px solid #ef4444;">
+    <h3 style="color: #ef4444; margin-top: 0; margin-bottom: 1rem; font-size: 1.5rem; font-weight: 800; border-bottom: 1px solid rgba(239, 68, 68, 0.3); padding-bottom: 10px;">
+        Crafting Restrictions
+    </h3>
+
+    <p style="margin-bottom: 1rem; font-size: 1.1rem; color: #e2e8f0;">
+        There are some restrictions on what items can be crafted and how they can be crafted. These are:
+    </p>
+
+    <ol class="craft-ol">
+        <li>Artifacts cannot be crafted.</li>
+        <li>Session-required items can only be crafted in a live session.</li>
+        <li>Any buffs from items do not apply to crafting rolls.</li>
+        <li>Outside of live sessions, only passive buffs from race/class/background features are allowed.</li>
+        <li>
+            In live sessions, only the following buffs are allowed (where applicable):
+            <ul class="craft-list buff-list">
+                <li>Help action from another player (they must also have an applicable tool proficiency)</li>
+                <li>Bardic Inspiration</li>
+                <li>Dark One's Own Luck</li>
+                <li>Bend Luck</li>
+                <li>Bolstering Magic</li>
+                <li>Emboldening Bond</li>
+                <li>Cosmic Omen</li>
+                <li>Psi-Bolstered Knack</li>
+                <li>Otherworldly Glamour</li>
+                <li>Any applicable Blood Hunter buffs</li>
+            </ul>
+        </li>
+    </ol>
+</div>
+
+<!-- blocks break -->
+<!-- TOOLS & OUTCOMES SECTION -->
+
+<style>
+    /* Reuse Glass Box */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* Reuse Table Style */
+    .table-wrapper {
+        overflow-x: auto;
+        margin-bottom: 1.5rem;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .starry-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+        min-width: 600px; /* Ensures table doesn't squish too much on mobile */
+    }
+
+    .starry-table th {
+        background: rgba(34, 211, 238, 0.15);
+        color: var(--starry-cyan);
+        font-weight: 800;
+        text-align: left;
+        padding: 12px 15px;
+        border-bottom: 2px solid rgba(34, 211, 238, 0.3);
+    }
+
+    .starry-table td {
+        padding: 12px 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        color: #cbd5e1;
+        vertical-align: top;
+    }
+
+    .starry-table tr:hover { background: rgba(255, 255, 255, 0.05); }
+    .starry-table tr:last-child td { border-bottom: none; }
+
+    /* Code Snippet Style */
+    .cmd-code {
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #a5f3fc; 
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: 'Consolas', 'Monaco', monospace;
+        font-size: 0.95em;
+        font-weight: bold;
+    }
+
+    /* Outcomes Box */
+    .outcome-box {
+        padding: 1rem;
+        border-radius: 6px;
+        margin-bottom: 1rem;
+        border-left: 4px solid;
+        background: rgba(0,0,0,0.2);
+    }
+    .outcome-success { border-color: #4ade80; color: #dcfce7; }
+    .outcome-fail { border-color: #f87171; color: #fee2e2; }
+</style>
+
+<!-- 1. TOOL PROFICIENCIES TABLE -->
+<div class="glass-box" style="border-left: 5px solid var(--starry-cyan);">
+    <h3 style="color: var(--starry-cyan); margin-top: 0; margin-bottom: 1rem; font-size: 1.5rem; font-weight: 800; border-bottom: 1px solid rgba(34, 211, 238, 0.3); padding-bottom: 10px;">
+        Tool Proficiencies Needed
+    </h3>
+
+    <p style="margin-bottom: 1rem; font-size: 1.1rem; line-height: 1.7;">
+        To craft an item, a character must have proficiency with the appropriate tool for the item type. The tool proficiency determines what kind of check is made to craft the item.
+    </p>
+    
+    <div style="font-size: 0.95em; color: var(--starry-gold); font-style: italic; margin-bottom: 1rem;">
+        *P.S. In sessions, DMs have freedom to decide what stat is used*
+    </div>
+
+    <div class="table-wrapper">
+        <table class="starry-table">
+            <thead>
+                <tr>
+                    <th style="width: 25%;">Item Type</th>
+                    <th style="width: 50%;">Tool Proficiencies</th>
+                    <th style="width: 25%;">Applicable Ability Scores</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Armor</td>
+                    <td>Cobbler's, Leatherworker's, Smith's, Tinker's, Weaver's</td>
+                    <td>STR / DEX</td>
+                </tr>
+                <tr>
+                    <td>Adventure Gear</td>
+                    <td>Carpenter's, Leatherworker's, Smith's, Tinker's</td>
+                    <td>INT / WIS</td>
+                </tr>
+                <tr>
+                    <td>Ammunition</td>
+                    <td>Smith's, Tinker's, Woodcarver's</td>
+                    <td>DEX / WIS</td>
+                </tr>
+                <tr>
+                    <td>Potion / Poison</td>
+                    <td>Alchemist's, Brewer's, Herbalist's, Poisoner's</td>
+                    <td>CON / WIS</td>
+                </tr>
+                <tr>
+                    <td>Ring</td>
+                    <td>Glassblower's, Jeweler's, Tinker's</td>
+                    <td>DEX / CHA</td>
+                </tr>
+                <tr>
+                    <td>Scroll</td>
+                    <td>Calligrapher's, Forgery, Arcana Check</td>
+                    <td>DEX / INT</td>
+                </tr>
+                <tr>
+                    <td>Shield</td>
+                    <td>Carpenter's, Smith's, Woodcarver's</td>
+                    <td>STR / CON</td>
+                </tr>
+                <tr>
+                    <td>Wand / Rod</td>
+                    <td>Tinker's, Woodcarver's, Arcana Check</td>
+                    <td>INT / WIS / CHA</td>
+                </tr>
+                <tr>
+                    <td>Weapon</td>
+                    <td>Smith's, Tinker’s, Woodcarver's</td>
+                    <td>STR / DEX / CON</td>
+                </tr>
+                <tr>
+                    <td>Wondrous Item</td>
+                    <td>Any applicable tool, Arcana Check</td>
+                    <td>INT / CHA</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- 2. CRAFTING OUTCOMES -->
+<div class="glass-box" style="border-left: 5px solid #a78bfa;">
+    <h3 style="color: #a78bfa; margin-top: 0; margin-bottom: 1rem; font-size: 1.5rem; font-weight: 800; border-bottom: 1px solid rgba(167, 139, 250, 0.3); padding-bottom: 10px;">
+        Crafting Outcomes
+    </h3>
+
+    <div class="outcome-box outcome-success">
+        <strong>On a successful check:</strong> The item is crafted and the character spends the gold and DTP required for the item.
+    </div>
+
+    <div class="outcome-box outcome-fail">
+        <strong>On a failed check:</strong> The GP and DTP costs are spent and the item is not crafted, however the character can attempt another check for an additional 1/4th the original GP and DTP cost.
+    </div>
+</div>
+
+<!-- 3. HOW TO USE TOOLS -->
+<div class="glass-box" style="border-left: 5px solid var(--starry-blue);">
+    <h3 style="color: var(--starry-blue); margin-top: 0; margin-bottom: 1rem; font-size: 1.5rem; font-weight: 800; border-bottom: 1px solid rgba(59, 130, 246, 0.3); padding-bottom: 10px;">
+        How to use tools
+    </h3>
+
+    <div style="font-size: 1.1rem; line-height: 1.7; color: #e2e8f0;">
+        <p style="margin-bottom: 1rem;">
+            To learn a tool proficiency, use the command: <span class="cmd-code">!tool pro &lt;tool_name&gt;</span>
+        </p>
+        <p style="margin-bottom: 1rem; font-size: 0.95em; color: #cbd5e1;">
+            For expertise, use <code>exp</code> instead of <code>pro</code>.
+        </p>
+        <p style="margin-bottom: 1.5rem;">
+            Example: <span class="cmd-code">!tool exp alchemist</span>
+        </p>
+
+        <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin-bottom: 1.5rem;">
+
+        <p style="margin-bottom: 1rem;">
+            To make a check with the tool, use the command: <span class="cmd-code">!tool &lt;tool_name&gt; &lt;stat&gt;</span>
+        </p>
+        <p>
+            Example: <span class="cmd-code">!tool alchemist wis</span>
+        </p>
+    </div>
+</div>
+
+
+<!-- blocks break -->
+
+
+
+<!-- blocks break -->
+
+
+
+<!-- blocks break -->
+
+
+
+<!-- blocks break -->
+
+
+
+<!-- blocks break -->
+
+
+
+<!-- blocks break -->
+
+
+
+<!-- blocks break -->
+
+
+
 <!-- blocks break -->
 
 

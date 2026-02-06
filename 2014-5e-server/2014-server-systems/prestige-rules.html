@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Title - 2014 5e Server</title>
+    <title>prestige-rules</title>
     <link rel="stylesheet" href="../../style.css">
     <script>window.rootPath = "../../";</script>
     <script src="../../loader.js"></script> <!-- Load this first -->
@@ -24,6 +24,451 @@
 
         <!-- ▼▼▼ PASTE YOUR CONTENT INSIDE THIS TAG ▼▼▼ -->
         <main class="content-with-sidebar">
+<!-- blocks break -->
+<!-- PRESTIGE RULES SECTION -->
+
+<style>
+    /* --- 1. GLASS CONTAINER --- */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* --- 2. ALERT BOX (Red/Orange for warnings) --- */
+    .alert-red {
+        background: rgba(239, 68, 68, 0.1);
+        backdrop-filter: blur(4px);
+        border-left: 4px solid #ef4444;
+        padding: 1rem 1.5rem;
+        border-radius: 6px;
+        margin: 1.5rem 0;
+        color: #fca5a5;
+    }
+
+    /* --- 3. DISCORD PILL --- */
+    .discord-pill {
+        display: inline-flex; align-items: center; gap: 5px;
+        background-color: rgba(88, 101, 242, 0.25); 
+        color: #cdd3ff; border: 1px solid rgba(88, 101, 242, 0.5);
+        border-radius: 6px; padding: 2px 8px;
+        text-decoration: none; font-weight: 600; font-size: 0.9em;
+        vertical-align: middle; white-space: nowrap; transition: all 0.2s ease;
+        font-family: 'Inter', sans-serif;
+    }
+    .discord-pill:hover {
+        background-color: #5865F2; color: white; 
+        box-shadow: 0 0 15px rgba(88, 101, 242, 0.6); transform: translateY(-2px);
+    }
+
+    /* --- 4. LIST STYLES --- */
+    .star-list { list-style: none; padding: 0; margin-bottom: 1.5rem; }
+    .star-list li { 
+        position: relative; 
+        padding-left: 1.5rem; 
+        margin-bottom: 0.6rem; 
+        color: #cbd5e1; 
+        line-height: 1.6;
+    }
+    .star-list li::before { 
+        content: '✦'; 
+        position: absolute; 
+        left: 0; 
+        color: var(--starry-gold); 
+        font-weight: bold;
+    }
+
+    /* --- 5. PS BOX --- */
+    .ps-box {
+        background: rgba(255, 255, 255, 0.05); 
+        padding: 1rem; 
+        border-radius: 8px; 
+        margin-bottom: 1.5rem; 
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+</style>
+
+<!-- 1. PRESTIGE OVERVIEW -->
+<div class="glass-box" style="border-left: 5px solid var(--starry-gold);">
+    <h3 style="color: var(--starry-gold); margin-bottom: 1.5rem; font-size: 1.8rem; font-weight: 800; display: block;">
+        Prestige Rules
+    </h3>
+    
+    <div style="font-size: 1.1rem; line-height: 1.7;">
+        <p style="margin-bottom: 1rem;">
+            Hey there! Did you know that once your player character (PC) reaches level 20 or higher, you have an alternative retirement option called Prestige. Using this system, you can trade in some of your hard-earned levels in exchange for prestige points (PP), which you can then use to purchase extra benefits for your PC. However, if your PC is below level 20, they won't be eligible for Prestige just yet.
+        </p>
+        <p style="margin-bottom: 1rem;">
+            If you do decide to Prestige your PC, you can return them to the start of any tier (which are levels 3, 5, 11, 17, and 23) and earn PP based on which tier you choose. This is a great way to get more benefits for your PC by trading in some of your hours. The PP you earn will be shown on your Tracking Sheet once you reach level 20. A character may prestige multiple times, each time returning to lower level and beginning their journey anew.
+        </p>
+
+        <div class="alert-red">
+            <strong>Just keep in mind that some items or abilities may be level-locked or tier-locked, meaning you can only benefit from them if your PC is at the appropriate level or tier.</strong>
+        </div>
+
+        <p style="margin-bottom: 1rem;">
+            So to explain what happens when you choose to Prestige your PC. It's a pretty big change, so it's important to understand what you get to keep. Here's the list of things you can hold on to:
+        </p>
+
+        <ul class="star-list">
+            <li>Memories</li>
+            <li>Gold</li>
+            <li>DTP (this includes learned tools and languages)</li>
+            <li>Items (tier-locked)</li>
+            <li>Boons (tier-locked)</li>
+            <li>Artifacts (tier-locked)</li>
+            <li>The effects of manuals you previously used (tier-locked)</li>
+            <li>Any Prestige Points from previous Prestiges</li>
+        </ul>
+    </div>
+</div>
+
+<!-- 2. HOW TO PRESTIGE -->
+<div class="glass-box" style="border-left: 5px solid var(--starry-cyan);">
+    <h3 style="color: var(--starry-cyan); margin-bottom: 1.5rem; font-size: 1.8rem; font-weight: 800; display: block;">
+        How to prestige:
+    </h3>
+
+    <div style="font-size: 1.1rem; line-height: 1.7;">
+        <p style="margin-bottom: 1rem;">
+            You will need to post a log in the 
+            <span class="discord-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                prestige-log
+            </span> 
+            channel. Then a staff will review the prestige log.
+        </p>
+        <p>Players can later use a character respec to revise their PP allocations if they so choose.</p>
+    </div>
+</div>
+
+<!-- 3. KARMA POINTS -->
+<div class="glass-box" style="border-left: 5px solid #a78bfa;">
+    <div style="font-size: 1.1rem; line-height: 1.7;">
+        <p style="margin-bottom: 1rem;">Players can also use karma points to get prestige points!!</p>
+        
+        <p style="font-size: 1.3rem; color: var(--starry-gold); font-weight: 800; margin-bottom: 1rem;">
+            1 Karma point = 2 Prestige points
+        </p>
+
+        <p style="margin-bottom: 1.5rem;">
+            You can pick from any of the tabs except Others, Origins, and Racial Features (unless the character is already prestiged!)
+        </p>
+
+        <div class="ps-box">
+            <strong style="color: var(--starry-cyan);">P.S.</strong> You don't need to prestige to buy prestige stuff using the prestige points gained from karma points
+        </div>
+    </div>
+</div>
+
+
+<!-- blocks break -->
+<!-- PRESTIGE RESTRICTIONS SECTION -->
+
+<style>
+  /* --- MAIN CARD CONTAINER --- */
+  .restrictions-card {
+    /* Glassy Starry Theme with a Red Hue */
+    background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(40, 10, 10, 0.4) 100%);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    
+    border: 1px solid rgba(239, 68, 68, 0.2); 
+    border-left: 5px solid #ef4444; /* Red Accent */
+    border-radius: 16px;
+    
+    margin: 2rem auto;
+    max-width: 1200px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* --- LEFT SIDE: TEXT --- */
+  .restric-text-side {
+    flex: 2 1 400px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .restric-intro-title {
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+  }
+
+  .restric-header {
+    color: #ef4444;
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    opacity: 0.9;
+  }
+
+  /* --- LIST STYLING --- */
+  .restric-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .restric-list li {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .restric-list li::before {
+    content: '✦';
+    color: #ef4444;
+    font-weight: bold;
+  }
+
+  .racial-box {
+      grid-column: 1 / -1;
+      margin-top: 10px;
+      padding: 12px;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  /* --- BOTTOM NOTE BOX --- */
+  .restric-footer-note {
+      margin-top: auto;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #94a3b8;
+      font-size: 0.9rem;
+      font-style: italic;
+      line-height: 1.6;
+  }
+
+  /* --- RIGHT SIDE: IMAGE --- */
+  .restric-img-side {
+    flex: 1 1 300px;
+    min-height: 500px;
+    position: relative;
+    background: #000;
+  }
+
+  .restric-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    opacity: 0.9;
+    display: block;
+  }
+
+  .restric-caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
+    text-align: right;
+  }
+
+  /* Mobile Layout Adjustment */
+  @media (max-width: 768px) {
+    .restrictions-card {
+      flex-direction: column; /* Text on top, Image on bottom */
+    }
+    .restric-img-side {
+        min-height: 400px;
+    }
+    .restric-text-side {
+        padding: 1.5rem;
+    }
+  }
+</style>
+
+<div class="restrictions-card">
+
+  <!-- TEXT SECTION -->
+  <div class="restric-text-side">
+    <div class="restric-intro-title">
+        The prestige shop has these limits per character:
+    </div>
+
+    <span class="restric-header">PRESTIGE RESTRICTIONS</span>
+    
+    <ul class="restric-list">
+      <li>3 ASI/Feat</li>
+      <li>1 Stat Max Increase</li>
+      <li>1 Blessing</li>
+      <li>3 Charms</li>
+      <li>1 Dark Bargains</li>
+      <li>1 Dark Gift</li>
+      <li>1 Draconic Gift</li>
+      <li>1 Cult</li>
+      <li>1 Demonic Boon</li>
+      <li>1 Frag. of Suffering</li>
+      <li>1 Origin</li>
+      <li>1 Planar Influences</li>
+      
+      <li class="racial-box">
+        <strong style="color: #fff;">For Racial Features:</strong>
+        <div style="margin-left: 20px; font-size: 0.95em; color: #cbd5e1; margin-top: 5px;">
+           ✦ Either 1 special feature<br>
+           ✦ Or 2 thematic features
+        </div>
+      </li>
+    </ul>
+
+    <div class="restric-footer-note">
+        <strong>Please note:</strong> Prestige powers and items may be allowed or disallowed at DM discretion. See the DM-Directory channel or talk to your DM if you have any questions. Also the prices may change at any moment!!
+    </div>
+  </div>
+
+  <!-- IMAGE SECTION -->
+  <div class="restric-img-side">
+    <img src="/assets/img/players/velvet.png" alt="Velvet" class="restric-img">
+    
+    <div class="restric-caption">
+      <h2 style="margin: 0; color: #fff; font-size: 1.6rem; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 2px 4px black;">Velvet</h2>
+      <p style="margin: 0; color: #ef4444; font-size: 0.85rem; font-weight: bold; letter-spacing: 1px;">Starry Shorian</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- blocks break -->
+<!-- PRESTIGE SHOP LINK SECTION -->
+
+<style>
+    /* --- GLASS BAR CONTAINER --- */
+    .shop-access-bar {
+        background: linear-gradient(90deg, rgba(20, 30, 60, 0.4) 0%, rgba(2, 2, 10, 0.6) 100%);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(251, 191, 36, 0.3);
+        border-radius: 12px;
+        padding: 1.2rem 2rem;
+        margin: 2rem auto;
+        max-width: 1200px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        
+        /* Flex Layout for side-by-side */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        flex-wrap: wrap; /* Stacks on small mobile screens */
+    }
+
+    .shop-text {
+        font-family: 'Trebuchet MS', sans-serif;
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: #fbbf24;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    /* --- PRESTIGE GOLD BUTTON --- */
+    .btn-prestige-shop {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: linear-gradient(135deg, #fbbf24, #d97706);
+        color: #000; /* Dark text for high contrast on gold */
+        font-weight: 800;
+        font-size: 1rem;
+        padding: 12px 28px;
+        border-radius: 8px;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 15px rgba(251, 191, 36, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-prestige-shop:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 0 25px rgba(251, 191, 36, 0.7);
+        filter: brightness(1.1);
+        color: #000;
+    }
+
+    .btn-prestige-shop svg {
+        transition: transform 0.3s ease;
+    }
+
+    .btn-prestige-shop:hover svg {
+        transform: rotate(15deg) scale(1.2);
+    }
+
+    /* Mobile handling */
+    @media (max-width: 600px) {
+        .shop-access-bar {
+            justify-content: center;
+            text-align: center;
+            padding: 1.5rem;
+        }
+        .btn-prestige-shop {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+</style>
+
+<div class="shop-access-bar">
+    
+    <!-- LEFT SIDE: TEXT -->
+    <div class="shop-text">
+        <span style="font-size: 1.8rem;"></span>
+        Prestige Shop
+    </div>
+
+    <!-- RIGHT SIDE: BUTTON -->
+    <a href="https://docs.google.com/spreadsheets/d/104utxRcwttHlXuE8kHvXXJM9XdVcEFLLB_3t21Syfzk/edit?usp=sharing" target="_blank" class="btn-prestige-shop">
+        <span>Open Spreadsheet</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+    </a>
+
+</div>
+
+
+<!-- blocks break -->
+
+
+
+<!-- blocks break -->
+
+
+
+<!-- blocks break -->
+
+
+
 <!-- blocks break -->
 
 

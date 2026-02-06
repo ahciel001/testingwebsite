@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>how-to-play</title>
+    <title>dm-tools</title>
     <link rel="stylesheet" href="../style.css">
     <script>window.rootPath = "../";</script> 
     <script src="../loader.js"></script> <!-- Load this first -->
@@ -24,6 +24,561 @@
 
         <!-- ▼▼▼ PASTE YOUR CONTENT INSIDE THIS TAG ▼▼▼ -->
         <main class="content-with-sidebar">
+<!-- blocks break -->
+<!-- DM TOOLS SECTION -->
+
+<style>
+  /* --- 1. GLASS THEME & CONTAINERS --- */
+  .dm-tool-container {
+    background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(34, 211, 238, 0.2);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    color: #e2e8f0;
+    font-family: 'Trebuchet MS', sans-serif;
+  }
+
+  .dm-section-header {
+    text-align: center;
+    color: var(--starry-cyan);
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    text-shadow: 0 0 10px rgba(34, 211, 238, 0.3);
+  }
+
+  /* --- 2. INPUTS & TEXTAREAS --- */
+  .dm-input, .dm-textarea {
+    width: 100%;
+    margin: 6px 0 16px;
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    transition: border-color 0.3s;
+  }
+
+  .dm-input:focus, .dm-textarea:focus {
+    border-color: var(--starry-cyan);
+    outline: none;
+    box-shadow: 0 0 10px rgba(34, 211, 238, 0.2);
+  }
+
+  label {
+    color: var(--starry-gold);
+    font-size: 0.95rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+  }
+
+  /* --- 3. PILL BUTTONS --- */
+  .pill-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 6px 0 16px 0;
+  }
+
+  .pill-label {
+    cursor: pointer;
+    user-select: none;
+    margin: 0 !important;
+  }
+
+  .pill-label input { display: none; }
+
+  .pill-span {
+    display: block;
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    font-size: 0.9em;
+    transition: all 0.2s ease;
+    color: #cbd5e1;
+    font-weight: 500;
+  }
+
+  .pill-label:hover .pill-span {
+    border-color: var(--starry-cyan);
+    color: #fff;
+    background: rgba(34, 211, 238, 0.1);
+  }
+
+  .pill-label input:checked + .pill-span {
+    background: linear-gradient(135deg, var(--starry-deep-blue), var(--starry-blue));
+    border-color: var(--starry-cyan);
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+    transform: translateY(-1px);
+  }
+
+  /* --- 4. ACTION BUTTONS --- */
+  .btn-action {
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .btn-gen { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+  .btn-gen:hover { box-shadow: 0 0 15px rgba(59, 130, 246, 0.6); }
+
+  .btn-copy { background: linear-gradient(135deg, #10b981, #059669); }
+  .btn-copy:hover { box-shadow: 0 0 15px rgba(16, 185, 129, 0.6); }
+
+  .btn-clear { background: linear-gradient(135deg, #ef4444, #b91c1c); margin-bottom: 20px; }
+  .btn-clear:hover { box-shadow: 0 0 15px rgba(239, 68, 68, 0.6); }
+
+  .btn-import { background: linear-gradient(135deg, #f59e0b, #d97706); }
+  .btn-import:hover { box-shadow: 0 0 15px rgba(245, 158, 11, 0.6); }
+
+  /* --- 5. TOGGLE BUTTON --- */
+  #permaDeath {
+    background: rgba(107, 114, 128, 0.5);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  /* --- 6. TIMESTAMP WIDGET --- */
+  .ts-widget {
+    margin-bottom: 16px; 
+    border: 1px solid var(--starry-border); 
+    border-radius: 8px; 
+    padding: 12px; 
+    background: rgba(0,0,0,0.2);
+  }
+</style>
+
+<div id="dm-tools-wrapper">
+
+  <!-- CLEAR BUTTON -->
+  <div style="display: flex; justify-content: flex-end;">
+    <button onclick="clearAll()" class="btn-action btn-clear">🗑️ Clear All Fields</button>
+  </div>
+
+  <!-- HOST BUILDER SECTION -->
+  <div class="dm-tool-container" style="border-left: 4px solid var(--starry-cyan);">
+    <h2 class="dm-section-header">🛠️ Looking to Host Builder</h2>
+
+    <label>Session name:</label>
+    <input id="sessionName" placeholder="*The Shattered Isles*" class="dm-input">
+
+    <label>Description:</label>
+    <textarea id="description" placeholder="*A sea-bound adventure full of mystery and treasure...*" class="dm-textarea" style="height: 80px;"></textarea>
+
+    <!-- Timestamp widget -->
+    <div class="ts-widget">
+      <summary style="cursor:default; color:var(--starry-gold); font-weight:bold;">🕒 Start Timestamp (auto)</summary>
+
+      <div class="container" style="margin-top:8px;">
+        <label>Start Date (yyyy-mm-dd):</label>
+        <input type="date" id="ts_date" class="dm-input">
+
+        <label>Start Time (HH:MM):</label>
+        <input type="time" id="ts_time" class="dm-input">
+
+        <select id="ts_type" style="display:none;">
+          <option value="f">long date with short time</option>
+        </select>
+
+        <div style="display:none;">
+          <span id="ts_preview"></span>
+          <input type="text" readonly id="ts_code" title="Press Ctrl/Cmd+C to copy">
+        </div>
+      </div>
+    </div>
+
+    <label>Expected duration (hrs):</label>
+    <input id="duration" type="text" placeholder="4" class="dm-input">
+
+    <label>Expected APL:</label>
+    <div class="pill-container">
+      <label class="pill-label"><input type="checkbox" class="apl" value="<@&1153129945216852050>"><span class="pill-span">Starling (New Player)</span></label>
+      <label class="pill-label"><input type="checkbox" class="apl" value="<@&1068045032956891136>"><span class="pill-span">Tier 1</span></label>
+      <label class="pill-label"><input type="checkbox" class="apl" value="<@&1068045225253150850>"><span class="pill-span">Tier 2</span></label>
+      <label class="pill-label"><input type="checkbox" class="apl" value="<@&1068045384536039494>"><span class="pill-span">Tier 3</span></label>
+      <label class="pill-label"><input type="checkbox" class="apl" value="<@&1068045446938906624>"><span class="pill-span">Tier 4</span></label>
+      <label class="pill-label"><input type="checkbox" class="apl" value="<@&1068045526194475068>"><span class="pill-span">Tier 5</span></label>
+      <label class="pill-label"><input type="checkbox" class="apl" value="<@&1130253701223817226>"><span class="pill-span">TRP Player</span></label>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 12px;">
+      <!-- Difficulty Section -->
+      <div style="flex: 1; min-width: 200px;">
+        <label>Difficulty:</label>
+        <div class="pill-container">
+          <label class="pill-label"><input type="checkbox" class="difficulty" value="Trivial"><span class="pill-span">Trivial</span></label>
+          <label class="pill-label"><input type="checkbox" class="difficulty" value="Easy"><span class="pill-span">Easy</span></label>
+          <label class="pill-label"><input type="checkbox" class="difficulty" value="Medium"><span class="pill-span">Medium</span></label>
+          <label class="pill-label"><input type="checkbox" class="difficulty" value="Hard"><span class="pill-span">Hard</span></label>
+          <label class="pill-label"><input type="checkbox" class="difficulty" value="Deadly"><span class="pill-span">Deadly</span></label>
+        </div>
+      </div>
+
+      <!-- Perma Death Section -->
+      <div style="flex: 0 0 auto;">
+        <label style="color: #ef4444;">☠️ Perma Death:</label>
+        <div style="margin-top: 6px;">
+          <button id="permaDeath">Off</button>
+        </div>
+      </div>
+    </div>
+
+    <label>Session Focus:</label>
+    <div class="pill-container">
+      <label class="pill-label"><input type="checkbox" class="focus" value="Exploration"><span class="pill-span">Exploration</span></label>
+      <label class="pill-label"><input type="checkbox" class="focus" value="Combat"><span class="pill-span">Combat</span></label>
+      <label class="pill-label"><input type="checkbox" class="focus" value="Roleplay"><span class="pill-span">Roleplay</span></label>
+    </div>
+
+    <label>House rules:</label>
+    <textarea id="houseRules" placeholder="*List any specific or homebrew rules for this session...*" class="dm-textarea" style="height:80px;"></textarea>
+
+    <label>To join:</label>
+    <textarea id="toJoin" placeholder="*Message me with character name, level...*" class="dm-textarea" style="height:40px;"></textarea>
+
+    <label>Player count:</label>
+    <input id="hostPlayerCount" type="text" placeholder="5" class="dm-input">
+
+    <div style="display:flex; justify-content:center; gap:12px; margin-top: 20px;">
+      <button onclick="generateMarkdown()" class="btn-action btn-gen">✨ Generate</button>
+      <button id="copyBtn" class="btn-action btn-copy">📋 Copy</button>
+    </div>
+
+    <textarea id="output" class="dm-textarea" style="height:280px; margin-top:20px; font-family: 'Consolas', monospace; color: #a5f3fc;" placeholder="Your formatted markdown will appear here..."></textarea>
+  </div>
+
+  <!-- SESSION LOG BUILDER SECTION -->
+  <div class="dm-tool-container" style="border-left: 4px solid var(--starry-gold);">
+    <h2 class="dm-section-header">📜 Session Log Builder</h2>
+
+    <div style="display:flex; justify-content:flex-end; margin-bottom:12px;">
+      <button onclick="importSessionInfo()" class="btn-action btn-import">⬇️ Import From Host Builder</button>
+    </div>
+
+    <label>Session Name:</label>
+    <input id="logSessionName" placeholder="*The Shattered Isles*" class="dm-input">
+
+    <!-- CHANGED ORDER: Participants First -->
+    <label>Participants (paste names here):</label>
+    <textarea id="logParticipants" placeholder="- Player 1&#10;- Player 2" class="dm-textarea" style="height:80px;"></textarea>
+
+    <!-- CHANGED ORDER: Player Count Next -->
+    <label>Player count (alternative - one by one):</label>
+    <input id="logPlayerCount" type="text" placeholder="5" class="dm-input" oninput="generateLogPlayerBoxes()">
+
+    <label>Players' names:</label>
+    <div id="logPlayerBoxes" style="margin-bottom:16px;"></div>
+
+    <label>Date:</label>
+    <input id="logDate" placeholder="YYYY-MM-DD" class="dm-input">
+
+    <label>Number of hours played:</label>
+    <input id="logHours" type="text" placeholder="4" class="dm-input">
+
+    <label>APL (Average Player Level):</label>
+    <input id="logAPL" placeholder="Tier 2" class="dm-input">
+
+    <label>Player Loot:</label>
+    <textarea id="logLoot" placeholder="Gold" class="dm-textarea"></textarea>
+
+    <label>Synopsis: (optional)</label>
+    <textarea id="logSynopsis" placeholder="*A brief overview of what happened...*" class="dm-textarea" style="height:80px;"></textarea>
+
+    <p style="margin-top:12px; color: #cbd5e1; font-size: 0.9rem;">
+        <strong>Anonymous Feedback (optional):</strong><br>
+        <a href="https://forms.gle/56NGvHQw7QDeG9fj8" target="_blank" style="color:var(--starry-cyan);">https://forms.gle/56NGvHQw7QDeG9fj8</a>
+    </p>
+
+    <div style="display:flex; justify-content:center; gap:12px; margin-top: 20px;">
+      <button onclick="generateSessionLog()" class="btn-action btn-gen">✨ Generate</button>
+      <button id="copyLogBtn" class="btn-action btn-copy">📋 Copy</button>
+    </div>
+
+    <textarea id="logOutput" class="dm-textarea" style="height:260px; margin-top:20px; font-family: 'Consolas', monospace; color: #a5f3fc;" placeholder="Your formatted session log will appear here..."></textarea>
+  </div>
+
+</div>
+
+<!-- SCRIPTS -->
+<script>
+/* Perma death toggle */
+function toggleButton(id) {
+  const btn = document.getElementById(id);
+  if (btn.textContent === "Off") {
+    btn.textContent = "On";
+    btn.style.background = "#ef4444"; /* Red for Danger */
+    btn.style.boxShadow = "0 0 10px rgba(239, 68, 68, 0.5)";
+  } else {
+    btn.textContent = "Off";
+    btn.style.background = "rgba(107, 114, 128, 0.5)";
+    btn.style.boxShadow = "none";
+  }
+}
+document.getElementById("permaDeath").onclick = () => toggleButton("permaDeath");
+
+/* ---------- Timestamp widget logic ---------- */
+(function() {
+  const dateInput = document.getElementById('ts_date');
+  const timeInput = document.getElementById('ts_time');
+  const typeInput = document.getElementById('ts_type'); // hidden
+  const codeOutput = document.getElementById('ts_code');
+  const preview = document.getElementById('ts_preview');
+
+  function setNow() {
+    const now = new Date();
+    dateInput.value = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0');
+    timeInput.value = String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0');
+    updateOutput();
+  }
+
+  function toLocalDateFromInputs() {
+    if (!dateInput.value) return new Date();
+    const [y, m, d] = dateInput.value.split('-').map(Number);
+    let hours = 0, minutes = 0;
+    if (timeInput.value) {
+      [hours, minutes] = timeInput.value.split(':').map(Number);
+    }
+    return new Date(y, m - 1, d, hours, minutes, 0, 0);
+  }
+
+  function updateOutput() {
+    const selectedDate = toLocalDateFromInputs();
+    const tsSeconds = Math.floor(selectedDate.getTime() / 1000);
+    const discordString = `<t:${tsSeconds}:f> - <t:${tsSeconds}:R>`;
+    codeOutput.value = discordString;
+    preview.textContent = selectedDate.toString();
+    window.__dmtools_timestamp = discordString;
+    window.__dmtools_timestamp_seconds = tsSeconds;
+  }
+
+  dateInput.addEventListener('change', updateOutput);
+  timeInput.addEventListener('change', updateOutput);
+  typeInput.addEventListener('change', updateOutput);
+
+  setNow();
+  window.dmtools_setTimestampNow = setNow;
+})();
+
+/* ---------- Host Builder ---------- */
+function generateMarkdown() {
+  const name = document.getElementById("sessionName").value || '';
+  const desc = document.getElementById("description").value || '';
+  const dur = document.getElementById("duration").value || '';
+  
+  const difficulty = [...document.querySelectorAll(".difficulty:checked")].map(c => c.value).join(", ");
+  
+  const permaDeath = document.getElementById("permaDeath").textContent;
+  const houseRules = document.getElementById("houseRules").value || '';
+  
+  const toJoin = document.getElementById("toJoin").value || '';
+  const playerCount = document.getElementById("hostPlayerCount").value || '';
+
+  const apl = [...document.querySelectorAll(".apl:checked")].map(c => c.value).join(" ");
+  const focus = [...document.querySelectorAll(".focus:checked")].map(c => c.value).join(", ");
+
+  const discordTs = window.__dmtools_timestamp || '';
+  
+  const markdown = `**Session name:** ${name}
+
+**Description:** ${desc}
+
+**Start time:** ${discordTs}
+
+**Expected duration:** ${dur}  
+**Expected APL:** ${apl}  
+**Difficulty:** ${difficulty}, Perma Death: ${permaDeath}  
+**Session Focus:** ${focus}
+
+**House rules:**  
+${houseRules}
+
+**Player count:** ${playerCount}
+**To join:** ${toJoin}
+
+**Players:**`;
+
+  document.getElementById("output").value = markdown;
+}
+
+document.getElementById("copyBtn").onclick = async function() {
+  const text = document.getElementById("output").value || '';
+  try {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      await navigator.clipboard.writeText(text);
+    } else {
+      const ta = document.getElementById("output");
+      ta.select();
+      document.execCommand("copy");
+    }
+    this.textContent = "Copied!";
+    setTimeout(() => this.textContent = "📋 Copy", 1500);
+  } catch (e) {
+    alert("Copy failed: " + e);
+  }
+};
+
+/* ---------- Session Log: dynamic player boxes ---------- */
+function generateLogPlayerBoxes() {
+  const countText = document.getElementById("logPlayerCount").value || '';
+  const container = document.getElementById("logPlayerBoxes");
+  container.innerHTML = "";
+
+  const parsed = parseInt(countText, 10);
+  if (!isFinite(parsed) || parsed <= 0) return;
+
+  for (let i = 1; i <= parsed; i++) {
+    const input = document.createElement("input");
+    input.placeholder = `Player ${i}`;
+    input.className = "dm-input"; // Use new class
+    input.classList.add("logPlayerEntry");
+    // Removing inline styles to let CSS class handle it
+    container.appendChild(input);
+  }
+}
+
+/* ---------- Import From Host Builder ---------- */
+function importSessionInfo() {
+  document.getElementById("logSessionName").value = document.getElementById("sessionName").value || '';
+  document.getElementById("logHours").value = document.getElementById("duration").value || '';
+  
+  // CHANGED: NO LONGER IMPORTING PLAYER COUNT
+  // document.getElementById("logPlayerCount").value = document.getElementById("hostPlayerCount").value || '';
+  
+  // Import date in MM/DD/YYYY format
+  const tsDate = document.getElementById("ts_date").value;
+  if (tsDate) {
+    const [y, m, d] = tsDate.split('-');
+    document.getElementById("logDate").value = `${m}/${d}/${y}`;
+  } else {
+    document.getElementById("logDate").value = '';
+  }
+  
+  // No need to trigger box generation since count isn't imported
+}
+
+/* ---------- Generate Session Log markdown ---------- */
+function generateSessionLog() {
+  const name = document.getElementById("logSessionName").value || '';
+  const date = document.getElementById("logDate").value || '';
+  const hours = document.getElementById("logHours").value || '';
+  const apl = document.getElementById("logAPL").value || '';
+  const loot = document.getElementById("logLoot").value || '';
+  const synopsis = document.getElementById("logSynopsis").value || '';
+
+  const dynamicNames = [...document.querySelectorAll(".logPlayerEntry")]
+    .map(p => p.value && p.value.trim() ? "- " + p.value.trim() : null)
+    .filter(Boolean);
+
+  let participantsList = '';
+  if (dynamicNames.length > 0) {
+    participantsList = dynamicNames.join("\n");
+  } else {
+    const textarea = document.getElementById("logParticipants").value || '';
+    if (textarea.trim()) {
+      participantsList = textarea.split(/\r?\n/).map(l => l.trim()).filter(Boolean).join("\n");
+    } else {
+      participantsList = "- (no participants entered)";
+    }
+  }
+
+  const markdown = `**__Session Log:__**
+
+**Session Name:** ${name}
+**Participants:**  
+${participantsList}
+
+**Date:** ${date}
+**Number of hours played:** ${hours}
+**APL:** ${apl}
+
+**Player Loot:**  
+${loot}
+
+**Synopsis:**  
+${synopsis}
+
+**Anonymous Feedback Form:**  
+<https://forms.gle/56NGvHQw7QDeG9fj8>`;
+
+  document.getElementById("logOutput").value = markdown;
+}
+
+document.getElementById("copyLogBtn").onclick = async function() {
+  const text = document.getElementById("logOutput").value || '';
+  try {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      await navigator.clipboard.writeText(text);
+    } else {
+      const ta = document.getElementById("logOutput");
+      ta.select();
+      document.execCommand("copy");
+    }
+    this.textContent = "Copied!";
+    setTimeout(() => this.textContent = "📋 Copy", 1500);
+  } catch (e) {
+    alert("Copy failed: " + e);
+  }
+};
+
+/* ---------- CLEAR ALL FUNCTION ---------- */
+function clearAll() {
+    // Clear inputs and textareas
+    document.querySelectorAll('.dm-input, .dm-textarea').forEach(el => el.value = '');
+    
+    // Uncheck all checkboxes
+    document.querySelectorAll('input[type="checkbox"]').forEach(el => el.checked = false);
+    
+    // Clear dynamic player boxes
+    document.getElementById("logPlayerBoxes").innerHTML = '';
+    
+    // Reset PermaDeath toggle
+    const pdBtn = document.getElementById("permaDeath");
+    pdBtn.textContent = "Off";
+    pdBtn.style.background = "rgba(107, 114, 128, 0.5)";
+    pdBtn.style.boxShadow = "none";
+    
+    // Reset timestamp to now
+    if (window.dmtools_setTimestampNow) window.dmtools_setTimestampNow();
+}
+
+window.resetDmToolsTimestampToNow = function() {
+  if (window.dmtools_setTimestampNow) window.dmtools_setTimestampNow();
+};
+</script>
+
+
+<!-- blocks break -->
+
+
+
+<!-- blocks break -->
+
+
+
+<!-- blocks break -->
+
+
+
 <!-- blocks break -->
 
 

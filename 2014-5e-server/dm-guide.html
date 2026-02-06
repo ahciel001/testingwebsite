@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>how-to-play</title>
+    <title>dm-guide</title>
     <link rel="stylesheet" href="../style.css">
     <script>window.rootPath = "../";</script> 
     <script src="../loader.js"></script> <!-- Load this first -->
@@ -24,6 +24,1646 @@
 
         <!-- ▼▼▼ PASTE YOUR CONTENT INSIDE THIS TAG ▼▼▼ -->
         <main class="content-with-sidebar">
+<!-- blocks break -->
+<!-- DM SECTION: MAIN CARD + INFO GRID -->
+
+<style>
+  /* =========================================
+     1. APOLLO CARD STYLES
+     ========================================= */
+  .apollo-card {
+    /* Glassy Starry Theme */
+    background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    
+    border: 1px solid rgba(245, 158, 11, 0.3); /* Gold border */
+    border-radius: 16px;
+    padding: 40px;
+    margin: 40px auto;
+    max-width: 1200px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 40px;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Text Side */
+  .apollo-text-side {
+    flex: 1;
+    min-width: 300px;
+    z-index: 2;
+  }
+
+  .apollo-header {
+    font-family: 'Cinzel', serif;
+    font-size: 2em;
+    /* Gold Gradient Text */
+    background: linear-gradient(to right, #fcd34d, #f59e0b, #ea580c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1em;
+    display: block;
+    font-weight: 900;
+    filter: drop-shadow(0 0 5px rgba(245, 158, 11, 0.4));
+  }
+
+  .apollo-body {
+    color: #e2e8f0;
+    line-height: 1.7;
+    font-size: 1.05em;
+  }
+
+  /* Image Side */
+  .apollo-img-wrapper {
+    flex: 0 0 auto;
+    position: relative;
+    width: 280px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Embers Animation */
+  .ember-container {
+    position: absolute;
+    width: 100%; height: 100%; top: 0; left: 0;
+    z-index: 3; pointer-events: none; overflow: hidden; border-radius: 12px;
+  }
+
+  .ember {
+    position: absolute; bottom: -10px; width: 4px; height: 4px;
+    background: #fcd34d; border-radius: 50%; opacity: 0;
+    box-shadow: 0 0 6px #f59e0b; animation: riseUp 3s linear infinite;
+  }
+
+  .ember:nth-child(1) { left: 20%; animation-duration: 2.5s; animation-delay: 0s; }
+  .ember:nth-child(2) { left: 50%; width: 6px; height: 6px; animation-duration: 3s; animation-delay: 1.2s; }
+  .ember:nth-child(3) { left: 80%; animation-duration: 2.8s; animation-delay: 0.5s; }
+  .ember:nth-child(4) { left: 35%; width: 3px; height: 3px; animation-duration: 3.5s; animation-delay: 1.8s; }
+  .ember:nth-child(5) { left: 65%; animation-duration: 3.2s; animation-delay: 2.5s; }
+
+  @keyframes riseUp {
+    0% { bottom: -10px; opacity: 0; transform: translateX(0); }
+    20% { opacity: 1; } 80% { opacity: 0.8; }
+    100% { bottom: 100%; opacity: 0; transform: translateX(10px); }
+  }
+
+  /* Image Pulse */
+  @keyframes sunPulse {
+    0% { box-shadow: 0 0 15px rgba(245, 158, 11, 0.2); border-color: #f59e0b; }
+    50% { box-shadow: 0 0 30px rgba(245, 158, 11, 0.5); border-color: #fbbf24; }
+    100% { box-shadow: 0 0 15px rgba(245, 158, 11, 0.2); border-color: #f59e0b; }
+  }
+
+  .apollo-img {
+    width: 100%; height: auto; border-radius: 12px; border: 3px solid #f59e0b;
+    display: block; position: relative; z-index: 1;
+    animation: sunPulse 3s infinite ease-in-out;
+  }
+
+  .apollo-footer {
+    margin-top: 15px; text-align: center; font-size: 0.85em;
+    font-style: italic; color: var(--starry-text-dim);
+  }
+
+  /* Discord Pill */
+  .discord-pill {
+      display: inline-flex; align-items: center; gap: 5px;
+      background-color: rgba(88, 101, 242, 0.25); 
+      color: #cdd3ff; border: 1px solid rgba(88, 101, 242, 0.5);
+      border-radius: 6px; padding: 2px 8px;
+      text-decoration: none; font-weight: 600; font-size: 0.9em;
+      vertical-align: middle; white-space: nowrap; transition: all 0.2s ease;
+      font-family: 'Inter', sans-serif;
+  }
+  .discord-pill:hover {
+      background-color: #5865F2; color: white; 
+      box-shadow: 0 0 15px rgba(88, 101, 242, 0.6); transform: translateY(-2px);
+  }
+
+  /* =========================================
+     2. INFO GRID STYLES (RESTRICTIONS & ROLES)
+     ========================================= */
+  .dm-info-grid {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin-left: auto; margin-right: auto;
+  }
+
+  .dm-info-col {
+      flex: 1;
+      min-width: 300px;
+  }
+
+  .dm-glass-box {
+      background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 1.5rem;
+      height: 100%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      display: flex; flex-direction: column;
+  }
+
+  /* Updated List Styles for Stars */
+  .dm-list {
+      padding: 0;
+      margin: 0;
+      color: #e2e8f0;
+      line-height: 1.6;
+      list-style: none; /* Remove default white dots */
+  }
+  
+  .dm-list li {
+      margin-bottom: 8px;
+      position: relative;
+      padding-left: 1.5rem; /* Make room for the star */
+  }
+
+  /* Default Star */
+  .dm-list li::before {
+      content: '✦';
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-weight: bold;
+  }
+
+  /* Specific Star Colors based on box */
+  .restrict-list li::before { color: #e67e22; } /* Orange Star */
+  .roles-list li::before { color: var(--starry-cyan); } /* Cyan Star */
+
+  /* =========================================
+     3. MOBILE RESPONSIVENESS
+     ========================================= */
+  @media (max-width: 768px) {
+    .apollo-card {
+      /* Puts Text First, Image Second */
+      flex-direction: column; 
+      text-align: center;
+    }
+    .apollo-text-side { width: 100%; }
+    
+    .dm-info-grid {
+        flex-direction: column;
+    }
+  }
+</style>
+
+<!-- 1. MAIN APOLLO CARD -->
+<div class="apollo-card">
+
+  <!-- LEFT SIDE: Text Content -->
+  <div class="apollo-text-side">
+    <strong class="apollo-header">How to become a Dungeon Master (DM)</strong>
+    
+    <div class="apollo-body">
+      <p>
+          To become a DM, contact a staff member after you have reached <strong>Level 4</strong> on a player character to receive the <strong>Apprentice DM</strong> role. As an apprentice, you will need to host <strong>5 open voice sessions</strong> to receive the full DM role.
+      </p>
+      
+      <p style="margin-top: 10px;">
+          We recommend posting about yourself in 
+          
+          <span class="discord-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+              dm-directory
+          </span> 
+          
+          while you are an active DM. At any time, you may request the staff team to remove the role if you wish to take a break.
+      </p>
+    </div>
+  </div>
+
+  <!-- RIGHT SIDE: Image + Embers -->
+  <div class="apollo-img-wrapper">
+    
+    <!-- Rising Particles Container -->
+    <div class="ember-container">
+      <div class="ember"></div>
+      <div class="ember"></div>
+      <div class="ember"></div>
+      <div class="ember"></div>
+      <div class="ember"></div>
+    </div>
+
+    <img src="/assets/img/apollo.jpg" alt="Apollo Character Art" class="apollo-img">
+    
+    <div class="apollo-footer">
+      <span style="color: #f59e0b; font-weight:bold;">Apollo</span>, played by @feel_my_energy
+    </div>
+  </div>
+
+</div>
+
+<!-- 2. SPLIT INFO GRID -->
+<div class="dm-info-grid">
+    
+    <!-- LEFT COLUMN: RESTRICTIONS -->
+    <div class="dm-info-col">
+        <div class="dm-glass-box" style="border-left: 4px solid #e67e22; background: linear-gradient(135deg, rgba(230, 126, 34, 0.1), rgba(2, 2, 10, 0.5));">
+            <h3 style="color: #ffccbc; margin-top: 0; margin-bottom: 1rem; font-size: 1.3rem; font-weight: 800; border-bottom: 1px solid rgba(230, 126, 34, 0.3); padding-bottom: 8px;">
+                Apprentice DM Restrictions
+            </h3>
+            
+            <ul class="dm-list restrict-list">
+                <li>
+                    Cannot run <strong style="color: #ffccbc;">Perma Death</strong> sessions (includes session required items).
+                </li>
+                <li>
+                    Cannot give out <strong style="color: #ffccbc;">Homebrew Items</strong> to players (running homebrew monsters is fine).
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- RIGHT COLUMN: TRP ROLES -->
+    <div class="dm-info-col">
+        <div class="dm-glass-box" style="border-left: 4px solid var(--starry-cyan);">
+            <h3 style="color: var(--starry-cyan); margin-top: 0; margin-bottom: 1rem; font-size: 1.3rem; font-weight: 800; border-bottom: 1px solid rgba(34, 211, 238, 0.3); padding-bottom: 8px;">
+                How to Earn TRP Roles
+            </h3>
+            
+            <ul class="dm-list roles-list">
+                <li>
+                    <strong style="color: #fff;">TRP DM:</strong> Reach Level 7 <em>OR</em> Run 2 Voice Sessions.
+                </li>
+                <li>
+                    <strong style="color: #fff;">PBP DM:</strong> Run 5 live TRP sessions (Socials do not count).
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- blocks break -->
+<!-- OPEN TITLE CARD -->
+
+<style>
+    .session-title-open {
+        max-width: 1200px;
+        /* Spacing: Room above, but NO room below so it sits on top of content */
+        margin: 0rem auto 0 auto; 
+        padding: 1.5rem 2rem;
+        
+        /* Glass Background fading out towards bottom */
+        background: linear-gradient(to bottom, rgba(30, 58, 138, 0.4), rgba(2, 2, 10, 0.1));
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        
+        /* Borders: Top, Left, Right ONLY (No Bottom) */
+        border: 1px solid rgba(34, 211, 238, 0.3);
+        border-bottom: none; 
+        
+        /* Rounded Corners: Top Left & Top Right ONLY */
+        border-radius: 12px 12px 0 0;
+        
+        /* Text Styling */
+        color: var(--starry-cyan);
+        font-family: 'Trebuchet MS', sans-serif;
+        font-weight: 800;
+        font-size: 1.8rem;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        
+        /* Subtle glow to emphasize the top */
+        box-shadow: 0 -4px 20px rgba(34, 211, 238, 0.15);
+    }
+
+    .title-icon {
+        font-size: 1.5rem;
+        filter: drop-shadow(0 0 5px rgba(34, 211, 238, 0.6));
+    }
+</style>
+
+<div class="session-title-open" id="mportant-Info">
+    Important Info for Running a Session
+</div>
+
+
+<!-- blocks break -->
+<!-- RUNNING SESSIONS & ETIQUETTE SECTION -->
+
+<style>
+    /* Reuse Glass Box */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* Reuse Discord Pill */
+    .discord-pill {
+        display: inline-flex; align-items: center; gap: 5px;
+        background-color: rgba(88, 101, 242, 0.25); 
+        color: #cdd3ff; border: 1px solid rgba(88, 101, 242, 0.5);
+        border-radius: 6px; padding: 2px 8px;
+        text-decoration: none; font-weight: 600; font-size: 0.9em;
+        vertical-align: middle; white-space: nowrap; transition: all 0.2s ease;
+        font-family: 'Inter', sans-serif;
+    }
+    .discord-pill:hover {
+        background-color: #5865F2; color: white; 
+        box-shadow: 0 0 15px rgba(88, 101, 242, 0.6); transform: translateY(-2px);
+    }
+
+    /* List Styles */
+    .etiquette-list { list-style: none; padding: 0; margin-bottom: 1.5rem; }
+    .etiquette-list li { 
+        margin-bottom: 0.8rem; 
+        position: relative; 
+        padding-left: 1.5rem; 
+        color: #cbd5e1; 
+        line-height: 1.6;
+    }
+    .etiquette-list li::before { content: '🔹'; position: absolute; left: 0; font-size: 0.8em; }
+
+    /* Nested "Don't Ping" List */
+    .dont-ping-list { 
+        margin-top: 5px; 
+        padding-left: 10px; 
+        border-left: 2px solid #ff4949; /* Pink border */
+    }
+    .dont-ping-list li::before { content: '❌'; font-size: 0.8em; }
+
+    /* Code Snippet for Tier Examples */
+    .tier-code {
+        background: rgba(0,0,0,0.3); 
+        padding: 2px 6px; 
+        border-radius: 4px; 
+        font-family: monospace; 
+        color: #fff;
+    }
+</style>
+
+<!-- 1. RUNNING LIVE SESSIONS -->
+<div class="glass-box" style="border-left: 5px solid var(--starry-blue);">
+    <h2 style="color: var(--starry-blue); margin-bottom: 1.5rem; font-size: 2rem; font-weight: 800; border-bottom: 1px solid rgba(59, 130, 246, 0.3); padding-bottom: 10px; display: block;">
+        Running Live Sessions
+    </h2>
+    
+    <div style="font-size: 1.1rem; line-height: 1.7;">
+        <p style="margin-bottom: 1rem;">
+            DMs can run sessions however they see fit. The session focus may vary. All games are run in Session Lobbies and Session Lobby Text under the Live Sessions category (you can choose any free lobby). DMs may use any supplemental materials to run their sessions, such as streaming a tabletop simulator or inserting ambiance via music bots, provided those materials are available to all players.
+        </p>
+        
+        <p style="margin-bottom: 1rem;">
+            Players in live sessions are expected to be in-character. You cannot proxy as your in-real-life self, nor host a session for such play. Please use the ooc Misc (Out of Character) voice channels for ooc hanging out, watching movies, or any ooc activity that does not impact PC development.
+        </p>
+
+        <p>
+            To run a live session, a DM should post in 
+            
+            <span class="discord-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                looking-to-host
+            </span> 
+            
+            using the pinned template. Or you can check our looking to host builder in DM tools page or check out how to use discord time stamp (explained below) which we recommend including a Discord Timestamp on your LTH post to overcome time zone misunderstandings.
+        </p>
+    </div>
+</div>
+
+<!-- 2. PINGING ETIQUETTE -->
+<div class="glass-box" style="border-left: 5px solid #2873ff;">
+    <h2 style="color: #2873ff; margin-bottom: 1.5rem; font-size: 2rem; font-weight: 800; border-bottom: 1px solid rgba(244, 114, 182, 0.3); padding-bottom: 10px; display: block;">
+        Pinging Etiquette
+    </h2>
+
+    <ul class="etiquette-list">
+        <li>
+            Ping is only allowed for session stuff (like sessions in lth or feelers in lfg or other things related to sessions)
+        </li>
+        <li>
+            About pinging starlings, a lot of new players struggle to make a character, proxying would be a nightmare for them, so i recommend making proxying optional for starling sessions
+        </li>
+        
+        <!-- NESTED DON'T LIST -->
+        <li>
+            <strong style="color: #ff4949; border-bottom: 1px solid #ff4949;">Don't ping:</strong>
+            <ul class="etiquette-list dont-ping-list">
+                <li>Multiple times for the same game, but you can ping again after at least 20 mins has passed from your last ping</li>
+                <li>Canceling sessions (its really unnecessary, but you can ping the people who signed up instead)</li>
+                <li>Roles belonging to tiers below/above your expected player level. Players interested in proxying will assign the appropriate tier roles to themselves.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <!-- NEW P.S. NOTE -->
+    <div style="background: rgba(40, 115, 255, 0.1); border: 1px solid #2873ff; padding: 10px 15px; border-radius: 6px; margin-top: 1rem; color: #dbeafe;">
+        <strong style="color: #2873ff;">P.S.</strong> To ping tier roles, you need to type it without a space to show up.
+        <br>
+        <em style="opacity: 0.8; font-size: 0.9em; margin-top: 5px; display: inline-block;">
+            Example: <span class="tier-code">@tier1</span> or <span class="tier-code">@tier2</span>
+        </em>
+    </div>
+</div>
+
+
+<!-- blocks break -->
+<!-- DM TOOLS & TIMESTAMP SECTION -->
+
+<style>
+    /* --- 1. GLASS CONTAINER --- */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* --- 2. CUSTOM BUTTONS --- */
+    
+    /* Builder Tool Button (Purple/Blue) */
+    .btn-builder {
+        display: inline-flex; align-items: center; gap: 8px;
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(79, 70, 229, 0.4));
+        border: 1px solid #818cf8;
+        color: #c7d2fe;
+        font-weight: 700; font-size: 1rem;
+        padding: 12px 24px; border-radius: 8px;
+        text-decoration: none;
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
+        transition: all 0.3s ease;
+        margin-top: 0rem;
+    }
+    .btn-builder:hover {
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.4), rgba(79, 70, 229, 0.6));
+        color: white; transform: translateY(-2px);
+        box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+    }
+
+    /* HammerTime Button (Orange/Gold) */
+    .btn-hammer {
+        display: inline-flex; align-items: center; gap: 8px;
+        background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(217, 119, 6, 0.4));
+        border: 1px solid #fbbf24;
+        color: #fde68a;
+        font-weight: 700; font-size: 0.9em;
+        padding: 8px 16px; border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    .btn-hammer:hover {
+        background: linear-gradient(135deg, rgba(245, 158, 11, 0.4), rgba(217, 119, 6, 0.6));
+        color: white; transform: translateY(-2px);
+        box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+    }
+
+    /* --- 3. CLICKABLE IMAGE STYLE --- */
+    .timestamp-link {
+        display: block;
+        width: fit-content;
+        position: relative; /* Needed for the overlay */
+        transition: transform 0.3s ease;
+        margin-top: 1.5rem;
+    }
+    
+    .timestamp-link:hover {
+        transform: scale(1.01);
+        cursor: pointer;
+    }
+
+    .timestamp-img {
+        display: block;
+        width: 100%; /* Adapts to the link container */
+        max-width: 800px; /* Max width constraint */
+        height: auto;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    }
+
+    /* --- OVERLAY HINT --- */
+    .timestamp-link::after {
+        content: '🔍 Click to open full image in new tab';
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        background: rgba(0, 0, 0, 0.85);
+        color: var(--starry-cyan);
+        padding: 6px 12px;
+        border-radius: 4px;
+        font-size: 0.85em;
+        font-weight: bold;
+        opacity: 0; /* Hidden by default */
+        transition: opacity 0.3s ease;
+        pointer-events: none; /* Allows click to pass through to link */
+        border: 1px solid var(--starry-cyan);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        white-space: nowrap;
+    }
+
+    .timestamp-link:hover::after {
+        opacity: 1; /* Show on hover */
+    }
+</style>
+
+<!-- 1. BUILDER TOOL BLOCK -->
+<div class="glass-box" style="border-left: 5px solid #818cf8;">
+    <h2 style="color: #818cf8; margin-bottom: 1rem; font-size: 1.2rem; font-weight: 800; display: block;">
+         Looking to Host / Session Log Builder
+    </h2>
+    
+    <p style="line-height: 1.7; color: #cbd5e1;">
+        A simple tool to help DMs structure their looking to host and session log posts.
+    </p>
+
+    <a href="https://the-starry-shore.github.io/-%202014%205e%20Server/7.%20DM%20Tools/" target="_blank" class="btn-builder">
+        Open DM Tool ↗
+    </a>
+</div>
+
+<!-- 2. TIMESTAMP BLOCK -->
+<div class="glass-box" style="border-left: 5px solid var(--starry-gold);">
+    <h2 style="color: var(--starry-gold); margin-bottom: 1.5rem; font-size: 1.2rem; font-weight: 800; display: block;">
+         How to make your Timestamp
+    </h2>
+
+    <div style="line-height: 1.7; color: #e2e8f0;">
+        <p style="margin-bottom: 1rem;">
+            This is how you make it show up in others' timezones correctly. Use the tool below to generate the code for Discord:
+        </p>
+        
+        <a href="https://hammertime.cyou/" target="_blank" class="btn-hammer">
+            🔨 HammerTime.cyou
+        </a>
+
+        <!-- Clickable Image with Hint -->
+        <a href="../assets/img/timestamp.png" target="_blank" class="timestamp-link">
+            <img src="../assets/img/timestamp.png" alt="Discord Timestamp Example" class="timestamp-img">
+        </a>
+    </div>
+</div>
+
+
+<!-- blocks break -->
+<!-- MUSIC BOTS & SERVER COMMANDS SECTION -->
+
+<style>
+    /* Reuse Glass Box */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* Code Snippet Style */
+    .cmd-code {
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #a5f3fc; /* Cyan text */
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: 'Consolas', 'Monaco', monospace;
+        font-size: 0.95em;
+        font-weight: bold;
+    }
+
+    /* Playlist Button */
+    .btn-playlist {
+        display: inline-flex; align-items: center; gap: 8px;
+        background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(219, 39, 119, 0.4));
+        border: 1px solid #f472b6;
+        color: #fbcfe8;
+        font-weight: 700; font-size: 0.95em;
+        padding: 10px 20px; border-radius: 6px;
+        text-decoration: none;
+        box-shadow: 0 4px 15px rgba(236, 72, 153, 0.2);
+        transition: all 0.3s ease;
+        margin-top: 1rem;
+    }
+    .btn-playlist:hover {
+        background: linear-gradient(135deg, rgba(236, 72, 153, 0.4), rgba(219, 39, 119, 0.6));
+        color: white; transform: translateY(-2px);
+        box-shadow: 0 0 20px rgba(236, 72, 153, 0.5);
+    }
+
+    /* List Styles */
+    .bot-list { list-style: none; padding: 0; }
+    .bot-list li { margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; }
+    .bot-list li:last-child { border-bottom: none; }
+    
+    .bot-name { color: #a78bfa; font-weight: 800; font-size: 1.1em; display: block; margin-bottom: 4px; }
+
+    .cmd-list { list-style: none; padding: 0; }
+    .cmd-list li { 
+        position: relative; 
+        padding-left: 1.5rem; 
+        margin-bottom: 0.8rem; 
+        line-height: 1.6; 
+        color: #cbd5e1;
+    }
+    .cmd-list li::before { content: '🔹'; position: absolute; left: 0; font-size: 0.8em; }
+</style>
+
+<!-- 1. MUSIC BOT COMMANDS -->
+<div class="glass-box" style="border-left: 5px solid #a78bfa;">
+    <h2 style="color: #a78bfa; margin-bottom: 1.5rem; font-size: 2rem; font-weight: 800; border-bottom: 1px solid rgba(167, 139, 250, 0.3); padding-bottom: 10px; display: block;">
+        🎵 Music Bot Commands
+    </h2>
+    
+    <p style="margin-bottom: 1.5rem;">Here's examples on how to use all of them:</p>
+
+    <ul class="bot-list">
+        <li>
+            <span class="bot-name">Jockie Music</span>
+            <span style="font-size: 0.9em; opacity: 0.7;">(there's 4 of this one, so if you see it in another lobby, you still can use it with the same command)</span><br>
+            <span class="cmd-code">m!play https://www.youtube.com/watch?v=dQw4w9WgXcQ</span>
+        </li>
+        <li>
+            <span class="bot-name">Pancake</span>
+            <span class="cmd-code">p!play https://www.youtube.com/watch?v=dQw4w9WgXcQ</span>
+        </li>
+        <li>
+            <span class="bot-name">Zandercraft</span>
+            <span class="cmd-code">/play https://www.youtube.com/watch?v=dQw4w9WgXcQ</span>
+        </li>
+        <li>
+            <span class="bot-name">bongo</span>
+            <span class="cmd-code">b.play https://www.youtube.com/watch?v=dQw4w9WgXcQ</span>
+        </li>
+        <li>
+            <span class="bot-name">Beats</span>
+            <span class="cmd-code">/play https://www.youtube.com/watch?v=dQw4w9WgXcQ</span>
+        </li>
+    </ul>
+
+    <div style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+        <strong style="color: #fff; display: block; margin-bottom: 5px;">Playlists for anything DnD related:</strong>
+        <a href="https://discord.com/channels/1067904868284633148/1070808880319311872/1070808967401451694" target="_blank" class="btn-playlist">
+            #⁠dms-chat⁠
+        </a>
+    </div>
+</div>
+
+<!-- 2. SERVER COMMANDS FOR SESSIONS -->
+<div class="glass-box" style="border-left: 5px solid var(--starry-cyan);">
+    <h2 style="color: var(--starry-cyan); margin-bottom: 1.5rem; font-size: 2rem; font-weight: 800; border-bottom: 1px solid rgba(34, 211, 238, 0.3); padding-bottom: 10px; display: block;">
+     Useful Session Commands
+    </h2>
+
+    <p style="margin-bottom: 1.5rem; color: #e2e8f0;">Some commands you might need in your sessions for new players:</p>
+
+    <ul class="cmd-list">
+        <li>Where to find their folder ==> <span class="cmd-code">!folder</span></li>
+        <li>How to log their sessions ==> <span class="cmd-code">!tracking</span></li>
+        <li>How the starry shore look like ==> <span class="cmd-code">!starry</span></li>
+        <li>The mascot ==> <span class="cmd-code">!mascot</span></li>
+        <li>What's proxy? ==> <span class="cmd-code">!proxy</span></li>
+        <li>(for trp dms) How to make a tupper ==> <span class="cmd-code">!tupper</span></li>
+        <li>For easier sign ups for players if u want, just ask them to do this command to show their character stuff ==> <span class="cmd-code">!me</span></li>
+        <li>If you want players to roll for where they are in the shore ==> <span class="cmd-code">!shore</span></li>
+        <li>
+            If you want to see what tiers players are looking for, you can use <span class="cmd-code">!tier</span> for all tiers or <span class="cmd-code">!tier [numbers]</span> to select specific ones.<br>
+            <em style="color: var(--starry-text-dim); font-size: 0.9em;">ex: <span class="cmd-code">!tier 2 3</span> and it will add the reaction automatically as well</em>
+        </li>
+        <li>How to sign up and add their token in Owlbear ==> <span class="cmd-code">!owl</span></li>
+    </ul>
+</div>
+
+
+<!-- blocks break -->
+<!-- SESSION LOOT & APL SECTION -->
+
+<style>
+    /* Reuse Glass Box */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* List Style */
+    .loot-list { list-style: none; padding: 0; margin-top: 1rem; }
+    .loot-list li { 
+        position: relative; 
+        padding-left: 1.5rem; 
+        margin-bottom: 0.8rem; 
+        color: #cbd5e1; 
+        line-height: 1.6;
+    }
+    .loot-list li::before { 
+        content: '💰'; 
+        position: absolute; 
+        left: 0; 
+        font-size: 0.9em;
+    }
+
+    /* Code Block Style */
+    .code-block {
+        background: rgba(0, 0, 0, 0.4);
+        border-left: 4px solid var(--starry-cyan);
+        padding: 1rem;
+        margin: 1rem 0;
+        font-family: 'Consolas', monospace;
+        color: #a5f3fc;
+        border-radius: 0 4px 4px 0;
+    }
+</style>
+
+<!-- 1. SESSION LOOT -->
+<div class="glass-box" style="border-left: 5px solid var(--starry-gold);">
+    <h2 style="color: var(--starry-gold); margin-bottom: 1.5rem; font-size: 2rem; font-weight: 800; border-bottom: 1px solid rgba(251, 191, 36, 0.3); padding-bottom: 10px; display: block;">
+        Session Loot
+    </h2>
+    
+    <div style="font-size: 1.1rem; line-height: 1.7;">
+        <p>
+            DMs can offer rewards for their session as they see fit, up to the allowable loot value shown after running the <strong>!apl command</strong> (explained below) and in the DM Rewards tab of their tracking sheet when they log the session.
+        </p>
+
+        <ul class="loot-list">
+            <li>DMs can give less than the allowable loot value. This is a maximum value. Note that DMs cannot give items that are above the character’s tier.</li>
+            <li>Homebrew items given as session rewards can only be used in that DM’s world, except at other DMs’ discretion.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- 2. APL COMMAND -->
+<div class="glass-box" style="border-left: 5px solid var(--starry-blue);">
+    <h2 style="color: var(--starry-blue); margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 800; border-bottom: 1px solid rgba(59, 130, 246, 0.3); padding-bottom: 10px; display: block;">
+        How to run the !apl command
+    </h2>
+
+    <div style="font-size: 1.1rem; line-height: 1.7; color: #e2e8f0;">
+        <p>Example: your players levels are 3, 6, 4, 12</p>
+        <p>You do:</p>
+        
+        <div class="code-block">
+            !apl 3 6 4 12
+        </div>
+
+        <p>
+            It will also show you what's the <strong style="color: var(--starry-gold);">max GP</strong> the session will reward the players.
+        </p>
+    </div>
+</div>
+
+
+<!-- blocks break -->
+<!-- SESSION HOURS & DM LOGGING IMAGE -->
+
+<style>
+    /* Reuse Glass Box */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* Reuse Discord Pill */
+    .discord-pill {
+        display: inline-flex; align-items: center; gap: 5px;
+        background-color: rgba(88, 101, 242, 0.25); 
+        color: #cdd3ff; border: 1px solid rgba(88, 101, 242, 0.5);
+        border-radius: 6px; padding: 2px 8px;
+        text-decoration: none; font-weight: 600; font-size: 0.9em;
+        vertical-align: middle; white-space: nowrap; transition: all 0.2s ease;
+        font-family: 'Inter', sans-serif;
+    }
+    .discord-pill:hover {
+        background-color: #5865F2; color: white; 
+        box-shadow: 0 0 15px rgba(88, 101, 242, 0.6); transform: translateY(-2px);
+    }
+
+    /* Clickable Image Style */
+    .dm-log-link {
+        display: block;
+        margin-top: 1.5rem;
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    }
+
+    .dm-log-link:hover {
+        transform: scale(1.01);
+        border-color: var(--starry-cyan);
+        box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+    }
+
+    .dm-log-img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    /* "Click to Open" Overlay Hint */
+    .dm-log-link::after {
+        content: '🔍 Click to open full image in new tab';
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        background: rgba(0, 0, 0, 0.8);
+        color: var(--starry-cyan);
+        padding: 6px 12px;
+        border-radius: 4px;
+        font-size: 0.85em;
+        font-weight: bold;
+        opacity: 0;
+        transition: opacity 0.3s;
+        pointer-events: none;
+        border: 1px solid var(--starry-cyan);
+    }
+
+    .dm-log-link:hover::after {
+        opacity: 1;
+    }
+</style>
+
+<div class="glass-box">
+    <h3 style="color: var(--starry-cyan); margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 800; border-bottom: 1px solid rgba(34, 211, 238, 0.3); padding-bottom: 10px;">
+         Session Hours & Tracking
+    </h3>
+
+    <div style="font-size: 1.1rem; line-height: 1.7;">
+        <p style="margin-bottom: 1rem;">
+            The number of hours played is calculated by rounding to the nearest half hour and the average party level (APL) is rounded to the nearest whole number.
+        </p>
+        <p style="margin-bottom: 1rem;">
+            A DM may choose to charge DTP for activities a character participates in during one of their sessions.
+        </p>
+        <p style="margin-bottom: 1rem;">
+            Following every session, a DM must post in 
+            
+            <span class="discord-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                session-log
+            </span> 
+            
+            using the provided template. It is important to do this ASAP following a session.
+        </p>
+        
+        <p style="background: rgba(255, 255, 255, 0.05); padding: 10px; border-radius: 6px; font-style: italic; color: #cbd5e1; border-left: 3px solid var(--starry-gold);">
+            Please note: in order for the session to be counted or for players to be counted in a session and gain loot and hours, you must host/play for at least one full hour.
+        </p>
+    </div>
+
+    <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 2rem 0;">
+
+    <h3 style="color: #e2e8f0; font-size: 1.3rem; margin-bottom: 1rem;">
+        How to log the sessions you DM'ed:
+    </h3>
+    
+    <a href="../assets/img/dmrewards.png" target="_blank" class="dm-log-link">
+        <img src="../assets/img/dmrewards.png" alt="How to log DM Rewards Guide" class="dm-log-img">
+    </a>
+</div>
+
+
+<!-- blocks break -->
+<!-- OPEN TITLE CARD -->
+
+<style>
+    .session-title-open {
+        max-width: 1200px;
+        /* Spacing: Room above, but NO room below so it sits on top of content */
+        margin: 0rem auto 0 auto; 
+        padding: 1.5rem 2rem;
+        
+        /* Glass Background fading out towards bottom */
+        background: linear-gradient(to bottom, rgba(30, 58, 138, 0.4), rgba(2, 2, 10, 0.1));
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        
+        /* Borders: Top, Left, Right ONLY (No Bottom) */
+        border: 1px solid rgba(34, 211, 238, 0.3);
+        border-bottom: none; 
+        
+        /* Rounded Corners: Top Left & Top Right ONLY */
+        border-radius: 12px 12px 0 0;
+        
+        /* Text Styling */
+        color: var(--starry-cyan);
+        font-family: 'Trebuchet MS', sans-serif;
+        font-weight: 800;
+        font-size: 1.8rem;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        
+        /* Subtle glow to emphasize the top */
+        box-shadow: 0 -4px 20px rgba(34, 211, 238, 0.15);
+    }
+
+    .title-icon {
+        font-size: 1.5rem;
+        filter: drop-shadow(0 0 5px rgba(34, 211, 238, 0.6));
+    }
+</style>
+
+<div class="session-title-open">
+    Additional DMs related Info
+</div>
+
+
+<!-- blocks break -->
+<!-- DM REWARDS SECTION -->
+
+<style>
+    /* Reuse Glass Box with Gold Accent */
+    .reward-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(251, 191, 36, 0.2);
+        border-left: 5px solid var(--starry-gold);
+        border-radius: 12px;
+        padding: 2.5rem;
+        margin: 0rem auto;
+        max-width: 1200px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* Section Title */
+    .reward-title {
+        color: var(--starry-gold);
+        margin-bottom: 1.5rem;
+        font-size: 2rem;
+        font-weight: 800;
+        border-bottom: 1px solid rgba(251, 191, 36, 0.3);
+        padding-bottom: 10px;
+        display: block;
+    }
+
+    /* Text Formatting */
+    .reward-body {
+        font-size: 1.1rem;
+        line-height: 1.7;
+    }
+    .reward-body p { margin-bottom: 1.2rem; }
+
+    /* List Style */
+    .reward-list { list-style: none; padding: 0; margin-top: 1rem; margin-bottom: 1.5rem; }
+    .reward-list li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 0.8rem;
+        color: #cbd5e1;
+    }
+    .reward-list li::before {
+        content: '✦';
+        position: absolute;
+        left: 0;
+        color: var(--starry-cyan);
+    }
+
+    /* Standalone Note Box */
+    .loot-note {
+        background: rgba(34, 211, 238, 0.05);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        padding: 1rem;
+        border-radius: 8px;
+        font-style: italic;
+        color: #e2e8f0;
+    }
+</style>
+
+<div class="reward-box">
+    <h2 class="reward-title">DM Rewards</h2>
+
+    <div class="reward-body">
+        <p>
+            DMs earn rewards to be applied to their own characters when they run live sessions. For a given session, a DM chooses a single character to give these rewards to. Log the session in the second tab of your Character Tracking Sheet, labeled DM Rewards. The session rewards will be automatically added to the character’s hour, gold, and DTP totals.
+        </p>
+
+        <p>
+            DMs earn <strong style="color: var(--starry-cyan);">hours</strong> for running live sessions at a rate of:<br>
+            <strong>Session Length (in hours rounded to the nearest 30 minutes) x 1.5</strong>
+        </p>
+
+        <p>
+            DMs earn <strong style="color: #a78bfa;">DTP rewards</strong> for running live sessions at a rate of:<br>
+            <strong>Session Length (in hours rounded to the nearest 30 minutes) x 4</strong>
+        </p>
+
+        <p>
+            DMs earn <strong style="color: var(--starry-gold);">gold rewards</strong> as specified in the DM Rewards tab of your tracking sheet when you log the session.
+        </p>
+
+        <ul class="reward-list">
+            <li>This value is determined by the current level of the character that the DM is applying the session to and the length of the session.</li>
+            <li>Gold rewards are halved for sessions running less than two hours.</li>
+            <li>Gold rewards are multiplied by 1.5 for sessions that run for four or more hours.</li>
+        </ul>
+
+        <!-- Separated from the list -->
+        <div class="loot-note">
+            Party members may choose to split loot amongst party members however DM and members see fit.
+        </div>
+    </div>
+</div>
+
+
+<!-- blocks break -->
+<!-- ASTRAL DM & COSMIC CALENDAR SECTION -->
+
+<style>
+    /* Reuse Glass Box */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* Rank/Reward Boxes */
+    .rank-container {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        margin-top: 1.5rem;
+    }
+
+    .rank-box {
+        flex: 1;
+        min-width: 250px;
+        padding: 1.2rem;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.1);
+        background: rgba(0,0,0,0.3);
+    }
+
+    /* Rank Specifics */
+    .rank-1 { border-color: #fbbf24; background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), transparent); }
+    .rank-2 { border-color: #94a3b8; background: linear-gradient(135deg, rgba(148, 163, 184, 0.1), transparent); }
+    .rank-3 { border-color: #b45309; background: linear-gradient(135deg, rgba(180, 83, 9, 0.1), transparent); }
+
+    .rank-title { font-weight: 800; font-size: 1.2rem; display: block; margin-bottom: 5px; }
+
+    /* List Styles */
+    .criteria-list { padding-left: 20px; color: #cbd5e1; line-height: 1.6; }
+    
+    /* Notes Box */
+    .ps-box {
+        background: rgba(34, 211, 238, 0.05);
+        border-left: 4px solid var(--starry-cyan);
+        padding: 1rem 1.5rem;
+        border-radius: 4px;
+        margin-top: 1.5rem;
+        color: #e2e8f0;
+    }
+    .ps-list { padding-left: 20px; margin: 0; }
+    .ps-list li { margin-bottom: 8px; }
+</style>
+
+<!-- 1. THE ASTRAL DM -->
+<div class="glass-box" style="border-left: 5px solid #a78bfa;">
+    <h2 style="color: #a78bfa; margin-bottom: 1rem; font-size: 2rem; font-weight: 800; border-bottom: 1px solid rgba(167, 139, 250, 0.3); padding-bottom: 10px; display: block;">
+        The Astral DM
+    </h2>
+    
+    <div style="font-size: 1.1rem; line-height: 1.7;">
+        <p style="margin-bottom: 1rem;">
+            Each 2 weeks, starting at 1st and 15th of each month there will be a reward for the most active DMs.
+        </p>
+        
+        <strong style="color: #fff; display: block; margin-bottom: 5px;">Chosen by Staff based on:</strong>
+        <ol class="criteria-list">
+            <li>Feedback from the community</li>
+            <li>Number of sessions/hours hosted</li>
+            <li>Positive impact on the Starry Shore</li>
+        </ol>
+
+        <!-- REWARDS PODIUM -->
+        <div class="rank-container">
+            <!-- 1st Place -->
+            <div class="rank-box rank-1">
+                <span class="rank-title" style="color: #fbbf24;">🥇 1st Place</span>
+                10 Karma pts<br>
+                <span style="font-size: 0.9em; opacity: 0.8;">Special category above Dungeon Master with role <strong>"The Astral DM"</strong></span>
+            </div>
+
+            <!-- 2nd Place -->
+            <div class="rank-box rank-2">
+                <span class="rank-title" style="color: #cbd5e1;">🥈 2nd Place</span>
+                7 Karma pts
+            </div>
+
+            <!-- 3rd Place -->
+            <div class="rank-box rank-3">
+                <span class="rank-title" style="color: #d97706;">🥉 3rd Place</span>
+                4 Karma pts
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 2. THE COSMIC CALENDAR -->
+<div class="glass-box" style="border-left: 5px solid var(--starry-cyan);">
+    <h2 style="color: var(--starry-cyan); margin-bottom: 0.5rem; font-size: 2rem; font-weight: 800; display: block;">
+        The Cosmic Calendar For DMs
+    </h2>
+    
+    <h3 style="color: #cbd5e1; margin-top: 0; margin-bottom: 1.5rem; font-size: 1.1rem; font-weight: 400; border-bottom: 1px solid rgba(34, 211, 238, 0.3); padding-bottom: 10px;">
+        This is for ONE "double rewards" session, it have nothing to do with the normal daily sessions
+    </h3>
+
+    <div style="font-size: 1.1rem; line-height: 1.7; color: #e2e8f0;">
+        <p style="margin-bottom: 1rem;">
+            We're setting up a schedule for DMs every 2 weeks, and DMs can pick their preferred day! (day is determined by your timezone)
+        </p>
+        <p style="margin-bottom: 1rem;">
+            <strong style="color: var(--starry-cyan);">One</strong> open session you run on that day will hook you up with double rewards (your choice), just for you, not the players!
+        </p>
+        <p style="margin-bottom: 1rem;">
+            This is an incentive, not an obligation, so you can register for a day, and not run a session if you don't feel like it, and that's completely fine :D
+        </p>
+        <p>
+            We’re hoping this will hype up everyone here to run a session every two weeks and with the squad of dms we have, we’ll have plenty of sessions daily with a fresh rotation. And for the active DMs its more rewards bcz you guys deserve it.
+        </p>
+
+        <!-- NOTES BOX -->
+        <div class="ps-box">
+            <ul class="ps-list">
+                <li>
+                    <strong>P.S.</strong> in order to log them, you just check the double reward box (OR log the session twice if you're using the old version of tracking sheet)
+                </li>
+                <li>
+                    <strong>P.S.2.</strong> Noble subscribers can pick 2 days instead of one :D
+                </li>
+                <li>
+                    <strong>P.S.3.</strong> open sessions means you post the lth and random people sign up.
+                    <ul style="margin-top: 5px; list-style: circle; color: #cbd5e1;">
+                        <li>If you already have selected players or campaigns, these are considered closed sessions</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<!-- blocks break -->
+<!-- SPECIAL SESSIONS SECTION -->
+
+<style>
+    /* Reuse Glass Box */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* Sub Headers */
+    .session-type-header {
+        color: #a78bfa; /* Purple Accent */
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid rgba(167, 139, 250, 0.3);
+        padding-bottom: 5px;
+    }
+    .session-type-header:first-child { margin-top: 0; }
+
+    /* List Styles */
+    .session-list { list-style: none; padding: 0; margin-bottom: 1rem; }
+    .session-list li { 
+        margin-bottom: 0.8rem; 
+        position: relative; 
+        padding-left: 1.5rem; 
+        color: #cbd5e1; 
+        line-height: 1.6;
+    }
+    .session-list li::before { content: '🔸'; position: absolute; left: 0; font-size: 0.8em; }
+
+    /* Philosophy/Warning Box */
+    .philosophy-box {
+        background: linear-gradient(90deg, rgba(230, 126, 34, 0.1), transparent);
+        border-left: 4px solid #e67e22;
+        padding: 1rem;
+        border-radius: 4px;
+        margin-top: 1rem;
+        font-size: 0.95rem;
+        color: #ffccbc;
+    }
+</style>
+
+<div class="glass-box" style="border-left: 5px solid #a78bfa;">
+    
+    <!-- 1. SOLO SESSIONS -->
+    <h3 class="session-type-header">Solo Sessions</h3>
+    <div style="font-size: 1.1rem; line-height: 1.7;">
+        <p style="margin-bottom: 1rem;">
+            DMs may run 1-on-1 sessions with the following restrictions (these are automatically calculated when you check the “solo/lounge” box in the DM tracking sheet):
+        </p>
+        <ul class="session-list">
+            <li>Player gold-equivalent loot maximum reduced to ½ of normal maximum allowance.</li>
+            <li>DM gold-reward reduced to ½ and be calculated as a player (no "DM multiplier" on gold reward).</li>
+        </ul>
+        <p style="font-style: italic; font-size: 0.95em;">
+            This conversion is completed automatically in the DM Rewards.
+        </p>
+    </div>
+
+    <!-- 2. ASTRAL OASIS SESSIONS -->
+    <h3 class="session-type-header">Astral Oasis Sessions</h3>
+    <div style="font-size: 1.1rem; line-height: 1.7;">
+        <p>
+            Sessions taking place within The Starry Shore are referred to as “social sessions.” Normally role-play-centric, they may be set within the fight club, main street, Astral Oasis, VIP buildings, or other parts of The Starry Shore. 
+        </p>
+        <p style="margin-top: 10px;">
+            These kinds of sessions don't reward players with any gold, and DMs have to log it in their sheets with the box in the middle that says <strong>solo/lounge</strong>.
+        </p>
+    </div>
+
+    <!-- 3. RESTRICTIONS -->
+    <h3 class="session-type-header" style="color: #e67e22; border-bottom-color: rgba(230, 126, 34, 0.3);">⚠️ Closed/Solo/Astral Oasis Sessions Restrictions</h3>
+    <div style="font-size: 1.1rem; line-height: 1.7;">
+        <p style="margin-bottom: 1rem;">
+            There's no "official" limits to how many u can host of these. You might need none, or you might need more than one depending on if its a continuation or character development.
+        </p>
+        <p>
+            So once or a twice a month when needed is fine, but more than that it become an issue for the long term.
+        </p>
+
+        <!-- Warning Box -->
+        <div class="philosophy-box">
+            The goal of DM bonus rewards is to encourage DMs to run for players to keep the server healthy. 
+            <br><br>
+            <strong>But, if everyone was running solo or closed sessions, new players wouldn't be able to join sessions and the server will die slowly without new players and dms.</strong>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- blocks break -->
+<!-- TRP RULES SECTION -->
+
+<style>
+    /* Styling for the Calculation/Formula Boxes */
+    .calc-box {
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        border-left: 4px solid;
+        font-family: 'Consolas', 'Monaco', monospace; /* Monospace for "math" feel */
+        font-size: 0.95rem;
+        color: #e0e0e0;
+    }
+
+    .calc-gold { border-color: var(--starry-gold); background: linear-gradient(90deg, rgba(251, 191, 36, 0.1), transparent); }
+    .calc-blue { border-color: var(--starry-blue); background: linear-gradient(90deg, rgba(59, 130, 246, 0.1), transparent); }
+
+    /* Sub-headers */
+    .rule-header {
+        color: #fff;
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        padding-bottom: 2px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /* Bullet lists */
+    .rule-list { list-style: none; padding: 0; margin-bottom: 1.5rem; }
+    .rule-list li { 
+        position: relative; 
+        padding-left: 1.5rem; 
+        margin-bottom: 0.8rem; 
+        color: #cbd5e1; 
+        line-height: 1.6;
+    }
+    
+    /* DM Bullets (Gold) */
+    .dm-list li::before { content: '✦'; position: absolute; left: 0; color: var(--starry-gold); }
+    
+    /* Player Bullets (Cyan) */
+    .player-list li::before { content: '✦'; position: absolute; left: 0; color: var(--starry-cyan); }
+
+</style>
+
+<div class="glass-box">
+    <h2 style="color: var(--starry-cyan); margin-bottom: 1rem; font-size: 2rem; font-weight: 800; border-bottom: 1px solid rgba(34, 211, 238, 0.3); padding-bottom: 10px;">
+        TRP Rules
+    </h2>
+    
+        <div class="rule-header" style="color: var(--starry-gold);">
+    Live TRP sessions
+    </div>
+
+    <p style="color: #e2e8f0; font-size: 1.1rem; margin-bottom: 1.5rem;">
+        Live TRP sessions grant rewards (hours and gold) at the same rate as standard live sessions.
+    </p>
+
+    <!-- ========================== -->
+    <!-- DM RULES SECTION -->
+    <!-- ========================== -->
+    <div class="rule-header" id="pbp-dm-rules" style="color: var(--starry-gold);">
+    PBP DM Rules (in worlds)
+    </div>
+
+    <!-- Math Calculation Box -->
+    <div class="calc-box calc-gold">
+        5 players per TRP DM<br>
+        3 hrs per week x 1.5 DM bonus<br>
+        = <strong>90 hrs/month max</strong><br>
+        <span style="opacity: 0.7; font-size: 0.9em;">(equivalent of hosting a 4hr live session every other day / 15 sessions)</span>
+    </div>
+
+    <strong style="color: #fff; display: block; margin-bottom: 0.5rem;">DM Reward Guidelines</strong>
+    <ul class="rule-list dm-list">
+        <li>
+            Each TRP/PBP DM can reward up to 5 players (one character each) in their world up to 3h per week, logging it in the DM rewards section to receive the DMing 1.5x bonus. (must participate for the rough equivalent of 3 hours, DM discretion, example below)
+        </li>
+        <li>
+            TRP sessions must always be logged as solo sessions, running the APL command with 1 entry will halve the gold; for DMs they need to check the solo box in their tracking sheet, and the logs need to be posted in the
+            
+            <span class="discord-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                trp-session-log
+            </span>
+            
+            channel using the template pinned there :D
+        </li>
+        <li>
+            90h/month max for PBP DMing. This is equivalent to hosting a 4-hour live session every other day (15 sessions/month).
+        </li>
+        <li>
+            The content amount required is still the same.
+        </li>
+        <li>
+            More players or characters may still join if you allow, but they don't receive rewards.
+        </li>
+    </ul>
+
+    <!-- Example Block -->
+    <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 6px; margin-bottom: 1.5rem; font-size: 0.95rem; color: #d1d5db;">
+        <strong style="color: var(--starry-cyan);">Example:</strong> 
+        
+        <a href="https://discord.com/channels/1067904868284633148/1156448065385934860/1167358118968168458" target="_blank" class="discord-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+            starting point
+        </a> 
+        
+        to 
+        
+        <a href="https://discord.com/channels/1067904868284633148/1156448065385934860/1174285886893076492" target="_blank" class="discord-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+            end
+        </a> 
+        
+        is approximately 12 back and forth, approximately 2h total, which if we consider each reply from both parties is 5 min that's an hour worth of trp for each.
+        <br><br>
+        <em>DM discretion on how they evaluate the rewards, this is just an example and if you need help with that, you can open a ticket.</em>
+    </div>
+
+    <p style="color: #e2e8f0; margin-bottom: 0rem;">
+        The 3-hour weekly reward is a <strong>maximum limit</strong>, not an automatic grant. DMs should award hours based on the actual amount of roleplay a player contributes during that week. If a player roleplays for more than 3 hours, they still only receive the maximum of 3 hours.
+    </p>
+</div>
+
+
+
+<!-- blocks break -->
+<!-- TRP WORLD CREATION SECTION -->
+
+<style>
+    /* --- 1. GLASS CONTAINER --- */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* --- 2. DISCORD PILL --- */
+    .discord-pill {
+        display: inline-flex; align-items: center; gap: 5px;
+        background-color: rgba(88, 101, 242, 0.25); 
+        color: #cdd3ff; border: 1px solid rgba(88, 101, 242, 0.5);
+        border-radius: 6px; padding: 2px 8px;
+        text-decoration: none; font-weight: 600; font-size: 0.9em;
+        vertical-align: middle; white-space: nowrap; transition: all 0.2s ease;
+        font-family: 'Inter', sans-serif;
+    }
+    .discord-pill:hover {
+        background-color: #5865F2; color: white; 
+        box-shadow: 0 0 15px rgba(88, 101, 242, 0.6); transform: translateY(-2px);
+    }
+
+    /* --- 3. COPYABLE CODE BLOCK --- */
+    .template-container {
+        position: relative;
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        margin-top: 1.5rem;
+        overflow: hidden;
+    }
+
+    .template-header {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 10px 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .copy-btn {
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
+        border: none;
+        color: white;
+        padding: 5px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 0.85em;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.2s;
+    }
+
+    .copy-btn:hover {
+        background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+    }
+
+    .copy-btn:active {
+        transform: scale(0.95);
+    }
+
+    .template-code {
+        padding: 15px;
+        margin: 0;
+        font-family: 'Consolas', 'Monaco', monospace;
+        font-size: 0.9em;
+        color: #a5f3fc;
+        line-height: 1.6;
+        white-space: pre-wrap; /* Keeps formatting */
+        overflow-x: auto;
+    }
+</style>
+
+<div class="glass-box" style="border-left: 5px solid var(--starry-cyan);">
+    <h2 style="color: var(--starry-cyan); margin-bottom: 1.5rem; font-size: 2rem; font-weight: 800; border-bottom: 1px solid rgba(34, 211, 238, 0.3); padding-bottom: 10px; display: block;">
+        Creating and Running a Text Roleplay World
+    </h2>
+    
+    <div style="font-size: 1.1rem; line-height: 1.7;">
+        <p style="margin-bottom: 1rem;">
+            DMs can create a Text Roleplay (TRP) World to interact with player characters. TRP worlds that have been inactive for 60+ days will be archived (and eventually deleted).
+        </p>
+        
+        <p>
+            To apply for a TRP world, please fill out the following template and post it in 
+            
+            <span class="discord-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                trp-world-directory
+            </span>.
+        </p>
+
+        <!-- COPYABLE TEMPLATE BOX -->
+        <div class="template-container">
+            <div class="template-header">
+                <span style="font-size: 0.9em; color: #cbd5e1; font-weight: bold;">Application Template</span>
+                <button class="copy-btn" onclick="copyTemplate()" id="copyBtn">
+                    📋 Copy Template
+                </button>
+            </div>
+            
+            <!-- The ID here matches the script -->
+            <pre class="template-code" id="templateText">**Name of DM:**  
+**World Name and Requested Room Number:**  
+**PvP Allowed (Yes, No, With Consent):**  
+**NSFW (Yes, No):**  
+**Firearms (Yes, No):**  
+**Expected Response Rate (30min, 3hr, Daily, Weekly):**  
+**Player Limit (if any):**  
+**Number of Channels (up to five to start, not including announcements):**  
+**Names and Order of Channels Requested:**  
+**Era/Style (high fantasy, primordial, modern, post-modern, etc):**  
+**Types of Play (combat, intrigue, social, etc):**  
+**2-4 Sentence Description:**</pre>
+        </div>
+    </div>
+</div>
+
+<!-- JAVASCRIPT FOR COPY BUTTON -->
+<script>
+    function copyTemplate() {
+        // 1. Get the text
+        const text = document.getElementById('templateText').innerText;
+        
+        // 2. Copy to clipboard
+        navigator.clipboard.writeText(text).then(() => {
+            // 3. Feedback animation
+            const btn = document.getElementById('copyBtn');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = '✅ Copied!';
+            btn.style.background = 'linear-gradient(135deg, #10b981, #059669)'; // Green
+            
+            // 4. Reset after 2 seconds
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.background = 'linear-gradient(135deg, #3b82f6, #2563eb)'; // Back to Blue
+            }, 2000);
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
+        });
+    }
+</script>
+
+
+<!-- blocks break -->
+
+
+
+<!-- blocks break -->
+
+
+
+<!-- blocks break -->
+
+
+
+<!-- blocks break -->
+
+
+
 <!-- blocks break -->
 
 

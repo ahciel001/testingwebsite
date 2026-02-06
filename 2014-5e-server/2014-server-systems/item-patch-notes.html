@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Title - 2014 5e Server</title>
+    <title>item-patch-notes</title>
     <link rel="stylesheet" href="../../style.css">
     <script>window.rootPath = "../../";</script>
     <script src="../../loader.js"></script> <!-- Load this first -->
@@ -25,7 +25,811 @@
         <!-- ▼▼▼ PASTE YOUR CONTENT INSIDE THIS TAG ▼▼▼ -->
         <main class="content-with-sidebar">
 <!-- blocks break -->
+<!-- ITEM PATCH NOTES SECTION -->
 
+<style>
+    /* --- 1. GLASS CONTAINER --- */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2.5rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* --- 2. TYPOGRAPHY --- */
+    .patch-main-title {
+        font-size: 2.5rem;
+        font-weight: 900;
+        text-align: center;
+        margin-bottom: 2rem;
+        background: linear-gradient(to right, #a78bfa, #22d3ee);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+    }
+
+    /* --- 3. COLLAPSIBLE LOGS (ACCORDION) --- */
+    .patch-log {
+        margin-bottom: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .patch-log[open] {
+        border-color: var(--starry-cyan);
+        background: rgba(34, 211, 238, 0.05);
+    }
+
+    .patch-summary {
+        padding: 12px 20px;
+        cursor: pointer;
+        font-weight: bold;
+        color: #e2e8f0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        list-style: none;
+        transition: background 0.2s;
+        font-size: 1.1rem;
+    }
+
+    .patch-summary:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+    }
+
+    .patch-summary::after {
+        content: '+';
+        font-weight: bold;
+        color: var(--starry-cyan);
+        font-size: 1.2em;
+    }
+
+    .patch-log[open] .patch-summary::after {
+        content: '-';
+    }
+
+    .patch-content {
+        padding: 15px 25px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #cbd5e1;
+    }
+
+    /* --- 4. LIST STYLING --- */
+    .change-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .change-list li {
+        position: relative;
+        padding-left: 1.2rem;
+        margin-bottom: 6px;
+    }
+
+    .change-list li::before {
+        content: '🔹';
+        position: absolute;
+        left: 0;
+        font-size: 0.7em;
+        top: 4px;
+    }
+
+    /* Nested List */
+    .change-list ul {
+        margin-top: 5px;
+        margin-bottom: 10px;
+        padding-left: 20px;
+        list-style: none;
+        border-left: 1px solid rgba(255,255,255,0.1);
+    }
+    .change-list ul li::before { content: '-'; color: var(--starry-text-dim); font-size: 1em; }
+</style>
+
+<div class="glass-box">
+    
+    <h1 class="patch-main-title">Item Patch Notes & Recent Changes</h1>
+    <p style="text-align: center; color: #cbd5e1; margin-bottom: 3rem;">This list is for the recent changes on items in The Starry Shore.</p>
+
+    <!-- WEEKLY LOGS -->
+<details class="patch-log">
+        <summary class="patch-summary">Week 45</summary>
+        <div class="patch-content">
+            <ul class="change-list">
+                <li>Orb of Remembrance: t0 100</li>
+                <li>Sash of Sorcerous Synergy: t2 5,000</li>
+                <li>Rod of Refstophobia: t1 1,000</li>
+                <li>Bag of Bellstones: t0 500</li>
+                <li>Draught of the Red Hunger (Heightened): t3 100,000</li>
+                <li>Elixir of Fogwalking (Heightened): t2 25,000</li>
+                <li>Gauntlets of Eldritch Ferocity: t2 25,000</li>
+                <li>Haint Hooch (Heightened): t3 5,000</li>
+                <li>Harvest Brew (Heightened): t1 5,000</li>
+                <li>Hatred, the Wrathful Edge: t5 4,000,000</li>
+                <li>Idol of the Beast of Blight (Rare): t2 10,000</li>
+                <li>Idol of the Beast of Blight (Very Rare): t3 20,000</li>
+                <li>Idol of the Beast of Blight (Legendary): t4 40,000</li>
+                <li>Jinxed Rum (Heightened): t2 40,000</li>
+                <li>Lilypad Tonic (Heightened): t0 100</li>
+                <li>Nectar of the Green Man (Heightened): t2 40,000</li>
+                <li>Nightwatcher Potion (Heightened): t1 5,000</li>
+                <li>Reaper's Revenge (Heightened): t2 5,000</li>
+                <li>Sight of Sin (Heightened): t1 5,000</li>
+                <li>Silence of the Drowned (Heightened): t1 7,500</li>
+                <li>Soul-Searing Scythe: t3 50,000</li>
+                <li>Tincture of Mourning (Heightened): t2 20,000</li>
+                <li>Tooth of the Jinxed Leviathan (Rare): t2 10,000</li>
+                <li>Tooth of the Jinxed Leviathan (Very Rare): t3 25,000</li>
+                <li>Tooth of the Jinxed Leviathan (Legendary): t4 500,000</li>
+                <li>Wytchwood Sap (Heightened): t4 50,000</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="patch-log">
+        <summary class="patch-summary">Weeks 37 & 38</summary>
+        <div class="patch-content">
+            <ul class="change-list">
+                <li>Bell of Alarm: t0, 100</li>
+                <li>Bicycle: mundane, 500</li>
+                <li>Death's Shadow: t4, 1.5 mil</li>
+                <li>Rod of Endless Light: t0, 100</li>
+                <li>Glass Carver: t0, 100</li>
+                <li>Ring of Misdirection: t4c, 1 mil (6 charges)</li>
+                <li>Sea Sink Boots: mundane, 50</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="patch-log">
+        <summary class="patch-summary">Week 36</summary>
+        <div class="patch-content">
+            <ul class="change-list">
+                <li>Clockwork Mend-A-Pillar: t0, 100</li>
+                <li>Drowner's Pearl: t0c, 100</li>
+                <li>Glider: mundane, 50</li>
+                <li>Rift Sheath: t2, 5k</li>
+                <li>Silver Eagle Studded Cuirass: t2, 2k</li>
+                <li>Sovereignseed Satchel: t2, 10k</li>
+                <li>Punch Card: Banned</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="patch-log">
+        <summary class="patch-summary">Week 35</summary>
+        <div class="patch-content">
+            <ul class="change-list">
+                <li>Hedgewitch's Gardening Cane: t0, 100</li>
+                <li>Hook Sling: mundane, 10</li>
+                <li>Mourningsteel Demi-Gauntlets: t2, 10k</li>
+                <li>Ogramau's Graveyard: t2, 15k</li>
+                <li>Tremor Spike: t1, 1k</li>
+                <li>Whirlpool Dart: t2, 5k</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="patch-log">
+        <summary class="patch-summary">Week 34</summary>
+        <div class="patch-content">
+            <ul class="change-list">
+                <li>Arcane Detection Kit: t0, 500</li>
+                <li>Badge of the Savant: t2, 50k</li>
+                <li>Deathloop Watch: t2c, 75k</li>
+                <li>Tide Turner: t0, 500</li>
+                <li>Travel Wok: t2, 7.5k</li>
+                <li>Wraps of the Restless: t2, 50k</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="patch-log">
+        <summary class="patch-summary">Week 33</summary>
+        <div class="patch-content">
+            <ul class="change-list">
+                <li>Bloodmire Soulflame Lantern: t3, 300k</li>
+                <li>Deathly Diadem: t2, 50k</li>
+                <li>Dress of Defense: t2, 10k</li>
+                <li>Heavenly Chalice: t2, 5k</li>
+                <li>Mourningsteel War Banner: t2, 10k</li>
+                <li>Wayfinder Sphere: t2, 50k</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="patch-log">
+        <summary class="patch-summary">Week 32</summary>
+        <div class="patch-content">
+            <ul class="change-list">
+                <li>Carrion Shroud: t2, 10k</li>
+                <li>Davy Jones's Key: t3, 300k</li>
+                <li>Dusk Dagger (Uncommon): t1, 5k</li>
+                <li>Dusk Dagger (Rare): t2, 10k</li>
+                <li>Dusk Dagger (Very Rare): t2, 50k</li>
+                <li>Faeflame Torch: t2, 75k</li>
+                <li>Guardian's Reliquary: t4, 500k</li>
+                <li>Shimmering Spectacles: t1, 2k</li>
+                <li>Sleepytime Sheep Stuffy: t0, 100</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="patch-log">
+        <summary class="patch-summary">Week 31</summary>
+        <div class="patch-content">
+            <ul class="change-list">
+                <li>Dominic's Field Guide to Language: t1, 5k</li>
+                <li>Egg of Primal Water: t1c, 5k</li>
+                <li>Rod of Thought Projection: t2, 15k</li>
+                <li>Scorned Heart Breastplate: t2, 10k</li>
+                <li>Spirit Cleaver: t4, 50k</li>
+                <li>Torrdok's Magnificent Forgery: t3, 500k</li>
+                <li>Waterskin of Voices (10 Servings): t2, 25k</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="patch-log">
+        <summary class="patch-summary">Week 30</summary>
+        <div class="patch-content">
+            <ul class="change-list">
+                <li>Ao Hai's Fang: t4, 100k</li>
+                <li>Arcanist's Magnificent Magnifier: t2c, 50k</li>
+                <li>Cube of Teleportation: t3, 500k</li>
+                <li>Djinn and Tonic (Common): t0c, 500</li>
+                <li>Djinn and Tonic (Rare): t2c, 5k</li>
+                <li>Mage Eater Scythe: t4, 5 mil</li>
+                <li>Seeker's Compass: t3, 200k</li>
+                <li>Shifter's Shine (Common): t1c, 5k</li>
+                <li>Shifter's Shine (Uncommon): t2c, 25k</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="patch-log">
+        <summary class="patch-summary">Week 29</summary>
+        <div class="patch-content">
+            <ul class="change-list">
+                <li>Arista, Wand of the Spire: t5, SRI, 2 mil</li>
+                <li>Bloodhound Amulet: t1, 5k</li>
+                <li>Myceliaweave Armor: t2, 15k</li>
+                <li>Ruby Red Bike: t3, 100k</li>
+                <li>Talisman of the Phoenix (4 charges): t3c, 300k</li>
+                <li>Tarrasque Plate: t3, 500k</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="patch-log">
+        <summary class="patch-summary">Week 28</summary>
+        <div class="patch-content">
+            <ul class="change-list">
+                <li>Amulet of the Spirit Naga: t4c, 500k</li>
+                <li>Failed Purity Spear: t2, 10k</li>
+                <li>Flying Broomstick: t3, 500k</li>
+                <li>Heart of Damned Intervention: t2, 10k</li>
+                <li>Helm of the Broken Dragon: t2, 10k</li>
+                <li>Scarf of Muffling: t1, 5k</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="patch-log">
+        <summary class="patch-summary">Week 27</summary>
+        <div class="patch-content">
+            <ul class="change-list">
+                <li>Ball of Wild Earth: t0, 500</li>
+                <li>Book of Instant Copying (50 Pages): t1, 10k</li>
+                <li>Cottage Chest: t3, 100k <em>(Can't be used inside the Shore except for Starry City)</em></li>
+                <li>Cuff of Captions: t1, 5k</li>
+                <li>Gladius of the Everfighter: t4, 3 mil</li>
+                <li>Gorget of the Holy Soldier: t4, SRI, 5 mil</li>
+                <li>Lightseer's Gaze: t4, 2 mil</li>
+                <li>Meta Medallion: t2, 10k</li>
+                <li>Prism Glasses: t1, 5k</li>
+                <li>Rod of the Magicycle: t3, 150k</li>
+                <li>Wisp Cloak: t1, 1k</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="patch-log">
+        <summary class="patch-summary">Week 26</summary>
+        <div class="patch-content">
+            <ul class="change-list">
+                <li>Angler's Worldly Fisher: t0, 100</li>
+                <li>Bullfrog Totem: t0, 100</li>
+                <li>Champion's Greatbow: t2, 15k</li>
+                <li>Clockwork Earwig: t3, 75k</li>
+                <li>Tea Weird: t0, 500</li>
+                <li>Vain Virtuoso's Violin: t1, 5k</li>
+                <li>War's Wager: t2, 50k <em>(Note: Abilities that allow rerolls or alter outcomes (such as the Lucky feat) do not affect the 2nd d20 roll.)</em></li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="patch-log">
+        <summary class="patch-summary">Week 25</summary>
+        <div class="patch-content">
+            <ul class="change-list">
+                <li>Belt of the Hell Hound: t2, 5k</li>
+                <li>Book of Clothier's Croquis (20 Pages): t0, 500</li>
+                <li>Cleaning Cube: t0, 100</li>
+                <li>Frostburn Spear: t2, 75k <em>(Attunement tag is missing in 5etools)</em></li>
+                <li>Pendants of Belonging (8 Set): t0, 500</li>
+                <li>Pick and Pocket: t2, 5k</li>
+                <li>Rose Quartz Koi: t0, 100</li>
+                <li>Shadowscale Shroud: t3, 50k</li>
+                <li>Skylit Greaves: t2, 25k</li>
+                <li>Thomas's Dimensional Trousers: t1, 5k</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="patch-log">
+        <summary class="patch-summary">Week 24</summary>
+        <div class="patch-content">
+            <ul class="change-list">
+                <li>Amulet of the Lycanthrope: t2, 5k</li>
+                <li>Astronomer's Boon: t4, 1 mil <em>(Note: "Only one constellation benefit at a time")</em></li>
+                <li>Gametoy: t2, 10k</li>
+                <li>Griffon Component Pack: t1, 1k</li>
+                <li>Headband of the Sweatless: t0, 100</li>
+                <li>Painter's Sun Hat: t1, 1k</li>
+                <li>Ring of the Arcane Berserker: t2, 100k</li>
+                <li>Williwig's Time Stopper: t0, 100</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="patch-log">
+        <summary class="patch-summary">Week 23</summary>
+        <div class="patch-content">
+            <ul class="change-list">
+                <li>Acorn Charm: t2, 30k</li>
+                <li>Burnright Brand Hair Dryer: t2, 50k</li>
+                <li>Circlet of the Sharpened Mind: t4, 5 mil</li>
+                <li>Eternal Slayer: t4, 2 mil</li>
+                <li>Gateway Ring: t4, 3 mil</li>
+                <li>Hedonic Motivator: t4, 500k</li>
+                <li>Red Queen's Burden: t4, 5 mil</li>
+                <li>Ring of the Assassin Lord: t4, 690k <em>(Note: "The dex increase are in effect only when attuned to the item.")</em></li>
+                <li>Shadow Weaver's Guise: t2, 15k</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="patch-log">
+        <summary class="patch-summary">Week 22</summary>
+        <div class="patch-content">
+            <ul class="change-list">
+                <li>Archivist's Key: t4, 3 mil</li>
+                <li>Eyedrops of Clarity (6 Doses): t1, 500</li>
+                <li>Godsteel Warplate: t3, 100k</li>
+                <li>Helm of the Justicars: t3, 150k</li>
+                <li>Lady Phantasma's Material Anchor: t2, 100k</li>
+                <li>Pegasus Quill: t2, 100k</li>
+                <li>Ring of Volleys: t1, 5k</li>
+                <li>Sagittarian Vestments: t1, 10k</li>
+                <li>Violet King's Promise: t2, 15k</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="patch-log">
+        <summary class="patch-summary">Week 21</summary>
+        <div class="patch-content">
+            <ul class="change-list">
+                <li>Alchemist's Potion Belt: t3, 500k</li>
+                <li>Ambitious Medic's Box: t1, 5k</li>
+                <li>Brawler's Ring: t1, 10k</li>
+                <li>Chi-Balancing Tea: t2, 50k</li>
+                <li>Hydra Charm: t3, 250k</li>
+                <li>Infernal Chain: t1, 15k</li>
+                <li>Jo'Catian Denier: t1, 10k</li>
+                <li>Jo'Catian Rebuker: t1, 10k</li>
+                <li>Locket of the Stolen Heart: t1, 13,140</li>
+                <li>Meta Mantle: t2, 100k <em>(Note: Metamagic changes/additions are in effect only when attuned to the item.)</em></li>
+                <li>Power Collar: t1, 2k</li>
+                <li>Quick Change Ring: t1, 5k</li>
+                <li>Ring of Rituals: t1, 2k</li>
+                <li>Ring of the Split Mind: t3, 25k</li>
+                <li>Spellsword: t2, 10k</li>
+                <li>Stylist's Circlet: t0, 100</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="patch-log">
+        <summary class="patch-summary">Week 20</summary>
+        <div class="patch-content">
+            <ul class="change-list">
+                <li>Gloves of Healing: t1, 10k</li>
+                <li>Headdress of the Serpent King: t2, 15k</li>
+                <li>Homeroot: t2c, 75k</li>
+                <li>Matron's Mug: t4, 1 mil</li>
+                <li>Ring of Stolen Alacrity: t4, 1 mil</li>
+                <li>Spellfire Bow: t4, 100k</li>
+                <li>Tome of Advanced Fighting Styles: t5, manual, 20 mil</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="patch-log">
+        <summary class="patch-summary">Week 19</summary>
+        <div class="patch-content">
+            <ul class="change-list">
+                <li>Demon Skin: t2, 5k</li>
+                <li>Iggwilv's Horn: t2, 5k</li>
+                <li>Potion of Polychromy: t2, 2k</li>
+                <li>Vanisher Hat: t3, 50k</li>
+            </ul>
+        </div>
+    </details>
+
+    <!-- SOURCEBOOK ADDITIONS (Merged into list) -->
+    
+    <details class="patch-log">
+        <summary class="patch-summary">Humblewood Tales</summary>
+        <div class="patch-content">
+            <ul class="change-list">
+                <li>Beast Whistle: 200</li>
+                <li>Twinshot Hand Crossbow: 200</li>
+                <li>Firelance Venom: t2, 750</li>
+                <li>Biza's Breath: t3, 10k</li>
+                <li>Basilisk Crystal: t0, 150</li>
+                <li>Belt of the Weald: t0, 1k</li>
+                <li>Cream of Ooze Moisturizing Face Serum: t0, 100</li>
+                <li>Fangs of Guile: t1, 2.5k</li>
+                <li>Ring of the Sky Hunter: t1, 2.5k</li>
+                <li>Staff of Climbing Ivy: t1, 10k</li>
+                <li>Band of Fruitfulness: t2, 50k</li>
+                <li>Cloak of Spines: t2, 75k</li>
+                <li>Crown of Daffodils: t2, 15k</li>
+                <li>Flame of Ingenuity: t2, 15k</li>
+                <li>Marotte of Chance: t2, 10k</li>
+                <li>Pathfinder's Pebble: t2, 2k</li>
+                <li>Potion of Rest: t2, 10k</li>
+                <li>Ring of Plant Speech: t2, 50k</li>
+                <li>Antlers of the True Path: t3, 200k</li>
+                <li>Cogwork Wings: t3, 15k</li>
+                <li>Draught of Slime Curse Cure: t3, 10k</li>
+                <li>Eye of Starsight: t3, 50k</li>
+                <li>Glowing Ember: t3, 30k</li>
+                <li>Saber of Unity: t3, 25k</li>
+                <li>Slimeforged Blade: t3, 150k</li>
+                <li>Talon Tincture: t3, 100k</li>
+                <li>Talons of the Squall: t3, 50k</li>
+                <li>Whistle of Freedom: t3, 100k</li>
+                <li>Alluring Dye: t4, 100k</li>
+                <li>Draught of Feather Shine: t4, 100k</li>
+                <li>Egg of Rebirth: t4, 1 mil</li>
+                <li>Shroud of Ending: t5, SR, 2 mil</li>
+                <li>The Thorn of Kren: t5, SR, 69,420</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="patch-log">
+        <summary class="patch-summary">Tal'Dorei Campaign Setting Reborn</summary>
+        <div class="patch-content">
+            <ul class="change-list">
+                <li>Gluebomb: 2.5k</li>
+                <li>Oloore Root Teabag (Poison): t3, 10k</li>
+                <li>Stink Bomb: 1k</li>
+                <li>Zeal: 5k</li>
+                <li>+2 Ring of Protection: t3, 15k</li>
+                <li>+2 Studded Leather Armor of Acid Resistance: t3, 15k</li>
+                <li>+2 Studded White Dragon Leather Armor of Cold Resistance: t3, 10k</li>
+                <li>Agony: t4, 500k</li>
+                <li>Armor of the Valiant Soul: t4, 300k</li>
+                <li>Boots of Haste: t3, 400k</li>
+                <li>Boots of the Vigilant: t2, 3k</li>
+                <li>Cabal's Ruin: t3, 100k</li>
+                <li>Cataclysm Bolts (stack of 10): t3, 20k</li>
+                <li>Circlet of Barbed Vision: t3, 500k</li>
+                <li>Coat of the Crest: t2, 5k</li>
+                <li>Condemner: t3, 150k</li>
+                <li>Corecut Dagger: t3, 100k</li>
+                <li>Dagger of Denial: t3, 5k</li>
+                <li>Deathwalker's Ward: t3, 300k</li>
+                <li>Doublet of Dramatic Demise: t0, 42</li>
+                <li>Earthboard: t2, 75k</li>
+                <li>Echo Stone: t0, 100</li>
+                <li>Fenthras: t3, 100k</li>
+                <li>Flamefriend Lantern: t2, 20k</li>
+                <li>Graz'tchar, the Decadent End: t4, 750k</li>
+                <li>Honor's Last Stand: t3, 150k</li>
+                <li>Inescapable Lash: t2, 25k</li>
+                <li>Kiss of the Changebringer: t5, 5 mil</li>
+                <li>Magician's Judge: t3, 15k</li>
+                <li>Mirror of Infinite Transpondence: t1, 10k</li>
+                <li>Mythcarver: t3, 150k</li>
+                <li>Oceanic Weapon: t2, 7,500</li>
+                <li>Plate of the Dawnmartyr: t3, 400k</li>
+                <li>Pyremaul: t4, 750k</li>
+                <li>Raven's Slumber: t1, 5k</li>
+                <li>Rod of Mercurial Form (transform once): t1, 3.5k</li>
+                <li>Skysail: t2, 2k</li>
+                <li>Spire of Conflux: t4, 500k</li>
+                <li>Star Razor: t3, 600k</li>
+                <li>Stormrider Boots: t2, 35k</li>
+                <li>Summer's Dance: t2, 7.5k</li>
+                <li>Sunbeam Compass: t0, 100</li>
+                <li>Tinkertop Boltblaster 1000: t2, 5k</li>
+                <li>Titanstone Knuckles: t5, 8.5 mil</li>
+                <li>Whisper: t3, 300k</li>
+                <li>Wraps of Dyamak: t4, 5 mil</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="patch-log">
+        <summary class="patch-summary">Various Sources (Vecna, Flee Mortals, etc.)</summary>
+        <div class="patch-content">
+            <ul class="change-list">
+                <li>Charm of the Creeping Hand: t2, 100</li>
+                <li>Charm of the Eldritch Eye: t1, 100</li>
+                <li>Chime of Exile: t3, 100k</li>
+                <li>Crown of Lies: t5, SR, 10 mil</li>
+                <li>Concussion Grenade: 30k</li>
+                <li>Sleep Grenade: 4k</li>
+                <li>Daoud's Wondrous Lanthorn: t5, SR, 1 mil</li>
+                <li>Heretic: t4, 50k</li>
+                <li>Staff of Ruling: t3, 75k</li>
+                <li>Amethyst Die: t1, 20k</li>
+                <li>Boog's Ball: t2, 10k</li>
+                <li>Bracers of the Spellbreaker: t4, 1 mil</li>
+                <li>Crown of Majesty: t3, 75k</li>
+                <li>Eye of Sunrise: t2, 35k</li>
+                <li>Mantle of the Lightbender: t1, 10k</li>
+                <li>Mindrazor: t3, 200k</li>
+                <li>Pathfinder's Boots: t2, 50k</li>
+                <li>Pendant of Grave Regeneration: t3, 300k</li>
+                <li>Poison Popper: t2, 15k</li>
+                <li>Ring of Scarlet Shadows: t1, 10k</li>
+                <li>Star of Iron: t2, 15k</li>
+                <li>Sun Eater's Mind: t2, 100k</li>
+                <li>Sun Eater's Soul: t2, 100k</li>
+                <li>Tome of the Ethereal: t2, 75k</li>
+                <li>Visionary's Cloak: t3, 75k</li>
+                <li>Waning Moon: t3, 200k</li>
+                <li>Ashyra's Research Notes: 500</li>
+                <li>Balm of Shifting Form: 1,500</li>
+                <li>Battle Master's Compendium: 500</li>
+                <li>Book of Secrets: 1k</li>
+                <li>Demon Signet Ring: 5k</li>
+                <li>Treasure Rat: 500</li>
+                <li>Glowing Poison Recipe: t2, 5k <em>(Purchase is for the recipe only)</em></li>
+                <li>Yserthrax's Corruption Poison Recipe: t3, 10k <em>(Purchase is for the recipe only)</em></li>
+                <li>Kiona's Notes: 1 mil, manual</li>
+                <li>Heavenkiller Chronicles: 1 mil, manual</li>
+                <li>Crog's Guide to Disarming Magic Traps: t0, 50k, uncraftable</li>
+                <li>Aastrika's Crown: t3, 100k</li>
+                <li>Bag of Eyes: t1, 5k</li>
+                <li>Blade of Forlorn Hope: t4, 500k</li>
+                <li>Draconic Visage: t3, 750k</li>
+                <li>Dragon Compass: t0, 2k</li>
+                <li>Essence of Shadowkeep: t3, 250k</li>
+                <li>Kinesthetic Projection: t4, 100k</li>
+                <li>Lava Crucible: t4, 1.5 mil</li>
+                <li>Monocle of Secrets: t0, 500</li>
+                <li>Psi Lenses: t4, 750k</li>
+                <li>Rod of the Sovereigns' Servant: t2, 100k</li>
+                <li>Sands of War: t3, 250k</li>
+                <li>Shield of Shadow Form: t2, 50k</li>
+                <li>Shtriga Nonna's Pot of Plenty: t1, 3,500</li>
+                <li>Spear of Gael Wode: t4, 75k</li>
+                <li>Sun Eater Staff: t3, 150k</li>
+                <li>Wand of Restoration: t2, 50k</li>
+                <li>Watch of Prospecting: t0, 1k</li>
+                <li>Xaantikorijek's Looking Glass: t3, 200k</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="patch-log">
+        <summary class="patch-summary">Grim Hollow Player Pack</summary>
+        <div class="patch-content">
+            <ul class="change-list">
+                <li>Arc Rifle: t2, 50k</li>
+                <li>Ardor: t5, SR, 4 mil</li>
+                <li>Bow of Four: t2, 35k</li>
+                <li>Carvaloth Scale Armor: t2, 10k</li>
+                <li>Cinder Coat: t2, 10k</li>
+                <li>Cloak of the Stygian Bat: t2, 100k</li>
+                <li>Flammable Tincture: t3, 25k</li>
+                <li>Light Drinker: t4, 500k</li>
+                <li>Ring of Hidden Desire: t1, 5k</li>
+                <li>Seeing Glass: t3, 250k</li>
+                <li>Telltale Heart: t2, 10k</li>
+                <li>Zeal: t5, SR, 4 mil</li>
+                <li>Wechselkind: Artificial Form: 200</li>
+                <li>The Disembodied: Fade Away: 500</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="patch-log">
+        <summary class="patch-summary">Steinhardt's Guide to The Eldritch Hunt</summary>
+        <div class="patch-content">
+            <ul class="change-list">
+                <li>Scourgeborn Eldritch Curse: 200</li>
+                <li>Scourgeborn Born of Madness: 200</li>
+                <li>Manikin Lightning Heart: 100</li>
+                <li>Manikin Living Material: 200</li>
+                <li>Demidritch Shard of Infinity: 100</li>
+                <li>Demidritch (Oculare) All Seeing Eyes: 200</li>
+                <li>Demidritch (Nebulare) Astral Attraction: 100</li>
+                <li>Deep One Dwarf Otherworldly Resilience: 200</li>
+                <li>Accursed Tiefling Eldritch Resistance: 200</li>
+            </ul>
+        </div>
+    </details>
+
+    <!-- UPDATES & REVISIONS (Merged) -->
+    
+    <details class="patch-log">
+        <summary class="patch-summary">Price and Tier Changes</summary>
+        <div class="patch-content">
+            <ul class="change-list">
+                <li>Periapt Of Proof Against Poison: 100k -> 500k</li>
+                <li>Blacksap: mundane, 1.5k -> t2, 20k</li>
+                <li>Keoghtom’s Ointment (Five Doses): 300 -> 1.5k</li>
+                <li>Muroosa Balm: 100 -> 5k</li>
+                <li>Glowrune Pigment (6 pots): 12k -> 60k</li>
+                <li>Medal of the Horizonback: 1k -> 5k</li>
+                <li>Junky Dagger +1: -> t2</li>
+                <li>Adamantine Armor: -> t2</li>
+                <li>Bob: -> t2</li>
+                <li>Macuahuitl: -> t2</li>
+                <li>Reszur: -> t2</li>
+                <li>Draconic Longsword: -> t1</li>
+                <li>Gambler's Blade: -> t3</li>
+                <li>Green Copper Ewer: -> t0</li>
+                <li>Helm of Telepathy: -> t1</li>
+                <li>Helm of the Gods: -> t1</li>
+                <li>Iggwilv's Horn: -> t1</li>
+                <li>Oil Of Slipperiness (Per Potion): -> t3, 50k</li>
+                <li>Ammunition +1 (Any) (per piece): -> t3, 2k</li>
+                <li>Ammunition +2 (Any) (per piece): -> t4, 5k</li>
+                <li>Ammunition +3 (Any) (per piece): -> t5, 10k</li>
+                <li>Broom Of Flying: 30k -> 50k</li>
+                <li>Eagle Whistle: t2 -> t3</li>
+                <li>Pathfinder's Greataxe: -> t1, 2k</li>
+                <li>Armor of Vulnerability: -> t2, 5k</li>
+                <li>Dragonguard: t1, 2k -> t2, 3k</li>
+                <li>Lord Commander's Badge: t2 -> t3</li>
+                <li>Ring of Telekinesis: t3 -> t2, 50k</li>
+                <li>Stonky's Ring: t4 -> t2, 50k</li>
+                <li>Potion of Supreme Healing: -> t4, 50k</li>
+                <li>Nightcaller: -> t2, 15k</li>
+                <li>Charm of Biting Cold: -> t2</li>
+                <li>Earthboard: -> t2</li>
+                <li>Cape Of The Mountebank: -> t3, 50k</li>
+                <li>Danoth's Visor (Dormant): -> t4, no session, 1.5 mil</li>
+                <li>Potion of Growth: -> t2, 10k</li>
+                <li>Wand of Viscid Globs: -> t5</li>
+                <li>Elemental Essence Shard (Fire): -> t2, 15k</li>
+                <li>Flail of Tiamat: -> session required, 750k</li>
+                <li>Elemental Gem (any): -> t3, 35k</li>
+                <li>Bowl Of Commanding Water Elementals: -> t3, 100k</li>
+                <li>Brazier Of Commanding Fire Elementals: -> t3, 100k</li>
+                <li>Censer Of Controlling Air Elementals: -> t3, 100k</li>
+                <li>Stone Of Controlling Earth Elementals: -> t3, 100k</li>
+                <li>Mizzium Armor: -> t3 <em>(He finally made it to t3, I'm so proud of him :p)</em></li>
+                <li>Daern's Instant Fortress & Mudslick Tower: -> t3, 100k</li>
+                <li>Necronomicon Ex Corvis: -> 2 mil</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="patch-log">
+        <summary class="patch-summary">Consumable Price Changes</summary>
+        <div class="patch-content">
+            <ul class="change-list">
+                <li>Necklace Of Fireballs:
+                    <ul>
+                        <li>1 Bead: 3k -> 10k</li>
+                        <li>2 Beads: 6k -> 20k</li>
+                        <li>3 Beads: 9k -> 30k</li>
+                        <li>4 Beads: 12k -> 40k</li>
+                        <li>5 Beads: 15k -> 50k</li>
+                        <li>6 Beads: 18k -> 60k</li>
+                    </ul>
+                </li>
+                <li>Potion Of Healing:
+                    <ul>
+                        <li>Normal: 50 -> 250</li>
+                        <li>Greater: 200 -> 1k</li>
+                        <li>Superior: 1k -> 25k</li>
+                        <li>Supreme: 50k -> 100k</li>
+                    </ul>
+                </li>
+                <li>Spell Scrolls:
+                    <ul>
+                        <li>Cantrip: 175 -> 500</li>
+                        <li>1st: 350 -> 1k</li>
+                        <li>2nd: 2k -> 5k</li>
+                        <li>3rd: 3k -> 10k</li>
+                        <li>4th: 10k -> 25k</li>
+                        <li>5th: 25k -> 50k</li>
+                        <li>6th: 65k -> 150k</li>
+                        <li>7th: 125k -> 200k</li>
+                        <li>8th: 250k -> 500k</li>
+                    </ul>
+                </li>
+                <li>Spellwrought Tattoos (Tier Change):
+                    <ul>
+                        <li>Cantrip: 500 -> 1k</li>
+                        <li>1st: 1k -> 5k</li>
+                        <li>2nd: 5k -> 25k (now T2)</li>
+                        <li>3rd: 7.5k -> 50k (now T3)</li>
+                        <li>4th: 20k -> 100k (now T3)</li>
+                        <li>5th: 50k -> 200k (now T4)</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="patch-log">
+        <summary class="patch-summary">Racial Feature Purchases</summary>
+        <div class="patch-content">
+            <ul class="change-list">
+                <li>Spindle of Fate: -> SR</li>
+                <li>Autognome Mechanical Nature: -> 500</li>
+                <li>Autognome Sentry's Rest: -> 200</li>
+                <li>Warforged Sentry's Rest: -> 200</li>
+                <li>Elf Trance: -> 200</li>
+                <li>Shadar-Kai MPMM Trance: -> 400</li>
+                <li>Astral Elf Astral Trance: -> 500</li>
+                <li>Warforged Constructed Resilience: -> 400</li>
+                <li>Reborn Deathless Nature: -> 600</li>
+                <li>Aasimar MPMM Celestial Revelation: -> 100</li>
+                <li>Aasimar VGM: -> 200</li>
+                <li>Goblin Fury of the Small: -> 100</li>
+                <li>Giff Astral Spark: -> 100</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="patch-log">
+        <summary class="patch-summary">Status Changes</summary>
+        <div class="patch-content">
+            <ul class="change-list">
+                <li>Pyxis of Pandemonium: Changed from consumable to permanent.</li>
+                <li>Oil of Sharpness: Banned.</li>
+            </ul>
+        </div>
+    </details>
+
+    <!-- GENERAL RULES -->
+    <details class="patch-log">
+        <summary class="patch-summary">General Item Rule Changes</summary>
+        <div class="patch-content">
+            <ul class="change-list">
+                <li>Tier 2 items are now restricted to Tier 2 (level 5 and above) characters. If you currently have an item that is beyond your level because of this rule, you keep it but cannot use it until you reach Tier 2.</li>
+                <li>The Potion of Invulnerability tier and price has been changed.</li>
+                <li>Any item that has a recharge time longer than 10 Days is no longer rechargeable and is now considered a consumable.</li>
+            </ul>
+        </div>
+    </details>
+
+</div>
 
 
 <!-- blocks break -->

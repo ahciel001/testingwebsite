@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>trinkets-list</title>
+    <link rel="stylesheet" href="../../style.css">
+    <script>window.rootPath = "../../";</script>
+    <script src="../../loader.js"></script> <!-- Load this first -->
+</head>
+<!-- IMPORTANT: data-sidebar tells the loader which sidebar to grab -->
+<body data-sidebar="2014">
+    <canvas id="star-canvas"></canvas>
+
+    <!-- EMPTY HEADER CONTAINER -->
+    <header id="main-header"></header>
+
+    <div class="page-wrapper">
+        <div class="mobile-sidebar-toggle">☰ Page Menu</div>
+
+        <aside class="sidebar" id="sidebar-container">
+            <!-- Sidebar content will be injected here -->
+        </aside>
+
+        <!-- ▼▼▼ PASTE YOUR CONTENT INSIDE THIS TAG ▼▼▼ -->
+        <main class="content-with-sidebar">
+<!-- blocks break -->
+
+
+
+<!-- blocks break -->
+<!-- YEAR OF THE SNAKE TRINKET TABLE -->
+
+<style>
+    /* --- 1. TABLE CONTAINER --- */
+    .snake-table-container {
+        margin: 2rem auto;
+        max-width: 1200px;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 2px solid #fbbf24; /* Golden Anniversary Border */
+        background: linear-gradient(135deg, rgba(6, 78, 59, 0.4) 0%, rgba(2, 2, 10, 0.6) 100%);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+    }
+
+    .snake-table-header {
+        background: rgba(16, 185, 129, 0.2);
+        padding: 1.5rem;
+        text-align: center;
+        border-bottom: 1px solid #fbbf24;
+    }
+
+    .snake-table-header h2 {
+        margin: 0;
+        color: #fbbf24;
+        font-family: 'Cinzel', serif;
+        font-size: 1.8rem;
+        text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+    }
+
+    .snake-table {
+        width: 100%;
+        border-collapse: collapse;
+        color: #e2e8f0;
+        font-family: 'Inter', sans-serif;
+    }
+
+    /* --- 2. DESKTOP STYLING --- */
+    .snake-table th {
+        background: rgba(0, 0, 0, 0.3);
+        color: #fbbf24;
+        text-align: left;
+        padding: 15px;
+        font-weight: 800;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        border-bottom: 2px solid rgba(251, 191, 36, 0.4);
+    }
+
+    .snake-table td {
+        padding: 12px 15px;
+        border-bottom: 1px solid rgba(16, 185, 129, 0.1);
+        vertical-align: top;
+        line-height: 1.6;
+    }
+
+    .snake-table tr:hover {
+        background: rgba(16, 185, 129, 0.05);
+    }
+
+    .roll-cell {
+        font-family: 'Consolas', monospace;
+        color: #fbbf24;
+        font-weight: bold;
+        width: 80px;
+    }
+
+    /* --- 3. MOBILE RESPONSIVE (Cards) --- */
+    @media (max-width: 768px) {
+        .snake-table, .snake-table thead, .snake-table tbody, .snake-table th, .snake-table td, .snake-table tr {
+            display: block;
+        }
+
+        .snake-table thead { display: none; }
+
+        .snake-table tr {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #fbbf24;
+            padding: 15px;
+        }
+
+        .snake-table td {
+            border: none;
+            padding: 5px 0;
+            position: relative;
+            padding-left: 80px;
+        }
+
+        .snake-table td::before {
+            content: attr(data-label);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            color: #fbbf24;
+            font-size: 0.8rem;
+        }
+        
+        .roll-cell { font-size: 1.2rem; }
+    }
+</style>
+
+<div class="snake-table-container">
+    <div class="snake-table-header">
+        <h2>🐍 2025 Year of the Snake Trinkets 🐍</h2>
+    </div>
+
+    <table class="snake-table">
+        <thead>
+            <tr>
+                <th>Roll</th>
+                <th>Trinket Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="Roll" class="roll-cell">1 - 2</td>
+                <td data-label="Effect">Once per week you shed your skin like a snake. Can be used to make coats or blankets.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">3 - 4</td>
+                <td data-label="Effect">A small snake tattoo appears on your body. You can control its movement on your body.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">5 - 6</td>
+                <td data-label="Effect">A silken scarf that looks like a snake and slithers to wrap or unwrap around your neck when commanded.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">7 - 8</td>
+                <td data-label="Effect">Snake Tongue. Your tongue becomes forked.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">9 - 10</td>
+                <td data-label="Effect">Scaled Skin. Small patches of shiny scales appear on your body, shimmering faintly under light. When touched, they feel unusually cool. You gain resistance to environmental cold (but not cold damage).</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">11 - 12</td>
+                <td data-label="Effect">Your back becomes more flexible, allowing you to twist and contort unnaturally. You gain advantage on checks to squeeze into tight spaces, such as cracks or small holes.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">13 - 14</td>
+                <td data-label="Effect">A faint aura of serpentine energy surrounds you in dim light or darkness, appearing as wisps of shadowy coils. This energy flickers harmlessly but gives you an eerie, otherworldly vibe.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">15 - 16</td>
+                <td data-label="Effect">When you reach for something, faint ghostly coils appear around your hand, as though an invisible snake is aiding you. They’re harmless but unnerving to watch.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">17 - 18</td>
+                <td data-label="Effect">Your footsteps become silent and leave almost no trace. After moving through sand, snow, or mud, faint snake trails appear behind you instead of footprints.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">19 - 20</td>
+                <td data-label="Effect">When you concentrate, a faint, shimmering snake spirit occasionally coils around you, harmlessly slithering through the air.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">21 - 22</td>
+                <td data-label="Effect">Your walking motion becomes unnervingly smooth and sinuous. You can easily move through tight crowds without bumping anyone.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">23 - 24</td>
+                <td data-label="Effect">An enchanted golden coin with an embossed serpent that returns to your pocket after being spent once per day.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">25 - 26</td>
+                <td data-label="Effect">Your fingernails lengthen and harden into thin, fanglike points. Your unarmed attack damage becomes slashing instead of bludgeoning.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">27 - 28</td>
+                <td data-label="Effect">A tiny golden snake figurine that coils around your finger like a ring. Once per day, it grants advantage to Sleight of Hand check while worn.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">29 - 30</td>
+                <td data-label="Effect">Your shadow becomes a snake shadow, that you can control.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">31 - 32</td>
+                <td data-label="Effect">When you speak in a quiet place, your voice carries faint hissing undertones, unnerving those around you.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">33 - 34</td>
+                <td data-label="Effect">Your blood becomes basic poison 1 hour after leaving your body then return back to normal after 24h. (to collect a vial, you would take dmg equal to half of your hp)</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">35 - 36</td>
+                <td data-label="Effect">Your touch leaves behind a faint, harmless tingling sensation, as though you carry a lingering venom.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">37 - 38</td>
+                <td data-label="Effect">When you speak, your words seem to linger briefly, like a distant echo.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">39 - 40</td>
+                <td data-label="Effect">Brille Eyelid. A translucent membrane can covers your eyes, protecting your eyes from water, fog, smoke, and mist. Your gaze becomes unnervingly glassy.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">41 - 42</td>
+                <td data-label="Effect">A tiny spectral snake hides beneath your clothing, slithering unseen. It can bite willing creatures, releasing a soothing venom that gives you a peaceful, mellowing sensation and calms your mind and eases anxiety, and make feel relaxed and bit drowsy.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">43 - 44</td>
+                <td data-label="Effect">This snake-shaped amulet allows you to transform into a Poisonous Snake for up to an hour once per day.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">45 - 46</td>
+                <td data-label="Effect">Your hair transforms into small, harmless snakes that slither and shift on their own.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">47 - 48</td>
+                <td data-label="Effect">A serpent-shaped mask of iridescent glass. When moved, its surface ripples, reflecting the endless expanse of the Astral Sea swirling stars and drifting cosmic light.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">49 - 50</td>
+                <td data-label="Effect">A thin bracelet carved with coiling serpents. While worn, it creates the illusion of cartoonish stick arms that mimic your emotions and emphasize your speech with exaggerated gestures.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">51 - 52</td>
+                <td data-label="Effect">A tiny snake skeleton that rattles softly. Everyday, it briefly comes to life, slithering and hissing before falling still again.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">53 - 54</td>
+                <td data-label="Effect">A snake-fang pen that writes in harmless, but colorful venom. Anything written with the pen is always legible to snakes.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">55 - 56</td>
+                <td data-label="Effect">A silver ring forged by a fairy godmother (Left Heart). Embedded heart ruby glows when the matching right heart is near; wearers sense each other’s emotions.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">57 - 58</td>
+                <td data-label="Effect">Snake’s Kiss. Your lips become slightly forked, with a faint, venomous sweet scent, leaving anyone you kiss always wanting more.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">59 - 60</td>
+                <td data-label="Effect">A silver ring forged by a fairy godmother (Right Heart). Embedded heart ruby glows when the matching left heart is near; wearers sense each other’s emotions.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">61 - 62</td>
+                <td data-label="Effect">A small, gold-plated snake fang. When gently tapped against any surface, it leaves behind a harmless, snake-shaped pattern.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">63 - 64</td>
+                <td data-label="Effect">A sleek silver ring that projects an illusion of a serpent bite. Grants advantage on Deception checks to feign poisoning or illness once per day.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">65 - 66</td>
+                <td data-label="Effect">Snake's Shedding Boot Straps. Leaves behind a faint glowing trail of snake scales as you walk.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">67 - 68</td>
+                <td data-label="Effect">A blunt that produces smoke in the shape of a ghostly snake that follows you.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">69 - 70</td>
+                <td data-label="Effect">A wand crafted from the spine of a serpent with shimmering eyes. Can be upgraded to magical versions.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">71 - 72</td>
+                <td data-label="Effect">A ring that renders the wearer unable to display any emotion, leaving them as cold and unreadable as a serpent.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">73 - 74</td>
+                <td data-label="Effect">A harmless little snake that slithers under your skin. Grants a +1 bonus on death saving throws (non-stacking).</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">75 - 76</td>
+                <td data-label="Effect">A small, stuffed snake plushie that transforms into a king cobra when thrown (DC 10 to see through illusion).</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">77 - 78</td>
+                <td data-label="Effect">A sleek mask shaped like a coiled viper that transforms your head into that of a shimmering silver python.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">79 - 80</td>
+                <td data-label="Effect">You now know Parseltongue. A language used to communicate with snakes.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">81 - 82</td>
+                <td data-label="Effect">A leather belt with serpent-shaped loops that grip potions tightly. Loops briefly writhe when a vial is removed.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">83 - 84</td>
+                <td data-label="Effect">A cloak that quietly sheds its outer layer like a skin to stay perfectly clean from dirt and grime.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">85 - 86</td>
+                <td data-label="Effect">A gemstone that allows an item to transform into a small living serpent. Shfits back to item form in battle.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">87 - 88</td>
+                <td data-label="Effect">An iridescent scale frame that shifts your pupils into slits. You perceive UV and Infrared light.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">89 - 90</td>
+                <td data-label="Effect">A Wise small snake in a jar. If asked for advice, it sighs deeply and says "Oh, buddy... you don't wanna know."</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">91 - 92</td>
+                <td data-label="Effect">A necklace that sighs dramatically and mutters if you don't brag about it often enough.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">93 - 94</td>
+                <td data-label="Effect">A snakeskin satchel that snaps shut and yells “NO TOUCHIE!” if opened by anyone but you.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">95 - 96</td>
+                <td data-label="Effect">A tiny glass sphere holding a living miniature of the Starry Shore. Faint echoes of city life can be heard if held close.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">97 - 98</td>
+                <td data-label="Effect">Leather-bound dark snakeskin notebook. 1% chance divine ink answers questions written inside once per day. (Ping Ciel).</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-cell">99 - 100</td>
+                <td data-label="Effect">Choose any of the trinkets from the trinkets list (find list in the 3rd tab of the event doc).</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<!-- blocks break -->
+
+
+
+<!-- blocks break -->
+
+
+
+<!-- blocks break -->
+
+            <!-- YOU CAN ADD MORE BLOCKS HERE LATER -->
+
+        </main>
+        <!-- ▲▲▲ END CONTENT ▲▲▲ -->
+    </div>
+
+    <!-- SCRIPTS -->
+
+    <script src="../../search.js"></script>
+    <script src="../../background-canvas.js"></script>
+    
+    <!-- NOTE: You might need to edit mobile-menu.js to wait for 'componentLoaded' event -->
+    <script src="../../mobile-menu.js"></script>
+</body>
+</html>

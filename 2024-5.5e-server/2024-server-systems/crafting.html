@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>crafting</title>
+    <link rel="stylesheet" href="../../style.css">
+    <script>window.rootPath = "../../";</script> 
+    <script src="../../loader.js"></script> <!-- Load this first -->
+</head>
+<!-- IMPORTANT: data-sidebar tells the loader which sidebar to grab -->
+<body data-sidebar="2024">
+    <canvas id="star-canvas"></canvas>
+
+    <!-- EMPTY HEADER CONTAINER -->
+    <header id="main-header"></header>
+
+    <div class="page-wrapper">
+        <div class="mobile-sidebar-toggle">☰ Page Menu</div>
+
+        <aside class="sidebar" id="sidebar-container">
+            <!-- Sidebar content will be injected here -->
+        </aside>
+
+        <!-- ▼▼▼ PASTE YOUR CONTENT INSIDE THIS TAG ▼▼▼ -->
+        <main class="content-with-sidebar">
+<!-- blocks break -->
+<!-- CRAFTING CALCULATOR SECTION -->
+
+<style>
+  /* --- 1. SHARED GLASS THEME --- */
+  .craft-glass-box {
+    background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(34, 211, 238, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    color: #e2e8f0;
+    font-family: 'Trebuchet MS', sans-serif;
+    margin: 2rem auto;
+    max-width: 1200px;
+    overflow: hidden;
+  }
+
+  /* --- 2. CALCULATOR LAYOUT --- */
+  .crafting-card-flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+
+  .crafting-ui-side {
+    flex: 1.2;
+    padding: 2.5rem;
+    min-width: 320px;
+  }
+
+  .crafting-image-side {
+    flex: 1;
+    min-height: 350px;
+    background-image: url('/assets/img/crafting.jpg'); /* Corrected path */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    border-left: 1px solid rgba(251, 191, 36, 0.3);
+  }
+
+  .crafting-image-side::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5));
+  }
+
+  .image-caption {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%;
+    background: rgba(0, 0, 0, 0.466);
+    color: #cbd5e1;
+    padding: 10px;
+    text-align: center;
+    font-size: 0.85em;
+    font-style: italic;
+    z-index: 5;
+  }
+
+  /* --- 3. INPUTS & TEXTAREAS --- */
+  .craft-label {
+    display: block;
+    color: var(--starry-gold);
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+  }
+
+  .craft-input, .craft-textarea {
+    width: 100%;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-radius: 6px;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    transition: border-color 0.3s;
+  }
+
+  .craft-input:focus, .craft-textarea:focus {
+    border-color: var(--starry-cyan);
+    outline: none;
+    box-shadow: 0 0 10px rgba(34, 211, 238, 0.2);
+  }
+
+  /* --- 4. BUTTON STYLES --- */
+  .btn-craft {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: white;
+  }
+
+  .btn-gold { background: linear-gradient(135deg, #d97706, #b45309); }
+  .btn-gold:hover { box-shadow: 0 0 15px rgba(245, 158, 11, 0.5); transform: translateY(-1px); }
+
+  .btn-blue { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+  .btn-blue:hover { box-shadow: 0 0 15px rgba(59, 130, 246, 0.5); transform: translateY(-1px); }
+
+  .btn-green { background: linear-gradient(135deg, #10b981, #059669); }
+  .btn-green:hover { box-shadow: 0 0 15px rgba(16, 185, 129, 0.5); transform: translateY(-1px); }
+
+  /* --- 5. RESULTS BOX --- */
+  .craft-results-box {
+    margin-top: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid rgba(255, 255, 255, 0.2);
+    transition: border-color 0.3s;
+  }
+
+  .result-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .highlight-val { color: #fff; font-weight: bold; }
+  .error-txt { color: #f87171; font-weight: bold; display: none; margin-bottom: 10px; }
+
+  /* --- 6. LOG GRID --- */
+  .log-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  @media (max-width: 800px) {
+    .crafting-card-flex { flex-direction: column-reverse; }
+    .crafting-image-side { border-left: none; border-bottom: 1px solid rgba(251, 191, 36, 0.3); }
+    .log-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<!-- 1. CALCULATOR BOX -->
+<div class="craft-glass-box" style="border-left: 5px solid var(--starry-gold);">
+  <div class="crafting-card-flex">
+    
+    <!-- UI SIDE -->
+    <div class="crafting-ui-side">
+      <h3 style="color: var(--starry-gold); margin-top: 0; margin-bottom: 1.5rem; font-size: 1.6rem; font-weight: 800; border-bottom: 1px solid rgba(251, 191, 36, 0.2); padding-bottom: 10px;">
+        Items Crafting Costs Calculator
+      </h3>
+      
+      <label class="craft-label">Base Item Cost (GP):</label>
+      <input type="number" id="itemCost" min="0" placeholder="e.g. 500" class="craft-input">
+
+      <button class="btn-craft btn-gold" onclick="calculateCrafting()">⚖️ Calculate Crafting Costs & DC</button>
+
+      <div class="craft-results-box" id="resultsBox">
+        <div class="error-txt" id="errorMsg">Invalid item cost entered.</div>
+        
+        <div class="result-row">
+          <span>Gold Cost:</span> 
+          <span><span id="val-gold" class="highlight-val">?</span> GP</span>
+        </div>
+        
+        <div class="result-row">
+          <span>DTP Cost:</span> 
+          <span><span id="val-dtp" class="highlight-val">?</span> DTP</span>
+        </div>
+        
+        <div class="result-row">
+          <span>Crafting DC:</span> 
+          <span><span id="val-dc" class="highlight-val" style="color: var(--starry-cyan);">?</span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- IMAGE SIDE -->
+    <div class="crafting-image-side">
+      <div class="image-caption"><strong>Varenn</strong>, Played by a Starry Shorian</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 2. LOG GENERATOR BOX -->
+<div class="craft-glass-box" style="padding: 2.5rem; border-left: 5px solid var(--starry-cyan);">
+  <h3 style="color: var(--starry-cyan); margin-top: 0; margin-bottom: 1.5rem; font-size: 1.6rem; font-weight: 800; border-bottom: 1px solid rgba(34, 211, 238, 0.2); padding-bottom: 10px;">
+    Downtime Log Generator
+  </h3>
+
+  <div class="log-grid">
+    <div>
+      <label class="craft-label">Character Name:</label>
+      <input type="text" id="charName" placeholder="Name" class="craft-input">
+    </div>
+    <div>
+      <label class="craft-label">Item Name:</label>
+      <input type="text" id="itemName" placeholder="What are you crafting?" class="craft-input">
+    </div>
+    <div>
+      <label class="craft-label">Crafting Roll:</label>
+      <input type="text" id="craftRoll" placeholder="e.g. 18" class="craft-input">
+    </div>
+    <div>
+      <label class="craft-label">Result:</label>
+      <input type="text" id="craftResult" placeholder="Success / Failure" class="craft-input">
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+    <button class="btn-craft btn-blue" onclick="generateLog()">✨ Generate Log</button>
+    <button class="btn-craft btn-green" id="copyBtn" onclick="copyLog()">📋 Copy to Clipboard</button>
+  </div>
+
+  <textarea id="logOutput" class="craft-textarea" style="height: 160px; font-family: 'Consolas', monospace; color: var(--starry-cyan);" placeholder="Log will appear here..."></textarea>
+</div>
+
+<!-- LOGIC -->
+<script>
+let savedGold = 0;
+let savedDtp = 0;
+let savedDc = 0;
+let hasCalculated = false;
+
+function calculateCrafting() {
+  const itemCost = Number(document.getElementById('itemCost').value);
+  const resultsBox = document.getElementById('resultsBox');
+  const errorMsg = document.getElementById('errorMsg');
+  const elGold = document.getElementById('val-gold');
+  const elDtp = document.getElementById('val-dtp');
+  const elDc = document.getElementById('val-dc');
+
+  if (!itemCost || itemCost <= 0) {
+    errorMsg.style.display = 'block';
+    resultsBox.style.borderLeftColor = '#f87171';
+    elGold.innerText = '?'; elDtp.innerText = '?'; elDc.innerText = '?';
+    hasCalculated = false;
+    return;
+  }
+
+  errorMsg.style.display = 'none';
+  const goldCost = Math.floor(itemCost / 2);
+  let dtpCost = Math.floor(goldCost / 25);
+  if (dtpCost < 1) { dtpCost = 1; }
+  const dc = Math.floor(10 + (itemCost / 450));
+
+  savedGold = goldCost;
+  savedDtp = dtpCost;
+  savedDc = dc;
+  hasCalculated = true;
+
+  resultsBox.style.borderLeftColor = '#f59e0b';
+  elGold.innerText = goldCost.toLocaleString();
+  elDtp.innerText = dtpCost.toLocaleString();
+  elDc.innerText = dc;
+}
+
+function generateLog() {
+  const charName = document.getElementById('charName').value || "(Character Name)";
+  const itemName = document.getElementById('itemName').value || "(Item Name)";
+  const craftRoll = document.getElementById('craftRoll').value || "(Roll)";
+  const craftResult = document.getElementById('craftResult').value || "(Result)";
+  
+  let costString = hasCalculated ? `${savedGold.toLocaleString()} gp and ${savedDtp.toLocaleString()} DTP` : "Run calculator first";
+  let dcString = hasCalculated ? `${savedDc}` : "Run calculator first";
+
+  const markdown = `**Character Name:** ${charName}
+**Downtime Activity:** Crafting ${itemName}
+**Cost:** ${costString}
+**DC:** ${dcString}
+**Roll:** ${craftRoll}
+**Result:** ${craftResult}`;
+
+  document.getElementById('logOutput').value = markdown;
+}
+
+function copyLog() {
+  const text = document.getElementById('logOutput').value;
+  const btn = document.getElementById('copyBtn');
+  if (!text) return;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = "✅ Copied!";
+    setTimeout(() => { btn.textContent = "📋 Copy to Clipboard"; }, 1500);
+  });
+}
+</script>
+
+
+
+<!-- blocks break -->
+
+
+
+<!-- blocks break -->
+<!-- CRAFTING RESTRICTIONS SECTION -->
+
+<style>
+    /* --- REUSING GLASS THEME --- */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* --- LIST STYLES --- */
+    .craft-list { list-style: none; padding: 0; margin-bottom: 1rem; }
+    
+    /* Numbered list styling */
+    .craft-ol { counter-reset: craft-counter; list-style: none; padding: 0; }
+    .craft-ol > li {
+        position: relative;
+        padding-left: 2rem;
+        margin-bottom: 1rem;
+        color: #cbd5e1;
+        line-height: 1.6;
+    }
+    .craft-ol > li::before {
+        counter-increment: craft-counter;
+        content: counter(craft-counter) ".";
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        color: var(--starry-gold, #fcd34d);
+        color: #fcd34d;
+    }
+
+    /* Nested Buffs List */
+    .buff-list {
+        margin-top: 5px;
+        padding-left: 10px;
+        border-left: 2px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .buff-list li {
+        margin-bottom: 0.5rem;
+        position: relative;
+        padding-left: 1.5rem;
+        color: #cbd5e1;
+    }
+    
+    .buff-list li::before { 
+        content: '🔹'; 
+        position: absolute; 
+        left: 0; 
+        font-size: 0.8em; 
+    }
+</style>
+
+<!-- 3. RESTRICTIONS SECTION -->
+<div class="glass-box" style="border-left: 5px solid #ef4444;">
+    <h3 style="color: #ef4444; margin-top: 0; margin-bottom: 1rem; font-size: 1.5rem; font-weight: 800; border-bottom: 1px solid rgba(239, 68, 68, 0.3); padding-bottom: 10px;">
+        Crafting Restrictions
+    </h3>
+
+    <p style="margin-bottom: 1rem; font-size: 1.1rem; color: #e2e8f0;">
+        There are some restrictions on what items can be crafted and how they can be crafted. These are:
+    </p>
+
+    <ol class="craft-ol">
+        <li>Artifacts cannot be crafted.</li>
+        <li>Session-required items can only be crafted in a live session.</li>
+        <li>Any buffs from items do not apply to crafting rolls.</li>
+        <li>Outside of live sessions, only passive buffs from race/class/background features are allowed.</li>
+        <li>
+            In live sessions, only the following buffs are allowed (where applicable):
+            <ul class="craft-list buff-list">
+                <li>Help action from another player (they must also have an applicable tool proficiency)</li>
+            </ul>
+        </li>
+    </ol>
+</div>
+
+
+<!-- blocks break -->
+<!-- TOOLS & OUTCOMES SECTION -->
+
+<style>
+    /* Reuse Glass Box */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* Reuse Table Style */
+    .table-wrapper {
+        overflow-x: auto;
+        margin-bottom: 1.5rem;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .starry-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+        min-width: 600px; /* Ensures table doesn't squish too much on mobile */
+    }
+
+    .starry-table th {
+        background: rgba(34, 211, 238, 0.15);
+        color: var(--starry-cyan);
+        font-weight: 800;
+        text-align: left;
+        padding: 12px 15px;
+        border-bottom: 2px solid rgba(34, 211, 238, 0.3);
+    }
+
+    .starry-table td {
+        padding: 12px 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        color: #cbd5e1;
+        vertical-align: top;
+    }
+
+    .starry-table tr:hover { background: rgba(255, 255, 255, 0.05); }
+    .starry-table tr:last-child td { border-bottom: none; }
+
+    /* Code Snippet Style */
+    .cmd-code {
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #a5f3fc; 
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: 'Consolas', 'Monaco', monospace;
+        font-size: 0.95em;
+        font-weight: bold;
+    }
+
+    /* Outcomes Box */
+    .outcome-box {
+        padding: 1rem;
+        border-radius: 6px;
+        margin-bottom: 1rem;
+        border-left: 4px solid;
+        background: rgba(0,0,0,0.2);
+    }
+    .outcome-success { border-color: #4ade80; color: #dcfce7; }
+    .outcome-fail { border-color: #f87171; color: #fee2e2; }
+</style>
+
+<!-- 1. TOOL PROFICIENCIES TABLE -->
+<div class="glass-box" style="border-left: 5px solid var(--starry-cyan);">
+    <h3 style="color: var(--starry-cyan); margin-top: 0; margin-bottom: 1rem; font-size: 1.5rem; font-weight: 800; border-bottom: 1px solid rgba(34, 211, 238, 0.3); padding-bottom: 10px;">
+        Tool Proficiencies Needed
+    </h3>
+
+    <p style="margin-bottom: 1rem; font-size: 1.1rem; line-height: 1.7;">
+        To craft an item, a character must have proficiency with the appropriate tool for the item type. The tool proficiency determines what kind of check is made to craft the item.
+    </p>
+    
+    <div style="font-size: 0.95em; color: var(--starry-gold); font-style: italic; margin-bottom: 1rem;">
+        *P.S. In sessions, DMs have freedom to decide what stat is used*
+    </div>
+
+    <div class="table-wrapper">
+        <table class="starry-table">
+            <thead>
+                <tr>
+                    <th style="width: 25%;">Item Type</th>
+                    <th style="width: 50%;">Tool Proficiencies</th>
+                    <th style="width: 25%;">Applicable Ability Scores</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Armor</td>
+                    <td>Cobbler's, Leatherworker's, Smith's, Tinker's, Weaver's</td>
+                    <td>STR / DEX</td>
+                </tr>
+                <tr>
+                    <td>Adventure Gear</td>
+                    <td>Carpenter's, Leatherworker's, Smith's, Tinker's</td>
+                    <td>INT / WIS</td>
+                </tr>
+                <tr>
+                    <td>Ammunition</td>
+                    <td>Smith's, Tinker's, Woodcarver's</td>
+                    <td>DEX / WIS</td>
+                </tr>
+                <tr>
+                    <td>Potion / Poison</td>
+                    <td>Alchemist's, Brewer's, Herbalist's, Poisoner's</td>
+                    <td>CON / WIS</td>
+                </tr>
+                <tr>
+                    <td>Ring</td>
+                    <td>Glassblower's, Jeweler's, Tinker's</td>
+                    <td>DEX / CHA</td>
+                </tr>
+                <tr>
+                    <td>Scroll</td>
+                    <td>Calligrapher's, Forgery, Arcana Check</td>
+                    <td>DEX / INT</td>
+                </tr>
+                <tr>
+                    <td>Shield</td>
+                    <td>Carpenter's, Smith's, Woodcarver's</td>
+                    <td>STR / CON</td>
+                </tr>
+                <tr>
+                    <td>Wand / Rod</td>
+                    <td>Tinker's, Woodcarver's, Arcana Check</td>
+                    <td>INT / WIS / CHA</td>
+                </tr>
+                <tr>
+                    <td>Weapon</td>
+                    <td>Smith's, Tinker’s, Woodcarver's</td>
+                    <td>STR / DEX / CON</td>
+                </tr>
+                <tr>
+                    <td>Wondrous Item</td>
+                    <td>Any applicable tool, Arcana Check</td>
+                    <td>INT / CHA</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- 2. CRAFTING OUTCOMES -->
+<div class="glass-box" style="border-left: 5px solid #a78bfa;">
+    <h3 style="color: #a78bfa; margin-top: 0; margin-bottom: 1rem; font-size: 1.5rem; font-weight: 800; border-bottom: 1px solid rgba(167, 139, 250, 0.3); padding-bottom: 10px;">
+        Crafting Outcomes
+    </h3>
+
+    <div class="outcome-box outcome-success">
+        <strong>On a successful check:</strong> The item is crafted and the character spends the gold and DTP required for the item.
+    </div>
+
+    <div class="outcome-box outcome-fail">
+        <strong>On a failed check:</strong> The GP and DTP costs are spent and the item is not crafted, however the character can attempt another check for an additional 1/4th the original GP and DTP cost.
+    <br> <br>
+    Each subsequent attempt to craft the item reduces the check’s DC by 5, to a minimum DC of 5.
+    </div>
+</div>
+
+<!-- 3. HOW TO USE TOOLS -->
+<div class="glass-box" style="border-left: 5px solid var(--starry-blue);">
+    <h3 style="color: var(--starry-blue); margin-top: 0; margin-bottom: 1rem; font-size: 1.5rem; font-weight: 800; border-bottom: 1px solid rgba(59, 130, 246, 0.3); padding-bottom: 10px;">
+        How to use tools
+    </h3>
+
+    <div style="font-size: 1.1rem; line-height: 1.7; color: #e2e8f0;">
+        <p style="margin-bottom: 1rem;">
+            To learn a tool proficiency, use the command: <span class="cmd-code">!tool pro &lt;tool_name&gt;</span>
+        </p>
+        <p style="margin-bottom: 1rem; font-size: 0.95em; color: #cbd5e1;">
+            For expertise, use <code>exp</code> instead of <code>pro</code>.
+        </p>
+        <p style="margin-bottom: 1.5rem;">
+            Example: <span class="cmd-code">!tool exp alchemist</span>
+        </p>
+
+        <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin-bottom: 1.5rem;">
+
+        <p style="margin-bottom: 1rem;">
+            To make a check with the tool, use the command: <span class="cmd-code">!tool &lt;tool_name&gt; &lt;stat&gt;</span>
+        </p>
+        <p>
+            Example: <span class="cmd-code">!tool alchemist wis</span>
+        </p>
+    </div>
+</div>
+
+
+<!-- blocks break -->
+
+
+
+<!-- blocks break -->
+
+
+
+<!-- blocks break -->
+
+
+
+<!-- blocks break -->
+
+
+
+
+        </main>
+        <!-- ▲▲▲ END CONTENT ▲▲▲ -->
+    </div>
+
+    <!-- SCRIPTS -->
+
+    <script src="../../search.js"></script>
+    <script src="../../background-canvas.js"></script>
+    
+    <!-- NOTE: You might need to edit mobile-menu.js to wait for 'componentLoaded' event -->
+    <script src="../../mobile-menu.js"></script>
+</body>
+</html>

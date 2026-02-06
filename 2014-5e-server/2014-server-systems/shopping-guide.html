@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Title - 2014 5e Server</title>
+    <title>shopping-guide</title>
     <link rel="stylesheet" href="../../style.css">
     <script>window.rootPath = "../../";</script>
     <script src="../../loader.js"></script> <!-- Load this first -->
@@ -24,6 +24,476 @@
 
         <!-- ▼▼▼ PASTE YOUR CONTENT INSIDE THIS TAG ▼▼▼ -->
         <main class="content-with-sidebar">
+<!-- blocks break -->
+<!-- SHOPPING GUIDE SECTION -->
+
+<style>
+    /* --- 1. GLASS CONTAINER --- */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* --- 2. ALERT BOX (Orange) --- */
+    .alert-orange {
+        background: linear-gradient(90deg, rgba(230, 126, 34, 0.15), rgba(2, 2, 10, 0.4));
+        backdrop-filter: blur(4px);
+        border-left: 4px solid #e67e22;
+        padding: 1rem 1.5rem;
+        border-radius: 4px;
+        margin: 1.5rem 0;
+        color: #ffccbc;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    /* --- 3. DISCORD PILL --- */
+    .discord-pill {
+        display: inline-flex; align-items: center; gap: 5px;
+        background-color: rgba(88, 101, 242, 0.25); 
+        color: #cdd3ff; border: 1px solid rgba(88, 101, 242, 0.5);
+        border-radius: 6px; padding: 2px 8px;
+        text-decoration: none; font-weight: 600; font-size: 0.9em;
+        vertical-align: middle; white-space: nowrap; transition: all 0.2s ease;
+        font-family: 'Inter', sans-serif;
+    }
+    .discord-pill:hover {
+        background-color: #5865F2; color: white; 
+        box-shadow: 0 0 15px rgba(88, 101, 242, 0.6); transform: translateY(-2px);
+    }
+
+    /* --- 4. GREEN SHOP BUTTON --- */
+    .btn-shop {
+        display: inline-flex; align-items: center; gap: 8px;
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 95, 70, 0.4));
+        border: 1px solid #10b981;
+        color: #6ee7b7;
+        font-weight: 700; font-size: 0.95em;
+        padding: 10px 20px; border-radius: 6px;
+        text-decoration: none;
+        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
+        transition: all 0.3s ease;
+        margin-top: 10px;
+    }
+    .btn-shop:hover {
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.4), rgba(6, 95, 70, 0.6));
+        color: white; transform: translateY(-2px);
+        box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+    }
+
+    /* List Styles */
+    .shop-list { margin-left: 20px; margin-bottom: 1.5rem; color: #e2e8f0; line-height: 1.6; }
+    .shop-list li { margin-bottom: 10px; }
+</style>
+
+<!-- 1. MUNDANE ITEMS -->
+<div class="glass-box" style="border-left: 5px solid var(--starry-gold);">
+    <h3 style="color: var(--starry-gold); margin-bottom: 1.5rem; font-size: 1.8rem; font-weight: 800; display: block;">
+        Buying Mundane Items
+    </h3>
+    
+    <div style="font-size: 1.1rem; line-height: 1.7;">
+        <p style="margin-bottom: 1rem;">
+            Characters can buy basic, mundane items (such as armor, weapons, and adventuring gear) that are listed in the Player’s Handbook (PHB) for the price listed in the PHB.
+        </p>
+        <p style="margin-bottom: 1rem;">
+            This only needs to be logged in the character tracking sheet. Characters can also sell these items for half of the price listed in the PHB.
+        </p>
+        <p>
+            Some mundane items have prices listed in the Mundane Items tab.
+        </p>
+    </div>
+</div>
+
+<!-- 2. MAGIC ITEMS -->
+<div class="glass-box" style="border-left: 5px solid var(--starry-cyan);">
+    <h3 style="color: var(--starry-cyan); margin-bottom: 1.5rem; font-size: 1.8rem; font-weight: 800; display: block;">
+        Buying Magic Items
+    </h3>
+
+    <div style="font-size: 1.1rem; line-height: 1.7;">
+        <p style="margin-bottom: 1rem;">
+            DMs may permit players to discover shops within their worlds, either during live sessions or through text-based roleplay (TRP), and purchase items from these lists found in other tabs. In these shops, players can purchase magical and mundane items.
+        </p>
+        <p style="margin-bottom: 1.5rem;">
+            Shops are permitted to charge more than the cost in the Cart but cannot charge less. DMs retain full discretion over the availability of items, including what items are available and in what quantities. If the items are not listed in the cart, they will be considered homebrew within The Starry Shore.
+        </p>
+
+        <!-- WARNING ALERT -->
+        <div class="alert-orange">
+            <strong>Characters are only permitted to buy items that are their Tier or lower.</strong>
+        </div>
+
+        <p style="margin-bottom: 1rem;">For players seeking to purchase items, there are two methods:</p>
+
+        <ol class="shop-list">
+            <li>During a live session, if the DM allows it, players can submit a list of items they wish to purchase.</li>
+            <li>Through shops in the market district category or any other shops within TRP worlds, as well as VIP buildings. Players engage in TRP interactions to procure items and then send the list to the DM.</li>
+        </ol>
+
+        <p style="background: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
+            <strong style="color: var(--starry-cyan);">P.S.</strong> 
+            
+            <span class="discord-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                the-starry-store-2nd-best-shop
+            </span>
+            
+            is ideal for quick item pickups, no trp necessary. slow mode is activated within the shop, so if your list isn’t logged yet, just update it instead of posting multiple entries.
+        </p>
+
+        <!-- CART BUTTON -->
+        <div>
+            You can use our cart to make the list:
+            <br>
+            <a href="https://the-starry-shore.github.io/2014_item_shop/" target="_blank" class="btn-shop">
+                🛒 2014 Item Shop
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<!-- blocks break -->
+<!-- NYX SHOPPING EXAMPLE SECTION -->
+
+<style>
+    /* Reuse Glass Box */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* --- THE HOLOGRAPHIC RECEIPT --- */
+    .receipt-container {
+        background: rgba(16, 185, 129, 0.05); /* Very faint green */
+        border-left: 4px solid #10b981;
+        padding: 1.5rem;
+        border-radius: 6px;
+        font-family: 'Consolas', 'Monaco', monospace; /* Monospace for receipt look */
+        color: #a7f3d0;
+        position: relative;
+        overflow: hidden;
+        margin-top: 10px;
+    }
+
+    /* Scanline effect for the receipt */
+    .receipt-container::before {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 0; left: 0; bottom: 0; right: 0;
+        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+        background-size: 100% 4px;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .receipt-header {
+        border-bottom: 1px dashed #10b981;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        font-weight: bold;
+        opacity: 0.9;
+    }
+
+    .receipt-total {
+        border-top: 1px dashed #10b981;
+        padding-top: 10px;
+        margin-top: 10px;
+        font-weight: bold;
+        color: #fff;
+        text-align: right;
+    }
+
+    /* --- NYX IMAGE EFFECTS --- */
+    .nyx-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 0 0 auto;
+    }
+
+    .nyx-wrapper {
+        position: relative;
+        width: 260px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .nyx-img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        border: 2px solid #fcd34d; /* Gold Border */
+        position: relative;
+        z-index: 2;
+        box-shadow: 0 0 20px rgba(251, 191, 36, 0.2);
+    }
+
+    /* The Orb Glow (Placed roughly where the hand/orb is) */
+    .orb-light {
+        position: absolute;
+        top: 33%; 
+        left: 1%;
+        width: 80px;
+        height: 80px;
+        background: radial-gradient(circle, rgba(253, 224, 71, 0.8) 0%, rgba(253, 224, 71, 0) 70%);
+        border-radius: 50%;
+        z-index: 5; /* On top of image */
+        mix-blend-mode: screen; /* Blends with image */
+        animation: orbPulse 3s infinite ease-in-out;
+        pointer-events: none;
+    }
+
+    @keyframes orbPulse {
+        0% { transform: scale(1); opacity: 0.6; }
+        50% { transform: scale(1.3); opacity: 1; }
+        100% { transform: scale(1); opacity: 0.6; }
+    }
+
+    /* Floating Gold Particles */
+    .particle {
+        position: absolute;
+        background: #fcd34d;
+        border-radius: 50%;
+        opacity: 0;
+        z-index: 6;
+        pointer-events: none;
+        animation: floatUp 4s linear infinite;
+    }
+    .p1 { width: 4px; height: 4px; left: 10%; bottom: 60%; animation-delay: 0s; }
+    .p2 { width: 3px; height: 3px; left: 20%; bottom: 60%; animation-delay: 0.8s; }
+    .p3 { width: 5px; height: 5px; left: 15%; bottom: 60%; animation-delay: 1.5s; }
+
+    @keyframes floatUp {
+        0% { transform: translateY(0); opacity: 0; }
+        50% { opacity: 1; }
+        100% { transform: translateY(-50px); opacity: 0; }
+    }
+
+    .nyx-caption {
+        margin-top: 15px;
+        font-size: 0.9em;
+        color: var(--starry-text-dim);
+        text-align: center;
+        font-style: italic;
+    }
+</style>
+
+<div class="glass-box" style="display: flex; flex-wrap: wrap; align-items: center; gap: 40px; justify-content: center;">
+
+    <!-- LEFT SIDE: TEXT & RECEIPT -->
+    <div style="flex: 1; min-width: 300px;">
+        
+        <!-- INTRO TEXT -->
+        <p style="color: #e2e8f0; font-size: 1.1em; margin-bottom: 5px; font-weight: bold;">
+            The list should look like this as an example:
+        </p>
+
+        <!-- RECEIPT -->
+        <div class="receipt-container">
+            <div class="receipt-header">
+                Nyx buys:
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                <span>（1x） Cuddly Strixhaven Mascot</span>
+                <span>1,500 – 1,500 GP</span>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between;">
+                <span>（1x） Talking Doll</span>
+                <span>100 – 100 GP</span>
+            </div>
+
+            <div class="receipt-total">
+                Total: 1,600 GP
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT SIDE: IMAGE WITH ORB EFFECT -->
+    <div class="nyx-section">
+        <div class="nyx-wrapper">
+            <!-- The Glow Effect on the Orb -->
+            <div class="orb-light"></div>
+            
+            <!-- Floating Particles -->
+            <div class="particle p1"></div>
+            <div class="particle p2"></div>
+            <div class="particle p3"></div>
+
+            <!-- Image -->
+            <img src="/assets/img/Nyx.png" alt="Nyx holding a glowing orb" class="nyx-img">
+        </div>
+        
+        <!-- Caption is now strictly part of the right column -->
+        <div class="nyx-caption">
+            <strong style="color: var(--starry-gold);">Nyx</strong>, played by <span style="color: #a78bfa;">@promptferret</span>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- blocks break -->
+<!-- ### How to use the cart? -->
+
+
+<!-- blocks break -->
+<!-- SELLING MAGIC ITEMS SECTION -->
+
+<style>
+    /* Glass Container */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* Calculation Box */
+    .math-box {
+        background: linear-gradient(90deg, rgba(251, 191, 36, 0.1), transparent);
+        border-left: 4px solid var(--starry-gold);
+        padding: 1rem;
+        margin: 1rem 0;
+        border-radius: 4px;
+        font-family: 'Consolas', monospace;
+        color: #fff;
+    }
+
+    /* Discord Pill */
+    .discord-pill {
+        display: inline-flex; align-items: center; gap: 5px;
+        background-color: rgba(88, 101, 242, 0.25); 
+        color: #cdd3ff; border: 1px solid rgba(88, 101, 242, 0.5);
+        border-radius: 6px; padding: 2px 8px;
+        text-decoration: none; font-weight: 600; font-size: 0.9em;
+        vertical-align: middle; white-space: nowrap; transition: all 0.2s ease;
+        font-family: 'Inter', sans-serif;
+    }
+    .discord-pill:hover {
+        background-color: #5865F2; color: white; 
+        box-shadow: 0 0 15px rgba(88, 101, 242, 0.6); transform: translateY(-2px);
+    }
+</style>
+
+<div class="glass-box">
+    <h2 style="color: var(--starry-gold); margin-bottom: 1.5rem; font-size: 2rem; font-weight: 800; border-bottom: 1px solid rgba(251, 191, 36, 0.3); padding-bottom: 10px; display: block;">
+        Selling Magic Items
+        <span style="font-size: 0.6em; color: #cbd5e1; font-weight: 400; display: block; margin-top: 5px;">(via Live Sessions or TRP)</span>
+    </h2>
+
+    <div style="font-size: 1.1rem; line-height: 1.7;">
+        <p style="margin-bottom: 1.5rem;">
+            Selling an item at <strong>50% of its base gold value</strong> is free and does not require a check. It must be logged by a DM in the 
+            <span class="discord-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                magic-item-log
+            </span>.
+        </p>
+
+        <p>
+            Selling an item at <strong>100% of its base gold value</strong> requires a check and costs DTP.
+        </p>
+
+        <!-- MATH BOX -->
+        <div class="math-box">
+            Check: Charisma (Persuasion)<br>
+            Persuasion Check DC = Item's Tier × 5<br>
+            DTP Cost = Item's Tier × 5
+        </div>
+
+        <p>
+            Buffs on the selling roll in live sessions are the same as crafting ones. See 
+            <span class="discord-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                downtime-rolls
+            </span>.
+        </p>
+    </div>
+</div>
+
+
+<!-- blocks break -->
+<!-- NOTES SECTION -->
+
+<style>
+    /* Reuse Glass Box */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* List Style */
+    .note-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .note-list li {
+        position: relative;
+        padding-left: 1.8rem;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #cbd5e1;
+    }
+
+    /* Warning Icon Bullet */
+    .note-list li::before {
+        content: '⚠️';
+        position: absolute;
+        left: 0;
+        top: 2px;
+        font-size: 1em;
+    }
+</style>
+
+<div class="glass-box" style="border-left: 5px solid var(--starry-gold);">
+    <h3 style="color: var(--starry-gold); margin-top: 0; margin-bottom: 1rem; font-size: 1.5rem; font-weight: 800; border-bottom: 1px solid rgba(251, 191, 36, 0.3); padding-bottom: 10px;">
+        📝 Notes
+    </h3>
+
+    <ul class="note-list">
+        <li>
+            Any item that has a recharge time <strong>longer than 30 Days</strong> is no longer rechargeable but is considered a <strong>consumable</strong> instead.
+        </li>
+    </ul>
+</div>
+
+
 <!-- blocks break -->
 
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Title - 2014 5e Server</title>
+    <title>downtime-points-guide</title>
     <link rel="stylesheet" href="../../style.css">
     <script>window.rootPath = "../../";</script>
     <script src="../../loader.js"></script> <!-- Load this first -->
@@ -25,11 +25,1113 @@
         <!-- ▼▼▼ PASTE YOUR CONTENT INSIDE THIS TAG ▼▼▼ -->
         <main class="content-with-sidebar">
 <!-- blocks break -->
+<!-- DTP GUIDE SECTION -->
+
+<style>
+    /* --- 1. GLASS CONTAINER --- */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    .discord-pill {
+        display: inline-flex; align-items: center; gap: 5px;
+        background-color: rgba(88, 101, 242, 0.25); 
+        color: #cdd3ff; border: 1px solid rgba(88, 101, 242, 0.5);
+        border-radius: 6px; padding: 2px 8px;
+        text-decoration: none; font-weight: 600; font-size: 0.9em;
+        vertical-align: middle; white-space: nowrap; transition: all 0.2s ease;
+        font-family: 'Inter', sans-serif;
+    }
+    .discord-pill:hover {
+        background-color: #5865F2; color: white; 
+        box-shadow: 0 0 15px rgba(88, 101, 242, 0.6); transform: translateY(-2px);
+    }
+
+    /* --- 2. LIST STYLES --- */
+    .star-list { list-style: none; padding: 0; margin-bottom: 1.5rem; }
+    .star-list li { 
+        position: relative; 
+        padding-left: 1.5rem; 
+        margin-bottom: 0.6rem; 
+        color: #cbd5e1; 
+        line-height: 1.6;
+    }
+    .star-list li::before { 
+        content: '✦'; 
+        position: absolute; 
+        left: 0; 
+        color: var(--starry-gold); 
+    }
+
+    .gain-list { list-style: none; padding: 0; margin-bottom: 1.5rem; }
+    .gain-list li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+        color: #e2e8f0;
+    }
+    .gain-list li::before {
+        content: '📈';
+        position: absolute;
+        left: 0;
+        font-size: 0.9em;
+    }
+
+    /* --- 3. CONVERSION NOTE --- */
+    .conversion-box {
+        background: rgba(34, 211, 238, 0.05);
+        border: 1px solid rgba(34, 211, 238, 0.3);
+        border-left: 4px solid var(--starry-cyan);
+        padding: 1rem;
+        border-radius: 6px;
+        font-family: 'Consolas', monospace;
+        color: #a5f3fc;
+        font-size: 1.1em;
+        text-align: center;
+        margin-top: 1rem;
+    }
+</style>
+
+<!-- 1. DTP ACTIVITIES BLOCK -->
+<div class="glass-box" style="border-left: 5px solid var(--starry-gold);">
+    <h2 style="color: var(--starry-gold); margin-bottom: 1.5rem; font-size: 2rem; font-weight: 800; border-bottom: 1px solid rgba(251, 191, 36, 0.3); padding-bottom: 10px; display: block;">
+        The Starry Shore DownTime Points Guide (DTP)
+    </h2>
+    
+    <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.5rem;">
+        When the starry shorians are just chillin in The Starry Shore, they can spend their free time in a variety of activities such as:
+    </p>
+
+    <ul class="star-list">
+        <li>Change your name</li>
+        <li>Copying spells</li>
+        <li>Learning new tools or languages</li>
+        <li>Working for gold</li>
+        <li>Religious service to awaken/exalt an item</li>
+        <li>Changing spells choices</li>
+        <li>Crafting</li>
+        <li>Learning dunamancy or contamination spells</li>
+        <li>Worshiping a god for their blessings</li>
+        <li>Change your subclass</li>
+        <li>Renting a 3rd artifact</li>
+    </ul>
+</div>
+
+<!-- 2. GAINING DTP BLOCK -->
+<div class="glass-box" style="border-left: 5px solid var(--starry-cyan);">
+    <h3 style="color: var(--starry-cyan); margin-top: 0; margin-bottom: 1.5rem; font-size: 1.8rem; font-weight: 800; border-bottom: 1px solid rgba(34, 211, 238, 0.3); padding-bottom: 10px;">
+        How to gain DTP?
+    </h3>
+
+    <p style="margin-bottom: 1rem;">DTP is gained by 3 ways currently:</p>
+
+    <ul class="gain-list">
+        <li>2 DTP are added automatically every real-life day to your sheet once you log your first session</li>
+        <li>Hosting a session grants you DTP equal to 4 times the session's length in hours</li>
+        <li>Exchanging Karma pts to DTP</li>
+    </ul>
+
+    <!-- MATH BOX FOR P.S. -->
+    <div class="conversion-box">
+        <strong>P.S.</strong> 1 DTP = 8 hours of in-game time
+    </div>
+</div>
+
+
+<!-- blocks break -->
+<!-- OPEN TITLE CARD -->
+
+<style>
+    .session-title-open {
+        max-width: 1200px;
+        /* Spacing: Room above, but NO room below so it sits on top of content */
+        margin: 0rem auto 0 auto; 
+        padding: 1.5rem 2rem;
+        
+        /* Glass Background fading out towards bottom */
+        background: linear-gradient(to bottom, rgba(30, 58, 138, 0.4), rgba(2, 2, 10, 0.1));
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        
+        /* Borders: Top, Left, Right ONLY (No Bottom) */
+        border: 1px solid rgba(34, 211, 238, 0.3);
+        border-bottom: none; 
+        
+        /* Rounded Corners: Top Left & Top Right ONLY */
+        border-radius: 12px 12px 0 0;
+        
+        /* Text Styling */
+        color: var(--starry-gold);
+        font-family: 'Trebuchet MS', sans-serif;
+        font-weight: 800;
+        font-size: 1.8rem;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        
+        /* Subtle glow to emphasize the top */
+        box-shadow: 0 -4px 20px rgba(34, 211, 238, 0.15);
+    }
+
+    .title-icon {
+        font-size: 1.5rem;
+        filter: drop-shadow(0 0 5px rgba(34, 211, 238, 0.6));
+    }
+</style>
+
+<div class="session-title-open">
+    DTP Uses
+</div>
 
 
 
 <!-- blocks break -->
+<!-- DTP ACTIVITIES SECTION -->
 
+<style>
+    /* Reuse Glass Box */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* Example Log Box */
+    .log-example {
+        background: rgba(0, 0, 0, 0.3);
+        border-left: 4px solid var(--starry-cyan);
+        padding: 1rem;
+        border-radius: 4px;
+        font-family: 'Consolas', monospace;
+        color: #a5f3fc;
+        margin-top: 1rem;
+        font-size: 0.95em;
+    }
+
+    /* Sub Headers */
+    .sub-title {
+        font-weight: 700;
+        color: #fff;
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+        display: block;
+        font-size: 1.1em;
+    }
+
+    /* Code Snippet */
+    .cmd-code {
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #a5f3fc;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: 'Consolas', 'Monaco', monospace;
+        font-size: 0.95em;
+        font-weight: bold;
+    }
+</style>
+
+<!-- 1. NAME CHANGE -->
+<div class="glass-box" style="border-left: 5px solid #a78bfa;">
+    <h3 style="color: #a78bfa; margin-top: 0; margin-bottom: 1rem; font-size: 1.5rem; font-weight: 800; border-bottom: 1px solid rgba(167, 139, 250, 0.3); padding-bottom: 10px;">
+        Changing your Name
+    </h3>
+    
+    <p style="font-size: 1.1rem;">
+        You can use <strong>1 DTP</strong> to legally change the name of your character across the multiverse.
+    </p>
+</div>
+
+<!-- 2. WIZARD SPELLS -->
+<div class="glass-box" style="border-left: 5px solid var(--starry-blue);">
+    <h3 style="color: var(--starry-blue); margin-top: 0; margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 800; border-bottom: 1px solid rgba(59, 130, 246, 0.3); padding-bottom: 10px;">
+        Copying Spells for Wizards
+    </h3>
+
+    <div style="font-size: 1.1rem; line-height: 1.7; color: #e2e8f0;">
+        <span class="sub-title" style="color: var(--starry-cyan);">Copying a Spell into the Book</span>
+        <p>
+            When you find a wizard spell of 1st level or higher, you can add it to your spellbook if it is of a spell level you can prepare and if you can spare the time to decipher and copy it.
+            <br>
+            For each level of the spell, the process takes <strong>2 hours and costs 50 gp</strong>. (the gold and time you must spend to copy spells for some subclasses is halved.)
+        </p>
+
+        <span class="sub-title" style="color: var(--starry-cyan);">Copying from a Spell Scroll</span>
+        <p>
+            A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When you copy a spell from a spell scroll, you must succeed on an <strong>Intelligence (Arcana) check with a DC equal to 10 + the spell's level</strong>. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed.
+        </p>
+
+        <span class="sub-title" style="color: var(--starry-cyan);">Copying from another Spellbook</span>
+        <p>
+            Same as Copying from a Spell Scroll but it <strong>doesn't require a roll</strong>.
+        </p>
+
+        <!-- Example Log -->
+        <div class="log-example">
+            <strong>Example Log:</strong><br><br>
+            Character Name: random wizard name<br>
+            Downtime Activity: Copying Spells from someone else<br>
+            Cost: 350gp + 2dtp<br>
+            Result: Copied 1st and 2nd level Wizard spells (detect magic, identify, comprehend languages, catapult, augury, detect thoughts, mind spike, locate object, see invisibility)
+        </div>
+    </div>
+</div>
+
+<!-- 3. LEARNING LANGUAGES/TOOLS -->
+<div class="glass-box" style="border-left: 5px solid #10b981;">
+    <h3 style="color: #10b981; margin-top: 0; margin-bottom: 1rem; font-size: 1.5rem; font-weight: 800; border-bottom: 1px solid rgba(16, 185, 129, 0.3); padding-bottom: 10px;">
+        Learning a New Language or Tool Proficiency
+    </h3>
+
+    <div style="font-size: 1.1rem; line-height: 1.7;">
+        <p style="margin-bottom: 1rem;">
+            Receiving training in a language or tool typically takes at least <strong>ten workweeks</strong>, but this time is reduced by a number of workweeks equal to the character's Intelligence modifier (an Intelligence penalty doesn't increase the time needed). Training costs <strong>25 gp per workweek</strong>.
+        </p>
+        
+        <p>
+            To see how much it would cost for your character to learn, run the following command:
+            <br>
+            <span class="cmd-code">!learning</span>
+        </p>
+    </div>
+</div>
+
+
+<!-- blocks break -->
+<!-- WORKING, SERVICE, SPELL CHANGE, CRAFTING SECTION -->
+
+<style>
+    /* Reuse Glass Box */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* List Styles */
+    .star-list { list-style: none; padding: 0; margin-bottom: 1.5rem; }
+    .star-list li { 
+        position: relative; 
+        padding-left: 1.5rem; 
+        margin-bottom: 0.6rem; 
+        color: #cbd5e1; 
+        line-height: 1.6;
+    }
+    .star-list li::before { 
+        content: '•'; 
+        position: absolute; 
+        left: 0; 
+        color: var(--starry-gold); 
+        font-weight: bold;
+    }
+
+    /* Code Snippet */
+    .cmd-code {
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #a5f3fc;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: 'Consolas', 'Monaco', monospace;
+        font-size: 0.95em;
+        font-weight: bold;
+    }
+
+    /* Crafting Page Button */
+    .btn-crafting {
+        display: inline-flex; align-items: center; gap: 8px;
+        background: linear-gradient(135deg, rgba(134, 25, 143, 0.2), rgba(107, 33, 168, 0.4));
+        border: 1px solid #c084fc;
+        color: #e9d5ff;
+        font-weight: 700; font-size: 0.95em;
+        padding: 10px 20px; border-radius: 6px;
+        text-decoration: none;
+        box-shadow: 0 4px 15px rgba(168, 85, 247, 0.2);
+        transition: all 0.3s ease;
+    }
+    .btn-crafting:hover {
+        background: linear-gradient(135deg, rgba(134, 25, 143, 0.4), rgba(107, 33, 168, 0.6));
+        color: white; transform: translateY(-2px);
+        box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+    }
+</style>
+
+<!-- 1. WORKING -->
+<div class="glass-box" style="border-left: 5px solid var(--starry-gold);">
+    <h3 style="color: var(--starry-gold); margin-top: 0; border-bottom: 1px solid rgba(251, 191, 36, 0.3); margin-bottom: 1rem; font-size: 1.5rem; font-weight: 800;">
+        Working
+    </h3>
+    <p style="margin-bottom: 1rem; font-size: 1.1rem; line-height: 1.7;">
+        When all else fails, an adventurer can turn to a Starry Shore worker to earn a living. This activity represents a character's attempt to find temporary work, the quality and wages of which are difficult to predict. Gaining Gold by using DTP depending on your character level and a roll of 3d10:
+    </p>
+
+    <ul class="star-list" style="margin-left: 1rem;">
+        <li>T1 - 3d10 x 20</li>
+        <li>T2 - 3d10 x 50</li>
+        <li>T3 - 3d10 x 100</li>
+        <li>T4 - 3d10 x 150</li>
+        <li>T5 - 3d10 x 200</li>
+    </ul>
+
+    <p style="margin-bottom: 5px;">
+        <span class="cmd-code">!job &lt;DTP amount you want to use&gt;</span>
+    </p>
+    <p style="font-size: 0.9em; color: #cbd5e1; font-style: italic;">
+        Example: toby have 30 dtp to spare: <span class="cmd-code">!job 30</span>
+    </p>
+</div>
+
+<!-- 2. RELIGIOUS SERVICE -->
+<div class="glass-box" style="border-left: 5px solid #eab308;">
+    <h3 style="color: #eab308; margin-top: 0; margin-bottom: 1rem; border-bottom: 1px solid rgba(251, 191, 36, 0.3); font-size: 1.5rem; font-weight: 800;">
+        Religious Service
+    </h3>
+    <p style="margin-bottom: 1rem; font-size: 1.1rem; line-height: 1.7;">
+        Character may perform religious service to gain favor with a god (DM discretion) or to awaken and exalt an item. The check (religion or persuasion) determines the benefits of service, as shown on the Religious Service table:
+    </p>
+
+    <ul class="star-list" style="margin-left: 1rem;">
+        <li>DC 1-10: 0 Favor</li>
+        <li>DC 11-20: 1 Favor</li>
+        <li>DC 21+: 2 Favor</li>
+    </ul>
+
+    <p style="font-size: 0.9em; font-style: italic; margin-bottom: 1.5rem; color: #cbd5e1;">
+        *P.S. this is not to worship the gods, that can be done in <span class="discord-pill">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                    piety-log.
+                </span> , this is for something like awaking and exalting items*
+    </p>
+
+    <p style="margin-bottom: 5px;">
+        <span class="cmd-code">!service &lt;modifier&gt; &lt;# of Rolls(5 DTP per check)&gt;</span>
+    </p>
+    <p style="font-size: 0.9em; color: #cbd5e1; font-style: italic;">
+        Example: toby wants to use 50 DTP to make 10 checks to gain favor and his religion mod is 3: <span class="cmd-code">!service 3 10</span>
+    </p>
+</div>
+
+<!-- 3. SPELL CHANGE -->
+<div class="glass-box" style="border-left: 5px solid #a78bfa;">
+    <h3 style="color: #a78bfa; margin-top: 0; margin-bottom: 1rem; border-bottom: 1px solid #c084fca8; font-size: 1.5rem; font-weight: 800;">
+        Spell Change for Known Casters
+    </h3>
+    <p style="margin-bottom: 1rem; font-size: 1.1rem; line-height: 1.7;">
+        If your character is one of the classes that picks spells at level-up (Bard, Eldritch Knight, Ranger, Arcane Trickster, Sorcerer, Warlock) and you regret your choices, you can spend that character's DTP and change your choices. The cost is based on the level of the spell you are learning, not the one you are losing.
+    </p>
+
+    <ul class="star-list" style="margin-left: 1rem;">
+        <li>Cantrips: 25 DTP</li>
+        <li>level 1 spells: 10 DTP</li>
+        <li>level 2 spells: 20 DTP</li>
+        <li>level 3 spells: 30 DTP</li>
+        <li>level 4 spells: 40 DTP</li>
+        <li>level 5 spells: 50 DTP</li>
+        <li>level 6 spells: 65 DTP</li>
+        <li>level 7 spells: 80 DTP</li>
+        <li>level 8 spells: 95 DTP</li>
+        <li>level 9 spells: 110 DTP</li>
+    </ul>
+
+    <p style="font-size: 1.05rem; line-height: 1.6;">
+        Post in <span class="discord-pill">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                    ⁠downtime-log.
+                </span> with your character name, spell(s) lost, spell(s) learned and DTP cost, and be sure to track it on your tracking sheet. This is limited to once a month per character and up to three spells at a time.
+    </p>
+</div>
+
+<!-- 4. CRAFTING SYSTEM -->
+<div class="glass-box" style="border-left: 5px solid #c084fc;">
+    <h3 style="color: #c084fc; margin-top: 0; margin-bottom: 1rem; border-bottom: 1px solid #c084fc92; font-size: 1.5rem; font-weight: 800;">
+        The Crafting System
+    </h3>
+    <p style="font-size: 1.1rem;">
+        Please check out the 
+        <a href="https://the-starry-shore.github.io/-%202014%205e%20Server/-%202014%20Server%20Systems/2.%20Crafting/" target="_blank" class="btn-crafting">
+            ⚒️ Crafting
+        </a>
+        page for more info.
+    </p>
+</div>
+
+
+<!-- blocks break -->
+<!-- DUNAMANCY SPELLS SECTION -->
+
+<style>
+    /* Reuse Glass Box */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* Mechanic Highlight Boxes */
+    .mechanic-box {
+        background: rgba(0, 0, 0, 0.3);
+        border-left: 4px solid #a78bfa;
+        padding: 1.2rem;
+        border-radius: 6px;
+        margin: 1.5rem 0;
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .sub-section-title {
+        color: #a78bfa;
+        font-size: 1.4rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        display: block;
+        border-bottom: 1px solid rgba(167, 139, 250, 0.2);
+        padding-bottom: 5px;
+    }
+
+    /* List Styles */
+    .duna-list { list-style: none; padding: 0; margin-bottom: 1.5rem; }
+    .duna-list li { 
+        position: relative; 
+        padding-left: 1.5rem; 
+        margin-bottom: 0.8rem; 
+        color: #cbd5e1; 
+        line-height: 1.6;
+    }
+    .duna-list li::before { 
+        content: '🌌'; 
+        position: absolute; 
+        left: 0; 
+        font-size: 0.85em;
+        top: 2px;
+    }
+
+    /* Highlighted class list */
+    .class-tag {
+        color: var(--starry-cyan);
+        font-weight: bold;
+    }
+</style>
+
+<div class="glass-box" style="border-left: 5px solid #a78bfa;">
+    <h2 style="color: #a78bfa; margin-bottom: 1.5rem; font-size: 2rem; font-weight: 800; border-bottom: 1px solid rgba(167, 139, 250, 0.3); padding-bottom: 10px; display: block;">
+        ⌛ Dunamancy Spells
+    </h2>
+
+    <!-- 1. WHO CAN ACCESS -->
+    <div style="margin-bottom: 2rem;">
+        <span class="sub-section-title">Who can access Dunamancy Spells?</span>
+        <ul class="duna-list">
+            <li>
+                Dunamancy spells are treated as wizard spells, but only <strong style="color:#fff;">Chronurgy and Graviturgy wizards</strong> can learn them through spellcasting/pact magic features without paying the DTP/GP cost.
+            </li>
+            <li>
+                Dunamancy learned through <strong>feats or class features</strong> other than spellcasting/pact magic do not have a DTP/GP cost.
+            </li>
+            <li>
+                <span class="class-tag">Sorcerers, Bards, Warlocks, Rangers, Druids, Clerics, Artificers, Paladins, Arcane Trickster Rogues, Eldritch Knights, Profane Soul Blood hunters, and Heretic Jaeger</span> can learn a Dunamancy spell instead or in place of another spell they would normally gain by following the rules below.
+            </li>
+        </ul>
+    </div>
+
+    <!-- 2. HOW TO LEARN -->
+    <div style="margin-bottom: 2rem;">
+        <span class="sub-section-title">How to learn Dunamancy Spells?</span>
+        
+        <div class="mechanic-box">
+            <strong style="color: #fff;">Research Cost:</strong><br>
+            Spend a number of weeks (<strong>1 week = 5 DTP</strong>) equal to the level of the spell (minimum 1 week) and <strong>50gp per week</strong> of research.
+            <br>
+            <em style="font-size: 0.9em; color: var(--starry-gold);">*Must be logged in <span class="discord-pill">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                    ⁠downtime-log.
+                </span> (unless Chronurgy/Graviturgy wizard).</em>
+        </div>
+
+        <ul class="duna-list">
+            <li>The spell must be of a level that the character can prepare or learn in the class being used, and <strong>cannot be a cantrip</strong>.</li>
+            <li>
+                <strong>The Check:</strong> To learn the spell, make an <strong>Intelligence check</strong>.
+                <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; margin: 10px 0; font-family: monospace; color: var(--starry-cyan); text-align: center; border: 1px solid rgba(255,255,255,0.1);">
+                    DC = 10 + Spell Level
+                </div>
+            </li>
+            <li>
+                <strong>Research Bonus:</strong> You can add a <strong>+1 bonus</strong> per additional <strong>100 GP spent</strong>, to a maximum of +6.
+            </li>
+        </ul>
+    </div>
+
+    <!-- 3. HOW TO ADD -->
+    <div>
+        <span class="sub-section-title">How to add them:</span>
+        <p style="margin-bottom: 1rem;">If the check succeeds, you learn the spell based on your class type:</p>
+        
+        <ul class="duna-list">
+            <li><strong style="color: #fff;">Wizards:</strong> Add the spell directly to your spellbook.</li>
+            <li><strong style="color: #fff;">Known Casters:</strong> (Sorcerers, Warlocks, Bards, Rangers, Arcane Tricksters, Eldritch Knights, Profane Soul, Heretic Jaeger) can change one of their known spells to the newly learned spell.</li>
+            <li><strong style="color: #fff;">Prepared Casters:</strong> (Artificers, Druids, Clerics, Paladins) add the spell to the list of spells they can prepare.</li>
+            <li><strong style="color: #fff;">Warlocks:</strong> Can replace a <strong>Mystic Arcanum</strong> (levels 6-9) with the newly learned spell.</li>
+        </ul>
+
+        <div style="background: rgba(34, 211, 238, 0.1); border: 1px solid var(--starry-cyan); padding: 10px 15px; border-radius: 6px; font-style: italic; color: #a5f3fc;">
+            <strong>P.S.</strong> Anyone who has learned a Dunamancy spell can cast that spell from scrolls as normal.
+        </div>
+    </div>
+</div>
+
+
+<!-- blocks break -->
+<!-- DRAKKENHEIM SPELLS SECTION -->
+
+<style>
+    /* Reuse Glass Box */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* Contamination Theme Box */
+    .drakken-mechanic-box {
+        background: rgba(74, 222, 128, 0.05);
+        border-left: 4px solid #4ade80;
+        padding: 1.2rem;
+        border-radius: 6px;
+        margin: 1.5rem 0;
+        color: #dcfce7;
+    }
+
+    /* Spell Level Subheaders */
+    .spell-level-header {
+        color: #4ade80;
+        font-weight: 800;
+        margin-top: 1.5rem;
+        display: block;
+        border-bottom: 1px solid rgba(74, 222, 128, 0.2);
+        width: fit-content;
+        padding-right: 20px;
+    }
+
+    /* List Styles */
+    .drakken-list { list-style: none; padding: 0; margin: 0.5rem 0 1.5rem 0; }
+    .drakken-list li { 
+        position: relative; 
+        padding-left: 1.5rem; 
+        margin-bottom: 0.6rem; 
+        color: #cbd5e1; 
+        line-height: 1.6;
+    }
+    .drakken-list li::before { 
+        content: '🧪'; 
+        position: absolute; 
+        left: 0; 
+        font-size: 0.85em;
+        top: 2px;
+    }
+
+    .prereq-text {
+        font-size: 0.9em;
+        color: var(--starry-gold);
+        font-style: italic;
+    }
+
+    .class-bracket {
+        color: var(--starry-cyan);
+        font-size: 0.9em;
+        font-weight: bold;
+    }
+</style>
+
+<div class="glass-box" style="border-left: 5px solid #4ade80;">
+    <h2 style="color: #4ade80; margin-bottom: 1.5rem; font-size: 2rem; font-weight: 800; border-bottom: 1px solid rgba(74, 222, 128, 0.3); padding-bottom: 10px; display: block;">
+        Drakkenheim Spells
+    </h2>
+
+    <div style="font-size: 1.1rem; line-height: 1.7;">
+        <p>
+            Spells from Drakkenheim are strictly guarded secrets, and not immediately available to just any caster.
+        </p>
+
+        <!-- COST BOX -->
+        <div class="drakken-mechanic-box">
+            <strong style="color: #fff;">Research Cost:</strong><br>
+            <strong>5 DTP and 250 GP</strong> per level of the spell to research.
+        </div>
+
+        <h3 style="color: #fff; font-size: 1.4rem; margin-top: 2rem; margin-bottom: 1rem;">Who can access Drakkenheim Spells?</h3>
+        
+        <ul class="drakken-list">
+            <li>Drakkenheim spells are class-specific, and only their listed classes may research them.</li>
+            <li>Drakkenheim spells cannot be learned through feats or class features, and cannot be replicated by things like Wish or Mizzium Apparatus.</li>
+            <li>The spell must be of a level that the character can prepare or learn in the class being used to learn the spell.</li>
+            <li>
+                Some Drakkenheim spells have additional prerequisites, listed below. These spells <strong>require a session</strong> to complete the research. 
+                DMs should log these in 
+                <span class="discord-pill">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                    persistent-effects-log
+                </span> 
+                when successfully learned. The player still logs research in <span class="discord-pill">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                    ⁠downtime-log.
+                </span>
+            </li>
+            <li>Once research is complete, the character may prepare the spell, add it to their spellbook, or replace a spell they already know.</li>
+            <li style="color: #fca5a5;">
+                Due to their dependency on Delirium, <strong>scrolls and spellwrought tattoos cannot be made</strong> for Drakkenheim spells.
+            </li>
+        </ul>
+
+        <h3 style="color: #fff; font-size: 1.4rem; margin-top: 2rem; margin-bottom: 0.5rem;">Drakkenheim spells by level:</h3>
+
+        <!-- SPELL LIST -->
+        <span class="spell-level-header">1st Level</span>
+        <ul class="drakken-list">
+            <li>Delirium Orb <span class="class-bracket">[Sorcerer, Warlock, Wizard]</span></li>
+        </ul>
+
+        <span class="spell-level-header">2nd Level</span>
+        <ul class="drakken-list">
+            <li>Warp Bolt <span class="class-bracket">[Sorcerer, Warlock, Wizard]</span></li>
+        </ul>
+
+        <span class="spell-level-header">3rd Level</span>
+        <ul class="drakken-list">
+            <li>Purge Contamination <span class="class-bracket">[Bard, Cleric, Druid, Paladin, Ranger, Sorcerer, Warlock, Wizard]</span></li>
+            <li>Ride the Rifts <span class="class-bracket">[Bard, Sorcerer, Warlock, Wizard]</span></li>
+        </ul>
+
+        <span class="spell-level-header">4th Level</span>
+        <ul class="drakken-list">
+            <li>Delirium Blast <span class="class-bracket">[Bard, Sorcerer, Warlock, Wizard]</span></li>
+            <li>Forced Evolution <span class="class-bracket">[Sorcerer, Warlock, Wizard]</span></li>
+        </ul>
+
+        <span class="spell-level-header">5th Level</span>
+        <ul class="drakken-list">
+            <li>Conjure the Deep Haze <span class="class-bracket">[Druid, Sorcerer, Warlock, Wizard]</span></li>
+            <li>
+                Neutralizing Field <span class="class-bracket">[Bard, Cleric, Druid, Paladin, Ranger, Sorcerer, Warlock, Wizard]</span>
+                <br><span class="prereq-text">(prerequisite: know Purge Contamination & have created at least one dose of Aqua Expurgo)</span>
+            </li>
+        </ul>
+
+        <span class="spell-level-header">6th Level</span>
+        <ul class="drakken-list">
+            <li>Ray of Contamination <span class="class-bracket">[Druid, Sorcerer, Warlock, Wizard]</span></li>
+            <li>
+                Siphon Contamination <span class="class-bracket">[Sorcerer, Warlock, Wizard]</span>
+                <br><span class="prereq-text">(prerequisite: know Forced Evolution & Neutralizing Field and have seen a Monstrous Transformation occur)</span>
+            </li>
+        </ul>
+
+        <span class="spell-level-header">7th Level</span>
+        <ul class="drakken-list">
+            <li>
+                Contamination Immunity <span class="class-bracket">[Bard, Cleric, Druid, Sorcerer, Warlock, Wizard]</span>
+                <br><span class="prereq-text">(prerequisite: know Neutralizing Field)</span>
+            </li>
+            <li>Octarine Spray <span class="class-bracket">[Bard, Sorcerer, Warlock, Wizard]</span></li>
+        </ul>
+
+        <span class="spell-level-header">8th Level</span>
+        <ul class="drakken-list">
+            <li>
+                Contaminated Power <span class="class-bracket">[Sorcerer, Warlock, Wizard]</span>
+                <br><span class="prereq-text">(prerequisite: know every other contamination spell & have cast each at least once)</span>
+            </li>
+        </ul>
+
+        <span class="spell-level-header">9th Level</span>
+        <ul class="drakken-list">
+            <li>
+                Sacrament of the Falling Fire <span class="class-bracket">[Bard, Cleric, Druid, Warlock]</span>
+                <br><span style="color: #f87171; font-weight: bold;">[Session Required]</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<!-- blocks break -->
+<!-- GODS OF THE STARRY SHORE SECTION -->
+
+<style>
+    /* --- 1. MAIN GLASS CONTAINER --- */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.4) 0%, rgba(2, 2, 10, 0.6) 100%);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(251, 191, 36, 0.2);
+        border-radius: 16px;
+        padding: 3rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* --- 2. DEITY GRID --- */
+    .god-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 12px;
+        margin: 2rem 0;
+    }
+
+    .god-link {
+        display: flex;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(251, 191, 36, 0.2);
+        padding: 10px 15px;
+        border-radius: 8px;
+        text-decoration: none;
+        color: #cbd5e1;
+        transition: all 0.3s ease;
+        font-size: 0.95rem;
+    }
+
+    .god-link:hover {
+        background: rgba(251, 191, 36, 0.1);
+        border-color: var(--starry-gold);
+        transform: translateX(5px);
+        color: #fff;
+    }
+
+    /* --- 3. TYPOGRAPHY & HEADERS --- */
+    .gods-main-title {
+        color: var(--starry-gold);
+        font-size: 2.2rem;
+        font-weight: 900;
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid rgba(251, 191, 36, 0.3);
+        padding-bottom: 10px;
+    }
+
+    .gods-sub-title {
+        color: var(--starry-gold);
+        font-size: 1.4rem;
+        font-weight: 800;
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+        display: block;
+    }
+
+    .gods-text {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: #cbd5e1;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Discord Pill */
+    .discord-pill {
+        display: inline-flex; align-items: center; gap: 5px;
+        background-color: rgba(88, 101, 242, 0.25); 
+        color: #cdd3ff; border: 1px solid rgba(88, 101, 242, 0.5);
+        border-radius: 6px; padding: 2px 8px;
+        text-decoration: none; font-weight: 600; font-size: 0.9em;
+        vertical-align: middle; white-space: nowrap; transition: all 0.2s ease;
+    }
+    .discord-pill:hover { background-color: #5865F2; color: white; transform: translateY(-1px); }
+
+    /* Highlight box for examples */
+    .example-box {
+        background: rgba(255, 255, 255, 0.05);
+        border-left: 4px solid var(--starry-cyan);
+        padding: 1.5rem;
+        border-radius: 4px;
+        margin: 1.5rem 0;
+    }
+</style>
+
+<div class="glass-box">
+    
+    <h3 class="gods-main-title">Gods of The Starry Shore!</h3>
+
+    <div class="gods-text">
+        <p>The gods of Theros The Starry Shore are far more active than the deities of most D&D worlds and can reach all multiverses. But that doesn't mean they are ordinary creatures, they aren't mere mortals, nor are they monsters that can be fought.</p>
+        <br>
+        <p>The idea of the existence of gods, as it grew in popularity among the mortals of Theros, didn't bring the gods into being by itself. Mortal reverence and worship turned universal ideas into deities. It wasn't until mortals trusted the gods to act on their behalf, in response to sacrifices and prayers</p>
+    </div>
+
+    <strong style="font-size: 1.2rem; color: #fff;">Introducing:</strong>
+    
+    <div class="god-grid">
+        <a href="https://5e.tools/deities.html#athreos_theros_mot" target="_blank" class="god-link">✨ Athreos, god of passage</a>
+        <a href="https://5e.tools/deities.html#ephara_theros_mot" target="_blank" class="god-link">✨ Ephara, god of the polis</a>
+        <a href="https://5e.tools/deities.html#erebos_theros_mot" target="_blank" class="god-link">✨ Erebos, god of the dead</a>
+        <a href="https://5e.tools/deities.html#heliod_theros_mot" target="_blank" class="god-link">✨ Heliod, god of the sun</a>
+        <a href="https://5e.tools/deities.html#iroas_theros_mot" target="_blank" class="god-link">✨ Iroas, god of victory</a>
+        <a href="https://5e.tools/deities.html#karametra_theros_mot" target="_blank" class="god-link">✨ Karametra, god of harvests</a>
+        <a href="https://5e.tools/deities.html#keranos_theros_mot" target="_blank" class="god-link">✨ Keranos, god of storms</a>
+        <a href="https://5e.tools/deities.html#klothys_theros_mot" target="_blank" class="god-link">✨ Klothys, god of destiny</a>
+        <a href="https://5e.tools/deities.html#kruphix_theros_mot" target="_blank" class="god-link">✨ Kruphix, god of horizons</a>
+        <a href="https://5e.tools/deities.html#mogis_theros_mot" target="_blank" class="god-link">✨ Mogis, god of slaughter</a>
+        <a href="https://5e.tools/deities.html#nylea_theros_mot" target="_blank" class="god-link">✨ Nylea, god of the hunt</a>
+        <a href="https://5e.tools/deities.html#pharika_theros_mot" target="_blank" class="god-link">✨ Pharika, god of affliction</a>
+        <a href="https://5e.tools/deities.html#phenax_theros_mot" target="_blank" class="god-link">✨ Phenax, god of deception</a>
+        <a href="https://5e.tools/deities.html#purphoros_theros_mot" target="_blank" class="god-link">✨ Purphoros, god of the forge</a>
+        <a href="https://5e.tools/deities.html#thassa_theros_mot" target="_blank" class="god-link">✨ Thassa, god of the sea</a>
+        <a href="https://mtg.fandom.com/wiki/Xenagos" target="_blank" class="god-link">✨ Xenagos, god of revels and fun</a>
+        <a href="https://en.wikipedia.org/wiki/Ganesha" target="_blank" class="god-link">✨ Ganesha, The God of Loxodons</a>
+        <a href="https://5e.tools/deities.html#avandra_dawn%20war_dmg" target="_blank" class="god-link">✨ Avandra, Goddess of Change and Luck</a>
+        <a href="https://5e.tools/deities.html#tyr_faerûnian_scag" target="_blank" class="god-link">✨ Tyr, God of Justice</a>
+    </div>
+
+    <strong class="gods-sub-title">What do I gain from worshiping one?!</strong>
+    <div class="gods-text">
+        The gods do reward the devotion of their champions, though. The strength of your devotion to your god is measured by your piety score. As you increase that score, you gain blessings from your god.
+        Check the end of the god page or the threads in <span class="discord-pill">#gods-info</span> to find out what each god grants their Devotee (3+ Piety), Votary (10+ Piety), Disciple (25+ Piety), Champion (50+ Piety), check the next part to learn how to unlock them.
+    </div>
+
+    <strong class="gods-sub-title">I have enough piety! How do I unlock their blessings?!</strong>
+    <div class="gods-text">
+        Gods grant their blessing to their worshipers based on how many followers there are in their temple!
+        So, if you're looking to become a devotee, votary, disciple or champion to get their blessings, you need to have the same number of members of the same piety level to gain their blessings
+        
+        <div class="example-box">
+            For example: Matcha has 10 favors and wants to be a votary, she needs 9 more people who each have at least 10 favors to unlock the votary blessings for this temple. From that point on, all characters who have 10 favors will receive the devotee blessing once they gain 10 favors. No blessing is unlocked for you till a number of characters have enough piety to unlock that blessing.
+            <br><br>
+            To get the 3 piety feature, you would need 3 characters with at least 3 favor to unlock it!
+        </div>
+    </div>
+
+    <strong class="gods-sub-title">How do I join their temple and start worshiping one of them?! and how do I gain piety/favor?!</strong>
+    <div class="gods-text">
+        Well that's simple, check the pinned msgs in 
+        <span class="discord-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+            piety-log
+        </span>.
+    </div>
+
+    <strong class="gods-sub-title">Oh that's cool! Is there a place where I can text role play to invite more characters to worship my god?!</strong>
+    <div class="gods-text">
+        Of course, there will be a shrine for each god, and a thread for trp!
+    </div>
+
+    <strong class="gods-sub-title">Just a shrine!! I want a whole temple for my god!!</strong>
+    <div class="gods-text">
+        good news, For our amazing subscribers, your VIP building can become the main building for one of the gods! making it the main place for trp
+        and the shrine will be moved to the temple meaning the thread will be closed!
+    </div>
+
+    <strong class="gods-sub-title">Can I worship a different god after I worship another one? and do I keep my favors?</strong>
+    <div class="gods-text">
+        Yes, you can, same as before just post a new entry in <span class="discord-pill">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                    piety-log.
+                </span>, sadly the piety wouldn't carry over, favors gained for a certain god stays for that god, but you don't lose them in case you want to come back to worship that god!! but there might be consequences if you keep switching.
+        <br><br>
+        <strong style="color: #ef4444; display: block; text-align: center; font-size: 1.4rem; text-shadow: 0 0 10px rgba(239, 68, 68, 0.4);">GODS ARE NOT A JOKE!!</strong>
+    </div>
+
+    <strong class="gods-sub-title">Diminishing your Deity's Influence</strong>
+    <div class="gods-text">
+        The pantheon's power comes from peoples' collective belief in the values they represent. If you take actions in TRP or live sessions that diminish your diety's influence (as outlined for each deity), you may lose piety. 
+        Recommendations are <ul style="margin-top: 10px; list-style: disc; padding-left: 20px; color: #fca5a5;">
+            <li><strong>-1 Piety:</strong> Minor infractions</li>
+            <li><strong>-3 Piety:</strong> Major infractions</li>
+            <li><strong>-5 Piety:</strong> Severe infractions</li>
+        </ul> (DM discretion).
+        Any piety losses should be logged in <span class="discord-pill">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                    piety-log.
+                </span> by the DM using the template pinned in that channel.
+    </div>
+
+    <strong class="gods-sub-title">I respect these gods but none of them fits me! Can I worship a different god that's not from this list? And how do I get any blessing?</strong>
+    <div class="gods-text">
+        Well, if you would like to worship Bahamut, God of Justice and Nobility for example, you need to get a temple and 25 characters to worship him and have 10 piety, and he will be added officially and the staff team will write up their blessing!
+    </div>
+
+</div>
+
+
+<!-- blocks break -->
+<!-- SUBCLASS & ARTIFACT RENTAL SECTION -->
+
+<style>
+    /* --- 1. GLASS CONTAINER --- */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* --- 2. DISCORD PILL --- */
+    .discord-pill {
+        display: inline-flex; align-items: center; gap: 5px;
+        background-color: rgba(88, 101, 242, 0.25); 
+        color: #cdd3ff; border: 1px solid rgba(88, 101, 242, 0.5);
+        border-radius: 6px; padding: 2px 8px;
+        text-decoration: none; font-weight: 600; font-size: 0.9em;
+        vertical-align: middle; white-space: nowrap; transition: all 0.2s ease;
+    }
+    .discord-pill:hover { background-color: #5865F2; color: white; transform: translateY(-1px); }
+
+    /* --- 3. OPTIONS BOXES --- */
+    .option-card {
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        padding: 1.2rem;
+        margin-top: 1rem;
+    }
+    .opt-title { color: var(--starry-cyan); font-weight: 800; display: block; margin-bottom: 5px; }
+
+    /* --- 4. PRESTIGE/TAX BOX --- */
+    .tax-box {
+        background: linear-gradient(90deg, rgba(251, 191, 36, 0.1), transparent);
+        border-left: 4px solid var(--starry-gold);
+        padding: 1.5rem;
+        border-radius: 4px;
+        margin: 1.5rem 0;
+    }
+
+    /* --- 5. COPYABLE CODE BLOCK --- */
+    .template-container {
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        margin-top: 1.5rem;
+        overflow: hidden;
+    }
+    .template-header {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 10px 15px;
+        display: flex; justify-content: space-between; align-items: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .copy-btn {
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
+        border: none; color: white; padding: 5px 12px; border-radius: 4px;
+        cursor: pointer; font-weight: bold; font-size: 0.85em; transition: 0.2s;
+    }
+    .copy-btn:hover { box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); }
+    .template-code { padding: 15px; margin: 0; font-family: monospace; color: #a5f3fc; white-space: pre-wrap; }
+</style>
+
+<!-- 1. SUBCLASS CHANGE -->
+<div class="glass-box" style="border-left: 5px solid var(--starry-blue);">
+    <h2 style="color: var(--starry-blue); margin-bottom: 1.5rem; font-size: 2rem; font-weight: 800; border-bottom: 1px solid rgba(59, 130, 246, 0.3); padding-bottom: 10px;">
+        Subclass Change
+    </h2>
+    
+    <p><strong>Tasha's Training Time Subclass Change Guidelines:</strong></p>
+    <p>You have two options to retrain and switch subclasses.</p>
+
+    <div class="option-card">
+        <span class="opt-title">Option 1</span>
+        A player may use <strong>100 DTP</strong> and spend <strong>500 gp per character level</strong> to switch to a different subclass. As per Tasha's, if a player switches back to a previous subclass they may forgo the gold costs and the DTP cost is halved.
+    </div>
+
+    <div class="option-card">
+        <span class="opt-title">Option 2</span>
+        The other option doesn’t require DTP, check out the pinned msg in 
+        <span class="discord-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+            leveling-log
+        </span> 
+        for more details.
+    </div>
+</div>
+
+<!-- 2. RENTING A 3RD ARTIFACT -->
+<div class="glass-box" style="border-left: 5px solid var(--starry-gold);">
+    <h2 style="color: var(--starry-gold); margin-bottom: 1.5rem; font-size: 2rem; font-weight: 800; border-bottom: 1px solid rgba(251, 191, 36, 0.3); padding-bottom: 10px;">
+        Renting a 3rd Artifact
+    </h2>
+
+    <div style="font-size: 1.1rem; line-height: 1.7;">
+        <p>
+            For prestige players who hit <strong>lvl 30 again</strong>, you get to be able to buy and use a 3rd artifact!
+        </p>
+
+        <!-- COST/TAX BOX -->
+        <div class="tax-box">
+            <strong style="color: #fff; display: block; margin-bottom: 5px;">Monthly Rental Cost:</strong>
+            <span style="font-size: 1.4rem; color: var(--starry-gold); font-weight: 900;">6,999,999.9 GP</span> and <span style="font-size: 1.4rem; color: var(--starry-cyan); font-weight: 900;">99.9 DTP</span>
+            <br>
+            <em style="font-size: 0.9em; opacity: 0.8;">The taxes must be logged in 
+                <span class="discord-pill">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                    artifact-and-boon-purchase-log
+                </span>
+            </em>
+        </div>
+
+        <p style="background: rgba(255, 255, 255, 0.05); padding: 10px; border-radius: 6px; font-style: italic;">
+            <strong>P.S.</strong> This slot doesn't grant the artifact, you still need to buy one for it. That artifact needs to be labeled as the third artifact, because it goes dormant if the taxes are not paid.
+        </p>
+
+        <!-- TEMPLATE BOX -->
+        <div class="template-container">
+            <div class="template-header">
+                <span style="font-size: 0.9em; font-weight: bold;">Rental Template</span>
+                <button class="copy-btn" onclick="copyRentalTemplate()" id="rentCopyBtn">📋 Copy</button>
+            </div>
+            <pre class="template-code" id="rentalText">Character name: &lt;insert character name here&gt; paid 7 mil GP and 100 DTP</pre>
+        </div>
+    </div>
+</div>
+
+<script>
+    function copyRentalTemplate() {
+        const text = document.getElementById('rentalText').innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            const btn = document.getElementById('rentCopyBtn');
+            btn.innerText = '✅ Copied!';
+            setTimeout(() => { btn.innerText = '📋 Copy'; }, 2000);
+        });
+    }
+</script>
 
 
 <!-- blocks break -->

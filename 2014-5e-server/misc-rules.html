@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>how-to-play</title>
+    <title>misc-rules</title>
     <link rel="stylesheet" href="../style.css">
     <script>window.rootPath = "../";</script> 
     <script src="../loader.js"></script> <!-- Load this first -->
@@ -24,6 +24,405 @@
 
         <!-- ▼▼▼ PASTE YOUR CONTENT INSIDE THIS TAG ▼▼▼ -->
         <main class="content-with-sidebar">
+<!-- blocks break -->
+<!-- PETS & DOWNTIME SECTION -->
+
+<style>
+    /* --- 1. GLASS CONTAINER --- */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* --- 2. LIST STYLING --- */
+    .star-list { list-style: none; padding: 0; margin-bottom: 1.5rem; }
+    .star-list li { 
+        position: relative; 
+        padding-left: 1.5rem; 
+        margin-bottom: 0.8rem; 
+        color: #cbd5e1; 
+        line-height: 1.6;
+    }
+    .star-list li::before { 
+        content: '✦'; 
+        position: absolute; 
+        left: 0; 
+        color: var(--starry-cyan); 
+    }
+
+    /* --- 3. PERK CARDS LAYOUT --- */
+    .perks-wrapper {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+    }
+
+    .perk-card {
+        flex: 1;
+        min-width: 300px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        padding: 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Booster Pink Theme */
+    .card-booster {
+        border-top: 4px solid #ff5050; /* Nitro Pink */
+        background: linear-gradient(180deg, rgba(255, 133, 127, 0.05), transparent);
+    }
+
+    /* Supporter Gold Theme */
+    .card-supporter {
+        border-top: 4px solid #fbbf24; /* Gold */
+        background: linear-gradient(180deg, rgba(251, 191, 36, 0.05), transparent);
+    }
+
+    .perk-title {
+        font-weight: 800;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        display: block;
+    }
+
+    /* --- 4. CYAN DTP BUTTON --- */
+    .btn-dtp {
+        display: inline-flex; align-items: center; gap: 8px;
+        background: linear-gradient(135deg, rgba(34, 211, 238, 0.2), rgba(8, 145, 178, 0.4));
+        border: 1px solid #22d3ee;
+        color: #67e8f9;
+        font-weight: 700; font-size: 0.95em;
+        padding: 10px 20px; border-radius: 6px;
+        text-decoration: none;
+        box-shadow: 0 4px 15px rgba(34, 211, 238, 0.2);
+        transition: all 0.3s ease;
+        margin-top: 10px;
+    }
+    .btn-dtp:hover {
+        background: linear-gradient(135deg, rgba(34, 211, 238, 0.4), rgba(8, 145, 178, 0.6));
+        color: white; transform: translateY(-2px);
+        box-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
+    }
+</style>
+
+<!-- 1. PETS BLOCK -->
+<div class="glass-box">
+    <h2 style="color: var(--starry-cyan); margin-bottom: 1.5rem; font-size: 2rem; font-weight: 800; border-bottom: 1px solid rgba(34, 211, 238, 0.3); padding-bottom: 10px; display: block;">
+        Pets
+    </h2>
+
+    <div style="font-size: 1.1rem; line-height: 1.7;">
+        <p style="margin-bottom: 1rem;">
+            Pets will require a bonus action to command to take their turns (except movement) as a default rule in the server, unless the DM said otherwise If you have a companion via class feature like drakewarden or steel defender, your bonus action command can apply to both your pet and your companion.
+        </p>
+
+        <ul class="star-list">
+            <li>Pets can be a maximum size of Medium and maximum Challenge Rating of ¼ all the way down to 0 CR.</li>
+            <li>Pets may be of Beast, Fey, Fiend, Construct or Dragon type.</li>
+            <li>Pets must have an intelligence of 3 or lower.</li>
+            <li>A character is limited to one maximum CR ¼ creature or two maximum CR ⅛ creatures.</li>
+        </ul>
+
+        <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 6px; font-size: 0.95em; margin-bottom: 1.5rem; border-left: 3px solid var(--starry-gold);">
+            <strong style="color: var(--starry-gold);">P.S.</strong> Only the first pet (for each character) gains the upgrades from boosting or subscribing, the 2nd pet will always be CR 1/8 without any upgrades.
+        </div>
+
+        <h3 style="color: #e2e8f0; font-size: 1.2rem; margin-bottom: 0.5rem; font-weight: 700;">
+            What happens when a pet dies? are they gone forever?
+        </h3>
+        <p style="margin-bottom: 1rem; color: #cbd5e1;">
+            Nah, they spawn back in the Shore to be picked up for the next session. But they are out for the current mission unless they're revived.
+        </p>
+    </div>
+
+    <!-- PET PERKS SECTION -->
+    <div class="perks-wrapper">
+        
+        <!-- Booster Perks -->
+        <div class="perk-card card-booster">
+            <span class="perk-title" style="color: #ff5050;">🚀 Server Booster Pet Perks</span>
+            <ul class="star-list" style="margin-bottom: 1rem;">
+                <li>CR can be up to 1/2</li>
+                <li>Size can be Large or smaller</li>
+                <li>Your pet can now be a Plant, Aberration, Ooze, Elemental, Monstrosity, beast, fey, fiend, construct or dragon.</li>
+            </ul>
+            <p style="font-size: 0.9em; font-style: italic; color: #e2e8f0;">
+                making the options up to 215 pets to choose from!!<br>
+                The size increase allows some pets to serve as mounts!
+            </p>
+        </div>
+
+        <!-- Supporter Perks -->
+        <div class="perk-card card-supporter">
+            <span class="perk-title" style="color: #fbbf24;">👑 Server Supporter Pet Perks</span>
+            <ul class="star-list" style="margin-bottom: 1rem;">
+                <li>CR can be up to 3 for this pet</li>
+                <li>Intelligence can be up to 5 or lower</li>
+                <li>Size can be Large or smaller</li>
+                <li>Your pet can now be any type except giants</li>
+            </ul>
+            <p style="font-size: 0.9em; font-style: italic; color: #e2e8f0;">
+                making the options up to 384 pets to choose from!!
+            </p>
+        </div>
+
+    </div>
+</div>
+
+<!-- 2. DOWNTIME BLOCK -->
+<div class="glass-box">
+    <h2 style="color: var(--starry-blue); margin-bottom: 1.5rem; font-size: 2rem; font-weight: 800; border-bottom: 1px solid rgba(59, 130, 246, 0.3); padding-bottom: 10px; display: block;">
+        Downtime
+    </h2>
+
+    <div style="font-size: 1.1rem; line-height: 1.7;">
+        <p style="margin-bottom: 1rem;">
+            When the starry shorians are just chillin in The Starry Shore, they can spend their free time in a variety of activities such as:
+        </p>
+
+        <ul class="star-list">
+            <li>Copying spells</li>
+            <li>Learning new tools or languages</li>
+            <li>Working for gold</li>
+            <li>Religious service to awaken/exalt an item</li>
+            <li>Changing spells choices</li>
+            <li>Crafting</li>
+            <li>Learning dunamancy or contaminations spells</li>
+            <li>Worshiping a god for their blessings</li>
+            <li>Change your subclass</li>
+            <li>Renting a 3rd artifact</li>
+        </ul>
+
+        <div style="margin-top: 1.5rem;">
+            For more details check out the:
+            <br>
+            <a href="https://the-starry-shore.github.io/-%202014%205e%20Server/-%202014%20Server%20Systems/4.%20DownTime%20Points%20Guide%20%28DTP%29/" target="_blank" class="btn-dtp">
+                🕒 2014 DTP Guide
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<!-- blocks break -->
+<!-- KARMA, LORE & SPELL RULES SECTION -->
+
+<style>
+    /* Reuse Glass Box */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* Point Badges - MOVED TO LEFT */
+    .pt-badge {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 0.85em;
+        font-weight: bold;
+        margin-right: 10px; /* Added spacing to right */
+        margin-bottom: 2px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        vertical-align: middle;
+        min-width: 50px; /* Optional: Helps align text slightly better */
+        text-align: center;
+    }
+    .pt-gain { background: rgba(16, 185, 129, 0.2); color: #6ee7b7; border: 1px solid #10b981; }
+    .pt-spend { background: rgba(244, 67, 54, 0.2); color: #ffab91; border: 1px solid #e57373; }
+
+    /* Role Tag Style (Starling) */
+    .role-starling {
+        background: #4b4d53; 
+        color: #32CD32; 
+        padding: 2px 6px; 
+        border-radius: 4px; 
+        font-weight: bold;
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* List Styles */
+    .karma-list { list-style: none; padding: 0; margin-bottom: 1.5rem; }
+    .karma-list li { 
+        margin-bottom: 0.8rem; 
+        position: relative; 
+        padding-left: 5px; 
+        color: #cbd5e1; 
+        line-height: 1.6;
+    }
+    /* Removed the '•' bullet since the badge acts as the bullet now */
+
+    /* Numbered List for Spells */
+    .spell-list { counter-reset: spell-counter; list-style: none; padding: 0; }
+    .spell-list li { position: relative; padding-left: 2.5rem; margin-bottom: 1rem; line-height: 1.6; }
+    .spell-list li::before {
+        counter-increment: spell-counter;
+        content: counter(spell-counter);
+        position: absolute; left: 0; top: 0;
+        width: 25px; height: 25px;
+        background: rgba(167, 139, 250, 0.2);
+        color: #a78bfa;
+        border: 1px solid #a78bfa;
+        border-radius: 50%;
+        text-align: center; line-height: 25px; font-size: 0.9em; font-weight: bold;
+    }
+    
+    /* Headers for sections */
+    .category-header {
+        color: #fff;
+        display: block;
+        margin-bottom: 5px;
+        margin-top: 15px;
+        font-size: 1.1em;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding-bottom: 2px;
+        width: fit-content;
+    }
+</style>
+
+<!-- 1. KARMA POINTS BLOCK -->
+<div class="glass-box">
+    <h2 style="color: #a78bfa; margin-bottom: 1.5rem; font-size: 2rem; font-weight: 800; border-bottom: 1px solid rgba(167, 139, 250, 0.3); padding-bottom: 10px; display: block;">
+        🔮 Karma Points
+    </h2>
+
+    <!-- GAINING SECTION -->
+    <div style="margin-bottom: 2rem;">
+        <h3 style="color: var(--starry-cyan); margin-bottom: 1rem; font-size: 1.4rem;">📈 How to gain karma points</h3>
+        
+        <strong class="category-header">For Players</strong>
+        <ul class="karma-list">
+            <li><span class="pt-badge pt-gain">+16 pts</span> When someone you invite to join the server reaches level 4</li>
+            <li><span class="pt-badge pt-gain">+12 pts</span> Sharing a DND Beyond campaign with all source books<br><em style="font-size: 0.9em; opacity: 0.7; margin-left: 65px;">(you can get another 12 points when the first one is full, so let's all agree that sharing is caring)</em></li>
+        </ul>
+
+        <strong class="category-header">For DMs</strong>
+        <ul class="karma-list">
+            <li><span class="pt-badge pt-gain">+6 pts</span> Becoming a full DM (one time thing)</li>
+            <li><span class="pt-badge pt-gain">+2 pts</span> Having a new player <span class="role-starling">@Starling (New Player)</span> (anyone who hasn't reached level 5 on any characters yet) in your session (per player)</li>
+            <li><span class="pt-badge pt-gain">+2 pts</span> Running an open session when there's a lot of lfg <span style="font-size:0.8em; opacity:0.7;">(rewarded by the staff)</span></li>
+        </ul>
+
+        <strong class="category-header">For Counselors & Staff</strong>
+        <ul class="karma-list">
+            <li><span class="pt-badge pt-gain">+1 pts</span> Helping a player correcting a creation log</li>
+            <li><span class="pt-badge pt-gain">+1 pts</span> Approving a creation log</li>
+            <li><span class="pt-badge pt-gain">+1 pts</span> Approving a respec log (per 3 lvls) (Staff only)</li>
+            <li><span class="pt-badge pt-gain">+4 pts</span> Helping a new player through creating a character and typing a log</li>
+        </ul>
+
+        <strong class="category-header">Monthly Gain (Boosters & Subscribers)</strong>
+        <em style="font-size: 0.9em; opacity: 0.7; display:block; margin-bottom:5px;">(once each month)</em>
+        <ul class="karma-list">
+            <li><span class="pt-badge pt-gain">+40 pts</span> Noble Server Subscribers</li>
+            <li><span class="pt-badge pt-gain">+20 pts</span> Heir Server Subscribers</li>
+            <li><span class="pt-badge pt-gain">+10 pts</span> Steward Server Subscribers</li>
+            <li><span class="pt-badge pt-gain">+10 pts</span> Server Boosters (doesn't stack with multiple boosts)</li>
+        </ul>
+    </div>
+
+    <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin-bottom: 2rem;">
+
+    <!-- SPENDING SECTION -->
+    <div>
+        <h3 style="color: var(--starry-gold); margin-bottom: 1rem; font-size: 1.4rem;">📉 How to spend karma points</h3>
+        <ul class="karma-list">
+            <li><span class="pt-badge pt-spend">4 pts</span> 1 hour on any character</li>
+            <li><span class="pt-badge pt-spend">1 pts</span> 4 DTP</li>
+            <li>
+                <span class="pt-badge pt-spend">1 pts</span> GP (value depends on character you redeem them on)
+                <ul style="margin-left: 60px; font-size: 0.9em; color: #9ca3af; margin-top: 5px; list-style: circle;">
+                    <li>5k for T1 & T2</li>
+                    <li>25k for T3</li>
+                    <li>75k for T4</li>
+                    <li>150k for T5</li>
+                </ul>
+            </li>
+            <li><span class="pt-badge pt-spend">30 pts</span> Buy a respec (up to 2 per 6-month period, resets Jan/July)</li>
+            <li><span class="pt-badge pt-spend">1 pts</span> 2 Prestige Points</li>
+            <li>Players can also use karma points to get prestige points!! You can pick from any of the taps except Others, Origins, and Racial Features! (unless the character is already prestiged!)</li>
+        </ul>
+        
+        <!-- P.S. Block -->
+        <div style="background: rgba(167, 139, 250, 0.1); padding: 15px; border-radius: 6px; font-size: 0.95em; color: #e2e8f0; margin-top: 1.5rem; border-left: 4px solid #a78bfa;">
+            <strong>P.S.</strong> You don't need to prestige to buy prestige stuff using the prestige points gained from karma points.
+        </div>
+    </div>
+</div>
+
+<!-- 2. SHORE CLARIFICATION BLOCK -->
+<div class="glass-box">
+    <h2 style="color: #60a5fa; margin-bottom: 1rem; font-size: 1.8rem; font-weight: 800; display: block;">
+        🌐 Clarification about The Shore nature & VIP building
+    </h2>
+    
+    <div style="font-size: 1.1rem; line-height: 1.7; color: #cbd5e1;">
+        <p style="margin-bottom: 1rem;">
+            The Starry Shore main bubble is created by the gods, and outside influence can't affect or harm shorians inside the bubble. If anyone (NPCs) not accepted by the gods enters, they immediately get disintegrated, unless they're lucky enough to be accepted to be a shorian (is converted into a PC).
+        </p>
+        <p>
+            Some of The Starry City (VIP) buildings can be outside the bubble but still close enough to receive limited protection... but yes, having it outside the shore would expose it to risks (since some DMs use it for their own sessions.)
+        </p>
+    </div>
+</div>
+
+<!-- 3. SPELL RULES BLOCK -->
+<div class="glass-box" style="border-left: 5px solid #f472b6;">
+    <h2 style="color: #f472b6; margin-bottom: 1.5rem; font-size: 1.8rem; font-weight: 800; display: block;">
+        📜 Rules for Simulacrum, Demiplane & Glyph of Warding
+    </h2>
+
+    <p style="font-size: 1.05rem; margin-bottom: 1.5rem; color: #e2e8f0;">
+        Due to their high propensity for abuse in a Westmarch-style setting such as ours, we have server-wide rules for these spells:
+    </p>
+
+    <ol class="spell-list">
+        <li><strong>Respec/Prestige</strong> also changes any active Simulacrum's statistics to reflect your new ones.</li>
+        <li>To bring a Simulacrum or use a Demiplane in a session, the character must be able to cast the spell on their own.</li>
+        <li>Simulacrums of other PCs can only be created with consent. These Simulacrums can only be brought in the session if the PC is also present and consents to it.</li>
+        <li>Simulacrums are unable utilize the <em>Simulacrum</em> spell.</li>
+        <li><strong>Item Attunement Requirement:</strong> If the spell is cast through a magic item, the caster must be attuned to that item in the session.</li>
+        <li><strong>Spell Gem Restriction:</strong> To imbue the Spell Gem, the character is required to know the spell. Other creatures cannot imbue a Spell Gem on your behalf.</li>
+        <li><strong>Ruby Weave Gem:</strong> The spell learned through the Ruby Weave Gem and any ongoing effects of it are lost once the attunement is broken with it.</li>
+        <li>Any ongoing effect of an item ends once the attunement is broken with it.</li>
+    </ol>
+
+    <p style="margin-top: 1.5rem; margin-bottom: 1rem; color: #cbd5e1;">
+        Casting and interacting with these spells and their effects can take a considerable amount of time. As always, remember to spend and track DTP usage if you are using these spells outside of sessions.
+    </p>
+
+    <!-- WARNING BOX -->
+    <div style="background: rgba(244, 114, 182, 0.1); border: 1px solid #f472b6; padding: 10px 15px; border-radius: 6px; color: #fbcfe8;">
+        <strong>P.S.</strong> Extradimensional Spaces created by items can not be used to store Glyph of Warding (e.g Bag of Holding, Portable Hole, etc).
+    </div>
+</div>
+
+
+<!-- blocks break -->
+
+
+
+<!-- blocks break -->
+
+
+
 <!-- blocks break -->
 
 

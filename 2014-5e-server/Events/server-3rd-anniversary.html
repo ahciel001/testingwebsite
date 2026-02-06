@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>server-3rd-anniversary</title>
+    <link rel="stylesheet" href="../../style.css">
+    <script>window.rootPath = "../../";</script>
+    <script src="../../loader.js"></script> <!-- Load this first -->
+</head>
+<!-- IMPORTANT: data-sidebar tells the loader which sidebar to grab -->
+<body data-sidebar="2014">
+    <canvas id="star-canvas"></canvas>
+
+    <!-- EMPTY HEADER CONTAINER -->
+    <header id="main-header"></header>
+
+    <div class="page-wrapper">
+        <div class="mobile-sidebar-toggle">☰ Page Menu</div>
+
+        <aside class="sidebar" id="sidebar-container">
+            <!-- Sidebar content will be injected here -->
+        </aside>
+
+        <!-- ▼▼▼ PASTE YOUR CONTENT INSIDE THIS TAG ▼▼▼ -->
+        <main class="content-with-sidebar">
+<!-- blocks break -->
+<!-- ANNIVERSARY EVENT SECTION -->
+
+<style>
+    /* --- 1. GOLDEN GLASS CONTAINER --- */
+    .anniversary-box {
+        background: linear-gradient(135deg, rgba(30, 20, 10, 0.4) 0%, rgba(2, 2, 10, 0.6) 100%);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        
+        /* Celebration Golden Border */
+        border: 2px solid #fbbf24;
+        border-radius: 16px;
+        padding: 3rem;
+        margin: 2rem auto;
+        max-width: 1200px;
+        
+        /* Shimmering Glow */
+        box-shadow: 0 0 30px rgba(251, 191, 36, 0.2), 0 10px 40px rgba(0,0,0,0.6);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Decorative Sparkles */
+    .anniversary-box::before {
+        content: "✨";
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        font-size: 2rem;
+        opacity: 0.6;
+    }
+
+    /* --- 2. TITLES --- */
+    .event-main-title {
+        font-size: clamp(1.8rem, 5vw, 2.8rem);
+        font-weight: 900;
+        text-align: center;
+        margin-bottom: 2rem;
+        background: linear-gradient(to right, #fff5d1, #fbbf24, #d97706);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 20px rgba(251, 191, 36, 0.4);
+    }
+
+    .event-section-header {
+        color: #fbbf24;
+        font-size: 1.6rem;
+        font-weight: 800;
+        margin-top: 2rem;
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid rgba(251, 191, 36, 0.3);
+        padding-bottom: 10px;
+        display: block;
+    }
+
+    /* --- 3. TOKEN CARDS --- */
+    .token-grid {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+    }
+
+    .token-card {
+        flex: 1;
+        min-width: 300px;
+        background: rgba(251, 191, 36, 0.05);
+        border: 1px solid rgba(251, 191, 36, 0.2);
+        border-radius: 12px;
+        padding: 1.5rem;
+        transition: transform 0.3s ease;
+    }
+
+    .token-card:hover {
+        transform: translateY(-5px);
+        background: rgba(251, 191, 36, 0.08);
+        border-color: #fbbf24;
+    }
+
+    .token-role {
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: #fff;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .token-value {
+        color: #fbbf24;
+        font-weight: bold;
+    }
+
+    /* --- 4. LIST STYLES --- */
+    .event-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .event-list li {
+        position: relative;
+        padding-left: 1.8rem;
+        margin-bottom: 0.8rem;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #cbd5e1;
+    }
+
+    .event-list li::before {
+        content: '✨';
+        position: absolute;
+        left: 0;
+        font-size: 0.9em;
+        top: 2px;
+    }
+</style>
+
+<div class="anniversary-box">
+    
+    <h1 class="event-main-title">The Starry Shore 3rd Anniversary Event</h1>
+
+    <span class="event-section-header">How to get Anniversary Tokens?</span>
+    
+    <div class="token-grid">
+        <!-- Player Card -->
+        <div class="token-card">
+            <span class="token-role">As a Player</span>
+            <p>
+                You get <span class="token-value">1 token</span> for each session you play.
+            </p>
+            <p style="margin-top: 10px; font-style: italic; font-size: 0.9em; color: #fff;">
+                🎁 Bonus: You get 7 extra tokens every 10 played session!
+            </p>
+        </div>
+
+        <!-- DM Card -->
+        <div class="token-card">
+            <span class="token-role">As a DM</span>
+            <p>
+                You get <span class="token-value">3 tokens</span> for each session you host.
+            </p>
+            <p style="margin-top: 10px; font-style: italic; font-size: 0.9em; color: #fff;">
+                🎁 Bonus: You get 10 extra tokens every 10 hosted session!
+            </p>
+        </div>
+    </div>
+
+    <span class="event-section-header">Rules:</span>
+    
+    <ul class="event-list">
+        <li>Minimum time for the session to count is 3 hours.</li>
+        <li>Tokens collected is player based, not character based.</li>
+        <li>Playing/Hosting 6 hours or more counts as 2 sessions.</li>
+        <li>The Cosmic Calendar's double rewards doesn't count as double for event progression.</li>
+        <li>To buy a certain reward, it needs to be logged in the event channel using the template provided there.</li>
+    </ul>
+
+</div>
+
+
+<!-- blocks break -->
+<!-- COMPACT ANNIVERSARY TOOL SECTION -->
+
+<style>
+    .anniversary-tool-box {
+        background: linear-gradient(135deg, rgba(30, 20, 10, 0.4) 0%, rgba(2, 2, 10, 0.6) 100%);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 2px solid #fbbf24;
+        border-radius: 16px;
+        padding: 1.5rem;
+        margin: 2rem auto;
+        max-width: 1200px;
+        box-shadow: 0 0 30px rgba(251, 191, 36, 0.1), 0 10px 40px rgba(0,0,0,0.6);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* --- TOP ROW: INPUTS & SUMMARY --- */
+    .compact-top-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1.2fr;
+        gap: 15px;
+        margin-bottom: 1.5rem;
+        align-items: end;
+    }
+
+    .mini-field-group { display: flex; flex-direction: column; gap: 5px; }
+    .mini-field-group label { color: #fbbf24; font-weight: bold; font-size: 0.85rem; text-transform: uppercase; }
+
+    .event-input, .event-select {
+        background: rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(251, 191, 36, 0.3);
+        color: #fff;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-size: 0.95rem;
+        outline: none;
+    }
+
+    .mini-summary-box {
+        background: rgba(251, 191, 36, 0.1);
+        border: 1px solid rgba(251, 191, 36, 0.3);
+        border-radius: 8px;
+        padding: 10px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .mini-token-count { font-size: 1.8rem; font-weight: 900; color: #fbbf24; line-height: 1; }
+
+    /* --- SHOPPING UI --- */
+    .cart-list {
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 6px;
+        padding: 8px 12px;
+        margin-bottom: 1rem;
+        max-height: 120px;
+        overflow-y: auto;
+    }
+
+    .cart-item {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.9rem;
+        padding: 4px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* --- BUTTONS --- */
+    .btn-row { display: flex; gap: 10px; margin-top: 1rem; }
+    
+    .event-btn {
+        cursor: pointer; border: none; border-radius: 6px;
+        font-weight: bold; transition: 0.2s;
+        display: flex; align-items: center; justify-content: center; gap: 6px;
+        color: white; padding: 10px; font-size: 0.9rem;
+    }
+
+    .btn-add { background: #fbbf24; color: #000; width: 45px; font-size: 1.2rem; }
+    .btn-generate { background: linear-gradient(135deg, #fbbf24, #d97706); color: #000; flex: 2; }
+    .btn-copy { background: #3b82f6; flex: 1; }
+    .btn-reset { background: #ef4444; flex: 1; }
+
+    .event-btn:hover { filter: brightness(1.2); transform: translateY(-1px); }
+
+    .log-output {
+        width: 100%; height: 100px;
+        background: rgba(0, 0, 0, 0.6);
+        border: 1px solid rgba(251, 191, 36, 0.3);
+        color: #fbbf24; padding: 10px; border-radius: 6px;
+        font-family: monospace; font-size: 0.85rem; resize: none;
+    }
+
+    @media (max-width: 768px) {
+        .compact-top-row { grid-template-columns: 1fr; gap: 10px; }
+        .btn-row { flex-wrap: wrap; }
+        .btn-row button { width: 100%; }
+    }
+</style>
+
+<div class="anniversary-tool-box">
+    <!-- HEADER -->
+    <div style="text-align: center; margin-bottom: 1rem;">
+        <span style="color: #fbbf24; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">Anniversary Log Tool</span>
+    </div>
+
+    <!-- INPUTS & SUMMARY -->
+    <div class="compact-top-row">
+        <div class="mini-field-group">
+            <label>Played</label>
+            <input type="number" id="playedCount" class="event-input" value="0" min="0" oninput="updateTokens()">
+        </div>
+        <div class="mini-field-group">
+            <label>Hosted</label>
+            <input type="number" id="hostedCount" class="event-input" value="0" min="0" oninput="updateTokens()">
+        </div>
+        <div class="mini-summary-box">
+            <span style="font-size: 0.7rem; text-transform: uppercase; margin-bottom: 3px;">Total Tokens</span>
+            <div class="mini-token-count" id="totalTokens">0</div>
+        </div>
+    </div>
+
+    <!-- SHOPPING UI -->
+    <div style="display: flex; gap: 8px; margin-bottom: 10px;">
+        <select id="itemSelect" class="event-select" style="flex: 1;">
+            <option value="" disabled selected>Select an item to buy...</option>
+            <option value="1">Roll on Gods Trinkets Table (1)</option>
+            <option value="3">Choose Trinket from List (3)</option>
+            <option value="10">Giving Item Sentience (10)</option>
+            <option value="14">Item Sentience - Custom Align (14)</option>
+            <option value="75">Add a Deity (75)</option>
+            <option value="12">Anniversary Familiar (12)</option>
+            <option value="10">Special Anniversary Role (10)</option>
+            <option value="30">Rename TRP Lobby (30)</option>
+            <option value="15">Prestige Points - 50 PP (15)</option>
+            <option value="5">GP Pack (5)</option>
+            <option value="5">DTP Pack (5)</option>
+            <option value="10">Boon Shard (10)</option>
+            <option value="25">5 Shimmering Spirits (25)</option>
+            <option value="2">1 Sub-Follower Spirit (2)</option>
+            <option value="10">Statuette of Saint Markovia (Evil) (10)</option>
+            <option value="10">Statuette of Saint Markovia (Neutral) (10)</option>
+            <option value="5">Extra Double Session DM (5)</option>
+            <option value="6">Double Reward Played Session (6)</option>
+            <option value="20">Extra Respec (20)</option>
+            <option value="3">Auto Success Crafting (3)</option>
+        </select>
+        <button class="event-btn btn-add" onclick="addToCart()">+</button>
+    </div>
+
+    <!-- CART -->
+    <div class="cart-list" id="cartDisplay">
+        <p style="opacity: 0.4; text-align: center; font-size: 0.85rem;">Cart is empty</p>
+    </div>
+
+    <!-- OUTPUT -->
+    <textarea id="eventOutput" class="log-output" readonly placeholder="Output log..."></textarea>
+
+    <!-- ACTION BUTTONS -->
+    <div class="btn-row">
+        <button class="event-btn btn-generate" onclick="generateEventLog()">📜 Generate Log</button>
+        <button class="event-btn btn-copy" onclick="copyEventLog()" id="copyBtn">📋 Copy</button>
+        <button class="event-btn btn-reset" onclick="resetTool()">🔄 Reset</button>
+    </div>
+</div>
+
+<script>
+    let cart = [];
+    let currentTokens = 0;
+
+    function updateTokens() {
+        const played = parseInt(document.getElementById('playedCount').value) || 0;
+        const hosted = parseInt(document.getElementById('hostedCount').value) || 0;
+        const playedTokens = played + (Math.floor(played / 10) * 7);
+        const hostedTokens = (hosted * 3) + (Math.floor(hosted / 10) * 10);
+        currentTokens = playedTokens + hostedTokens;
+        document.getElementById('totalTokens').innerText = currentTokens;
+    }
+
+    function addToCart() {
+        const select = document.getElementById('itemSelect');
+        if (select.selectedIndex === 0) return;
+        const itemName = select.options[select.selectedIndex].text.split(' (')[0];
+        const itemPrice = parseInt(select.value);
+        cart.push({ name: itemName, price: itemPrice });
+        renderCart();
+    }
+
+    function renderCart() {
+        const display = document.getElementById('cartDisplay');
+        if (cart.length === 0) {
+            display.innerHTML = '<p style="opacity: 0.4; text-align: center; font-size: 0.85rem;">Cart is empty</p>';
+            return;
+        }
+        display.innerHTML = cart.map((item, index) => `
+            <div class="cart-item">
+                <span>✦ ${item.name}</span>
+                <div style="display: flex; gap: 10px;">
+                    <span style="color: #fbbf24;">${item.price} pt</span>
+                    <button onclick="removeFromCart(${index})" style="background:none; border:none; color:#ef4444; cursor:pointer;">✕</button>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function removeFromCart(index) {
+        cart.splice(index, 1);
+        renderCart();
+    }
+
+    function generateEventLog() {
+        if (cart.length === 0) return;
+        const totalCost = cart.reduce((sum, item) => sum + item.price, 0);
+        const finalBalance = currentTokens - totalCost;
+        const itemStrings = cart.map(i => `- ${i.name} (${i.price} Tokens)`).join('\n');
+        const output = `Item(s) purchased:\n${itemStrings}\n\nAnniversary tokens total after purchase: ${finalBalance}`;
+        document.getElementById('eventOutput').value = output;
+    }
+
+    function copyEventLog() {
+        const text = document.getElementById('eventOutput').value;
+        const btn = document.getElementById('copyBtn');
+        if (!text) return;
+        navigator.clipboard.writeText(text).then(() => {
+            btn.innerText = "✅ Copied";
+            setTimeout(() => { btn.innerText = "📋 Copy"; }, 1500);
+        });
+    }
+
+    function resetTool() {
+        document.getElementById('playedCount').value = 0;
+        document.getElementById('hostedCount').value = 0;
+        cart = [];
+        updateTokens();
+        renderCart();
+        document.getElementById('eventOutput').value = "";
+    }
+
+    updateTokens();
+</script>
+
+<!-- blocks break -->
+<!-- ANNIVERSARY ITEMS TABLE SECTION -->
+
+<style>
+    /* --- 1. TABLE CONTAINER --- */
+    .event-table-container {
+        margin: 2rem 0;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(251, 191, 36, 0.3);
+        background: rgba(0, 0, 0, 0.2);
+       backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    .event-table {
+        width: 100%;
+        border-collapse: collapse;
+        color: #e2e8f0;
+        font-family: 'Inter', sans-serif;
+    }
+
+    /* --- 2. DESKTOP STYLING --- */
+    .event-table th {
+        background: rgba(251, 191, 36, 0.15);
+        color: #fbbf24;
+        text-align: left;
+        padding: 15px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-bottom: 2px solid #fbbf24;
+    }
+
+    .event-table td {
+        padding: 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        vertical-align: top;
+        line-height: 1.5;
+    }
+
+    .event-table tr:hover {
+        background: rgba(251, 191, 36, 0.03);
+    }
+
+    /* Price Badge */
+    .token-badge {
+        display: inline-block;
+        background: rgba(251, 191, 36, 0.2);
+        color: #fbbf24;
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-weight: bold;
+        border: 1px solid rgba(251, 191, 36, 0.4);
+        white-space: nowrap;
+    }
+
+    .note-text {
+        font-size: 0.9em;
+        color: #94a3b8;
+        font-style: italic;
+    }
+
+    /* --- 3. MOBILE RESPONSIVE (Stacking Logic) --- */
+    @media (max-width: 768px) {
+        .event-table, .event-table thead, .event-table tbody, .event-table th, .event-table td, .event-table tr {
+            display: block;
+        }
+
+        .event-table thead {
+            display: none; /* Hide headers on mobile */
+        }
+
+        .event-table tr {
+            margin-bottom: 15px;
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 10px;
+        }
+
+        .event-table td {
+            border: none;
+            padding: 8px 5px;
+            position: relative;
+            padding-left: 50%; /* Make room for labels */
+            text-align: left;
+        }
+
+        /* Add labels for mobile view */
+        .event-table td::before {
+            content: attr(data-label);
+            position: absolute;
+            left: 10px;
+            width: 45%;
+            font-weight: bold;
+            color: #fbbf24;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+        }
+
+        /* Special handling for rows with no notes to keep them clean */
+        .event-table td:empty { display: none; }
+    }
+</style>
+
+<div class="event-table-container">
+    <table class="event-table">
+        <thead>
+            <tr>
+                <th style="width: 40%;">Anniversary Items</th>
+                <th style="width: 20%;">Price (Tokens)</th>
+                <th style="width: 40%;">Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="Item">A roll on the gods trinkets table</td>
+                <td data-label="Price"><span class="token-badge">1 Token</span></td>
+                <td data-label="Notes" class="note-text"></td>
+            </tr>
+            <tr>
+                <td data-label="Item">Choose the trinket you want from the trinkets list</td>
+                <td data-label="Price"><span class="token-badge">3 Tokens</span></td>
+                <td data-label="Notes" class="note-text">Can be bought only once. (from either tables)</td>
+            </tr>
+            <tr>
+                <td data-label="Item">Giving one of your items Sentience</td>
+                <td data-label="Price"><span class="token-badge">10 Tokens</span></td>
+                <td data-label="Notes" class="note-text">You determine its alignment by rolling a d6 twice. On the first roll, a 1-2 indicates lawful, 3-4 neutral, and 5-6 chaotic. On the second roll, a 1-2 indicates good, 3-4 neutral, and 5-6 evil. (costs 14 if want a certain alignment)</td>
+            </tr>
+            <tr>
+                <td data-label="Item">Add a Deity for the Starry Shore</td>
+                <td data-label="Price"><span class="token-badge">75 Tokens</span></td>
+                <td data-label="Notes" class="note-text">Any number of players/DMs can contribute on this.</td>
+            </tr>
+            <tr>
+                <td data-label="Item">Anniversary Familiar</td>
+                <td data-label="Price"><span class="token-badge">12 Tokens</span></td>
+                <td data-label="Notes" class="note-text">You can use this Familiar when casting the find familiar spell. (stat sheet below)</td>
+            </tr>
+            <tr>
+                <td data-label="Item">Special anniversary role with an icon!</td>
+                <td data-label="Price"><span class="token-badge">10 Tokens</span></td>
+                <td data-label="Notes" class="note-text">ShoreBound (stays till next anniversary). If you already have last year's role, this upgrades to a gradient one.</td>
+            </tr>
+            <tr>
+                <td data-label="Item">Renaming a TRP Session Lobby (Limited to 2)</td>
+                <td data-label="Price"><span class="token-badge">30 Tokens</span></td>
+                <td data-label="Notes" class="note-text">This will last till the next anniversary event next year.</td>
+            </tr>
+            <tr>
+                <td data-label="Item">i dont give a f*@k, gimme my prestige points</td>
+                <td data-label="Price"><span class="token-badge">15 Tokens</span></td>
+                <td data-label="Notes" class="note-text">50 prestige points (can be bought up to two times max).</td>
+            </tr>
+            <tr>
+                <td data-label="Item">this is great and all, but i only care about gp</td>
+                <td data-label="Price"><span class="token-badge">5 Tokens</span></td>
+                <td data-label="Notes" class="note-text">300,000 GP x the chosen character tier (claimed on one character). (can be bought up to four times max).</td>
+            </tr>
+            <tr>
+                <td data-label="Item">I don't DM, so all i need is DTP</td>
+                <td data-label="Price"><span class="token-badge">5 Tokens</span></td>
+                <td data-label="Notes" class="note-text">30 DTP x the chosen character tier (claimed on one character). (can be bought up to four times max).</td>
+            </tr>
+            <tr>
+                <td data-label="Item">Boon Shard</td>
+                <td data-label="Price"><span class="token-badge">10 Tokens</span></td>
+                <td data-label="Notes" class="note-text">Can be bought only once.</td>
+            </tr>
+            <tr>
+                <td data-label="Item">Gain 5 shimmering spirits</td>
+                <td data-label="Price"><span class="token-badge">25 Tokens</span></td>
+                <td data-label="Notes" class="note-text">They immediately have a max of 25 piety. They follow your orders while in the shore, but can't interfere with other players. (last till next anniversary).</td>
+            </tr>
+            <tr>
+                <td data-label="Item">Gain one Sub-Follower</td>
+                <td data-label="Price"><span class="token-badge">2 Tokens</span></td>
+                <td data-label="Notes" class="note-text">marked spirit that can gain up to 25 piety through your teachings (using your modifier & DTP.)</td>
+            </tr>
+            <tr>
+                <td data-label="Item">Statuette of Saint Markovia</td>
+                <td data-label="Price"><span class="token-badge">10 Tokens</span></td>
+                <td data-label="Notes" class="note-text">Event special item (for Neutral or Evil alignment). Can't be bought by Velvet.</td>
+            </tr>
+            <tr>
+                <td data-label="Item">Extra double session for DM</td>
+                <td data-label="Price"><span class="token-badge">5 Tokens</span></td>
+                <td data-label="Notes" class="note-text">For the Cosmic Calendar.</td>
+            </tr>
+            <tr>
+                <td data-label="Item">Double reward for 1 session Played</td>
+                <td data-label="Price"><span class="token-badge">6 Tokens</span></td>
+                <td data-label="Notes" class="note-text">Log 1 session played of your choice twice that happened during the event.</td>
+            </tr>
+            <tr>
+                <td data-label="Item">Extra respec</td>
+                <td data-label="Price"><span class="token-badge">20 Tokens</span></td>
+                <td data-label="Notes" class="note-text">Lasts until the next reset on July 1st.</td>
+            </tr>
+            <tr>
+                <td data-label="Item">Auto success on crafting 1 item</td>
+                <td data-label="Price"><span class="token-badge">3 Tokens</span></td>
+                <td data-label="Notes" class="note-text"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<!-- blocks break -->
+<!-- FAMILIAR STAT BLOCK SECTION -->
+
+<style>
+    /* --- 1. MAIN CONTAINER --- */
+    .stat-block-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 2rem auto;
+        font-family: 'Inter', sans-serif;
+    }
+
+    /* --- 2. THE STAT BLOCK (LEFT SIDE) --- */
+    .stat-card {
+        flex: 1.2;
+        min-width: 320px;
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.6) 0%, rgba(2, 2, 10, 0.8) 100%);
+        backdrop-filter: blur(10px);
+        border: 2px solid #fbbf24; /* Golden border for anniversary */
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        position: relative;
+    }
+
+    .stat-header h2 {
+        color: #fbbf24;
+        font-family: 'Cinzel', serif;
+        margin: 0;
+        font-size: 1.8rem;
+        border-bottom: 1px solid #fbbf24;
+    }
+
+    .stat-meta {
+        font-style: italic;
+        color: #cbd5e1;
+        margin-bottom: 10px;
+    }
+
+    .stat-property {
+        color: #fbbf24;
+        font-weight: bold;
+    }
+
+    /* Ability Scores Table */
+    .ability-table {
+        width: 100%;
+        text-align: center;
+        margin: 15px 0;
+        border-top: 1px solid #fbbf24;
+        border-bottom: 1px solid #fbbf24;
+        padding: 10px 0;
+    }
+    .ability-table th { color: #fbbf24; font-size: 0.8rem; text-transform: uppercase; }
+    .ability-table td { color: #fff; font-weight: bold; }
+
+    .stat-section-title {
+        font-family: 'Cinzel', serif;
+        font-weight: bold;
+        font-size: 1.2rem;
+        color: #fbbf24;
+        border-bottom: 1px solid rgba(251, 191, 36, 0.3);
+        margin: 15px 0 5px;
+    }
+
+    .trait-text { margin-bottom: 10px; line-height: 1.5; font-size: 0.95rem; color: #e2e8f0; }
+
+    /* --- 3. AVRAE INFO (RIGHT SIDE) --- */
+    .avrae-info-side {
+        flex: 1;
+        min-width: 300px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .avrae-glass-box {
+        background: rgba(59, 130, 246, 0.1);
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        padding: 1.5rem;
+        border-radius: 12px;
+        backdrop-filter: blur(5px);
+        color: #cbd5e1;
+    }
+
+    .cmd-container {
+        background: #000;
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid #3b82f6;
+        margin-top: 10px;
+    }
+
+    .copy-cmd-btn {
+        background: #3b82f6;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        width: 100%;
+        margin-top: 10px;
+        transition: 0.3s;
+    }
+    .copy-cmd-btn:hover { background: #2563eb; box-shadow: 0 0 15px rgba(59, 130, 246, 0.5); }
+
+    /* Mobile handling */
+    @media (max-width: 768px) {
+        .stat-block-wrapper { flex-direction: column; }
+    }
+</style>
+
+<div class="stat-block-wrapper">
+    
+    <!-- LEFT: THE D&D STAT BLOCK -->
+    <div class="stat-card">
+        <div class="stat-header">
+            <h2>Orion, the Starry Shore Mascot</h2>
+            <div class="stat-meta">Tiny Celestial, neutral</div>
+        </div>
+
+        <div class="trait-text">
+            <span class="stat-property">Armor Class</span> 15 (Onesie)<br>
+            <span class="stat-property">Hit Points</span> 10 (3d6)<br>
+            <span class="stat-property">Speed</span> 20 ft., fly 30 ft. (hover)<br>
+            <span class="stat-property">Initiative</span> +0
+        </div>
+
+        <table class="ability-table">
+            <tr>
+                <th>Str</th><th>Dex</th><th>Con</th><th>Int</th><th>Wis</th><th>Cha</th>
+            </tr>
+            <tr>
+                <td>10 (+0)</td><td>10 (+0)</td><td>10 (+0)</td><td>12 (+1)</td><td>12 (+1)</td><td>14 (+2)</td>
+            </tr>
+        </table>
+
+        <div class="trait-text">
+            <span class="stat-property">Saving Throws</span> Int +1, Wis +1, Cha +2<br>
+            <span class="stat-property">Senses</span> Passive Perception 11<br>
+            <span class="stat-property">Languages</span> Common, telepathy 30 ft.<br>
+            <span class="stat-property">Challenge</span> 1/8
+        </div>
+
+        <div class="stat-section-title">Traits</div>
+        <div class="trait-text">
+            <strong>Adorable Distraction.</strong> Once per day, if an enemy attacks the creature who has Orion as their familiar, the attacker has disadvantage on the first attack they make against that creature. 
+            <br><em>His cuteness is just enough to make enemies hesitate for a moment. 🥺</em>
+        </div>
+
+        <div class="stat-section-title">Actions</div>
+        <div class="trait-text">
+            <strong>Tiny Trunk Bop.</strong> <em>Melee Weapon Attack:</em> +3 to hit, reach 5 ft., one target. <em>Hit:</em> 1d4 bludgeoning damage.
+        </div>
+        <div class="trait-text">
+            <strong>Orion’s Starry Embrace (1/day).</strong> 
+            In a moment of danger, there is a <strong>1% chance</strong> Orion channels a divine presence. Describe the assistance you seek; the DM chooses the nature of the intervention (any spell effect is appropriate). If the gods intervene, this feature is unavailable for 7 days. Otherwise, it resets in 24 hours.
+        </div>
+    </div>
+
+    <!-- RIGHT: AVRAE IMPORT & CREDITS -->
+    <div class="avrae-info-side">
+        
+        <div class="avrae-glass-box" style="border-color: #fbbf24;">
+            <h3 style="color: #fbbf24; margin-top: 0;">🐘 The Starry Mascot</h3>
+            <p>Thanks to the amazing <strong>UberDragon</strong>, you can now import Orion into Avrae to use as a companion or monster!</p>
+        </div>
+
+        <div class="avrae-glass-box">
+            <h3 style="color: var(--starry-cyan); margin-top: 0;">🤖 Avrae Import</h3>
+            <p>Copy the command below into any channel in the server to add Orion to your bestiary:</p>
+            
+            <div class="cmd-container">
+                <code id="bestiaryCmd" style="color: #a5f3fc; font-size: 0.85em; word-break: break-all;">!bestiary import https://critterdb.com/#/bestiary/view/67afafd06e7abba7de42fb8a</code>
+                <button class="copy-cmd-btn" onclick="copyBestiary()" id="copyBestiaryBtn">📋 Copy Command</button>
+            </div>
+
+            <p style="margin-top: 15px; font-size: 0.85em; font-style: italic;">
+                <strong>P.S.</strong> Only 1 bestiary can be active at a time. Importing this will deactivate your currently active personal bestiary.
+            </p>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function copyBestiary() {
+        const text = document.getElementById('bestiaryCmd').innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            const btn = document.getElementById('copyBestiaryBtn');
+            btn.innerText = '✅ Command Copied!';
+            btn.style.background = '#10b981';
+            setTimeout(() => {
+                btn.innerText = '📋 Copy Command';
+                btn.style.background = '#3b82f6';
+            }, 2000);
+        });
+    }
+</script>
+
+
+<!-- blocks break -->
+
+
+
+<!-- blocks break -->
+
+            <!-- YOU CAN ADD MORE BLOCKS HERE LATER -->
+
+        </main>
+        <!-- ▲▲▲ END CONTENT ▲▲▲ -->
+    </div>
+
+    <!-- SCRIPTS -->
+
+    <script src="../../search.js"></script>
+    <script src="../../background-canvas.js"></script>
+    
+    <!-- NOTE: You might need to edit mobile-menu.js to wait for 'componentLoaded' event -->
+    <script src="../../mobile-menu.js"></script>
+</body>
+</html>

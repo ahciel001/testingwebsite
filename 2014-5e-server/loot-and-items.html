@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>how-to-play</title>
+    <title>loot-and-items</title>
     <link rel="stylesheet" href="../style.css">
     <script>window.rootPath = "../";</script> 
     <script src="../loader.js"></script> <!-- Load this first -->
@@ -24,6 +24,561 @@
 
         <!-- ▼▼▼ PASTE YOUR CONTENT INSIDE THIS TAG ▼▼▼ -->
         <main class="content-with-sidebar">
+<!-- blocks break -->
+<!-- LOOT & ITEMS SECTION -->
+
+<style>
+    /* --- 1. MAIN GLASS CONTAINER --- */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* --- 2. LIST STYLING --- */
+    .item-list { list-style: none; padding: 0; margin-bottom: 1.5rem; }
+    .item-list li { 
+        position: relative; 
+        padding-left: 1.5rem; 
+        margin-bottom: 0.8rem; 
+        color: #cbd5e1; 
+        line-height: 1.6;
+    }
+    .item-list li::before { 
+        content: '✦'; 
+        position: absolute; 
+        left: 0; 
+        color: var(--starry-gold); 
+    }
+
+    /* Nested Lists */
+    .sub-list {
+        margin-top: 5px;
+        margin-left: 5px;
+        padding-left: 15px;
+        border-left: 1px solid rgba(255,255,255,0.1);
+    }
+    .sub-list li::before { content: '🔹'; font-size: 0.8em; color: var(--starry-cyan); }
+
+    /* --- 3. CUSTOM BUTTONS --- */
+    
+    /* Green Shop Button */
+    .btn-shop {
+        display: inline-flex; align-items: center; gap: 8px;
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 95, 70, 0.4));
+        border: 1px solid #10b981;
+        color: #6ee7b7;
+        font-weight: 700; font-size: 0.95em;
+        padding: 10px 20px; border-radius: 6px;
+        text-decoration: none;
+        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
+        transition: all 0.3s ease;
+        margin: 10px 0;
+    }
+    .btn-shop:hover {
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.4), rgba(6, 95, 70, 0.6));
+        color: white; transform: translateY(-2px);
+        box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+    }
+
+    /* Cyan DTP Button */
+    .btn-dtp {
+        display: inline-flex; align-items: center; gap: 8px;
+        background: linear-gradient(135deg, rgba(34, 211, 238, 0.2), rgba(8, 145, 178, 0.4));
+        border: 1px solid #22d3ee;
+        color: #67e8f9;
+        font-weight: 700; font-size: 0.95em;
+        padding: 10px 20px; border-radius: 6px;
+        text-decoration: none;
+        box-shadow: 0 4px 15px rgba(34, 211, 238, 0.2);
+        transition: all 0.3s ease;
+    }
+    .btn-dtp:hover {
+        background: linear-gradient(135deg, rgba(34, 211, 238, 0.4), rgba(8, 145, 178, 0.6));
+        color: white; transform: translateY(-2px);
+        box-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
+    }
+
+    /* --- 4. DISCORD PILL --- */
+    .discord-pill {
+        display: inline-flex; align-items: center; gap: 5px;
+        background-color: rgba(88, 101, 242, 0.25); 
+        color: #cdd3ff; border: 1px solid rgba(88, 101, 242, 0.5);
+        border-radius: 6px; padding: 2px 8px;
+        text-decoration: none; font-weight: 600; font-size: 0.9em;
+        vertical-align: middle; white-space: nowrap; transition: all 0.2s ease;
+        font-family: 'Inter', sans-serif;
+    }
+    .discord-pill:hover {
+        background-color: #5865F2; color: white; 
+        box-shadow: 0 0 15px rgba(88, 101, 242, 0.6); transform: translateY(-2px);
+    }
+</style>
+
+<!-- 1. MUNDANE ITEMS BLOCK -->
+<div class="glass-box">
+    <h2 style="color: var(--starry-gold); margin-bottom: 1.5rem; font-size: 2rem; font-weight: 800; border-bottom: 1px solid rgba(251, 191, 36, 0.3); padding-bottom: 10px; display: block;">
+        Gold & Mundane Items: Purchasing and Selling
+    </h2>
+    
+    <div style="font-size: 1.1rem; line-height: 1.7;">
+        <p style="margin-bottom: 1rem;">
+            Characters can buy basic, mundane items (such as armor, weapons, and adventuring gear) that are listed in the Player’s Handbook (PHB) for the price listed in the PHB. This only needs to be logged in the character tracking sheet. Characters can also sell these items for half of the price listed in the PHB.
+        </p>
+        <p style="margin-bottom: 1rem;">
+            Characters can also buy and sell mundane items in a DM’s world, through trp and live sessions. Any gold found within a world can <strong style="color: var(--starry-cyan);">only</strong> be spent in that world, unless it is given as player loot for a session. Gold and mundane items gained within a world (not recorded as official session loot) is exclusive to that world and is considered homebrew elsewhere.
+        </p>
+        <p>
+            Mundane items and gold may also be granted as rewards for live sessions. Items and gold gained in this way can be used anywhere and must be logged on the character tracking sheet and by the DM in the trade log.
+        </p>
+    </div>
+</div>
+
+<!-- 2. MAGIC ITEMS BLOCK -->
+<div class="glass-box">
+    <h2 style="color: var(--starry-cyan); margin-bottom: 1.5rem; font-size: 2rem; font-weight: 800; border-bottom: 1px solid rgba(34, 211, 238, 0.3); padding-bottom: 10px; display: block;">
+        Magic Items
+    </h2>
+
+    <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.5rem;">
+        Magic items may be received in live sessions as rewards up to the gold value of the session loot and chosen from The Starry Shore Shopping List. Magic items received as live session loot may be used server-wide, but some DMs have restrictions in their worlds. Magic items may only be received and used by characters of the same or higher tier.
+    </p>
+
+    <!-- SHOPPING BUTTON -->
+    <div style="margin-bottom: 1.5rem;">
+        Server-wide allowed magic items can be found in the:
+        <br>
+        <a href="https://the-starry-shore.github.io/-%202014%205e%20Server/-%202014%20Server%20Systems/1.%20Shopping%20Guide/" target="_blank" class="btn-shop">
+            🛒 2014 Shopping Guide
+        </a>
+        <br>
+        <span style="font-size: 0.95em; color: #cbd5e1; margin-top: 5px; display: block;">
+            Any item not on the shopping list is not allowed in The Starry Shore and is therefore considered homebrew within the server.
+        </span>
+    </div>
+
+    <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 6px; font-style: italic; color: #e2e8f0; margin-bottom: 2rem; border-left: 3px solid var(--starry-gold);">
+        P.S. Any item that has a recharge time longer than 30 Days is no longer rechargeable but is considered a consumable instead.
+    </div>
+
+    <!-- SUBSECTION: NOTES -->
+    <h3 style="color: #a78bfa; font-size: 1.4rem; margin-bottom: 1rem; font-weight: 700;">
+        Notes about items
+    </h3>
+
+    <ul class="item-list">
+        <li>
+            Some powerful items have had their properties altered. These altered properties can be found in their listing in The Starry Shore Shopping List.
+        </li>
+        <li>
+            Characters may only use the manuals that boost ability scores once.
+        </li>
+        <li>
+            Some of these items require a session to obtain, due to their lore and power (“session required” in the shop). However, a character must still pay the gold cost to obtain the item.
+            
+            <ul class="item-list sub-list">
+                <li>A maximum of one session-required item can be obtained per session.</li>
+                <li>Only one player may receive a session-required item per session.</li>
+                <li>This applies whether the item is bought or crafted, and it cannot be traded.</li>
+                <li>Session-required items cannot be traded.</li>
+                <li>Example: if 2 characters need the same item, they still need 2 sessions to do so.</li>
+            </ul>
+            
+            <div style="margin-top: 10px; color: #d1d5db; font-size: 0.95em; padding-left: 1.5rem;">
+                These items are unique and important and it should be personalized and significant to the character gaining it, so to keep it like that, the session needs to be tailored about the character gaining it with exploration, combat, or solving puzzles, which can be more rewarding and immersive for the player getting it.
+            </div>
+        </li>
+        <li>
+            The player may request the beneficial properties of artifacts, and ultimately the DM of the session will determine the item’s beneficial and detrimental properties. The same properties may not be granted twice on a given item.
+        </li>
+        <li>
+            <strong>Artifacts' Save DCs:</strong> Replace fixed DCs (e.g., 17 or 18) with:
+            <ul class="item-list sub-list">
+                <li>Spellcasting DC, if the wielder has one</li>
+                <li>If they don't: Constitution Mod + 8 + Proficiency Bonus</li>
+            </ul>
+        </li>
+        <li>
+            DMs may choose to rename the item, but both names must be logged.
+        </li>
+        <li>
+            Artifacts are limited to one per character except if prestige points have been used to purchase a second artifact slot.
+            
+            <ul class="item-list sub-list">
+                <li>To change artifacts, a character must first destroy their current artifact in a session, then acquire a new one in another session.</li>
+                <li style="margin-top: 8px;">
+                    You can rent a 3rd artifact slot, check out:
+                    <br>
+                    <a href="https://the-starry-shore.github.io/-%202014%205e%20Server/-%202014%20Server%20Systems/4.%20DownTime%20Points%20Guide%20%28DTP%29/" target="_blank" class="btn-dtp">
+                        🕒 2014 DTP Guide
+                    </a>
+                </li>
+                <li style="margin-top: 8px;">
+                    All of these items must be logged in 
+                    
+                    <!-- CORRECTED DISCORD PILL -->
+                    <span class="discord-pill">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                        artifact-and-boon-purchase-log
+                    </span>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+
+<!-- blocks break -->
+<!-- SHOPPING & SELLING SECTION -->
+
+<style>
+    /* Reuse Calculation Box for Selling Math */
+    .math-box {
+        background: rgba(0, 0, 0, 0.3);
+        border-left: 4px solid var(--starry-gold);
+        padding: 1rem;
+        margin: 1rem 0;
+        border-radius: 4px;
+        font-family: 'Consolas', monospace;
+        color: #fff;
+        background: linear-gradient(90deg, rgba(251, 191, 36, 0.1), transparent);
+    }
+</style>
+
+<!-- 1. PURCHASING BLOCK -->
+<div class="glass-box">
+    <h2 style="color: var(--starry-cyan); margin-bottom: 1.5rem; font-size: 2rem; font-weight: 800; border-bottom: 1px solid rgba(34, 211, 238, 0.3); padding-bottom: 10px; display: block;">
+        Shopping: Purchasing Magic Items
+        <span style="font-size: 0.6em; color: #cbd5e1; font-weight: 400; display: block; margin-top: 5px;">(via Live Sessions or TRP)</span>
+    </h2>
+
+    <div style="font-size: 1.1rem; line-height: 1.7;">
+        <p style="margin-bottom: 1rem;">
+            DMs may permit players to discover shops within their worlds, either during live sessions or through text-based roleplay (TRP), and purchase items from these lists found in other tabs. In these shops, players can purchase magical and mundane items.
+        </p>
+        <p style="margin-bottom: 1.5rem;">
+            Shops are permitted to charge more than the cost in the shopping list but cannot charge less. DMs retain full discretion over the availability of items, including what items are available and in what quantities. If the items are not listed in the shopping list, they will be considered homebrew within The Starry Shore.
+        </p>
+
+        <strong style="color: #fff; display: block; margin-bottom: 1rem;">For players seeking to purchase items, there are two methods:</strong>
+
+        <ol style="margin-left: 20px; margin-bottom: 2rem; color: #e2e8f0;">
+            <li style="margin-bottom: 1.5rem;">
+                During a live session, if the DM allows it, players can submit a list of items they wish to purchase. To find the price of these items, check here:
+                <br>
+                <a href="https://the-starry-shore.github.io/-%202014%205e%20Server/-%202014%20Server%20Systems/1.%20Shopping%20Guide/" target="_blank" class="btn-shop" style="margin-top: 10px;">
+                    🛒 2014 Shopping Guide
+                </a>
+            </li>
+            <li>
+                Through TRP shops in the market district category or any other shops within TRP worlds, as well as VIP buildings. Players engage in TRP interactions to procure items and then send the list to the DM.
+            </li>
+        </ol>
+
+        <!-- NOTE BOX -->
+        <div style="background: rgba(255,255,255,0.05); padding: 1.2rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+            <p style="margin-bottom: 10px;">
+                <strong style="color: var(--starry-gold);">P.S.</strong> 
+                <span class="discord-pill">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                    the-starry-store-2nd-best-shop
+                </span>
+                is ideal for quick item pickups, no TRP necessary. Slow mode is activated within the shop, so if your list isn’t logged yet, just update it instead of posting multiple entries.
+            </p>
+            <p>
+                DMs must post 
+                <span class="discord-pill">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                    magic-item-log
+                </span>
+                entries for characters who purchase magic items in their sessions.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- 2. SELLING BLOCK -->
+<div class="glass-box">
+    <h2 style="color: var(--starry-gold); margin-bottom: 1.5rem; font-size: 2rem; font-weight: 800; border-bottom: 1px solid rgba(251, 191, 36, 0.3); padding-bottom: 10px; display: block;">
+        Selling Magic Items
+        <span style="font-size: 0.6em; color: #cbd5e1; font-weight: 400; display: block; margin-top: 5px;">(via Live Sessions or TRP)</span>
+    </h2>
+
+    <div style="font-size: 1.1rem; line-height: 1.7;">
+        <p style="margin-bottom: 1.5rem;">
+            Selling an item at <strong>50% of its base gold value</strong> is free and does not require a check. It must be logged by a DM in the 
+            <span class="discord-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                magic-item-log
+            </span>.
+        </p>
+
+        <p>
+            Selling an item at <strong>100% of its base gold value</strong> requires a check and costs DTP.
+        </p>
+
+        <!-- MATH BOX -->
+        <div class="math-box">
+            Check: Charisma (Persuasion)<br>
+            Persuasion Check DC = Item's Tier × 5<br>
+            DTP Cost = Item's Tier × 5
+        </div>
+
+        <p>
+            Buffs on the selling roll in live sessions are the same as crafting ones. See 
+            <span class="discord-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                downtime-rolls
+            </span>.
+        </p>
+    </div>
+</div>
+
+
+<!-- blocks break -->
+<!-- CHARACTER TRADING SECTION -->
+
+<style>
+  /* --- CUTE TRADING CARD CONTAINER --- */
+  .trading-card {
+    /* Updated to match site theme: Glassy Dark Blue */
+    background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    
+    border: 1px solid rgba(34, 211, 238, 0.3); 
+    border-radius: 24px;       
+    padding: 40px;
+    margin: 40px auto;
+    
+    /* UPDATED: Matches the width of other glass boxes */
+    max-width: 1200px;
+    
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); 
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* --- LEFT SIDE: TEXT --- */
+  .trading-text-side {
+    flex: 1;
+    min-width: 300px;
+    z-index: 2;
+  }
+
+  .trading-body {
+    color: #e2e8f0;
+    line-height: 1.8;
+    font-size: 1.1em;
+    font-family: 'Inter', sans-serif;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+
+  /* --- RIGHT SIDE: IMAGE AREA --- */
+  .trading-img-wrapper {
+    flex: 0 0 auto;
+    position: relative;
+    width: 280px; 
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* --- THE DRAGON IMAGE --- */
+  .cute-dragon-img {
+    width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 5; 
+    filter: drop-shadow(0 10px 10px rgba(0,0,0,0.5)); 
+    animation: floatBob 3s ease-in-out infinite;
+  }
+
+  @keyframes floatBob {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); } 
+    100% { transform: translateY(0px); }
+  }
+
+  /* --- WATER RIPPLES --- */
+  .ripple {
+    position: absolute;
+    bottom: 15px; 
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    border: 3px solid rgba(165, 243, 252, 0.4); 
+    box-shadow: 0 0 10px rgba(165, 243, 252, 0.2);
+    opacity: 0;
+    z-index: 1; 
+    pointer-events: none;
+    height: 40px; 
+    width: 100px;
+    animation: rippleEffect 4s linear infinite;
+  }
+
+  .ripple:nth-child(1) { animation-delay: 0s; }
+  .ripple:nth-child(2) { animation-delay: 1.3s; }
+  .ripple:nth-child(3) { animation-delay: 2.6s; }
+
+  @keyframes rippleEffect {
+    0% { width: 100px; height: 40px; opacity: 0.8; border-width: 4px; }
+    100% { width: 500px; height: 160px; opacity: 0; border-width: 0px; }
+  }
+
+  /* --- FOOTER CAPTION --- */
+  .img-caption {
+    margin-top: 10px;
+    font-size: 0.85em;
+    color: var(--starry-cyan);
+    font-style: italic;
+    text-align: center;
+    z-index: 6;
+    position: absolute;
+    bottom: -30px; 
+    width: 100%;
+    white-space: nowrap;
+  }
+
+  /* Mobile Layout */
+  @media (max-width: 700px) {
+    .trading-card {
+      flex-direction: column; 
+      text-align: center;
+      padding-bottom: 60px; 
+    }
+  }
+</style>
+
+<div class="trading-card">
+  
+  <!-- LEFT SIDE: DRAGON ON POND -->
+  <div class="trading-img-wrapper">
+    <!-- Ripples -->
+    <div class="ripple"></div>
+    <div class="ripple"></div>
+    <div class="ripple"></div>
+
+    <!-- Corrected Path -->
+    <img src="/assets/img/loob.png" alt="Loob the Dragon" class="cute-dragon-img">
+
+    <!-- Caption -->
+    <div class="img-caption"><strong>L'oob</strong>, Played by a Starry Shorian</div>
+  </div>
+
+  <!-- RIGHT SIDE: TEXT -->
+  <div class="trading-text-side">
+    <h2 style="color: var(--starry-cyan); margin-bottom: 1rem; font-weight: 800; font-size: 2rem; font-family: 'Trebuchet MS', sans-serif;">
+        Character Trading
+    </h2>
+    <p class="trading-body">
+      Characters can buy and sell items to other characters as they wish. Characters can also gift items to other characters.
+      <br><br>
+      It can be roleplayed in some fashion and must be logged in the 
+      
+      <span class="discord-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+          character-trade-log
+      </span>.
+    </p>
+  </div>
+
+</div>
+
+
+<!-- blocks break -->
+<!-- SENDING STONE & BOONS SECTION -->
+
+<style>
+    /* Reuse Glass Box */
+    .glass-box {
+        background: linear-gradient(135deg, rgba(20, 30, 60, 0.3) 0%, rgba(2, 2, 10, 0.5) 100%);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        color: #e2e8f0;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    /* Reuse Discord Pill */
+    .discord-pill {
+        display: inline-flex; align-items: center; gap: 5px;
+        background-color: rgba(88, 101, 242, 0.25); 
+        color: #cdd3ff; border: 1px solid rgba(88, 101, 242, 0.5);
+        border-radius: 6px; padding: 2px 8px;
+        text-decoration: none; font-weight: 600; font-size: 0.9em;
+        vertical-align: middle; white-space: nowrap; transition: all 0.2s ease;
+        font-family: 'Inter', sans-serif;
+    }
+    .discord-pill:hover {
+        background-color: #5865F2; color: white; 
+        box-shadow: 0 0 15px rgba(88, 101, 242, 0.6); transform: translateY(-2px);
+    }
+</style>
+
+<!-- 1. SENDING STONE SYSTEM -->
+<div class="glass-box" style="border-left: 5px solid var(--starry-blue);">
+    <h2 style="color: var(--starry-blue); margin-bottom: 1.5rem; font-size: 2rem; font-weight: 800; border-bottom: 1px solid rgba(59, 130, 246, 0.3); padding-bottom: 10px; display: block;">
+        Sending Stone System
+    </h2>
+    
+    <div style="font-size: 1.1rem; line-height: 1.7;">
+        <p style="margin-bottom: 1rem;">
+            Every character is gifted a sending stone upon their arrival to The Starry Shore. Sending stones can be linked to the sending stone of any other The Starry Shore resident that you have met.
+        </p>
+        <p>
+            Sending Stones use a <strong>"Contacts"</strong> system in place of needing to carry a half dozen or more stones. This way, a character in The Starry Shore only needs to physically carry a single sending stone. Make sure to gain the consent of the player whose character contact you wish to store.
+        </p>
+    </div>
+</div>
+
+<!-- 2. BOONS SYSTEM -->
+<div class="glass-box" style="border-left: 5px solid var(--starry-gold);">
+    <h2 style="color: var(--starry-gold); margin-bottom: 1.5rem; font-size: 2rem; font-weight: 800; border-bottom: 1px solid rgba(251, 191, 36, 0.3); padding-bottom: 10px; display: block;">
+        Boons
+    </h2>
+
+    <div style="font-size: 1.1rem; line-height: 1.7;">
+        <p style="margin-bottom: 1rem;">
+            Characters may purchase from a limited selection of Epic Boons as detailed in the Boons spreadsheet for the gold listed. Characters must meet the listed level requirements.
+        </p>
+        
+        <p style="margin-bottom: 1.5rem;">
+            To purchase a boon, post in 
+            
+            <span class="discord-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5.88657 14H7.6699L8.18182 10.6055H10.6624L10.1505 14H12.6562L13.1681 10.6055H15.9377L16.2957 8.24316H13.5261L14.0759 4.61365H11.5702L11.0204 8.24316H8.53982L9.0896 4.61365H6.58392L6.03415 8.24316H3.24316L2.88522 10.6055H5.67621L5.16429 14H2.40625L2.04831 16.3624H4.80634L4.25656 19.9919H6.76224L7.31202 16.3624H9.79259L9.24282 19.9919H11.7485L12.2983 16.3624H15.0679L14.7099 14H12.6562L12.1443 17.3945H9.66375L10.1757 14H7.6699L7.158 17.3945H4.67741L5.18933 14H5.88657Z"/></svg>
+                artifact-and-boon-purchase-log
+            </span> 
+            
+            using the provided template. A staff member must approve this purchase.
+        </p>
+
+        <div style="background: rgba(251, 191, 36, 0.1); border: 1px solid var(--starry-gold); padding: 15px; border-radius: 8px;">
+            <strong style="color: var(--starry-gold);">Rule:</strong> A character may only have a maximum of <strong>three boons</strong>, except if you buy a prestige boon slot. Boons belong to the character, not the player, and cannot be transferred to another character.
+        </div>
+    </div>
+</div>
+
+
 <!-- blocks break -->
 
 
