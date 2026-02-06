@@ -21,14 +21,15 @@ const pageIndex = {
         { title: 'Item Patch Notes (2014)', url: '2014-5e-server/2014-server-systems/item-patch-notes.html', category: '2014' },
         { title: 'Downtime Points (2014)', url: '2014-5e-server/2014-server-systems/downtime-points-guide.html', category: '2014' },
         { title: 'Prestige Rules (2014)', url: '2014-5e-server/2014-server-systems/prestige-rules.html', category: '2014' },
-        { title: 'Website Launch (2014)', url: '2014-5e-server/events/website-launch-celebration.html', category: '2014' },
+        { title: 'Website Launch (2014)', url: '2014-5e-server/events/server-3rd-anniversary.html', category: '2014' },
+        { title: 'Website Launch (2014)', url: '2014-5e-server/events/trinkets-ist.html', category: '2014' },
         
         // 2024 Server
         { title: 'About the Server (2024)', url: '2024-5.5e-server/about-the-2024-server.html', category: '2024' },
         { title: 'Character Creation (2024)', url: '2024-5.5e-server/character-creation-steps.html', category: '2024' },
         { title: 'Creation Log Maker (2024)', url: '2024-5.5e-server/creation-log-maker.html', category: '2024' },
         { title: 'Crafting (2024)', url: '2024-5.5e-server/2024-server-systems/crafting.html', category: '2024' },
-        { title: 'Website Launch (2024)', url: '2024-5.5e-server/events/website-launch-celebration.html', category: '2024' },
+        { title: 'Website Launch (2024)', url: '2024-5.5e-server/events/soon.html', category: '2024' },
     ]
 };
 
