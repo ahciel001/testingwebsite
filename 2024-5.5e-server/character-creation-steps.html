@@ -343,6 +343,207 @@
 </div>
 
 
+<!-- blocks break -->
+<!-- ALLOWED & BANNED MATERIAL SECTION -->
+
+<style>
+    /* Base Status Card Style */
+    .status-card {
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Green Hue for Allowed */
+    .card-allowed {
+        background: linear-gradient(135deg, rgba(76, 175, 80, 0.15), rgba(20, 30, 40, 0.4));
+        border-left: 6px solid #4CAF50;
+        border-top: 1px solid rgba(76, 175, 80, 0.3);
+    }
+
+    /* Red Hue for Banned */
+    .card-banned {
+        background: linear-gradient(135deg, rgba(244, 67, 54, 0.15), rgba(40, 20, 20, 0.4));
+        border-left: 6px solid #f44336;
+        border-top: 1px solid rgba(244, 67, 54, 0.3);
+    }
+
+    /* Yellow Hue for Under Review (NEW) */
+    .card-review {
+        background: linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(40, 30, 20, 0.4));
+        border-left: 6px solid #fbbf24;
+        border-top: 1px solid rgba(251, 191, 36, 0.3);
+    }
+
+    /* Titles */
+    .status-title {
+        font-family: 'Trebuchet MS', sans-serif;
+        font-weight: 800;
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+    .text-allowed { color: #81c784; } 
+    .text-banned { color: #e57373; }   
+    .text-review { color: #fcd34d; }
+
+    /* Content Lists */
+    .mat-list { list-style: none; padding: 0; color: #e2e8f0; font-size: 1.05rem; }
+    .mat-list li { margin-bottom: 1rem; position: relative; padding-left: 1.5rem; }
+    
+    /* List Markers */
+    .allowed-list > li::before { content: '●'; position: absolute; left: 0; color: #4ade80; font-weight: bold; }
+    .banned-list > li::before { content: '✕'; position: absolute; left: 0; color: #f87171; font-weight: bold; }
+    .review-list > li::before { content: '?'; position: absolute; left: 0; color: #fcd34d; font-weight: bold; }
+
+    /* Sub-lists for details */
+    .sub-list {
+        list-style: none;
+        padding-left: 0.5rem;
+        margin-top: 0.5rem;
+        border-left: 1px solid rgba(255,255,255,0.1);
+    }
+    .sub-list li {
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.85);
+        margin-bottom: 0.4rem;
+        padding-left: 1rem;
+    }
+    .sub-list li::before {
+        content: '-';
+        position: absolute;
+        left: 5px; /* Indented slightly */
+        color: rgba(255,255,255,0.5);
+    }
+
+    /* Highlight helpers */
+    .ban-highlight { color: #ff5757; font-weight: 600; }
+    .ban2-highlight { color: #ffd6d6; }
+    .category-title { color: #fff; font-weight: 700; font-size: 1.1rem; }
+</style>
+
+<!-- 1. ALLOWED MATERIAL CARD -->
+<div class="status-card card-allowed">
+    <h2 class="status-title text-allowed">
+        ✅ Allowed Material
+    </h2>
+
+    <ul class="mat-list allowed-list">
+        
+        <!-- Class -->
+        <li>
+            <span class="category-title">Class:</span> Only classes from 2024 books + All Partnered Content
+            <ul class="sub-list">
+                <li><span class="ban-highlight">Banned:</span> <span class="ban2-highlight">Blood Hunter (Critical Role)</span></li>
+            </ul>
+        </li>
+
+        <!-- Subclass -->
+        <li>
+            <span class="category-title">Subclass:</span> All 2024 + 2014 official + All Partnered Content
+            <ul class="sub-list">
+                <li>Must use the new "Core Rules" version if reprinted.</li>
+                <li>Everything you would have gained from the subclass before level 3 is now obtained at level 3.</li>
+                <li>
+                    <strong>Paladin:</strong>
+                    <br>• <em>Noble Genies (Dao’s Crush):</em> The target can repeat the saving throw at the end of each of its turns.
+                    <br>• <em>Guardian (Guardian Angel):</em> Range is up to your paladin aura.
+                </li>
+                <li>
+                    <strong>Ranger:</strong>
+                    <br>• <em>Vermin Lord (Verminkin):</em> The spell slot used for this feature can be up to a maximum equal to the highest available spell slot based on your ranger level progression table.
+                </li>
+                <li>
+                    <strong>Warlock:</strong>
+                    <br>• <em>The Coven (Hag's Craft):</em> Only potions from the server shopping list.
+                </li>
+                <li>
+                    <span class="ban-highlight">Banned:</span> <span class="ban2-highlight">Gunslinger (CR), Blade Breaker, Dungeoneer, Purification Domain, Bibliomancy.</span>
+                </li>
+            </ul>
+        </li>
+
+        <!-- Backgrounds -->
+        <li>
+            <span class="category-title">Backgrounds:</span> Only backgrounds from 2024 books + 2024 Partnered Content
+            <ul class="sub-list">
+                <li>You can flavor any background/backstory, this is just for mechanics.</li>
+                <li>You can adjust your ability scores to your choice of a +2/+1, or a +1/+1/+1, on different stats. None of these increases can raise a score above 20.</li>
+            </ul>
+        </li>
+
+        <!-- Races -->
+        <li>
+            <span class="category-title">Races:</span> 2024 + 2014 official + All Partnered Content
+            <ul class="sub-list">
+                <li>Must use the new "Core Rules" version if reprinted.</li>
+                <li>You do <strong>NOT</strong> get stat bonus from races.</li>
+                <li>All species get 3 origin languages: common + 2 more languages.</li>
+                <li><span class="ban-highlight">Banned:</span> <span class="ban2-highlight">All species from Grim Hollow: Player’s Guide.</span></li>
+            </ul>
+        </li>
+
+        <!-- Spells -->
+        <li>
+            <span class="category-title">Spells:</span> 2024 + 2014 official + All Partnered Content
+            <ul class="sub-list">
+                <li>Must use the new version if reprinted.</li>
+                <li>
+                    <span class="ban-highlight">Banned:</span> <span class="ban2-highlight">Deryan’s Helpful Homunculi, all Shadowsteel Curse spells, Maelfa's Quickened Class, Steal Immortality, Wilting Smite, Serpent Tongue, Curse of the Putrid Husk, Dread Curse of Azathoth, Voorish Sign, Bone Cage.</span>
+                </li>
+            </ul>
+        </li>
+
+        <!-- Feats -->
+        <li>
+            <span class="category-title">Feats:</span> 2024 + 2014 official + All Partnered Content
+            <ul class="sub-list">
+                <li>Must use the new "Core Rules" version if reprinted.</li>
+                <li>All feats from 2014 now have "Prerequisites: Level 4+".</li>
+                <li>Setting-specific background feats can be taken as origin feats (Scion of the Outer Planes, Squire of Solamnia, Initiate of High Sorcery, Strike of the Giants, Strixhaven Initiate).</li>
+                <li>Mystic Conflux can only be taken at T4 / level 17 and above.</li>
+                <li>
+                    <span class="ban-highlight">Banned:</span> <span class="ban2-highlight">Adroit Crafter, Careful Crafter, Shadowsteel Adept, Shadowsteel Master, Thrown Weapon Master, all feats from Heliana’s Guide to Monster Hunting: Part 1.</span>
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+</div>
+
+<!-- 2. BANNED MATERIAL CARD -->
+<div class="status-card card-banned">
+    <h2 class="status-title text-banned">
+        ⛔ Banned Content
+    </h2>
+
+    <ul class="mat-list banned-list">
+        <li><strong>Kobold Press:</strong> Book of Ebon Tides</li>
+        <li>Tales from the Shadows</li>
+        <li>The Illrigger Revised</li>
+        <li>The Lord of the Rings Roleplaying</li>
+    </ul>
+</div>
+
+<!-- 3. UNDER REVIEW CARD (Yellow Hue) -->
+<div class="status-card card-review">
+    <h2 class="status-title text-review">
+        ⚠️ Under Review
+    </h2>
+
+    <ul class="mat-list review-list">
+        <li>The Gunslinger Class: Valda’s Spire of Secrets</li>
+        <li>Exploring Eberron (2024)</li>
+    </ul>
+</div>
+
 
 <!-- blocks break -->
 <!-- CREATION TIPS (ELIZABETH) SECTION -->

@@ -3,120 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Starry Shore</title>
     <link rel="stylesheet" href="style.css">
     <script src="loader.js"></script>
+    <!-- Primary Meta Tags -->
+<title>The Starry Shore</title>
+<meta name="title" content="The Starry Shore — D&D 5E & 5.5E Online RPG Community">
+<meta name="description" content="Join The Starry Shore, a vibrant 18+ D&D community for 5E & 5.5E. Play anytime via voice and text RP, explore living worlds, and meet friendly DMs and players.">
+<meta name="keywords" content="D&D 5E, D&D 5.5E, dnd, free, Online RPG, Discord DnD, Voice Roleplay, Text RP, TTRPG, LGBTQ+ Friendly, 18+, Living World, Dungeons and Dragons">
+<meta name="robots" content="index, follow">
+<meta name="language" content="English">
+<meta name="author" content="The Starry Shore">
+
+<!-- Canonical Link (Crucial for moving from github.io to thestarryshore.com) -->
+<link rel="canonical" href="https://thestarryshore.com/">
+
+<!-- Open Graph / Discord / Facebook -->
+<meta property="og:site_name" content="The Starry Shore">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://thestarryshore.com/">
+<meta property="og:title" content="The Starry Shore — D&D 5E & 5.5E Online RPG Community">
+<meta property="og:description" content="Discover an endless number of worlds! Join our 18+ community for 24/7 D&D adventures on Discord.">
+<meta property="og:image" content="https://thestarryshore.com/assets/img/hallo2025.png">
+<meta name="theme-color" content="#22d3ee"> <!-- This gives the Discord embed a Cyan border -->
+
+<!-- Twitter (X) Preview -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://thestarryshore.com/">
+<meta name="twitter:title" content="The Starry Shore — D&D 5E & 5.5E Online RPG Community">
+<meta name="twitter:description" content="Explore the multiverse with The Starry Shore, an 18+ D&D community with 5E and 5.5E adventures, active DMs, and friendly players.">
+<meta name="twitter:image" content="https://thestarryshore.com/assets/img/hallo2025.png">
+
+<!-- Favicon and App Icons -->
+<link rel="icon" href="https://thestarryshore.com/assets/img/logo3.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="https://thestarryshore.com/assets/img/logo3.png">
+<link rel="apple-touch-icon" href="https://thestarryshore.com/assets/img/logo3.png">
+<meta name="apple-mobile-web-app-title" content="The Starry Shore">
+
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "The Starry Shore",
+  "alternateName": "The Starry Shore D&D Community",
+  "url": "https://thestarryshore.com/",
+  "logo": "https://thestarryshore.com/assets/img/logo3.png",
+  "sameAs": [
+    "https://discord.gg/thestarryshore",
+    "https://discord.gg/3RgtCcaH6F"
+  ],
+  "description": "The Starry Shore is a vibrant 18+ Dungeons & Dragons 5E and 5.5E community offering voice and text-based adventures on Discord.",
+  "knowsAbout": [
+    "Dungeons and Dragons",
+    "D&D 5E",
+    "D&D 5.5E",
+    "Online D&D",
+    "Discord DnD",
+    "TTRPG",
+    "Voice Roleplay",
+    "Text Roleplay"
+  ]
+}
+</script>
 </head>
 <body>
     <canvas id="star-canvas"></canvas>
 
-    <header>
-        <div class="header-left">
-            <a href="index.html" class="logo-text star-hover-effect">
-                <img src="assets/img/logo.jpg" style="height:40px; width:auto; border-radius: 5px;" alt="Logo">
-                The Starry Shore
-            </a>
-        </div>
-
-        <div class="hamburger">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-
-        <div class="header-content-wrapper">
-            <div class="header-center">
-                <div class="nav-item">
-                    <a href="index.html" class="nav-link star-hover-effect">Home</a>
-                </div>
-                
-                <div class="nav-item">
-                    <a href="2014-5e-server/about-the-2014-server.html" class="nav-link star-hover-effect">2014 5e Server</a>
-                    <div class="dropdown">
-                        <div class="dropdown-column">
-                            <a href="2014-5e-server/about-the-2014-server.html" class="dropdown-item">About the Server</a>
-                            <a href="2014-5e-server/character-creation-steps.html" class="dropdown-item">Character Creation</a>
-                            <a href="2014-5e-server/how-to-play.html" class="dropdown-item">How to Play</a>
-                            <a href="2014-5e-server/loot-and-items.html" class="dropdown-item">Loot and Items</a>
-                            <a href="2014-5e-server/misc-rules.html" class="dropdown-item">Misc Rules</a>
-                            <a href="2014-5e-server/dm-guide.html" class="dropdown-item">DM Guide</a>
-                            <a href="2014-5e-server/dm-tools.html" class="dropdown-item">DM Tools</a>
-                        </div>
-                        <div class="dropdown-column">
-                            <div class="dropdown-item" style="color: var(--starry-gold); font-weight: bold; padding-top: 1rem; border-top: 1px solid var(--starry-border); margin-top: 0.5rem; pointer-events: none;">Server Systems</div>
-                            <a href="2014-5e-server/2014-server-systems/shopping-guide.html" class="dropdown-item">Shopping Guide</a>
-                            <a href="2014-5e-server/2014-server-systems/crafting.html" class="dropdown-item">Crafting</a>
-                            <a href="2014-5e-server/2014-server-systems/item-patch-notes.html" class="dropdown-item">Item Patch Notes</a>
-                            <a href="2014-5e-server/2014-server-systems/downtime-points-guide.html" class="dropdown-item">Downtime Points</a>
-                            <a href="2014-5e-server/2014-server-systems/prestige-rules.html" class="dropdown-item">Prestige Rules</a>
-                        </div>
-                        <div class="dropdown-column">
-                            <div class="dropdown-item" style="color: var(--starry-gold); font-weight: bold; padding-top: 1rem; border-top: 1px solid var(--starry-border); margin-top: 0.5rem; pointer-events: none;">Events</div>
-                            <a href="2014-5e-server/events/website-launch-celebration.html" class="dropdown-item">Website Launch</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="nav-item">
-                    <a href="2024-5.5e-server/about-the-2024-server.html" class="nav-link star-hover-effect">2024 5.5e Server</a>
-                    <div class="dropdown">
-                        <div class="dropdown-column">
-                            <a href="2024-5.5e-server/about-the-2024-server.html" class="dropdown-item">About the Server</a>
-                            <a href="2024-5.5e-server/character-creation-steps.html" class="dropdown-item">Character Creation</a>
-                            <a href="2024-5.5e-server/creation-log-maker.html" class="dropdown-item">Creation Log Maker</a>
-                        </div>
-                        <div class="dropdown-column">
-                            <div class="dropdown-item" style="color: var(--starry-gold); font-weight: bold; padding-top: 1rem; border-top: 1px solid var(--starry-border); margin-top: 0.5rem; pointer-events: none;">Server Systems</div>
-                            <a href="2024-5.5e-server/2024-server-systems/crafting.html" class="dropdown-item">Crafting</a>
-                        </div>
-                        <div class="dropdown-column">
-                            <div class="dropdown-item" style="color: var(--starry-gold); font-weight: bold; padding-top: 1rem; border-top: 1px solid var(--starry-border); margin-top: 0.5rem; pointer-events: none;">Events</div>
-                            <a href="2024-5.5e-server/events/website-launch-celebration.html" class="dropdown-item">Website Launch</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="header-right">
-                <div class="search-container">
-                    <input type="text" class="search-input" placeholder="Search..." id="searchInput">
-                    <select class="search-filter" id="searchFilter">
-                        <option value="all">All</option>
-                        <option value="2014">2014</option>
-                        <option value="2024">2024</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    </header>
+    <header id="main-header"></header>
 
     <main>
         <div class="content no-sidebar" style="text-align: center;">
-            <div style="display: flex; justify-content: center; margin-bottom: 1rem;">
-                <h1 style="
-                  font-size: clamp(2rem, 5vw, 4em);
-                  display: flex; 
-                  align-items: center;
-                  justify-content: center;
-                  flex-wrap: wrap;
-                  font-family: 'Trebuchet MS', sans-serif;
-                  font-weight: 900;
-                  text-shadow: 0 0 30px rgba(56, 189, 248, 0.4);
-                  position: relative;
-                " class="star-hover-effect">
-                  <img src="assets/img/logo.jpg" style="height:110px; margin-right:15px; border-radius: 10px; filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.5)); max-height: 80px;" alt="Logo">
-                  <strong style="
-                    background: linear-gradient(90deg, #3b82f6, #38bdf8, #22d3ee, #06b6d4, #38bdf8, #3b82f6);
-                    background-size: 400% auto;
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    font-weight: 1200;
-                    animation: shine 8s linear infinite;
-                  ">
-                    The Starry Shore
-                  </strong>
-                </h1>
-            </div>
+            
 
 <!-- blocks break -->
 
@@ -147,7 +104,7 @@
             0 20px 50px rgba(0, 0, 0, 0.7),
             inset 0 0 30px rgba(34, 211, 238, 0.05);
 
-        text-align: left;
+        text-align: center;
         color: var(--starry-text);
         max-width: 1200px; /* Made slightly wider to fit image better */
         
@@ -185,6 +142,7 @@
         font-size: 1.8rem;
         color: var(--starry-gold);
         margin-bottom: 0.5rem;
+        text-align: center;
         font-weight: 300;
         letter-spacing: 1px;
         text-transform: uppercase;
@@ -195,15 +153,16 @@
         color: #cbd5e1;
         font-size: 1.05rem;
         line-height: 1.6;
-        margin-bottom: 1rem;
-        max-width: 850px;
+        margin: 0 auto 1.5rem auto; 
+        max-width: 900px;
         text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     }
 
     /* --- 3. GLASSY DISCORD BUTTONS --- */
     .discord-btn-wrapper {
         display: flex;
-        gap: 15px;
+        justify-content: center;
+        gap: 50px;
         flex-wrap: wrap;
         margin-bottom: 1.5rem;
         transform-style: preserve-3d;
@@ -397,7 +356,7 @@
             margin: 1rem auto;
         }
         .discord-btn-wrapper {
-            justify-content: flex-start; /* Align buttons left on mobile */
+            justify-content: center; /* Align buttons left on mobile */
         }
         .feature-list li {
             font-size: 0.95rem; /* Slightly smaller text */
@@ -410,8 +369,33 @@
 </style>
 
 <!-- MAIN CONTENT BLOCK -->
+ 
 <div class="welcome-container">
-    
+    <div style="display: flex; justify-content: center; margin-bottom: 0rem;">
+                <h1 style="
+                  font-size: clamp(2rem, 5vw, 4em);
+                  display: flex; 
+                  align-items: center;
+                  justify-content: center;
+                  flex-wrap: wrap;
+                  font-family: 'Trebuchet MS', sans-serif;
+                  font-weight: 900;
+                  text-shadow: 0 0 30px rgba(56, 189, 248, 0.4);
+                  position: relative;
+                " class="star-hover-effect">
+                  <img src="assets/img/logo.jpg" style="height:110px; margin-right:15px; border-radius: 10px; filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.5)); max-height: 80px;" alt="Logo">
+                  <strong style="
+                    background: linear-gradient(90deg, #3b82f6, #38bdf8, #22d3ee, #06b6d4, #38bdf8, #3b82f6);
+                    background-size: 400% auto;
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    font-weight: 1200;
+                    animation: shine 8s linear infinite;
+                  ">
+                    The Starry Shore
+                  </strong>
+                </h1>
+            </div>
     <!-- Title Section -->
     <div>
         <span class="subtitle-accent">D&D 5th Edition Westmarches Servers (2014 & 2024)</span>
@@ -443,7 +427,7 @@
     </div>
 
     <!-- Layout: List & Image -->
-    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 40px;">
+    <div style="display: flex; flex-wrap: wrap; text-align: left; align-items: center; justify-content: space-between; gap: 40px;">
         
         <!-- Feature List (Fills available space) -->
         <div style="flex: 2; min-width: 280px;">
@@ -873,232 +857,7 @@
 
 <!-- blocks break -->
 
-<!-- WEBSITE TUTORIAL SECTION WITH LIGHTBOX -->
 
-<style>
-    /* --- 1. ON-PAGE CONTAINER --- */
-    .tutorial-glass-container {
-        max-width: 1200px;
-        margin: 2rem auto 4rem auto;
-        padding: 1rem 1rem;
-        border-radius: 16px;
-        text-align: center;
-        
-        /* Transparent Glass Theme */
-        background: linear-gradient(
-            135deg, 
-            rgba(20, 30, 60, 0.3) 0%, 
-            rgba(2, 2, 10, 0.5) 60%
-        );
-        backdrop-filter: blur(4px);
-        border: 1px solid rgba(34, 211, 238, 0.2);
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
-    }
-
-    .tutorial-title {
-        font-size: clamp(1.5rem, 3vw, 2.2rem);
-        font-weight: 800;
-        margin-bottom: 2rem;
-        display: inline-block;
-        background: linear-gradient(to right, #fff, #22d3ee);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.3));
-    }
-
-    /* Thumbnail Wrapper */
-    .tutorial-img-wrapper {
-        max-width: 1000px;
-        margin: 0 auto;
-        border-radius: 12px;
-        overflow: hidden;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-        cursor: pointer; /* Shows it's clickable */
-        position: relative;
-        transition: all 0.3s ease;
-    }
-
-    /* "Click to Enlarge" overlay hint */
-    .tutorial-img-wrapper::after {
-        content: '🔍 Click to Zoom';
-        position: absolute;
-        top: 50%; left: 50%;
-        transform: translate(-50%, -50%);
-        background: rgba(0,0,0,0.7);
-        color: white;
-        padding: 10px 20px;
-        border-radius: 30px;
-        border: 1px solid var(--starry-cyan);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        pointer-events: none;
-        font-weight: bold;
-    }
-
-    .tutorial-glass-container:hover .tutorial-img-wrapper::after {
-        opacity: 1;
-    }
-
-    .tutorial-glass-container:hover .tutorial-img-wrapper {
-        transform: translateY(-5px);
-        border-color: rgba(34, 211, 238, 0.5);
-        box-shadow: 0 0 30px rgba(34, 211, 238, 0.15);
-    }
-
-    .tutorial-img {
-        display: block;
-        width: 100%;
-        height: auto;
-    }
-
-    /* --- 2. FULL SCREEN MODAL (LIGHTBOX) --- */
-    .lightbox-modal {
-        display: none; /* Hidden by default */
-        position: fixed;
-        z-index: 9999;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(2, 2, 10, 0.95); /* Very dark bg */
-        backdrop-filter: blur(10px);
-        overflow: auto; /* Allows scrolling when zoomed */
-        animation: fadeIn 0.3s;
-    }
-
-    /* Modal Image Container */
-    .lightbox-content-wrapper {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100%; /* Ensures vertical centering */
-        padding: 20px;
-        box-sizing: border-box;
-    }
-
-    .lightbox-img {
-        display: block;
-        max-width: 95%;
-        max-height: 90vh;
-        border-radius: 8px;
-        box-shadow: 0 0 50px rgba(34, 211, 238, 0.2);
-        cursor: zoom-in;
-        transition: transform 0.3s ease;
-    }
-
-    /* State: Zoomed In */
-    .lightbox-img.zoomed {
-        max-width: none;
-        max-height: none;
-        width: auto;
-        cursor: zoom-out;
-    }
-
-    /* Close Button */
-    .lightbox-close {
-        position: fixed;
-        top: 20px;
-        right: 30px;
-        color: #f1f1f1;
-        font-size: 40px;
-        font-weight: bold;
-        transition: 0.3s;
-        cursor: pointer;
-        z-index: 10000;
-        background: rgba(0,0,0,0.5);
-        width: 50px;
-        height: 50px;
-        line-height: 45px;
-        text-align: center;
-        border-radius: 50%;
-        border: 2px solid transparent;
-    }
-
-    .lightbox-close:hover,
-    .lightbox-close:focus {
-        color: var(--starry-cyan);
-        border-color: var(--starry-cyan);
-        background: rgba(0,0,0,0.8);
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
-    
-    /* Mobile Hint Text inside Modal */
-    .lightbox-hint {
-        position: fixed;
-        bottom: 20px;
-        left: 0; 
-        width: 100%;
-        text-align: center;
-        color: rgba(255,255,255,0.6);
-        pointer-events: none;
-        font-size: 0.9em;
-    }
-</style>
-
-<!-- ON PAGE CONTENT -->
-<div class="tutorial-glass-container">
-    <h2 class="tutorial-title star-hover-effect">How to use the website?</h2>
-    
-    <div class="tutorial-img-wrapper" onclick="openLightbox()">
-        <img src="assets/img/webt.png" alt="Website Tutorial" class="tutorial-img">
-    </div>
-</div>
-
-<!-- HIDDEN MODAL -->
-<div id="myLightbox" class="lightbox-modal" onclick="closeLightbox(event)">
-    <span class="lightbox-close" onclick="closeLightbox(event)">×</span>
-    
-    <div class="lightbox-content-wrapper">
-        <img class="lightbox-img" id="lightboxImg" src="assets/img/webt.png" onclick="toggleZoom(event)">
-    </div>
-    
-    <div class="lightbox-hint">Tap image to Zoom • Tap background to Close</div>
-</div>
-
-<!-- JAVASCRIPT FOR MODAL -->
-<script>
-    function openLightbox() {
-        document.getElementById("myLightbox").style.display = "block";
-        document.body.style.overflow = "hidden"; // Prevent background scrolling
-    }
-
-    function closeLightbox(event) {
-        // Close only if clicking overlay or X button, not the image itself
-        if (event.target.id === 'myLightbox' || event.target.classList.contains('lightbox-close') || event.target.classList.contains('lightbox-content-wrapper')) {
-            const modal = document.getElementById("myLightbox");
-            const img = document.getElementById("lightboxImg");
-            
-            modal.style.display = "none";
-            document.body.style.overflow = "auto"; // Re-enable scroll
-            
-            // Reset zoom when closing
-            img.classList.remove("zoomed");
-        }
-    }
-
-    function toggleZoom(event) {
-        event.stopPropagation(); // Don't trigger closeLightbox
-        const img = document.getElementById("lightboxImg");
-        img.classList.toggle("zoomed");
-    }
-    
-    // Allow ESC key to close
-    document.addEventListener('keydown', function(event) {
-        if (event.key === "Escape") {
-            const modal = document.getElementById("myLightbox");
-            if(modal.style.display === "block") {
-                modal.style.display = "none";
-                document.body.style.overflow = "auto";
-                document.getElementById("lightboxImg").classList.remove("zoomed");
-            }
-        }
-    });
-</script>
 
 <!-- blocks break -->
 
