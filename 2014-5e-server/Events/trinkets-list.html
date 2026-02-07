@@ -25,7 +25,274 @@
         <!-- ▼▼▼ PASTE YOUR CONTENT INSIDE THIS TAG ▼▼▼ -->
         <main class="content-with-sidebar">
 <!-- blocks break -->
+<!-- GODS THEME TRINKET TABLE -->
 
+<style>
+    /* --- 1. TABLE CONTAINER --- */
+    .gods-table-container {
+        margin: 2rem auto;
+        max-width: 1200px;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 2px solid #fbbf24; /* Golden Anniversary Border */
+        background: linear-gradient(135deg, rgba(30, 20, 10, 0.4) 0%, rgba(2, 2, 10, 0.6) 100%);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 0 30px rgba(251, 191, 36, 0.2);
+    }
+
+    .gods-table-header {
+        background: rgba(251, 191, 36, 0.15);
+        padding: 1.5rem;
+        text-align: center;
+        border-bottom: 1px solid #fbbf24;
+    }
+
+    .gods-table-header h2 {
+        margin: 0;
+        color: #fbbf24;
+        font-family: 'Cinzel', serif;
+        font-size: 1.8rem;
+        text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+    }
+
+    .gods-table {
+        width: 100%;
+        border-collapse: collapse;
+        color: #e2e8f0;
+        font-family: 'Inter', sans-serif;
+    }
+
+    /* --- 2. DESKTOP STYLING --- */
+    .gods-table th {
+        background: rgba(0, 0, 0, 0.3);
+        color: #fbbf24;
+        text-align: left;
+        padding: 15px;
+        font-weight: 800;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        border-bottom: 2px solid rgba(251, 191, 36, 0.4);
+    }
+
+    .gods-table td {
+        padding: 15px;
+        border-bottom: 1px solid rgba(251, 191, 36, 0.1);
+        vertical-align: top;
+        line-height: 1.6;
+    }
+
+    .gods-table tr:hover {
+        background: rgba(251, 191, 36, 0.03);
+    }
+
+    .roll-num {
+        font-family: 'Consolas', monospace;
+        color: #fbbf24;
+        font-weight: bold;
+        width: 80px;
+        font-size: 1.1rem;
+    }
+
+    /* --- 3. MOBILE RESPONSIVE --- */
+    @media (max-width: 768px) {
+        .gods-table, .gods-table thead, .gods-table tbody, .gods-table th, .gods-table td, .gods-table tr {
+            display: block;
+        }
+
+        .gods-table thead { display: none; }
+
+        .gods-table tr {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #fbbf24;
+            padding: 15px;
+        }
+
+        .gods-table td {
+            border: none;
+            padding: 5px 0;
+            position: relative;
+            padding-left: 80px;
+        }
+
+        .gods-table td::before {
+            content: attr(data-label);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            color: #fbbf24;
+            font-size: 0.8rem;
+        }
+    }
+</style>
+
+<div class="gods-table-container">
+    <div class="gods-table-header">
+        <h2>3rd Server-sary Trinkets (Gods Theme)</h2>
+    </div>
+
+    <table class="gods-table">
+        <thead>
+            <tr>
+                <th>Roll</th>
+                <th>Trinket Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="Roll" class="roll-num">1 - 2</td>
+                <td data-label="Effect">The God of Passage has blessed you to take care of one of their precious obols. Such items protect you from joining them in their boat. You get a +1 to death saving throws while the coin is on your person. You also have a ghostly pale appearance when within 20 ft of water.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">3 - 4</td>
+                <td data-label="Effect">The God of Passage has granted you the mask of a Returned. This mask is to be used for the purpose of finding those who have escaped the River Guides waters. While you wear the mask, you can spend an action to focus on a willing creature’s soul. Above their head appears the number of times they have been brought to life. Once this action is used, it can’t be used again until the next dawn.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">5 - 6</td>
+                <td data-label="Effect">The God of the Forge values being attributed to great works of artisanal craft. He has bestowed you a bronze stamp that is still warm to the touch. You gain a +1 to any check you make with a set of artisan tools if you put the stamp on the item you're crafting. Once this has been used, the stamp goes cold, and the feature cannot be used until three days have passed.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">7 - 8</td>
+                <td data-label="Effect">The God of the Forge dislikes many things, but there is one thing he hates the most. A tool which has outlived its use. He has bestowed upon you a simple, yet heavy bronze hammer with iconography which slanders Heliod. When you make a check or an attack roll against an object, you can make the attack roll with advantage.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">9 - 10</td>
+                <td data-label="Effect">The God of the Sun once observed that during Solsemon's journey to the sun, the oracle went blind for staring at it for too long. To prevent such a fate from happening to another devotee, he has bestowed upon you a set of black tinted glasses. When you are forced to make a saving throw against being blinded, you can use your reaction to gain advantage on the roll. The glasses impede your vision when indoors, you have disadvantage on perception checks made when not in bright light.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">11 - 12</td>
+                <td data-label="Effect">The God of the Sun once saw his shadow, and feared it. To prevent this he banished it to the Rivers That Ring the World. The God of the Sun has bestowed upon you a lantern which allows you to fight off the dark. The lantern has a single hole for which light can escape. Surrounding the hole is the sun's flare, the light the lantern emits serves as the center of the sun. The lantern casts bright light in a 60-foot cone and dim light for an additional 60 feet. Once lit, it burns for 3 hours on a flask (2 pints) of oil. This flame is magical and cannot be extinguished by non-magical means.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">13 - 14</td>
+                <td data-label="Effect">The God of the Dead was once beset by Akroan orphan who took up Heliod’s spear and attempted to kill Erebos himself. This boy escaped, and Erebos has been searching for him ever since. He has bestowed upon you a compass sheathed in shadow. When an undead is within 30 ft of you, the compass begins to spin sporadically before settling in the direction of the undead.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">15 - 16</td>
+                <td data-label="Effect">The God of the Dead once became quite furious at a master lyrist who sought to reunite with their lover. The God of the Dead tried to stop this, but Nylea halted this with a wall of vines. Ever since Erebros has been anger at the goddess. He has bestowed upon you a set of dark shears with impossibly sharp blades. Using these sheers, you can spend 1 minute clearing any foliage or overgrowth that a magical blade could normally clear. Any foliage cut or snipped with these shears will not regrow until at least 7 days have passed.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">17 - 18</td>
+                <td data-label="Effect">The God of Justice is one that weighs one's alignment against their actions. He has bestowed upon you a set of copper scales. You can present these scales to a willing creature who places their hand on the scales. The scales have three levels. Good, Neutral, and Evil. When the creature places their hand on the scales, they move appropriately to the level which matches the creature's alignment. Once the scales have been used to determine a creature's alignment it becomes inert until the next dawn.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">19 - 20</td>
+                <td data-label="Effect">The God of Justice's devotion isn't necessarily concerned with equality or fairness, but rather the discovery of truth and the punishment of the guilty. Those who favor the god tend to be stiff-necked about matters of theology and laws, seeing things in terms of black and white. The God of Justice has bestowed upon you a silver whiskey with a blue string to wear around one's neck. This whistle produces twice the volume a normal whistle would when blown. While wearing this whistle around your neck, it observes your actions. If you or anyone within 30 ft commit an act that would be considered a crime within the laws of your location, it begins to whistle on its own.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">21 - 22</td>
+                <td data-label="Effect">The Goddess of Polis once came to a city in person to judge a murderer who had killed many people. This murderer claimed since he had killed people related to the city's judges, he could not be given a fair trial. Yet when the goddess arrived at the city, everyone was left silent. The Goddess of Polis has bestowed you a gavel that can replicate such an effect. As an action, when struck against a surface, it produces no sound, but everyone within 30 feet suffers the effects of the Silence spell for 6 seconds. Once this action has been used, it can't be used again until the next dawn.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">23 - 24</td>
+                <td data-label="Effect">The Goddess of Polis is believed to watch over sacred oaths and promises. People often swear oaths or engage in verbal disputes in front of her image. Believing she won’t let a falsehood told in front of her go unpunished. The Goddess of Polis has bestowed you a stone with her visage engraved upon it. If two people shake hands over the stone while making a promise, the stone warms. If either breaks the promise before it is fulfilled, the stone cracks down the center.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">25 - 26</td>
+                <td data-label="Effect">The God of Victory once had a legendary disciple named Kalemne. It was said that the disciple would only aid only those who can defeat her in a contest of athletic skill or a test of speed. The God of Victory has bestowed upon you a small magical pin which is shaped like a bulls horns. You can use an action to attach the pin to an item. When the pin is attached to an item its weight is multiplied by 20.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">27 - 28</td>
+                <td data-label="Effect">The God of Victory hosts an event known as the Iroan Games in Akros. The prize for winning such games is rumored to be a visit from the god himself. The God of Victory has bestowed upon you a Dried Akroan Wreath. This Wreath, taken straight from the Iroan games themself, help freshen up the contestant that wears it. The wearer does not sweat during physical exertion, smelling only of polished bronze and fresh air, mimicking the perfection of the gods champions.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">29 - 30</td>
+                <td data-label="Effect">The Goddess of Harvest is known for rewarding those who toil to benefit both nature and man. The Goddess of Harvest has bestowed upon you a seemingly simple garden trowel. When using this trowel to lay any sort of flower or plant, it grows ten times faster.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">31 - 32</td>
+                <td data-label="Effect">The Goddess of Harvest has a miraculous field that produces incredible magical fruits. The field is said to be Karametra’s tribute to her beloved human priest, Thamuzus, who died there. The Goddess of Harvest has bestowed upon you magical seeds contained within a woven bag. You can use an action to plant a seed in a patch of dirt. After 10 minute the plant grows into a medium patch of flowers which form a design, shape, and type of your choice when planting. The bag seems to never run out of seeds.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">33 - 34</td>
+                <td data-label="Effect">The God of Storms once received an exquisitely cut sapphire set in a delicate silver diadem as an offering. Deeply appreciative of the skill and craftsmanship required to create it, Keranos imbued the gem with a spark of divine genius. The God of Storms has bestowed upon you with a replica of the diadem. While wearing the diadem, Once per long rest when you make an intelligence check, you can choose to roll a d20. On a roll of 11 or higher, double your proficiency bonus for the check. On a roll of 10 or lower you suffer a short term madness.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">35 - 36</td>
+                <td data-label="Effect">The God of Storms doesn't tolerate the company of fools. He rewards those who act with forethought and decisiveness and punishes the reckless for their stupidity. The God of Storms bestowed upon you a ring with a spark of lightning within which resembles an iris. If a creature within 10 ft of you rolls a 1 on a d20 or says something demonstrably stupid or obvious, the ring shoots out a harmless yet shocking bolt. If the ring is taken off and set down, the lightning pupil stares at a creature with the highest intelligence score.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">37 - 38</td>
+                <td data-label="Effect">The Goddess of Destiny once plucked a strange of her own hair, and knotted it in on itself. Any who touch the strand risk having it invade them, infecting them with a pernicious destiny that the goddess herself tore from the natural order. The Goddess of Destiny has bestowed upon you a similar, yet non violent strand. You can entwine the white strand of hair into your own. While it is entwined in your hair you can pluck it out, ball it up, and throw it up to 30 ft as a single action. When it hits the ground it emits a cloud of smoke that creates a heavily obscured area in a 20-foot radius and you lose the strand. A moderate wind (at least 10 miles per hour) disperses the smoke in 4 rounds; a strong wind (20 or more miles per hour) disperses it in 1 round. After one day the strand regrows and you can use it again.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">39 - 40</td>
+                <td data-label="Effect">The God of Horizons stands apart from the other gods, he speaks rarely, even to his most favored followers. When he does communicate, it is often as a barely audible whisper. He can speak with a booming voice directly into the minds of all the other gods simultaneously, though, doing so when something threatens the cosmic order. The God of Horizons has bestowed upon you a shroud, cloak. While you are wearing the cloak your voice is muffled and quiet. Creatures must be within 30 ft to hear you while you wear this cloak. Alternatively, you can make your voice thunder in the minds of creatures within 300 ft of you. They can hear you as if you were within 5 ft. You can use this alternate voice for 1 minute. After using the cloak this way you can't do so again until the next dawn.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">41 - 42</td>
+                <td data-label="Effect">The Goddess of the Hunt is known for her esteemed and divine archery. When she is seen punishing poachers and sport hunters, it is often with her legendary shortbow, Ephixis. The shortbow has four special arrows only it can fire. Each arrow is attributed to a season. Spring, Summer, Autumn, and Winter. The Goddess of the Hunt has bestowed upon you similar, yet harmless arrows. Targets struck by the arrows don’t take any damage. When you hit a creature with the spring arrow, bright pink flowers grow around the spot where the arrow struck. When you hit a creature with the summer arrow, it begins to sweat and feels as if they are on a summer beach for 1 minute. When you hit a creature with the autumn arrow, their footsteps sound as if they are stepping on crunchy leaves for 1 minute. When you hit a creature with the winter arrow, they get a cold shiver down their spine and it continues for 1 minute.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">43 - 44</td>
+                <td data-label="Effect">The Goddess of Affliction occasionally grants cures that are reliable but come at a cost. In some cases, that cost is pain as the medicine courses through the imbiber’s body. In other cases, she demands years of life, either from the patient’s lifetime or the researcher’s labor. The Goddess of Affliction has bestowed upon you a balm contained within a seemingly ancient container. You can spend 1 minute applying this balm, which makes you appear older. Wrinkles form, skin dries, and other such affects the age would have on you.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">45 - 46</td>
+                <td data-label="Effect">The Goddess of Affliction represents the duality of life and death distilled into a single draught that can serve as tonic or toxin, depending on the dosage. She is most associated with affliction, whether that phenomenon takes the form of a disease, a venom, a drug, or the passage of years. The Goddess of Affliction has bestowed upon you a face mask to keep yourself from spreading illness. The mask covers your mouth and nose but leaves your eyes and other features visible. While wearing this face mask, you appear deathly ill. You become ghostly pale and color leaves your eyes. You also can produce rough and violent sounding coughs at will.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">47 - 48</td>
+                <td data-label="Effect">The God of Deceit is the masked patron of lies and cheats. He is Heliod’s ethical antithesis, governing the spheres of gambling, deception, and betrayal. Phenax was once a mortal who was trapped in the Underworld, but he learned how to forsake his identity to prevent Erebos from detecting what he was doing. The God of Deceit has bestowed upon you a special copper coin. This coin is light to the touch and both sides depict the god, one side his face, another his temple. When you flip the coin you can emit a high pitched whistle which will cause the coin to land on a side of your choice.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">49 - 50</td>
+                <td data-label="Effect">The God of Deceit was once a mortal who was trapped within the underworld. Though, he found a way to escape the underworld by sacrificing his identity to the memory-draining waters. Due to this, he had essentially faked his permanent erasure from the world. He crossed the Rivers That Ring The World. Without an identity, Athreos couldn’t detect his escape, and Erebos couldn’t bring the escapee back. When he reemerged back into the realm of mortals, he did so as the first of the Returned. The God of Deceit has bestowed upon you a silver dagger which seems sharper than even the most finely crafted blades. Though unbeknownst to anyone but you, the dagger is harmless. When you stab a creature with the dagger, you can grip the dagger in such a way the blade retracts back into the hilt. You can choose to make the dagger hit like a normal dagger instead if you choose so.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">51 - 52</td>
+                <td data-label="Effect">The Goddess of the Sea secretly shares similar creative desires as Purphoros. Endlessly bored with the predictable denizens of the land and sky, in the deepest ocean trenches, she wills immortal dreams and nightmares into being. Delicate beauty, undulating grave, and tentacular terrors are birthed in the absolute dark, iterate for generations, and suffer swift extinction at the gods' whims never knowing the sun's touch. The Goddess of the Sea has bestowed upon you a blue night mask with an ocean design. While wearing this night mask you hear the sound of gentle ocean waves crashing into the shore. Unbeknownst to the wearer, their dreams are displayed in nearby water. Such as bowls, cups, and other such places.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">53 - 54</td>
+                <td data-label="Effect">The Goddess of the Sea once had her bident stolen, the thief using it to sink an entire fleet of ships. The goddess cared not for the sunken fleet, but punished the sailor for his thievery by turning his family into eels. The thief tried to care for the eels, but they blamed him for their fate and disappeared into the sea, leaving the thief weeping on the shore. The Goddess of the Sea has bestowed upon you a bottled eel. When you place the bottled eel within a container, it begins to unscrew its bottle ever so slightly. When a creature other than you opens or reaches within the container, the eel spews slime onto the creature.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">55 - 56</td>
+                <td data-label="Effect">The Goddess of Change and Luck once gave a woman the power to change her form. The woman used her power to become an assassin, killing her suitor and all who served him. When Avandra sought her out to rebuke her, the woman used her power to hide from the goddess. That women's descendants would become known as Changelings. The Goddess of Change and Luck has bestowed upon you a flashy set of black glasses with a golden lens. Two strings hang from the frame, miniature dice on the end. When you inspect a corpse, you can discern if it was killed by an assassin. Once you use this feature, the lenses lose their golden hue and the feature cannot be used again until the next dawn when the lenses regain the hue.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">57 - 58</td>
+                <td data-label="Effect">The Goddess of Change and Luck holds domain over chance, coincidence, fortune, randomness, whatever you call it, luck is a powerful and unpredictable force. Avandra takes this powerful force in hand as a weapon against drab destiny and dark fatalism. The Goddess of Change has bestowed upon you a six sided die. When you roll this dice, it shines with a radiant hue. If you roll a 6 on the dice, you gain advantage on the next attack roll, ability check, or saving throw you make. If you roll a 1 on the dice, it has the opposite effect. Once you roll the die it loses its magic until the next dawn.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">59 - 60</td>
+                <td data-label="Effect">The God of Loxodons has many worshippers who engage in the smoking of particular herbs. Especially within the shores. The God of Loxodons has bestowed upon you a small pipe fashioned out of a piece of the gods broken tusk. Any herbs you pack into the pipe have twice the potency.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">61 - 62</td>
+                <td data-label="Effect">The God of Loxodons has followers of particularly tough origins. Followers of the god are known to be able to grow larger. Their skin toughens to a point of blocking attacks, and they can perform a sacred Loxodon charge. The God of Loxodons has bestowed upon you a special dumbbell that weighs 200 lbs. You can spend 5 minutes using the weight to exercise. After the exercise you feel stronger, yet sore. You have advantage on the next strength check you make, but disadvantage on the next dexterity check.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">63 - 64</td>
+                <td data-label="Effect">The God of Slaughter considers the appearance of the blood moon a holy occasion, where his faithful consume raw meat and scar themselves to demonstrate their devotion. The God of Slaughter has bestowed upon you a jagged shard of crimson obsidian. As a bonus action, you can cut yourself with the shard, taking 1d4 necrotic damage that cannot be reduced. to heal one of your allies in melee range for 1d4 hit points. Once this action is used, it can’t be used again until the next dawn.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">65 - 66</td>
+                <td data-label="Effect">The God of Slaughter is hatred unrestrained and empathy denied. He despises the orderly laws of civilization and the quiet of peace, preferring the roar of the battlefield. The God of Slaughter has bestowed upon you The Torch of the War-Cry. This jagged wooden torch has no head for oil or cloth. Instead, it only ignites when the bearer screams a cry of pure rage. It burns with a violent, sputtering red flame that consumes no wood, but feeds on aggression. The flame is instantly extinguished if anyone within 20 feet speaks a word of kindness, mercy, or truce.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">67 - 68</td>
+                <td data-label="Effect">The God of Revels believes that sobriety is a sin against the spirit and that water is merely wine waiting to happen. He has bestowed upon you a clay Kylix (drinking cup) that is permanently stained purple around the rim. Any non-magical liquid consumed from this cup tastes exactly like the drinker's favorite vintage of fine wine, regardless of what the liquid actually is. Additionally, while holding the cup, your jokes are more likely to land.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">69 - 70</td>
+                <td data-label="Effect">The God of Revels despises the quiet, viewing silence as a void that begs to be filled with song and shout. He has bestowed upon you a small, hollowed-out satyr horn carved with dancing figures. When you blow into the horn, it produces no single note, but rather the faint, illusory sounds of a raucous party, distant laughter, clinking glasses, and upbeat drumming, audible within 30 feet. The sound is not loud enough to distract enemies, but it makes any campfire feel like a festival.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">71 - 72</td>
+                <td data-label="Effect">The Goddess of Destiny acts as the mender of the cosmic tapestry, knitting reality back together when careless gods or mortals tear it. She has bestowed upon you a needle carved from the horn of a woe strider. You can use this needle to mend tears in fabric or breaks in small objects instantly. Additionally, when you use a Healer's Kit to stabilize a dying creature, the needle stitches their fate to the mortal realm, restoring them to 1 hit point instead of just stabilizing them. Once used to restore a creature, this feature can't be used again until the next dawn.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">73 - 74</td>
+                <td data-label="Effect">The God of Horizons holds dominion over the transition between the known and the unknown, often navigating by the stars of Nyx. He has bestowed upon you a lens of dark, smoky glass. When you look through the lens, regardless of the time of day or the weather, you see the clear, starry night sky of Theros. This allows you to navigate by the stars even at high noon or during a cloudy storm.</td>
+            </tr>
+            <tr>
+                <td data-label="Roll" class="roll-num">75 - 76</td>
+                <td data-label="Effect">The Goddess of the Hunt despises waste, demanding that a hunter honors the life they take by using every part of the kill. She has bestowed upon you a skinning knife with a handle of living olive wood. When you use this knife to dress a beast you have slain, the meat harvested remains fresh for 7 days. If you bury the bones of the beast, a patch of wildflowers instantly blooms over the grave.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 
 <!-- blocks break -->
